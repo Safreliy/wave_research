@@ -58,8 +58,9 @@ panels despite similarly small linear residuals.  A solitary-wave translation
 has shape and speed errors $1.82\times10^{-5}$ and
 $8.40\times10^{-5}$.  Manufactured aperture transport is first-order on the
 three finest grids and preserves liquid volume and $0\le q\le c_s$ to
-roundoff.  The constrained handoff has 1.68\% face-flux error, 3.12\% surface
-velocity error and $1.07\times10^{-14}$ face-divergence RMS.
+roundoff.  Across the three production receiver grids, the constrained
+handoff has at most 1.56\% face-flux error, 2.78\% surface-velocity error and
+$7.09\times10^{-9}$ relative receiver-momentum error.
 
 An overturning-wave state over variable bathymetry is continued to
 nondimensional time 6 on three nested
@@ -110,7 +111,7 @@ they also make clear that coupling as such is not a novelty claim.
 Table~\ref{tab:prior-hybrids} separates the architectures from the narrower
 question addressed here.  Earlier work focuses on domain exchange,
 initialisation or physical validation.  The present work instead asks whether
-a complete late potential-flow state can be handed once to a non-conforming
+a late interface-and-velocity state can be handed once to a non-conforming
 embedded receiver while satisfying that receiver's finite-volume constraints.
 
 \begin{table}[t]
@@ -142,7 +143,7 @@ sampling.  (iii) receiver-grid liquid momentum is imposed within the sparse
 reconstruction rather than repaired by an unconstrained posterior shift.
 (iv) Advecting $q=f c_s$ with one geometric flux per shared face makes the
 global physical liquid measure telescope and preserves $0\le q\le c_s$.
-The calculations below test these statements and then apply the complete
+The calculations below test these statements and then apply the
 transition to an overturning breaker on three receiver grids.
 
 \section{Mathematical formulation}
@@ -352,13 +353,24 @@ the face flux transported by the mesh is retained and a receiver-grid
 Helmholtz correction restores compatibility; no global velocity shift is
 applied.  Table~\ref{tab:fit-weights} gives the production weights.  The face
 term has unit weight; the Laplacian row is scaled before squaring, so the last
-entry is reported as $\sqrt{\lambda_h}$.  One set of weights was fixed before
-the three-grid runs and used without level-by-level retuning.
+entry is reported as $\sqrt{\lambda_h}$.  All coordinates and fields in this
+fit are nondimensional.  The reported $\lambda$ values are per-row
+squared-residual multipliers: each block is premultiplied by
+$\sqrt{\lambda}$, with no division by its number of rows.  Consequently their
+absolute magnitudes are not cross-block physical importance factors, and the
+aggregate block contributions change with row count under refinement.  A
+right diagonal column equilibration scales every unknown by the inverse
+Euclidean norm of its assembled column for the iterative solve and is undone
+before $\chi$ is returned; it does not alter the row weights.  One set of
+weights was fixed before the three-grid runs and used without level-by-level
+retuning, so the reported grid results test that fixed discrete choice rather
+than a resolution-invariant hyperparameter normalisation.
 
 \begin{table}[t]
 \centering
 \small
-\caption{Weights in the production state-transfer fit.}
+\caption{Dimensionless per-row squared-residual multipliers in the production
+state-transfer fit.}
 \label{tab:fit-weights}
 \begin{tabular}{lll}
 \toprule
@@ -427,21 +439,25 @@ the coupled receiver experiment below.
 $\delta V/V$ is the signed relative volume change and the final column is the
 largest violation of $0\le q\le c_s$ for the shared-$q$ scheme.}
 \label{tab:q-ablation}
-\begin{tabular}{rrrr}
+\begin{tabular}{rrrrrr}
 \toprule
-Cells per side & product $L^1$ error & product $\delta V/V$ & shared-$q$ bound error \\
+$N$ & product $L^1$ & product $\delta V/V$ & shared-$q$ $L^1$ &
+shared-$q$ $\delta V/V$ & bound error \\
 \midrule
-32  & $1.85\times10^{-3}$ & $ 7.76\times10^{-5}$ & $3.33\times10^{-16}$ \\
-64  & $4.31\times10^{-4}$ & $-9.45\times10^{-5}$ & $3.57\times10^{-16}$ \\
-128 & $9.09\times10^{-5}$ & $-3.59\times10^{-6}$ & $7.81\times10^{-16}$ \\
+32  & $1.85\times10^{-3}$ & $ 7.76\times10^{-5}$ & $6.31\times10^{-15}$ & $0$ & $3.33\times10^{-16}$ \\
+64  & $4.31\times10^{-4}$ & $-9.45\times10^{-5}$ & $1.59\times10^{-14}$ & $0$ & $3.57\times10^{-16}$ \\
+128 & $9.09\times10^{-5}$ & $-3.59\times10^{-6}$ & $3.63\times10^{-14}$ & $0$ & $7.81\times10^{-16}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Independent cell-centred samples of the late BIE velocity have a 15.92\%
-best-fit error in the range of the receiver curl.  Shared face averages followed
-by equation~\eqref{eq:mac-fit} reduce the face-flux error to 1.6835\% and the
-surface-velocity error to 3.1229\%.  Relative momentum error is
+best-fit mismatch when represented in the range of the receiver curl.  This
+cell-to-curl-space quantity is not the face-flux error used for the constrained
+rows of table~\ref{tab:transfer-ablation}, so the corresponding table entry is
+left blank rather than compared numerically.  Shared face averages followed by
+equation~\eqref{eq:mac-fit} give a face-flux error of 1.6835\% and a
+surface-velocity error of 3.1229\%.  Relative momentum error is
 $1.99\times10^{-9}$ and the finite-volume divergence RMS is
 $1.07\times10^{-14}$.  GPU sparse LSQR takes 12.76~s versus 69.54~s for the CPU
 solve and changes the trusted-face field by only $4.58\times10^{-8}$ relative
@@ -467,7 +483,7 @@ dashes denote a quantity not imposed or not meaningful for that representation.}
 \toprule
 Representation & face error & surface error & momentum error & divergence RMS \\
 \midrule
-independent cell samples & $15.92\%$ & -- & -- & $8.37\times10^{-1}$ \\
+independent cell samples & -- & -- & -- & $8.37\times10^{-1}$ \\
 raw shared-face averages & -- & -- & -- & $1.24\times10^{-2}$ \\
 streamfunction curl, face only & $0.1307\%$ & -- & -- & $1.05\times10^{-14}$ \\
 $+$ bed and momentum & $0.1307\%$ & -- & $6.32\times10^{-14}$ & $1.05\times10^{-14}$ \\
@@ -480,10 +496,11 @@ full fit with harmonic term & $1.6835\%$ & $3.1229\%$ & $1.99\times10^{-9}$ & $1
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.96\linewidth]{mac_face_handoff_audit.png}
-\caption{Compatible transfer of the late BIE state.  Face averaging reduces
-the initial representation mismatch and the streamfunction curl enforces
-finite-volume divergence compatibility.  Receiver mass, momentum and
-post-projection divergence are shown for levels 8--10.}
+\caption{Compatible controlled transfer at BIE time 20.29375, used for the
+ablation rather than the production three-grid handoff.  Face averaging
+reduces the initial representation mismatch and the streamfunction curl
+enforces finite-volume divergence compatibility.  Receiver mass, momentum
+and post-projection divergence are shown for levels 8--10.}
 \label{fig:handoff}
 \end{figure}
 
@@ -509,12 +526,17 @@ the corresponding kinetic-energy changes are 0.279\%, 0.252\% and 0.320\%.
 These results quantify the price of imposing momentum on each actual adaptive
 receiver quadrature rather than only on the uniform export grid.
 
-A short level-9 timing screen also compares transfers at BIE times 20.29375
-and 20.303125 through receiver time 0.30.  The maximum profile and crest
-differences are 0.944\% and 1.22\%, respectively.  However, the later screen's
-maximum volume drift is $1.52\times10^{-3}$, above its predeclared
-$10^{-3}$ gate.  It is therefore reported only as bounded timing sensitivity
-and is not used to promote a handoff-time or impact-convergence claim.
+A preliminary level-9 two-time screen compared BIE states at 20.29375 and
+20.303125 through receiver time 0.30.  It used the pre-production receiver in
+which $f$ and $c_s$ were updated independently and multiplied, although the
+post-AMR face flux was preserved; it did not use the shared-$q$ transport of
+the three-grid experiment.  The maximum profile and crest differences in that
+legacy screen are 0.944\% and 1.22\%, while the later run's maximum volume
+drift is $1.52\times10^{-3}$.  By contrast, the production shared-$q$ level-9
+run at the same BIE time has maximum drift $6.43\times10^{-8}$ through $t=6$.
+The values therefore describe different discrete transport operators, not two
+estimates of one run.  The legacy screen is retained as negative provenance
+only; production-scheme sensitivity to handoff time remains untested.
 
 A gas component is classified as a resolved closure if it is disconnected
 from the exterior, does not touch a one-finest-cell bed guard, has area at least
@@ -569,7 +591,7 @@ the receiver grids.}
 \label{fig:three-grid-invariants}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{impact_claim_q_l8_l9_l10_grid_comparison.png}
 \caption{Unsmoothed VOF masks at matched continuation times.  The transient
@@ -579,6 +601,7 @@ in units of the local finest-cell area and the number passing the physical
 area filter.}
 \label{fig:same-time}
 \end{figure}
+\FloatBarrier
 
 \subsection{Geometric refinement}
 
@@ -649,8 +672,9 @@ state transfer, together with a three-level observation that topology
 converges more slowly than invariants.  The available ablations isolate
 cell-centred versus shared-face transfer, receiver curl reconstruction,
 momentum and surface constraints, harmonic regularisation, product versus
-shared-$q$ transport, and two nearby handoff times.  They do not yet constitute
-a full multi-parameter sensitivity analysis: wider weight ranges, several
+shared-$q$ transport, plus a negative two-time screen of the legacy product
+receiver.  They do not yet constitute a full multi-parameter sensitivity
+analysis: production-scheme handoff timing, wider weight ranges, several
 nonlocal gaps, time-step refinement and a second physical scenario remain
 open.  A matched end-to-end accuracy--cost comparison with a
 contemporary BEM--VOF or potential-flow/particle hybrid remains necessary to
@@ -685,7 +709,7 @@ impact impulse.
 
 Source code, solver inputs, machine-readable diagnostics and figure scripts
 are available at \url{https://github.com/Safreliy/wave_research} under tag
-\texttt{v0.27-audit-revision}.  The compact repository contains the exact
+\texttt{v0.28-consistency-revision}.  The compact repository contains the exact
 L8--L10 receiver inputs and diagnostic logs.  The 1,509 raw VOF/vorticity
 frames (approximately 503~MB) are not yet deposited in a DOI-bearing archive;
 they are required only to recompute connected components and profiles from
@@ -696,6 +720,6 @@ licences.  The two-phase calculations use Basilisk patch \texttt{ad05f362}
 in the immutable container image identified in the repository.
 
 \bibliographystyle{plainnat}
-\bibliography{references}
+{\footnotesize\bibliography{references}}
 
 \end{document}

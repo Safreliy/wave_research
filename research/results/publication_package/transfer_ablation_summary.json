@@ -2,6 +2,11 @@
   "schema": "publication-transfer-ablation-v1",
   "evidence_class": "bounded one-state representation and constraint ablation",
   "source_time": 20.29375,
+  "metric_semantics": {
+    "relative_best_fit_error_in_receiver_curl_range": "cell-centred velocity mismatch after best representation in the receiver curl range; not a face-flux error",
+    "relative_face_flux_fit_error": "relative mismatch to the shared face-averaged BIE flux target",
+    "finite_volume_divergence_rms": "RMS of the receiver finite-volume divergence operator"
+  },
   "rows": [
     {
       "representation": "independent_cell_samples",

@@ -10,7 +10,8 @@ the manuscript.
 - all six manuscript figures;
 - the close-quadrature JSON table;
 - the MAC handoff audit and backend summaries;
-- the six-row transfer ablation and the two-time handoff sensitivity summary;
+- the six-row transfer ablation and the negative pre-production two-time
+  screen, including its receiver-configuration provenance;
 - the complete three-grid topology audit JSON;
 - the complete three-grid morphology JSON and compressed derived arrays;
 - L8, L9, and L10 diagnostic logs through continuation time 6;
@@ -44,7 +45,7 @@ stable public DOI or GitHub Release URL, record it here and in the manuscript;
 do not replace the predeclared thresholds after inspecting a finer-grid run.
 
 The compact code-and-evidence package is versioned by the Git tag
-`v0.27-audit-revision`. It does not yet have an archival DOI. Deposit the raw
-frames and this tagged release in Zenodo or an equivalent archive before
-journal submission, then record the DOI here, in `CITATION.cff`, and in the
-manuscript.
+`v0.28-consistency-revision`. It does not yet have an archival DOI. Deposit
+the raw frames and this tagged release in Zenodo or an equivalent archive
+before journal submission, then record the DOI here, in `CITATION.cff`, and
+in the manuscript.

@@ -13,6 +13,7 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "research" / "results" / "publication_package"
+Q_PACKAGE = ROOT / "research" / "results" / "q_transport"
 
 
 def load_json(path: Path) -> dict:
@@ -28,6 +29,7 @@ def main() -> None:
         PACKAGE / "mac_face_handoff_audit.json",
         PACKAGE / "transfer_ablation_summary.json",
         PACKAGE / "handoff_time_screen_summary.json",
+        Q_PACKAGE / "q_transport_audit.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_audit.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_morphology.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_morphology.npz",
@@ -56,6 +58,24 @@ def main() -> None:
     timing = load_json(PACKAGE / "handoff_time_screen_summary.json")
     if timing["all_gates_passed"] is not False:
         raise SystemExit("handoff-time screen is unexpectedly promoted")
+    screen = timing["screen_configuration"]
+    if (
+        screen["conservative_q_embed"] is not False
+        or screen["production_comparable"] is not False
+    ):
+        raise SystemExit("legacy timing screen is incorrectly identified as production evidence")
+    production_volume_error = timing["production_reference"][
+        "maximum_relative_volume_error_through_time_6"
+    ]
+    if production_volume_error >= 1e-7:
+        raise SystemExit("production level-9 volume record failed its consistency check")
+
+    q_transport = load_json(Q_PACKAGE / "q_transport_audit.json")
+    for row in q_transport["results"]:
+        if row["conservative_transport_l1"] >= 1e-12:
+            raise SystemExit("shared-q transport L1 gate failed")
+        if abs(row["conservative_relative_volume_change"]) >= 1e-12:
+            raise SystemExit("shared-q volume conservation gate failed")
 
     impact = load_json(PACKAGE / "impact_claim_q_l8_l9_l10_audit.json")
     levels = [int(case["level"]) for case in impact["cases"]]

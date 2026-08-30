@@ -19,7 +19,7 @@ air entrainment.
 | `paper.pdf` | Compiled manuscript linked from GitHub |
 | `manuscript/` | LaTeX source and bibliography |
 | `research/` | Euler--BIE, handoff, VOF-analysis, plotting, and test code |
-| `research/results/` | Compact machine-readable evidence, transfer ablations, timing sensitivity, and manuscript figures |
+| `research/results/` | Compact machine-readable evidence, ablations, timing-screen provenance, and figures |
 | `research/two_phase_basilisk/` | Basilisk receiver, conservative aperture operator, and generated L8--L10 inputs |
 | `DATA_AVAILABILITY.md` | Included data, omitted raw frames, and the expected archive layout |
 
@@ -92,9 +92,9 @@ without rerunning them.
 ## Citation
 
 Use [`CITATION.cff`](CITATION.cff) from GitHub’s “Cite this repository” menu.
-The publication revision is tagged `v0.27-audit-revision`. Update the citation
-metadata with the journal DOI and the repository archive DOI when those
-identifiers exist.
+The publication revision is tagged `v0.28-consistency-revision`. Update the
+citation metadata with the journal DOI and the repository archive DOI when
+those identifiers exist.
 
 ## License
 
