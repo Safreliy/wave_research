@@ -14,6 +14,8 @@ from pypdf import PdfReader
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "research" / "results" / "publication_package"
 Q_PACKAGE = ROOT / "research" / "results" / "q_transport"
+PERFORMANCE = ROOT / "research" / "results" / "performance"
+ANIMATION = PACKAGE / "impact_claim_q_l10_vorticity_evolution.gif"
 
 
 def load_json(path: Path) -> dict:
@@ -33,6 +35,9 @@ def main() -> None:
         PACKAGE / "impact_claim_q_l8_l9_l10_audit.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_morphology.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_morphology.npz",
+        PERFORMANCE / "openmp_l9" / "openmp_screen_summary.json",
+        PERFORMANCE / "openmp_l10" / "openmp_screen_summary.json",
+        ANIMATION,
     ]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.is_file()]
     if missing:
@@ -88,6 +93,26 @@ def main() -> None:
     with np.load(PACKAGE / "impact_claim_q_l8_l9_l10_morphology.npz") as arrays:
         if arrays["time"].shape != (301,) or arrays["profiles"].shape[0] != 3:
             raise SystemExit("unexpected morphology array dimensions")
+
+    openmp_l9 = load_json(PERFORMANCE / "openmp_l9" / "openmp_screen_summary.json")
+    openmp_l10 = load_json(PERFORMANCE / "openmp_l10" / "openmp_screen_summary.json")
+    if [run["threads"] for run in openmp_l9["runs"]] != [1, 2, 4, 8]:
+        raise SystemExit("L9 OpenMP screen is incomplete")
+    if openmp_l9["runs"][3]["elapsed_seconds"] <= openmp_l9["runs"][2]["elapsed_seconds"]:
+        raise SystemExit("L9 eight-thread negative scaling result changed")
+    l10_four = openmp_l10["runs"][1]
+    if (
+        [run["threads"] for run in openmp_l10["runs"]] != [1, 4]
+        or l10_four["speedup_vs_1"] <= 2.5
+        or l10_four["relative_mass_difference_vs_1"] >= 1e-12
+        or l10_four["relative_kinetic_difference_vs_1"] >= 1e-4
+        or l10_four["vof_geometry"]["liquid_mask_mismatch_fraction"] != 0.0
+    ):
+        raise SystemExit("L10 OpenMP repeatability/performance gate failed")
+
+    with Image.open(ANIMATION) as animation:
+        if animation.size != (1500, 440) or animation.n_frames != 101:
+            raise SystemExit("unexpected L10 animation dimensions or frame count")
 
     figures = [
         PACKAGE / "near_self_quadrature_ablation.png",

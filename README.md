@@ -12,6 +12,13 @@ through nondimensional time 6. The level-10 gas cavity is not reproduced on
 levels 8 and 9, so this repository does **not** claim grid-converged impact or
 air entrainment.
 
+![Level-10 VOF and Eulerian-vorticity evolution](research/results/publication_package/impact_claim_q_l10_vorticity_evolution.gif)
+
+The animation is a downsampled view of the completed level-10 calculation.
+The right-hand markers are signed samples of the resolved Eulerian vorticity,
+not Lagrangian solver particles. The apparent gas cavities remain a
+resolution-dependent computational observation.
+
 ## Repository contents
 
 | Path | Contents |
@@ -39,8 +46,9 @@ python scripts/check_artifacts.py
 ```
 
 The packaged state passes 111 tests. The artifact check validates the PDF,
-JSON/NPZ evidence, the three receiver levels, and the deliberately negative
-topology and morphology decisions.
+JSON/NPZ evidence, the three receiver levels, the animation, the OpenMP
+repeatability screens, and the deliberately negative topology and morphology
+decisions.
 
 ## Reproduce packaged figures
 
@@ -61,6 +69,18 @@ python research/replot_publication_figures.py
 The matched-time VOF comparison and vorticity keyframe require the raw frame
 archives described in [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md). Their
 published PNGs and the scripts used to create them are included.
+
+The compact L10 VOF/vorticity animation can be regenerated from the same raw
+sequence while retaining every third output frame:
+
+```bash
+python research/render_vorticity_points.py \
+  research/two_phase_basilisk/remote_impact_claim/impact_claim_q_l10_t60_final \
+  research/results/publication_package/impact_claim_q_l10_vorticity_evolution \
+  --dt 0.02 --fps 15 --frame-step 3 --optimize-gif \
+  --x-min 8 --x-max 26 --domain-length 32 \
+  --level-label "L10 receiver grid (computational observation)"
+```
 
 ## Build the paper
 
@@ -89,10 +109,21 @@ The full runs are computationally expensive; the checked-in diagnostic logs
 and derived evidence allow the reported numerical decisions to be audited
 without rerunning them.
 
+## CPU parallel repeatability
+
+Short, fixed-end-time OpenMP screens are included under
+`research/results/performance/`. On the recorded Ryzen 9 9900X host, four
+threads reduced the L10 wall time from 57.95 s to 19.82 s (2.92x) while the
+thresholded VOF mask remained identical to the one-thread reference. The final
+kinetic energy differed by (2.35\times10^{-5}) relatively because parallel
+reductions are not bitwise deterministic. On L9, eight threads were slower
+than four. These runs justify the four-thread performance configuration; they
+are not spatial-convergence evidence.
+
 ## Citation
 
 Use [`CITATION.cff`](CITATION.cff) from GitHub’s “Cite this repository” menu.
-The publication revision is tagged `v0.28.1-figure-citations`. Update the
+The publication revision is tagged `v0.29.0-openmp-visualization`. Update the
 citation metadata with the journal DOI and the repository archive DOI when
 those identifiers exist.
 

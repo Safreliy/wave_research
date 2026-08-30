@@ -14,6 +14,9 @@ the manuscript.
   screen, including its receiver-configuration provenance;
 - the complete three-grid topology audit JSON;
 - the complete three-grid morphology JSON and compressed derived arrays;
+- the short L9 and L10 OpenMP performance/repeatability summaries and plots;
+- a 101-frame, losslessly encoded L10 VOF/vorticity animation derived by
+  retaining every third raw output;
 - L8, L9, and L10 diagnostic logs through continuation time 6;
 - the late active BIE handoff state;
 - the generated conservative receiver headers for levels 8--10;
@@ -45,7 +48,7 @@ stable public DOI or GitHub Release URL, record it here and in the manuscript;
 do not replace the predeclared thresholds after inspecting a finer-grid run.
 
 The compact code-and-evidence package is versioned by the Git tag
-`v0.28.1-figure-citations`. It does not yet have an archival DOI. Deposit
+`v0.29.0-openmp-visualization`. It does not yet have an archival DOI. Deposit
 the raw frames and this tagged release in Zenodo or an equivalent archive
 before journal submission, then record the DOI here, in `CITATION.cff`, and
 in the manuscript.

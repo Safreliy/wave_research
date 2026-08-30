@@ -680,8 +680,14 @@ nonlocal gaps, time-step refinement and a second physical scenario remain
 open.  A matched end-to-end accuracy--cost comparison with a
 contemporary BEM--VOF or potential-flow/particle hybrid remains necessary to
 establish an efficiency advantage.  The present GPU timing concerns only the
-sparse handoff reconstruction; the serial two-phase solve dominates the
-reported continuation cost.
+sparse handoff reconstruction; the adaptive two-phase receiver runs on the
+CPU with OpenMP.  In a fixed $t\leq0.04$ repeatability screen, four threads
+reduced the level-10 wall time from 57.95 to 19.82~s (2.92-fold) relative to
+one thread.  The final thresholded VOF mask was identical and the relative
+mass difference was $4.56\times10^{-15}$, while the final kinetic energy
+differed by $2.35\times10^{-5}$ because OpenMP reductions are not bitwise
+deterministic.  On level 9, eight threads were slower than four.  These short
+runs select a performance configuration; they are not grid-convergence data.
 
 \section{Conclusions}
 
@@ -710,7 +716,7 @@ impact impulse.
 
 Source code, solver inputs, machine-readable diagnostics and figure scripts
 are available at \url{https://github.com/Safreliy/wave_research} under tag
-\texttt{v0.28.1-figure-citations}.  The compact repository contains the exact
+\texttt{v0.29.0-openmp-visualization}.  The compact repository contains the exact
 L8--L10 receiver inputs and diagnostic logs.  The 1,509 raw VOF/vorticity
 frames (approximately 503~MB) are not yet deposited in a DOI-bearing archive;
 they are required only to recompute connected components and profiles from

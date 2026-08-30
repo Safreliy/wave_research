@@ -31,6 +31,7 @@ research/**/frames/
 research/**/handoff_frames/
 research/**/vorticity_frames/
 research/**/*.gif
+!research/results/publication_package/impact_claim_q_l10_vorticity_evolution.gif
 research/two_phase_basilisk/**/receiver
 research/two_phase_basilisk/**/*.ppm
 

@@ -32,12 +32,19 @@ def render_frame(
     continuation_time: float,
     stride: int,
     threshold: float,
+    x_limits: tuple[float, float],
+    domain_length: float,
     level_label: str = "receiver grid",
 ) -> Image.Image:
     vof = np.asarray(Image.open(vof_path).convert("RGB"), dtype=np.uint8)
     omega_rgb = np.asarray(Image.open(vorticity_path).convert("RGB"), dtype=np.uint8)
     if vof.shape != omega_rgb.shape:
         raise ValueError("VOF and vorticity rasters have different shapes")
+    full_width = vof.shape[1]
+    left = max(0, round(x_limits[0] / domain_length * full_width))
+    right = min(full_width, round(x_limits[1] / domain_length * full_width))
+    vof = vof[:, left:right]
+    omega_rgb = omega_rgb[:, left:right]
     liquid = _liquid(vof)
     smooth = np.empty_like(vof)
     smooth[:] = (247, 250, 252)
@@ -58,7 +65,10 @@ def render_frame(
     )
     draw.text(
         (45, 59),
-        f"VOF time after BIE handoff: {continuation_time:.2f}",
+        (
+            f"VOF time after BIE handoff: {continuation_time:.2f}"
+            f"   |   x = [{x_limits[0]:g}, {x_limits[1]:g}]"
+        ),
         fill="#475569", font=_font(17),
     )
     left = Image.fromarray(smooth).resize((panel_width, panel_height), Image.Resampling.LANCZOS)
@@ -109,35 +119,65 @@ def main() -> None:
     parser.add_argument("output_prefix", type=Path)
     parser.add_argument("--dt", type=float, default=0.02)
     parser.add_argument("--fps", type=int, default=20)
+    parser.add_argument(
+        "--frame-step", type=int, default=1,
+        help="render every Nth output while retaining the final state",
+    )
+    parser.add_argument(
+        "--optimize-gif", action="store_true",
+        help="enable Pillow's lossless GIF frame optimisation",
+    )
     parser.add_argument("--stride", type=int, default=6)
     parser.add_argument("--threshold", type=float, default=0.18)
     parser.add_argument("--level-label", default="receiver grid")
+    parser.add_argument("--domain-length", type=float, default=32.0)
+    parser.add_argument("--x-min", type=float, default=0.0)
+    parser.add_argument("--x-max", type=float, default=32.0)
     args = parser.parse_args()
-    vof_paths = sorted((args.run_directory / "handoff_frames").glob("vof-*.ppm"))
-    omega_paths = sorted((args.run_directory / "handoff_vorticity").glob("vorticity-*.ppm"))
+    if args.frame_step < 1:
+        raise ValueError("frame-step must be positive")
+    if not 0.0 <= args.x_min < args.x_max <= args.domain_length:
+        raise ValueError("require 0 <= x-min < x-max <= domain-length")
+    all_vof_paths = sorted((args.run_directory / "handoff_frames").glob("vof-*.ppm"))
+    all_omega_paths = sorted((args.run_directory / "handoff_vorticity").glob("vorticity-*.ppm"))
+    if len(all_vof_paths) < 2 or len(all_vof_paths) != len(all_omega_paths):
+        raise ValueError("matching VOF and vorticity sequences are required")
+    source_indices = list(range(0, len(all_vof_paths), args.frame_step))
+    if source_indices[-1] != len(all_vof_paths) - 1:
+        source_indices.append(len(all_vof_paths) - 1)
+    vof_paths = [all_vof_paths[index] for index in source_indices]
+    omega_paths = [all_omega_paths[index] for index in source_indices]
     if len(vof_paths) < 2 or len(vof_paths) != len(omega_paths):
         raise ValueError("matching VOF and vorticity sequences are required")
     frames = [
         render_frame(
-            vof, omega, index * args.dt, args.stride, args.threshold,
+            vof, omega, source_index * args.dt, args.stride, args.threshold,
+            (args.x_min, args.x_max), args.domain_length,
             args.level_label,
         )
-        for index, (vof, omega) in enumerate(zip(vof_paths, omega_paths))
+        for source_index, vof, omega in zip(source_indices, vof_paths, omega_paths)
     ]
     args.output_prefix.parent.mkdir(parents=True, exist_ok=True)
     palette = frames[0].quantize(colors=256, method=Image.Quantize.MEDIANCUT)
     gif = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
     gif[0].save(
         args.output_prefix.with_suffix(".gif"), save_all=True, append_images=gif[1:],
-        duration=round(1000 / args.fps), loop=0, disposal=2, optimize=False,
+        duration=round(1000 / args.fps), loop=0, disposal=2,
+        optimize=args.optimize_gif,
     )
     keyframes = args.output_prefix.with_name(args.output_prefix.name + "_keyframes")
     keyframes.mkdir(parents=True, exist_ok=True)
+    def nearest_frame(time: float) -> int:
+        return min(
+            range(len(source_indices)),
+            key=lambda index: abs(source_indices[index] * args.dt - time),
+        )
+
     for label, index in {
         "handoff": 0,
         "rollup": len(frames) // 2,
-        "near_closure": min(len(frames) - 1, round(4.1 / args.dt)),
-        "late_pocket": min(len(frames) - 1, round(5.1 / args.dt)),
+        "near_closure": nearest_frame(4.1),
+        "late_pocket": nearest_frame(5.1),
         "end": len(frames) - 1,
     }.items():
         frames[index].save(keyframes / f"{label}.png", optimize=True)
