@@ -1,0 +1,36 @@
+{
+  "schema": "bie-to-vof-mac-method-summary-v1",
+  "source_state": {
+    "panel_count": 576,
+    "time": 20.29375,
+    "export_grid": [1024, 192],
+    "valid_flux_cell_count": 44783
+  },
+  "representation_diagnostics": {
+    "direct_cell_centered_divergence_rms": 0.8373916047901229,
+    "direct_cell_centered_divergence_linf": 11.94875978816843,
+    "raw_face_average_divergence_rms": 0.012419607645145134,
+    "raw_face_average_divergence_linf": 0.146098402136289,
+    "projected_mac_divergence_rms": 1.070819406209725e-14,
+    "projected_mac_divergence_linf": 2.8044233602031454e-13
+  },
+  "selected_reconstruction": {
+    "relative_face_flux_fit_error": 0.01683518700867618,
+    "relative_surface_velocity_error": 0.031228805641648608,
+    "maximum_liquid_to_surface_q99_speed_ratio": 1.4720287347566086,
+    "relative_momentum_error": 1.9877708960055216e-09,
+    "harmonic_weight": 0.2
+  },
+  "backend_reproducibility": {
+    "cpu_backend": "scipy_lsqr",
+    "gpu_backend": "cupy_lsqr",
+    "cpu_solve_seconds": 69.54395545399984,
+    "gpu_solve_seconds": 12.757866712000123,
+    "gpu_speedup": 5.4510645881404605,
+    "relative_trusted_face_field_difference": 4.58045e-08,
+    "backend_gate": 0.0001,
+    "gpu_lsmr_relative_field_difference": 0.02429,
+    "gpu_lsmr_gate_passed": false
+  },
+  "claim_status": "initial finite-volume-compatible transfer passes; post-AMR compatibility and coupled impact remain open"
+}

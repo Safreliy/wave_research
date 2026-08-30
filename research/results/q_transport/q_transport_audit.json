@@ -1,0 +1,59 @@
+{
+  "schema": "cutcell-double-plic-q-transport-v1",
+  "status": "kinematic-reference-only",
+  "geometry": {
+    "wall_slope": 0.35,
+    "wall_intercept": 0.18,
+    "patch_x_min": 0.24,
+    "patch_x_max": 0.58,
+    "patch_wall_min": -0.035,
+    "patch_wall_max": 0.24,
+    "velocity_x": 0.25
+  },
+  "cfl": 0.2,
+  "results": [
+    {
+      "resolution": 32,
+      "dt": 0.025,
+      "product_geometry_l1": 0.0009770636770327574,
+      "product_transport_l1": 0.0018522838823083127,
+      "conservative_transport_l1": 6.308514999785331e-15,
+      "product_relative_volume_change": 7.762745031226704e-05,
+      "conservative_relative_volume_change": 0.0,
+      "conservative_lower_bound_violation": 0.0,
+      "conservative_upper_bound_violation": 3.3306690738754696e-16
+    },
+    {
+      "resolution": 64,
+      "dt": 0.0125,
+      "product_geometry_l1": 0.00017592486213181209,
+      "product_transport_l1": 0.00043109664277348267,
+      "conservative_transport_l1": 1.587505568538524e-14,
+      "product_relative_volume_change": -9.449963519784956e-05,
+      "conservative_relative_volume_change": 0.0,
+      "conservative_lower_bound_violation": 0.0,
+      "conservative_upper_bound_violation": 3.5735303605122226e-16
+    },
+    {
+      "resolution": 128,
+      "dt": 0.00625,
+      "product_geometry_l1": 5.02642463243884e-05,
+      "product_transport_l1": 9.086281488901537e-05,
+      "conservative_transport_l1": 3.626248930791933e-14,
+      "product_relative_volume_change": -3.5900121911904674e-06,
+      "conservative_relative_volume_change": 0.0,
+      "conservative_lower_bound_violation": 0.0,
+      "conservative_upper_bound_violation": 7.814929259275516e-16
+    }
+  ],
+  "gates": {
+    "relative_volume_change": 1e-12,
+    "bound_violation": 1e-12,
+    "three_grid_error_decrease": true
+  },
+  "limitations": [
+    "one fixed-grid kinematic space-time step",
+    "analytic planar embedded boundary and polygonal liquid patch",
+    "no AMR, topology change, pressure projection, viscosity, or 3-D reconstruction"
+  ]
+}

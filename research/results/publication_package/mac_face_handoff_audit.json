@@ -1,0 +1,116 @@
+{
+  "schema": "bie-to-vof-mac-handoff-audit-v1",
+  "source": "research\\gpu\\mac_face_flux_export.npz",
+  "target_volume": 40.52627859944759,
+  "target_momentum": [
+    1.35902122122051,
+    -0.007289786753283553
+  ],
+  "initial_transfer_by_level": {
+    "8": {
+      "metrics": {
+        "diagnostics": "research\\two_phase_basilisk\\mac_face_l8_smoke\\diagnostics_h200_delayed_adapt.dat",
+        "relative_initial_mass_error": 1.1743528911598667e-12,
+        "relative_initial_momentum_error": 3.7530060993779687e-13,
+        "relative_projection_momentum_impulse": 0.0023287071637437306,
+        "pre_projection_cell_divergence_rms": 2.26234405755e-17,
+        "pre_projection_cell_divergence_linf": 2.23345647532e-16,
+        "pre_projection_face_divergence_rms": 0.000943359637266,
+        "pre_projection_face_divergence_linf": 0.00802246910892,
+        "post_projection_cell_divergence_rms": 0.000778629797358,
+        "post_projection_cell_divergence_linf": 0.0105969536019,
+        "post_projection_face_divergence_rms": 1.25668077122e-08,
+        "post_projection_face_divergence_linf": 1.37139251906e-07,
+        "uniform_full_liquid_cell_count": 447
+      },
+      "gates": {
+        "mass_le_1e-10": true,
+        "momentum_le_1e-8": true,
+        "projection_impulse_le_1pct": true,
+        "post_projection_face_divergence_rms_le_1e-3": true,
+        "post_projection_face_divergence_linf_le_1e-3": true
+      },
+      "all_initial_gates_passed": true
+    },
+    "9": {
+      "metrics": {
+        "diagnostics": "research\\two_phase_basilisk\\mac_face_l9_long_h200\\diagnostics.dat",
+        "relative_initial_mass_error": 1.1743528911598667e-12,
+        "relative_initial_momentum_error": 3.7530060993779687e-13,
+        "relative_projection_momentum_impulse": 0.0007613284091288287,
+        "pre_projection_cell_divergence_rms": 2.95908312895e-17,
+        "pre_projection_cell_divergence_linf": 5.55111512313e-16,
+        "pre_projection_face_divergence_rms": 0.00122172765314,
+        "pre_projection_face_divergence_linf": 0.0177101639914,
+        "post_projection_cell_divergence_rms": 0.0042240336124,
+        "post_projection_cell_divergence_linf": 0.152405588882,
+        "post_projection_face_divergence_rms": 1.02283579689e-08,
+        "post_projection_face_divergence_linf": 2.72065099182e-08,
+        "uniform_full_liquid_cell_count": 2136
+      },
+      "gates": {
+        "mass_le_1e-10": true,
+        "momentum_le_1e-8": true,
+        "projection_impulse_le_1pct": true,
+        "post_projection_face_divergence_rms_le_1e-3": true,
+        "post_projection_face_divergence_linf_le_1e-3": true
+      },
+      "all_initial_gates_passed": true,
+      "first_post_adaptation_projection": {
+        "time": 0.00252551200406,
+        "iteration": 1,
+        "face_divergence_rms": 0.000362203911996,
+        "face_divergence_linf": 0.00514701940134,
+        "uniform_full_liquid_cell_count": 2076,
+        "rms_gate_le_1e-3": true,
+        "linf_gate_le_1e-3": false
+      }
+    },
+    "10": {
+      "metrics": {
+        "diagnostics": "research\\two_phase_basilisk\\mac_face_l10_smoke\\diagnostics_h200_delayed_adapt.dat",
+        "relative_initial_mass_error": 1.1743528911598667e-12,
+        "relative_initial_momentum_error": 3.7530060993779687e-13,
+        "relative_projection_momentum_impulse": 0.0009484168542248174,
+        "pre_projection_cell_divergence_rms": 4.37236761058e-17,
+        "pre_projection_cell_divergence_linf": 9.43689570931e-16,
+        "pre_projection_face_divergence_rms": 0.00138134795591,
+        "pre_projection_face_divergence_linf": 0.0319899856479,
+        "post_projection_cell_divergence_rms": 0.00239936655764,
+        "post_projection_cell_divergence_linf": 0.158430723184,
+        "post_projection_face_divergence_rms": 2.91651308557e-08,
+        "post_projection_face_divergence_linf": 1.05027728178e-07,
+        "uniform_full_liquid_cell_count": 9237
+      },
+      "gates": {
+        "mass_le_1e-10": true,
+        "momentum_le_1e-8": true,
+        "projection_impulse_le_1pct": true,
+        "post_projection_face_divergence_rms_le_1e-3": true,
+        "post_projection_face_divergence_linf_le_1e-3": true
+      },
+      "all_initial_gates_passed": true,
+      "first_post_adaptation_projection": {
+        "time": 0.000620372286572,
+        "iteration": 1,
+        "face_divergence_rms": 0.00170593644446,
+        "face_divergence_linf": 0.0606398839077,
+        "uniform_full_liquid_cell_count": 6174,
+        "rms_gate_le_1e-3": false,
+        "linf_gate_le_1e-3": false
+      }
+    }
+  },
+  "all_three_initial_levels_passed": true,
+  "post_adaptation_compatibility": "open: the first post-adaptation projection does not retain both face-divergence gates on every audited level",
+  "long_level9_continuation": {
+    "diagnostics": "research\\two_phase_basilisk\\mac_face_l9_long_h200_t1\\diagnostics.dat",
+    "last_reported_time": 0.98,
+    "last_reported_iteration": 66,
+    "relative_volume_error": 1.3583254288709896e-05,
+    "kinetic_energy": 0.390838271272,
+    "volume_gate_le_1e-3": true,
+    "contact_claim": "rejected: no resolved jet-to-surface closure in the rendered sequence"
+  },
+  "publication_status": "MAC handoff compatibility passes at three levels; coupled impact and post-AMR convergence remain open."
+}

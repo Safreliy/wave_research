@@ -1,0 +1,86 @@
+{
+  "evidence_class": "manufactured harmonic solution",
+  "geometry": "periodic non-self-intersecting Gaussian fold",
+  "rows": [
+    {
+      "n": 64,
+      "factor": 1,
+      "relative_normal_derivative_error": 6.361464849498668,
+      "wall_seconds": 0.023833799990825355,
+      "bie_residual": 8.396061623727746e-14,
+      "gap_over_mean_spacing": 0.6586385916091125
+    },
+    {
+      "n": 64,
+      "factor": 2,
+      "relative_normal_derivative_error": 2.610198404665233,
+      "wall_seconds": 0.02960659994278103,
+      "bie_residual": 7.795986078917849e-13,
+      "gap_over_mean_spacing": 0.6586385916091125
+    },
+    {
+      "n": 64,
+      "factor": 4,
+      "relative_normal_derivative_error": 0.5574969207073218,
+      "wall_seconds": 0.044333299971185625,
+      "bie_residual": 4.1405767703395213e-13,
+      "gap_over_mean_spacing": 0.6586385916091125
+    },
+    {
+      "n": 64,
+      "factor": 8,
+      "relative_normal_derivative_error": 0.07789714039228252,
+      "wall_seconds": 0.04642559995409101,
+      "bie_residual": 1.2456702336294256e-13,
+      "gap_over_mean_spacing": 0.6586385916091125
+    },
+    {
+      "n": 64,
+      "factor": 16,
+      "relative_normal_derivative_error": 0.06912053162591714,
+      "wall_seconds": 0.09296110004652292,
+      "bie_residual": 9.592326932761353e-14,
+      "gap_over_mean_spacing": 0.6586385916091125
+    },
+    {
+      "n": 128,
+      "factor": 1,
+      "relative_normal_derivative_error": 2.7406987995866374,
+      "wall_seconds": 0.06632490002084523,
+      "bie_residual": 2.172428903435275e-13,
+      "gap_over_mean_spacing": 0.6125033655646098
+    },
+    {
+      "n": 128,
+      "factor": 2,
+      "relative_normal_derivative_error": 0.5694664018242724,
+      "wall_seconds": 0.1266703000292182,
+      "bie_residual": 6.961098364399732e-14,
+      "gap_over_mean_spacing": 0.6125033655646098
+    },
+    {
+      "n": 128,
+      "factor": 4,
+      "relative_normal_derivative_error": 0.07427859848072688,
+      "wall_seconds": 0.5700621999567375,
+      "bie_residual": 6.922240558537851e-14,
+      "gap_over_mean_spacing": 0.6125033655646098
+    },
+    {
+      "n": 128,
+      "factor": 8,
+      "relative_normal_derivative_error": 0.03561693779097627,
+      "wall_seconds": 0.23382530000526458,
+      "bie_residual": 5.6288307348495437e-14,
+      "gap_over_mean_spacing": 0.6125033655646098
+    },
+    {
+      "n": 128,
+      "factor": 16,
+      "relative_normal_derivative_error": 0.0356442493408943,
+      "wall_seconds": 0.4540131000103429,
+      "bie_residual": 5.728750807065808e-14,
+      "gap_over_mean_spacing": 0.6125033655646098
+    }
+  ]
+}

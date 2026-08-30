@@ -1,0 +1,38 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# LaTeX intermediates
+manuscript/*.aux
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.fdb_latexmk
+manuscript/*.fls
+manuscript/*.log
+manuscript/*.out
+manuscript/*.synctex.gz
+manuscript/main.pdf
+
+# Generated research outputs and raw receiver frames
+research/tmp/
+research/.cache/
+research/**/frames/
+research/**/handoff_frames/
+research/**/vorticity_frames/
+research/**/*.gif
+research/two_phase_basilisk/**/receiver
+research/two_phase_basilisk/**/*.ppm
+
+# Local scratch
+tmp/

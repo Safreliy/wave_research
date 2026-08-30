@@ -1,0 +1,127 @@
+{
+  "schema": "receiver-posterior-momentum-correction-audit-v1",
+  "source": "research\\two_phase_basilisk\\receiver_initial_state.csv",
+  "receiver_cell_count": 3192,
+  "receiver_mass": 40.52627859944755,
+  "momentum_before": [
+    1.2622403791573682,
+    -0.009203642461560519
+  ],
+  "target_momentum": [
+    1.3582959672850798,
+    -0.007254631276622693
+  ],
+  "momentum_deficit": [
+    0.09605558812771164,
+    0.001949011184937826
+  ],
+  "crest_location": [
+    33.62303743475561,
+    0.7724821071177876
+  ],
+  "global_l2_lower_bound_relative_velocity_correction": 0.014434560272375066,
+  "gate_relative_velocity_correction": 0.005,
+  "gate_possible_for_any_exact_posterior_correction": false,
+  "result": [
+    {
+      "name": "global L2 minimum",
+      "corrected_mass_fraction": 1.0,
+      "relative_velocity_correction": 0.014434560272375066,
+      "norm_ratio_to_global_minimum": 1.0000000000000002,
+      "relative_momentum_residual": 3.320496281562385e-17,
+      "relative_kinetic_energy_change": 0.005681206274727021,
+      "maximum_speed_correction": 0.0023706928583384426
+    },
+    {
+      "name": "Gaussian crest sigma=0.5",
+      "corrected_mass_fraction": 0.013380958163629214,
+      "relative_velocity_correction": 0.09057946230994546,
+      "norm_ratio_to_global_minimum": 6.2751798877654,
+      "relative_momentum_residual": 1.637254236981884e-15,
+      "relative_kinetic_energy_change": 0.09136436703366024,
+      "maximum_speed_correction": 0.17587531578022222
+    },
+    {
+      "name": "Gaussian crest sigma=1",
+      "corrected_mass_fraction": 0.04060846133303114,
+      "relative_velocity_correction": 0.05559972175345204,
+      "norm_ratio_to_global_minimum": 3.851847282099689,
+      "relative_momentum_residual": 1.6668294253384612e-16,
+      "relative_kinetic_energy_change": 0.07815190650217985,
+      "maximum_speed_correction": 0.0582724073538836
+    },
+    {
+      "name": "Gaussian crest sigma=2",
+      "corrected_mass_fraction": 0.08750542988042856,
+      "relative_velocity_correction": 0.04089230330424943,
+      "norm_ratio_to_global_minimum": 2.8329441654353222,
+      "relative_momentum_residual": 8.283836517602733e-16,
+      "relative_kinetic_energy_change": 0.05834648185596674,
+      "maximum_speed_correction": 0.027079543538239874
+    },
+    {
+      "name": "Gaussian crest sigma=4",
+      "corrected_mass_fraction": 0.16306881151493746,
+      "relative_velocity_correction": 0.03071909700723296,
+      "norm_ratio_to_global_minimum": 2.1281629940624742,
+      "relative_momentum_residual": 2.4531581445381406e-15,
+      "relative_kinetic_energy_change": 0.03844422093710058,
+      "maximum_speed_correction": 0.014536325798112667
+    },
+    {
+      "name": "Gaussian crest sigma=8",
+      "corrected_mass_fraction": 0.298141013584497,
+      "relative_velocity_correction": 0.022705000943777157,
+      "norm_ratio_to_global_minimum": 1.5729610404017713,
+      "relative_momentum_residual": 1.161289908398308e-15,
+      "relative_kinetic_energy_change": 0.021879947427241662,
+      "maximum_speed_correction": 0.007951354814489879
+    },
+    {
+      "name": "Gaussian crest sigma=16",
+      "corrected_mass_fraction": 0.561596500713318,
+      "relative_velocity_correction": 0.016463543820450705,
+      "norm_ratio_to_global_minimum": 1.1405642783562115,
+      "relative_momentum_residual": 3.92364347121324e-15,
+      "relative_kinetic_energy_change": 0.011007443757940752,
+      "maximum_speed_correction": 0.0042213152797444435
+    },
+    {
+      "name": "hard crest support 5%",
+      "corrected_mass_fraction": 0.05031855941344136,
+      "relative_velocity_correction": 0.06434865276727941,
+      "norm_ratio_to_global_minimum": 4.457957260425189,
+      "relative_momentum_residual": 6.538851508294703e-16,
+      "relative_kinetic_energy_change": 0.0849600762364683,
+      "maximum_speed_correction": 0.04711368699687317
+    },
+    {
+      "name": "hard crest support 10%",
+      "corrected_mass_fraction": 0.10034252288460209,
+      "relative_velocity_correction": 0.04556811358765796,
+      "norm_ratio_to_global_minimum": 3.1568757709139534,
+      "relative_momentum_residual": 1.9379441552114166e-16,
+      "relative_kinetic_energy_change": 0.06047061614460356,
+      "maximum_speed_correction": 0.023626004112581804
+    },
+    {
+      "name": "hard crest support 25%",
+      "corrected_mass_fraction": 0.2500942184166368,
+      "relative_velocity_correction": 0.02886368207625868,
+      "norm_ratio_to_global_minimum": 1.9996232328253285,
+      "relative_momentum_residual": 1.14664796456107e-15,
+      "relative_kinetic_energy_change": 0.027728385945905924,
+      "maximum_speed_correction": 0.009479198972880928
+    },
+    {
+      "name": "hard crest support 50%",
+      "corrected_mass_fraction": 0.5002330741456348,
+      "relative_velocity_correction": 0.02040879469590751,
+      "norm_ratio_to_global_minimum": 1.4138840609482204,
+      "relative_momentum_residual": 1.7985710808429367e-15,
+      "relative_kinetic_energy_change": 0.012660199481276096,
+      "maximum_speed_correction": 0.004739176557622525
+    }
+  ],
+  "interpretation": "The uniform shift is the exact weighted-L2 minimizer under the total momentum equality. Locality, divergence and wall constraints restrict the feasible set and therefore cannot reduce this lower bound."
+}

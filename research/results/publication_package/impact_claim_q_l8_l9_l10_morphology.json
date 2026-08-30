@@ -1,0 +1,34 @@
+{
+  "schema": "three-grid-upper-surface-audit-v1",
+  "evidence_class": "geometric computation; not a contact theorem",
+  "levels": [
+    8,
+    9,
+    10
+  ],
+  "matched_frame_count": 301,
+  "time_interval": [
+    0.0,
+    6.0
+  ],
+  "amplitude_scale": 0.7496296296296296,
+  "thresholds": {
+    "fine_pair_profile_rms": 0.05,
+    "fine_pair_crest_difference": 0.05,
+    "late_positive_order_fraction": 0.7
+  },
+  "coarse_pair_maximum_relative_profile_rms": 0.1138613618494976,
+  "fine_pair_maximum_relative_profile_rms": 0.08258343143844381,
+  "coarse_pair_final_relative_profile_rms": 0.08116686154817279,
+  "fine_pair_final_relative_profile_rms": 0.08180897465029942,
+  "fine_pair_maximum_relative_crest_difference": 0.12500000000000003,
+  "fine_pair_final_relative_crest_difference": 0.0625000000000001,
+  "median_observed_order_over_last_unit_time": 0.22856125344857917,
+  "positive_order_fraction_over_last_unit_time": 0.803921568627451,
+  "gates": {
+    "final_fine_pair_profile": false,
+    "final_fine_pair_crest": false,
+    "late_positive_order": true
+  },
+  "accepted_three_grid_upper_surface": false
+}
