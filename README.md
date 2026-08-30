@@ -92,7 +92,7 @@ without rerunning them.
 ## Citation
 
 Use [`CITATION.cff`](CITATION.cff) from GitHub’s “Cite this repository” menu.
-The publication revision is tagged `v0.28-consistency-revision`. Update the
+The publication revision is tagged `v0.28.1-figure-citations`. Update the
 citation metadata with the journal DOI and the repository archive DOI when
 those identifiers exist.
 

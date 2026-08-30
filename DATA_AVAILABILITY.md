@@ -45,7 +45,7 @@ stable public DOI or GitHub Release URL, record it here and in the manuscript;
 do not replace the predeclared thresholds after inspecting a finer-grid run.
 
 The compact code-and-evidence package is versioned by the Git tag
-`v0.28-consistency-revision`. It does not yet have an archival DOI. Deposit
+`v0.28.1-figure-citations`. It does not yet have an archival DOI. Deposit
 the raw frames and this tagged release in Zenodo or an equivalent archive
 before journal submission, then record the DOI here, in `CITATION.cff`, and
 in the manuscript.

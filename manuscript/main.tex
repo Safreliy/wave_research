@@ -576,10 +576,11 @@ Level 8 has no disconnected gas component.  Level 9 develops a late component
 whose maximum area is only $0.498\Delta_9^2$.  Level 10 develops a component
 larger than ten finest-cell areas near $t=1.96$, but it has disappeared by
 $t=2.08$.  Across the seven conservative raster probes its onset ranges from
-1.90 to 1.96, exceeding the 0.04 tolerance.  A later group of cavities at
-$t=5.10$ is likewise absent on the coarser grids.  Thus the algebraic
-conservation properties converge more strongly than the observed topology
-(figures~\ref{fig:three-grid-invariants} and \ref{fig:same-time}).
+1.90 to 1.96, exceeding the 0.04 tolerance, as summarised with the invariant
+histories in figure~\ref{fig:three-grid-invariants}.  A later group of cavities
+at $t=5.10$ is likewise absent on the coarser grids, as the matched VOF masks in
+figure~\ref{fig:same-time} show directly.  Thus the algebraic conservation
+properties converge more strongly than the observed topology.
 
 \begin{figure}[t]
 \centering
@@ -709,7 +710,7 @@ impact impulse.
 
 Source code, solver inputs, machine-readable diagnostics and figure scripts
 are available at \url{https://github.com/Safreliy/wave_research} under tag
-\texttt{v0.28-consistency-revision}.  The compact repository contains the exact
+\texttt{v0.28.1-figure-citations}.  The compact repository contains the exact
 L8--L10 receiver inputs and diagnostic logs.  The 1,509 raw VOF/vorticity
 frames (approximately 503~MB) are not yet deposited in a DOI-bearing archive;
 they are required only to recompute connected components and profiles from
