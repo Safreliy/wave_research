@@ -1,13 +1,16 @@
 cff-version: 1.2.0
 message: >-
   If you use this software or evidence package, please cite the accompanying
-  manuscript and the archived release of this repository.
+  manuscript and the tagged version of this repository.
 title: >-
-  Conservative Euler--BIE/VOF coupling for overturning free-surface waves
-  over variable bathymetry
+  Conservative divergence-conforming state transfer from adaptive
+  potential-flow BIE to embedded VOF: overturning waves over variable
+  bathymetry
 type: software
+repository-code: "https://github.com/Safreliy/wave_research"
+license: MIT
 authors:
   - family-names: Baturin
     given-names: Saveliy
-version: "0.26"
+version: "0.27"
 date-released: 2026-08-30

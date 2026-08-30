@@ -26,6 +26,8 @@ def main() -> None:
         ROOT / "manuscript" / "references.bib",
         PACKAGE / "near_self_quadrature_ablation.json",
         PACKAGE / "mac_face_handoff_audit.json",
+        PACKAGE / "transfer_ablation_summary.json",
+        PACKAGE / "handoff_time_screen_summary.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_audit.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_morphology.json",
         PACKAGE / "impact_claim_q_l8_l9_l10_morphology.npz",
@@ -35,8 +37,25 @@ def main() -> None:
         raise SystemExit(f"missing publication artifacts: {missing}")
 
     reader = PdfReader(ROOT / "paper.pdf")
-    if len(reader.pages) != 9:
-        raise SystemExit(f"expected a 9-page paper, found {len(reader.pages)} pages")
+    page_count = len(reader.pages)
+    if not 10 <= page_count <= 20:
+        raise SystemExit(f"expected a 10--20-page paper, found {page_count} pages")
+    title = str((reader.metadata or {}).get("/Title", ""))
+    if "divergence-conforming state transfer" not in title.lower():
+        raise SystemExit(f"unexpected PDF title metadata: {title!r}")
+
+    transfer = load_json(PACKAGE / "transfer_ablation_summary.json")
+    if len(transfer["rows"]) != 6:
+        raise SystemExit("transfer ablation does not contain all six representations")
+    if max(
+        level["relative_receiver_momentum_error"]
+        for level in transfer["production_receiver_levels"].values()
+    ) >= 1e-8:
+        raise SystemExit("production receiver momentum gate failed")
+
+    timing = load_json(PACKAGE / "handoff_time_screen_summary.json")
+    if timing["all_gates_passed"] is not False:
+        raise SystemExit("handoff-time screen is unexpectedly promoted")
 
     impact = load_json(PACKAGE / "impact_claim_q_l8_l9_l10_audit.json")
     levels = [int(case["level"]) for case in impact["cases"]]
@@ -82,7 +101,10 @@ def main() -> None:
     if oversized:
         raise SystemExit(f"files exceed GitHub's 100 MB limit: {oversized}")
 
-    print("publication artifacts: OK (9 pages, L8--L10, negative convergence claims)")
+    print(
+        f"publication artifacts: OK ({page_count} pages, L8--L10, "
+        "negative convergence claims)"
+    )
 
 
 if __name__ == "__main__":

@@ -1,14 +1,16 @@
-# Conservative Euler--BIE/VOF coupling
+# Conservative divergence-conforming BIE-to-VOF state transfer
 
 Research code and evidence package for the manuscript **“Conservative
-Euler--BIE/VOF coupling for overturning free-surface waves over variable
-bathymetry.”**
+divergence-conforming state transfer from adaptive potential-flow BIE to
+embedded VOF: overturning waves over variable bathymetry.”**
 
 The current manuscript is available as [`paper.pdf`](paper.pdf). Its central
-result is a stable conservative continuation on receiver levels 8--10 through
-nondimensional time 6. The level-10 gas cavity is not reproduced on levels 8
-and 9, so this repository does **not** claim grid-converged impact or air
-entrainment.
+result is a one-way transition that preserves the physical liquid measure,
+constructs a divergence-conforming MAC field, and constrains receiver-grid
+momentum. The resulting VOF continuation is stable on receiver levels 8--10
+through nondimensional time 6. The level-10 gas cavity is not reproduced on
+levels 8 and 9, so this repository does **not** claim grid-converged impact or
+air entrainment.
 
 ## Repository contents
 
@@ -17,7 +19,7 @@ entrainment.
 | `paper.pdf` | Compiled manuscript linked from GitHub |
 | `manuscript/` | LaTeX source and bibliography |
 | `research/` | Euler--BIE, handoff, VOF-analysis, plotting, and test code |
-| `research/results/` | Compact machine-readable evidence and manuscript figures |
+| `research/results/` | Compact machine-readable evidence, transfer ablations, timing sensitivity, and manuscript figures |
 | `research/two_phase_basilisk/` | Basilisk receiver, conservative aperture operator, and generated L8--L10 inputs |
 | `DATA_AVAILABILITY.md` | Included data, omitted raw frames, and the expected archive layout |
 
@@ -90,10 +92,12 @@ without rerunning them.
 ## Citation
 
 Use [`CITATION.cff`](CITATION.cff) from GitHub’s “Cite this repository” menu.
-Update it with the journal DOI and the repository archive DOI when those
+The publication revision is tagged `v0.27-audit-revision`. Update the citation
+metadata with the journal DOI and the repository archive DOI when those
 identifiers exist.
 
 ## License
 
-The current review package is source-available under the terms in
-[`LICENSE.md`](LICENSE.md). No third-party raw dataset is redistributed here.
+Original research code is MIT-licensed; the manuscript, figures, and derived
+data are CC BY 4.0. See [`LICENSE.md`](LICENSE.md). No third-party raw dataset
+is redistributed here.

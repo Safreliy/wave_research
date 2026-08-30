@@ -1,0 +1,77 @@
+{
+  "schema": "publication-transfer-ablation-v1",
+  "evidence_class": "bounded one-state representation and constraint ablation",
+  "source_time": 20.29375,
+  "rows": [
+    {
+      "representation": "independent_cell_samples",
+      "relative_best_fit_error_in_receiver_curl_range": 0.1592,
+      "finite_volume_divergence_rms": 0.8373916047901229
+    },
+    {
+      "representation": "raw_shared_face_averages",
+      "finite_volume_divergence_rms": 0.012419607645145134
+    },
+    {
+      "representation": "streamfunction_curl_face_only",
+      "relative_face_flux_fit_error": 0.0013072601000933722,
+      "finite_volume_divergence_rms": 1.0532550874422864e-14
+    },
+    {
+      "representation": "streamfunction_curl_with_bed_and_momentum",
+      "relative_face_flux_fit_error": 0.0013072601000933726,
+      "relative_momentum_error": 6.322934954504015e-14,
+      "finite_volume_divergence_rms": 1.050698181264864e-14
+    },
+    {
+      "representation": "streamfunction_curl_with_surface_and_exterior",
+      "relative_face_flux_fit_error": 0.0013095263668679,
+      "relative_surface_velocity_error": 0.007001764496472129,
+      "relative_momentum_error": 1.257639069027005e-9,
+      "finite_volume_divergence_rms": 1.0458105193990615e-14
+    },
+    {
+      "representation": "full_fit_with_harmonic_regularization",
+      "relative_face_flux_fit_error": 0.016835186649264058,
+      "relative_surface_velocity_error": 0.031228805792017703,
+      "relative_momentum_error": 1.9877676381972656e-9,
+      "finite_volume_divergence_rms": 1.0766892093330268e-14
+    }
+  ],
+  "production_weights": {
+    "trusted_face_weight": 1.0,
+    "surface_velocity_weight": 32.0,
+    "bottom_streamfunction_weight": 10000.0,
+    "receiver_momentum_weight": 100000000.0,
+    "exterior_energy_weight": 0.005,
+    "harmonic_row_scale_over_minimum_spacing": 0.2
+  },
+  "production_receiver_levels": {
+    "8": {
+      "relative_face_flux_fit_error": 0.015495926693946591,
+      "relative_surface_velocity_error": 0.027793978924789464,
+      "relative_receiver_momentum_error": 6.570849443624405e-9,
+      "receiver_weighted_relative_velocity_change": 0.010458720921305783,
+      "receiver_relative_kinetic_energy_change": 0.00278972133390386
+    },
+    "9": {
+      "relative_face_flux_fit_error": 0.015504948250674713,
+      "relative_surface_velocity_error": 0.02779109618443013,
+      "relative_receiver_momentum_error": 6.367957679555372e-9,
+      "receiver_weighted_relative_velocity_change": 0.011919234783060086,
+      "receiver_relative_kinetic_energy_change": 0.00252359301388151
+    },
+    "10": {
+      "relative_face_flux_fit_error": 0.015510162932316236,
+      "relative_surface_velocity_error": 0.027790151033452223,
+      "relative_receiver_momentum_error": 7.087656853822662e-9,
+      "receiver_weighted_relative_velocity_change": 0.0200586842767929,
+      "receiver_relative_kinetic_energy_change": 0.00319648382615119
+    }
+  },
+  "limitations": [
+    "one source state for the representation ablation",
+    "not a full factorial sweep of reconstruction weights",
+    "long-time stability of every ablation row was not tested"
+  ]
+}

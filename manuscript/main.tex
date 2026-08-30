@@ -5,6 +5,7 @@
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{xcolor}
@@ -19,13 +20,18 @@
   linkcolor=blue!55!black,
   citecolor=blue!55!black,
   urlcolor=blue!55!black,
-  pdftitle={Conservative Euler--BIE/VOF coupling for overturning free-surface waves over variable bathymetry},
-  pdfauthor={Saveliy Baturin}
+  pdftitle={Conservative divergence-conforming state transfer from adaptive potential-flow BIE to embedded VOF},
+  pdfauthor={Saveliy Baturin},
+  pdfsubject={One-way conservative state transfer for overturning free-surface waves},
+  pdfkeywords={boundary integral method, volume of fluid, state transfer, divergence conformity, overturning waves, embedded boundaries}
 }
 \graphicspath{{../research/results/publication_package/}{../research/results/q_transport/}}
 \newcommand{\dd}{\,\mathrm{d}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
 
-\title{Conservative Euler--BIE/VOF coupling for overturning free-surface waves over variable bathymetry}
+\title{Conservative divergence-conforming state transfer from adaptive
+potential-flow BIE to embedded VOF:\\overturning waves over variable bathymetry}
 \author{Saveliy Baturin}
 \date{}
 
@@ -33,18 +39,17 @@
 \maketitle
 
 \begin{abstract}
-A hybrid method is developed for two-dimensional overturning waves over
-variable bathymetry.  A fully nonlinear Euler boundary-integral equation
-(BIE) advances the irrotational pre-contact flow, while an embedded two-phase
-volume-of-fluid (VOF) solver provides the continuation when the interface
-approaches self-contact.  The BIE combines Kress product quadrature with a
-nonlocal-gap trigger for oversampled close evaluation and represents the
-adaptive boundary state by integrated panel circulations.  At transfer, shared
-face-averaged BIE fluxes are projected onto a vertex streamfunction; the
-resulting MAC face field is divergence-free by construction.  The liquid
-aperture $q=f c_s$ is then transported with a shared embedded-boundary flux,
-including an exact pure-state rule and a capacity restriction confined to the
-mixed-interface band.
+A structure-preserving one-way state transfer is developed from an adaptive
+fully nonlinear Euler boundary-integral equation (BIE) solver to an embedded
+two-phase volume-of-fluid (VOF) receiver.  The contribution is not BIE--VOF
+hybridisation itself, but a handoff that matches the receiver's discrete
+invariants.  Integrated panel circulations preserve the adaptive BIE state;
+shared face-averaged BIE fluxes are fitted by a vertex streamfunction so that
+the MAC face field is divergence-free by construction; receiver momentum is
+included as a quadrature constraint; and the full-cell liquid aperture
+$q=f c_s$ is transported with a shared embedded-boundary flux.  The BIE also
+uses a nonlocal-gap trigger for oversampled close evaluation.  After the
+single transfer, only the VOF solver advances the solution.
 
 Verification separates operator accuracy, conservation and interface
 geometry.  On a manufactured folded boundary, oversampling reduces the
@@ -56,7 +61,8 @@ three finest grids and preserves liquid volume and $0\le q\le c_s$ to
 roundoff.  The constrained handoff has 1.68\% face-flux error, 3.12\% surface
 velocity error and $1.07\times10^{-14}$ face-divergence RMS.
 
-The coupled breaker is continued to nondimensional time 6 on three nested
+An overturning-wave state over variable bathymetry is continued to
+nondimensional time 6 on three nested
 receiver grids.  Maximum relative liquid-volume drift is
 $8.56\times10^{-8}$, $6.43\times10^{-8}$ and $5.67\times10^{-9}$ on levels
 8--10, with no aperture-bound violation.  Level 10 produces a transient
@@ -66,8 +72,14 @@ coarsening.  At $t=6$, the level-9/10 upper-profile and crest differences are
 8.18\% and 6.25\%.  The method therefore achieves stable conservative
 continuation and exposes a resolution-dependent topology transition, but the
 present calculation does not establish grid-converged wave impact or air
-entrainment.
+entrainment.  The verified result is therefore a conservative,
+divergence-conforming model transition rather than a converged prediction of
+breaking topology.
 \end{abstract}
+
+\noindent\textbf{Keywords:} conservative state transfer; divergence-conforming
+transfer; boundary integral method; volume-of-fluid method; embedded
+boundaries; adaptive mesh refinement; free-surface topology change
 
 \section{Introduction}
 
@@ -81,25 +93,57 @@ calculations have reproduced solitary-wave shoaling and classified breaking
 regimes over beaches and obstacles \cite{GrilliSvendsenSubramanya1997}, while
 two-phase VOF methods naturally continue through interface reconnection.
 
-Hybridisation alone is not new.  Khait and Ma coupled a quasi-potential BEM to
-a two-phase incompressible VOF solver for breaking wave trains
-\cite{KhaitMa2021}.  Kanehira et al. recently embedded a GPU-SPH region in a
-three-dimensional fully nonlinear potential-flow calculation and compared jet
-and cavity dynamics with experiments \cite{KanehiraEtAl2026}.  The numerical
-question considered here is narrower: can an adaptive circulation-carrying
-BIE state be transferred to an embedded two-phase receiver while conserving
-the appropriate liquid measure and satisfying the receiver's discrete
-divergence and momentum constraints?
+Hybridisation itself is well established.  Lachaume et al. initialised a
+Navier--Stokes/VOF breaking-wave calculation from a potential-flow BEM and
+compared solitary-wave evolution with experiments \cite{LachaumeEtAl2003}.
+Colicchio, Greco and Faltinsen coupled BEM and Navier--Stokes/level-set
+subdomains for deforming and fragmented interfaces
+\cite{ColicchioGrecoFaltinsen2006}.  Kim, Yamashiro and Yoshida developed a
+two-way BEM--SMAC/VOF decomposition for long random-wave calculations
+\cite{KimYamashiroYoshida2010}.  More recently, Khait and Ma combined fully
+nonlinear quasi-potential and two-phase Navier--Stokes models for energetic
+breaking waves \cite{KhaitMa2021}, while Kanehira et al. embedded a GPU-SPH
+region in a three-dimensional fully nonlinear potential-flow calculation
+\cite{KanehiraEtAl2026}.  These studies establish the value of hybrid models;
+they also make clear that coupling as such is not a novelty claim.
 
-The method has four coupled elements.  First, a nonlocal geometric indicator
-activates oversampled quadrature when two parameter-distant surface branches
-approach.  Second, integrated panel circulation is preserved under adaptive
-redistribution.  Third, face-averaged velocity rather than independent
-cell-centred samples is transferred to a divergence-conforming MAC field.
-Fourth, the full-cell liquid aperture $q=f c_s$ is transported by a shared
-VOF/embedded-boundary flux.  The calculations below test these components and
-then apply the complete coupling to an overturning breaker on three receiver
-grids.
+Table~\ref{tab:prior-hybrids} separates the architectures from the narrower
+question addressed here.  Earlier work focuses on domain exchange,
+initialisation or physical validation.  The present work instead asks whether
+a complete late potential-flow state can be handed once to a non-conforming
+embedded receiver while satisfying that receiver's finite-volume constraints.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Direct predecessors and the scope of the present transition.  ``Not
+posed'' means that the cited method did not formulate the listed property as
+an exact constraint of the state-transfer operator; it does not imply that the
+subsequent solver was non-conservative.}
+\label{tab:prior-hybrids}
+\begin{tabularx}{\linewidth}{@{}P{0.17\linewidth}P{0.14\linewidth}P{0.18\linewidth}Y Y@{}}
+\toprule
+Study & Architecture & Field receiver & Information exchanged & Transfer properties emphasised \\
+\midrule
+Lachaume et al.\ \cite{LachaumeEtAl2003} & one-way initialisation & Navier--Stokes/VOF & interface and BEM flow state & breaking-wave continuation and experimental comparison \\
+Colicchio et al.\ \cite{ColicchioGrecoFaltinsen2006} & simultaneous domain decomposition & Navier--Stokes/level set & interface data across overlapping subdomains & robust large deformation and fragmentation \\
+Kim et al.\ \cite{KimYamashiroYoshida2010} & two-way domain coupling & SMAC/VOF & bidirectional interface-boundary data & long random-wave propagation \\
+Khait and Ma \cite{KhaitMa2021} & coupled potential/viscous model & two-phase Navier--Stokes/VOF & potential-wave forcing and viscous response & breaking-energy and non-potential effects \\
+Present work & one-time state transfer & embedded MAC/VOF with AMR & liquid aperture, shared face fluxes and total momentum & exact liquid measure and MAC divergence; constrained momentum and circulation \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The contribution is expressed as four testable statements.  (i) Conservative
+redistribution preserves every integrated panel circulation and hence the
+total boundary circulation to roundoff.  (ii) A shared-face streamfunction
+curl has identically zero Cartesian finite-volume divergence before receiver
+sampling.  (iii) receiver-grid liquid momentum is imposed within the sparse
+reconstruction rather than repaired by an unconstrained posterior shift.
+(iv) Advecting $q=f c_s$ with one geometric flux per shared face makes the
+global physical liquid measure telescope and preserves $0\le q\le c_s$.
+The calculations below test these statements and then apply the complete
+transition to an overturning breaker on three receiver grids.
 
 \section{Mathematical formulation}
 
@@ -211,6 +255,68 @@ to mixed cells and their face-connected one-cell halo,
 \label{eq:cut-cell-step}
 \end{equation}
 
+\subsection{Receiving two-phase model and discretisation}
+
+After the handoff the BIE is no longer advanced and no feedback is returned to
+it.  In the open part of the embedded domain, the receiver solves the
+dimensionless variable-density incompressible equations
+\begin{align}
+ \nabla\!\cdot\boldsymbol u &=0,\label{eq:receiver-divergence}\\
+ \partial_t(\rho\boldsymbol u)+
+ \nabla\!\cdot(\rho\boldsymbol u\otimes\boldsymbol u)
+ &= -\nabla p+\nabla\!\cdot(2\mu\boldsymbol D)
+ +\rho\boldsymbol g+\sigma\kappa\delta_\Gamma\boldsymbol n,
+ \label{eq:receiver-momentum}\\
+ \partial_t f+\nabla\!\cdot(f\boldsymbol u)&=0,
+ \qquad \boldsymbol D=\tfrac12
+ (\nabla\boldsymbol u+\nabla\boldsymbol u^{\mathsf T}).
+ \label{eq:receiver-phase}
+\end{align}
+Here $f$ is conditional on open fluid, while equation~\eqref{eq:q-flux}
+advects the physical aperture $q=f c_s$.  Arithmetic mixture laws are used,
+\begin{equation}
+ \rho(f)=f\rho_\ell+(1-f)\rho_g,
+ \qquad \mu(f)=f\mu_\ell+(1-f)\mu_g.
+ \label{eq:mixture-laws}
+\end{equation}
+Length is scaled by the offshore depth $h_0$, velocity by
+$\sqrt{g h_0}$ and time by $\sqrt{h_0/g}$.  Thus $Fr=1$, and the reported runs
+use
+\begin{equation}
+ \rho_\ell=1,\quad \rho_g/\rho_\ell=1/850,\quad
+ Re=40000,\quad \mu_g/\mu_\ell=
+ \frac{17.4\times10^{-6}}{8.9\times10^{-4}},\quad
+ Bo=We=1000.
+ \label{eq:receiver-parameters}
+\end{equation}
+Surface tension is therefore present with $\sigma=1/Bo$; gravity is
+$\boldsymbol g=(0,-1)$.  The implementation uses a balanced VOF surface-force
+form and reduced pressure for gravity \cite{Popinet2009}.  The interface and
+mixture properties follow the geometrical VOF formulation
+\cite{HirtNichols1981,Popinet2009}.
+
+The receiver is the cell-centred adaptive projection method of
+\citet{Popinet2003}, with a Bell--Colella--Glaz predictor
+\cite{BellColellaGlaz1989}, an implicit viscous solve and a multilevel pressure
+Poisson solve.  The two phase momenta
+$f\rho_\ell\boldsymbol u$ and $(1-f)\rho_g\boldsymbol u$ are carried with the
+same geometrical phase flux and recombined after advection.  The pressure
+projection tolerance is $10^{-8}$.  The accepted step is limited by the
+ordinary advective CFL, the explicit capillary condition and
+equation~\eqref{eq:cut-cell-step}.
+
+The horizontal direction is periodic.  The embedded bathymetry is
+impermeable and free slip ($u_n=0$, $\partial_n u_t=0$); the distant top of the
+$64h_0$-high computational box uses the corresponding homogeneous symmetry
+condition.  Pressure is not transferred: it is initialised to zero and the
+first receiver projection constructs the dynamic pressure compatible with the
+mapped velocity.  After every accepted step, wavelet adaptation uses absolute
+tolerances $2\times10^{-4}$ for $q$, $2\times10^{-3}$ for each velocity
+component and $8\times10^{-3}$ for $c_s$.  Maximum/minimum level pairs are
+$(8,6)$, $(9,7)$ and $(10,8)$.  The conservative $q$ restriction is applied
+before momentum prolongation, retained face fluxes are reprojected after a
+mesh change, and the associated momentum and energy changes are recorded.
+
 \subsection{Divergence-conforming state transfer}
 
 The target liquid momentum is evaluated from boundary data,
@@ -244,13 +350,35 @@ Here $B\chi=0$ makes the bed a streamline, $M$ imposes momentum, $E$ suppresses
 exterior kinetic energy and $L_h$ regularises unconstrained modes.  After AMR,
 the face flux transported by the mesh is retained and a receiver-grid
 Helmholtz correction restores compatibility; no global velocity shift is
-applied.
+applied.  Table~\ref{tab:fit-weights} gives the production weights.  The face
+term has unit weight; the Laplacian row is scaled before squaring, so the last
+entry is reported as $\sqrt{\lambda_h}$.  One set of weights was fixed before
+the three-grid runs and used without level-by-level retuning.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Weights in the production state-transfer fit.}
+\label{tab:fit-weights}
+\begin{tabular}{lll}
+\toprule
+Term & Weight & Purpose \\
+\midrule
+$W_f(C_h\chi-\bar{\boldsymbol u})$ & $1$ & trusted shared-face BIE fluxes \\
+$S\chi-\boldsymbol u_s$ & $\lambda_s=32$ & free-surface velocity trace \\
+$B\chi$ & $\lambda_b=10^4$ & bed streamfunction \\
+$M\chi-\boldsymbol P^\star/\rho$ & $\lambda_P=10^8$ & receiver-grid momentum \\
+$E\chi$ & $\lambda_e=5\times10^{-3}$ & exterior kinetic energy \\
+$L_h\chi$ & $\sqrt{\lambda_h}=0.20\min(\Delta x,\Delta z)$ & harmonic regularisation \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Verification}
 
 The tests are grouped by the property they measure.  Analytic and manufactured
 solutions test the BIE and aperture operators; algebraic residuals test the
-handoff constraints; long coupled runs test conservation and boundedness.
+handoff constraints; long receiver runs test conservation and boundedness.
 Interface contact is assessed separately in Section~\ref{sec:breaker}.
 
 For a flat surface Fourier mode, the Dirichlet-to-Neumann eigenvalue and the
@@ -260,7 +388,12 @@ $1.82\times10^{-5}$ and speed error $8.40\times10^{-5}$.  On a manufactured
 folded interface, the unoversampled 64-panel discretisation has a relative DNO
 error of 6.36 even though its linear residual is near $10^{-13}$; order-16
 oversampling reduces the error to $6.91\times10^{-2}$
-(figure~\ref{fig:close-quadrature}).
+(figure~\ref{fig:close-quadrature}).  Repeating the factor sweep at 128 panels
+reduces the unoversampled error from 2.74 to $3.56\times10^{-2}$ at factors
+8--16.  The plateau under further oversampling identifies the remaining error
+as boundary-discretisation rather than linear-solver error.  This two-grid,
+one-gap study verifies the trigger mechanism but is not a complete
+$(N,d_{\rm nl}/h,p)$ convergence map.
 
 \begin{figure}[t]
 \centering
@@ -280,6 +413,31 @@ bounds to roundoff.  Restricting the cut-cell timestep to the interface band
 requires 211 steps at level 7, compared with 758 when every cut cell is
 included.
 
+The $q$ construction is also compared directly with independently updating
+the product $f c_s$ in a one-step inclined-wall kinematic reference
+(table~\ref{tab:q-ablation}).  The product update both changes the physical
+liquid volume and incurs a transport error; the shared-$q$ update telescopes to
+roundoff on all three grids.  This is an operator test, not a substitute for
+the coupled receiver experiment below.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Ablation of the physical liquid measure in the kinematic reference.
+$\delta V/V$ is the signed relative volume change and the final column is the
+largest violation of $0\le q\le c_s$ for the shared-$q$ scheme.}
+\label{tab:q-ablation}
+\begin{tabular}{rrrr}
+\toprule
+Cells per side & product $L^1$ error & product $\delta V/V$ & shared-$q$ bound error \\
+\midrule
+32  & $1.85\times10^{-3}$ & $ 7.76\times10^{-5}$ & $3.33\times10^{-16}$ \\
+64  & $4.31\times10^{-4}$ & $-9.45\times10^{-5}$ & $3.57\times10^{-16}$ \\
+128 & $9.09\times10^{-5}$ & $-3.59\times10^{-6}$ & $7.81\times10^{-16}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 Independent cell-centred samples of the late BIE velocity have a 15.92\%
 best-fit error in the range of the receiver curl.  Shared face averages followed
 by equation~\eqref{eq:mac-fit} reduce the face-flux error to 1.6835\% and the
@@ -289,6 +447,35 @@ $1.07\times10^{-14}$.  GPU sparse LSQR takes 12.76~s versus 69.54~s for the CPU
 solve and changes the trusted-face field by only $4.58\times10^{-8}$ relative
 (figure~\ref{fig:handoff}).  This acceleration applies to the sparse handoff
 fit; the two-phase evolution reported below is CPU-serial.
+
+Table~\ref{tab:transfer-ablation} resolves the transfer into progressively
+constrained variants on the same pre-contact BIE snapshot.  A curl fit is
+already divergence conforming; surface, exterior and harmonic terms trade
+local data fit for a controlled continuation outside the trusted liquid
+region.  Adding harmonic regularisation raises the face and surface errors,
+but keeps momentum below $2\times10^{-9}$ and eliminates unconstrained
+high-frequency modes.  These rows are a bounded one-state sensitivity study,
+not an optimisation over weights.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{State-transfer ablation at BIE time 20.29375.  Errors are relative;
+dashes denote a quantity not imposed or not meaningful for that representation.}
+\label{tab:transfer-ablation}
+\begin{tabular}{lrrrr}
+\toprule
+Representation & face error & surface error & momentum error & divergence RMS \\
+\midrule
+independent cell samples & $15.92\%$ & -- & -- & $8.37\times10^{-1}$ \\
+raw shared-face averages & -- & -- & -- & $1.24\times10^{-2}$ \\
+streamfunction curl, face only & $0.1307\%$ & -- & -- & $1.05\times10^{-14}$ \\
+$+$ bed and momentum & $0.1307\%$ & -- & $6.32\times10^{-14}$ & $1.05\times10^{-14}$ \\
+$+$ surface and exterior & $0.1310\%$ & $0.700\%$ & $1.26\times10^{-9}$ & $1.05\times10^{-14}$ \\
+full fit with harmonic term & $1.6835\%$ & $3.1229\%$ & $1.99\times10^{-9}$ & $1.08\times10^{-14}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}[t]
 \centering
@@ -313,6 +500,22 @@ maximum levels 8, 9 and 10 use minimum levels 6, 7 and 8, respectively, and
 adapt after every accepted physical step.  VOF and vorticity fields are sampled
 every 0.02 through continuation time 6.
 
+The receiver-quadrature fits at levels 8--10 have face-flux errors
+1.5496\%, 1.5505\% and 1.5510\%, surface-velocity errors 2.7794\%, 2.7791\%
+and 2.7790\%, and relative receiver-momentum errors between
+$6.37\times10^{-9}$ and $7.09\times10^{-9}$.  Their weighted velocity changes
+from the unconstrained receiver samples are 1.05\%, 1.19\% and 2.01\%, while
+the corresponding kinetic-energy changes are 0.279\%, 0.252\% and 0.320\%.
+These results quantify the price of imposing momentum on each actual adaptive
+receiver quadrature rather than only on the uniform export grid.
+
+A short level-9 timing screen also compares transfers at BIE times 20.29375
+and 20.303125 through receiver time 0.30.  The maximum profile and crest
+differences are 0.944\% and 1.22\%, respectively.  However, the later screen's
+maximum volume drift is $1.52\times10^{-3}$, above its predeclared
+$10^{-3}$ gate.  It is therefore reported only as bounded timing sensitivity
+and is not used to promote a handoff-time or impact-convergence claim.
+
 A gas component is classified as a resolved closure if it is disconnected
 from the exterior, does not touch a one-finest-cell bed guard, has area at least
 $\Delta^2$, and persists for three output frames.  Four-neighbour components
@@ -331,7 +534,7 @@ $8.24\times10^{-5}$ and $9.31\times10^{-6}$, respectively.
 \begin{table}[t]
 \centering
 \small
-\caption{Three-grid coupled continuation through $t=6$.  $A_{\max}$ is the
+\caption{Three-grid receiver continuation through $t=6$.  $A_{\max}$ is the
 largest exterior-disconnected, bed-detached gas area before the one-cell area
 filter.}
 \label{tab:three-grid}
@@ -442,8 +645,14 @@ together.  Air compressibility and three-dimensionality may also become
 important near closure.
 
 The contribution is therefore the conservative and divergence-conforming
-coupling, together with a three-level observation that topology converges more
-slowly than invariants.  A matched end-to-end accuracy--cost comparison with a
+state transfer, together with a three-level observation that topology
+converges more slowly than invariants.  The available ablations isolate
+cell-centred versus shared-face transfer, receiver curl reconstruction,
+momentum and surface constraints, harmonic regularisation, product versus
+shared-$q$ transport, and two nearby handoff times.  They do not yet constitute
+a full multi-parameter sensitivity analysis: wider weight ranges, several
+nonlocal gaps, time-step refinement and a second physical scenario remain
+open.  A matched end-to-end accuracy--cost comparison with a
 contemporary BEM--VOF or potential-flow/particle hybrid remains necessary to
 establish an efficiency advantage.  The present GPU timing concerns only the
 sparse handoff reconstruction; the serial two-phase solve dominates the
@@ -459,25 +668,32 @@ transport the full-cell liquid aperture $q=f c_s$ with a shared
 embedded-boundary flux.
 
 Manufactured tests show first-order aperture convergence with roundoff mass
-and bound preservation.  The coupled L8--L10 breaker remains bounded through
+and bound preservation.  The L8--L10 receiver continuation remains bounded through
 $t=6$, with maximum relative liquid-volume drift below
 $8.57\times10^{-8}$ and small post-AMR compatibility corrections.  The
 level-10 trajectory contains a resolved but transient gas component and
 strong crest vorticity.  Its onset and morphology are not reproduced on the
 coarser grids, and the final L9/L10 profile and crest differences exceed 5\%.
 
-The present result supports a conservative hybrid continuation method and
-identifies a resolution-dependent topology transition.  It does not yet
+The present result supports a conservative, divergence-conforming one-way
+model transition and identifies a resolution-dependent topology transition.
+It does not yet
 support a grid-converged prediction of plunging impact, trapped-air volume or
 impact impulse.
 
 \section*{Data and code availability}
 
-Source code, solver inputs, machine-readable diagnostics and scripts used to
-produce the figures are available in the accompanying research repository.
-The BIE input data and external comparison data retain their original
-licences.  The two-phase calculations use a pinned Basilisk environment; the
-exact revision and compile parameters are supplied with the archived runs.
+Source code, solver inputs, machine-readable diagnostics and figure scripts
+are available at \url{https://github.com/Safreliy/wave_research} under tag
+\texttt{v0.27-audit-revision}.  The compact repository contains the exact
+L8--L10 receiver inputs and diagnostic logs.  The 1,509 raw VOF/vorticity
+frames (approximately 503~MB) are not yet deposited in a DOI-bearing archive;
+they are required only to recompute connected components and profiles from
+pixels, and must be archived before journal submission.  Research code is
+licensed under the MIT License, and the original manuscript, figures and
+derived data under CC BY 4.0; third-party software and data retain their own
+licences.  The two-phase calculations use Basilisk patch \texttt{ad05f362}
+in the immutable container image identified in the repository.
 
 \bibliographystyle{plainnat}
 \bibliography{references}

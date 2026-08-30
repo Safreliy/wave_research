@@ -1,0 +1,19 @@
+{
+  "schema": "publication-handoff-time-screen-v1",
+  "evidence_class": "bounded level-9 handoff-time sensitivity diagnostic",
+  "source_times": [
+    20.29375,
+    20.30312499999999
+  ],
+  "matched_receiver_time_interval": [
+    0.0,
+    0.3
+  ],
+  "matched_frame_count": 16,
+  "maximum_relative_profile_rms_difference": 0.00943973863392934,
+  "maximum_relative_crest_difference": 0.012195121951219646,
+  "late_transfer_maximum_relative_volume_error": 0.0015151356248247559,
+  "predeclared_volume_gate": 0.001,
+  "all_gates_passed": false,
+  "conclusion": "bounded short-time geometry sensitivity only; the volume gate failed, so no handoff-time or impact-convergence claim is promoted"
+}

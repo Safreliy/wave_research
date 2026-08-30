@@ -1,16 +1,39 @@
-# Copyright and reuse
+# Licences
 
-Copyright (c) 2026 Saveliy Baturin. All rights reserved.
+Copyright (c) 2026 Saveliy Baturin.
 
-This review package is made publicly readable to support inspection and
-reproducibility of the accompanying manuscript. No permission to copy,
-modify, redistribute, or incorporate the original code, manuscript, figures,
-or data into another work is granted unless the copyright holder provides a
-separate licence.
+## Research code: MIT License
 
-Third-party software and data retain their own licences. In particular, the
-Basilisk framework and the external comparison data are not redistributed by
-this repository.
+Unless a file states otherwise, the original source code in `research/` and
+`scripts/` is licensed under the MIT License:
 
-Replace this file with an explicit open-source and data licence before public
-release if broader reuse is intended.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Manuscript, figures, and derived data: CC BY 4.0
+
+The original manuscript, original figures, and original derived data in this
+repository are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+
+## Third-party material
+
+Third-party software, source data, and cited material retain their original
+licences. The Basilisk framework and external comparison datasets are not
+relicensed by this file.
