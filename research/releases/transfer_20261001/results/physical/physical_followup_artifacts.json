@@ -1,0 +1,151 @@
+{
+  "schema": "physical-native-followup-artifact-manifest-v1",
+  "root": "C:\\Users\\Savely\\Desktop\\wave_simulation\\research\\results\\publication_package\\transfer_physical_pilot_20261001",
+  "final_claim_data": [
+    "twofluid_guarded_mass_factorial_complete_outputs.tar.gz",
+    "guarded_mass_factorial_complete_height_analysis.json",
+    "guarded_mass_factorial_complete_independent_audit.json"
+  ],
+  "partial_factorial_files_retained_as_history": [
+    "twofluid_guarded_mass_factorial_outputs.tar.gz",
+    "guarded_mass_factorial_height_analysis.json"
+  ],
+  "files": [
+    {
+      "path": "flat_native_L9_twofluid_inputs.tar.gz",
+      "sha256": "65631c5876c1b02cba090d71d181702e9cb48579b686b439ed38d49c05d8403e",
+      "bytes": 746139
+    },
+    {
+      "path": "flat_native_L9_guarded_transfer_inputs.tar.gz",
+      "sha256": "399e54d4be03083b92a00a9dc3003ac3ac137001eff468103c8fe44185970493",
+      "bytes": 392241
+    },
+    {
+      "path": "flat_native_L9_guarded_mass_factorial_inputs.tar.gz",
+      "sha256": "59a282ce2d8335708f96fa79fc3a67a34c482fea69295911b666849f554343a7",
+      "bytes": 390864
+    },
+    {
+      "path": "flat_native_L9_zero_diagnostics_inputs.tar.gz",
+      "sha256": "55f54f3b5fc2f89d21f0620af74e816338b7c4237b1e5feec74575541685176d",
+      "bytes": 53768
+    },
+    {
+      "path": "twofluid_zero_diagnostic_outputs.tar.gz",
+      "sha256": "5f71cc02644392dd0847682881ad092fb13146c8db2f1c1fee157e677626aa64",
+      "bytes": 3098694
+    },
+    {
+      "path": "twofluid_guarded_phase_outputs.tar.gz",
+      "sha256": "1c9db628bd1c007f9287da8f63a4cdf0bda84b4ac932d2ba3bbbf160168f6421",
+      "bytes": 7826023
+    },
+    {
+      "path": "twofluid_guarded_transfer_comparison_outputs.tar.gz",
+      "sha256": "7bead00818085d9a4cdadf7a87817d13ed61846e74ecef53bbd959a5784ee134",
+      "bytes": 13982292
+    },
+    {
+      "path": "twofluid_guarded_mass_outputs.tar.gz",
+      "sha256": "c07f4bc7eb345ee107ced7e68892cdc28810ccf5a2da164b89a353c3347354d6",
+      "bytes": 13544834
+    },
+    {
+      "path": "twofluid_guarded_mass_factorial_outputs.tar.gz",
+      "sha256": "54224e4427a354caa86250e30ff4622c51f57047e5a704abfae9aebc3c2411b3",
+      "bytes": 16904018
+    },
+    {
+      "path": "twofluid_guarded_mass_factorial_complete_outputs.tar.gz",
+      "sha256": "f6a99920820d5491422d1b71e3f0e7463b1da8e6b4d6a5113bfc49e0cc3de3e0",
+      "bytes": 19990547
+    },
+    {
+      "path": "guarded_phase_height_analysis.json",
+      "sha256": "d296f81afd7a615e5607ac05ac4d8319d2802d00375f94718c542592e78edf25",
+      "bytes": 11934
+    },
+    {
+      "path": "guarded_transfer_height_analysis.json",
+      "sha256": "64465b67ad35d7c722df03e9c7d2653848dff46ca32b2b7ab08cfffc03f156aa",
+      "bytes": 13735
+    },
+    {
+      "path": "guarded_mass_height_analysis.json",
+      "sha256": "fd176c78e496e6fbfa59e181f30458a0d8139f275c347fbda06bf2798662fc9d",
+      "bytes": 21298
+    },
+    {
+      "path": "guarded_mass_factorial_height_analysis.json",
+      "sha256": "30d4c32c21c78bd3022b8f6cc213c93f9ad9fb872245e615599a3419fdd0fbaa",
+      "bytes": 22329
+    },
+    {
+      "path": "guarded_mass_factorial_complete_height_analysis.json",
+      "sha256": "a7af7dbabe842d252ffe9ea9971fa50888dc827ad3313f8228fc550a9a91cd82",
+      "bytes": 26475
+    },
+    {
+      "path": "guarded_mass_factorial_complete_independent_audit.json",
+      "sha256": "8dfb55e1657a4a4815fc48253b08545923517863fd6480e2c55878537e166c31",
+      "bytes": 13245
+    },
+    {
+      "path": "PHYSICAL_NATIVE_ASSESSMENT.md",
+      "sha256": "075429d9a261997262b10af30729b516ccaa29f4c880a8ea627f92a5cccf9f2d",
+      "bytes": 7600
+    },
+    {
+      "path": "source_build_guard/build_manifest.json",
+      "sha256": "f425e23b54633ca17c329073494e16be7c05a26330f3dd1f42b372818b268707",
+      "bytes": 6382
+    },
+    {
+      "path": "source_build_guard/aphros_guard_baseline_source.tar.gz",
+      "sha256": "aae50e414034a0882ece453f28ea76320273722667e6eb2340d520c202a9806b",
+      "bytes": 9006346
+    },
+    {
+      "path": "source_build_guard/aphros_guard_patched_source.tar.gz",
+      "sha256": "8167630fa6207126e15647772bc0495ee9d09d3f0f19bac757b0849ba12595a9",
+      "bytes": 9006398
+    },
+    {
+      "path": "source_build_guard/aphros_guard_baseline_runtime.tar.gz",
+      "sha256": "183af73d82eaf546bb4d71b614481a70a59bb1c70cdb2016f6fc4a0b2b12563a",
+      "bytes": 2332711
+    },
+    {
+      "path": "source_build_guard/aphros_guard_guarded_runtime.tar.gz",
+      "sha256": "5d75d98ce70736264c42a3b53194d2677e0e47f7f84f2931f374cfeb2e56cc9b",
+      "bytes": 2332486
+    },
+    {
+      "path": "executed_python_snapshot/snapshot_manifest.json",
+      "sha256": "e2c9385289b5b838751d959cb4b46814cb9a7624451769934575498501be1015",
+      "bytes": 2760
+    },
+    {
+      "path": "factorial_complete_python_snapshot/snapshot_manifest.json",
+      "sha256": "c4fa430fe5557d6cf1daba61599084d7e216d611821f28c8f7a2272efd7b16df",
+      "bytes": 1628
+    },
+    {
+      "path": "flat_native_L9_twofluid/protocol.json",
+      "sha256": "37ac136248d808b1759ce12eb375892267c049fef80f26cd3a527144a3247e4d",
+      "bytes": 3896
+    },
+    {
+      "path": "flat_native_L9_guarded_transfer/native_launch_protocol.json",
+      "sha256": "3af4a052eaa300445854880d323785bb5123c37ce22ca9f1d3236a465660acea",
+      "bytes": 4550
+    },
+    {
+      "path": "flat_native_L9_guarded_mass_factorial/native_launch_protocol.json",
+      "sha256": "f462bc830f3c8d1e1085a6ff7aa41d3d133586ffab93fc5f2f4c4093de8dfdb2",
+      "bytes": 4641
+    }
+  ],
+  "editorial_note": "Assessment wording clarified to distinguish normalized physical error from an unnormalized RMS; numerical evidence unchanged."
+}

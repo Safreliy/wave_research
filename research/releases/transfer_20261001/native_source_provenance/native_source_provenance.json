@@ -1,0 +1,75 @@
+{
+  "evidence_scope": "Read-only snapshot 2026-10-01; installed libaphros.so matches the aphros-build artifact byte-for-byte. Installed ap.mfer differs in SHA-256 from the build artifact but has the same ELF BuildID. The current dirty source patch is a candidate source snapshot, not cryptographically attested exact build input.",
+  "exact_compile_source_state_attested": false,
+  "ap_mfer_elf_build_id_sha1_both_copies": "1b012b528b7bb3f478881bfd3818f72ce2d6f10f",
+  "source_tree": "/opt/gpu-cfd/aphros",
+  "source_origin": "https://github.com/cselab/aphros.git",
+  "source_head": "b60ce3da52c19935fa24c778f62f02141eaf7f80",
+  "source_status_porcelain": [
+    " M deploy/CMakeLists.txt",
+    " M deploy/scripts/sim_base.conf",
+    " M src/CMakeLists.txt",
+    " M src/func/init_u.h",
+    " M src/gitrev",
+    " M src/kernel/hydro.h",
+    " M src/kernel/hydro.ipp",
+    " M src/linear/CMakeLists.txt",
+    " M src/linear/linear_amgx.cpp",
+    " M src/solver/advection.h",
+    " M src/solver/embed.h",
+    " M src/solver/embed.ipp",
+    " M src/solver/proj.h",
+    " M src/solver/proj.ipp",
+    " M src/solver/vof.h",
+    " M src/solver/vof.ipp",
+    " M src/solver/vofm.h",
+    " M src/solver/vofm.ipp",
+    " M src/util/CMakeLists.txt",
+    " M src/util/hydro_post.ipp"
+  ],
+  "build_dir": "/opt/gpu-cfd/aphros-build",
+  "install_prefix": "/opt/gpu-cfd/prefix",
+  "binary_sha256_lines": [
+    "2a2edcdb1e6e897aff006577c5a8cf951ff21cb5f7f6c1ccb6050c241e337a09  /opt/gpu-cfd/aphros-build/libaphros.so",
+    "2a2edcdb1e6e897aff006577c5a8cf951ff21cb5f7f6c1ccb6050c241e337a09  /opt/gpu-cfd/prefix/lib/libaphros.so",
+    "c6e184fafd803b9cce42018d64c4a99249d6aa756e53a9de31380421220fec5d  /opt/gpu-cfd/aphros-build/ap.mfer",
+    "9cd89c6fb6554db133aedc02d66ff5f6654ae91a727c24677e6edbaadd16c4d5  /opt/gpu-cfd/prefix/bin/ap.mfer"
+  ],
+  "files": {
+    "source_worktree_patch.diff": {
+      "sha256": "2015e63badaf65fa139b2b15fd0fda0774e28c4d17ec1506a8887dfdde824da2",
+      "bytes": 37084,
+      "remote_read_command": "git -C /opt/gpu-cfd/aphros diff --binary"
+    },
+    "aphros_LICENSE": {
+      "sha256": "d7a2276320b71979ce0c7b5a6988350c7f1fc32c0a4cd4ce2c06e2037862dab8",
+      "bytes": 1067,
+      "remote_read_command": "cat /opt/gpu-cfd/aphros/LICENSE"
+    },
+    "aphros_build_ninja_log.txt": {
+      "sha256": "6e6a8a1ae69af4636d101e00da3b9da5d892a12eb716dc25389bbc115a2c804d",
+      "bytes": 10136,
+      "remote_read_command": "cat /opt/gpu-cfd/aphros-build/.ninja_log"
+    },
+    "aphros_build_install_manifest.txt": {
+      "sha256": "1bca630d308304f951f0216218c88e7f800715e00f6866dd837bea80e9c74507",
+      "bytes": 8012,
+      "remote_read_command": "cat /opt/gpu-cfd/aphros-build/install_manifest.txt"
+    },
+    "libaphros_rebuild_commands.txt": {
+      "sha256": "a60ff0df44e52b18d576c7ba508071bcb32efd67bf39d00e546f3b702177c970",
+      "bytes": 31204,
+      "remote_read_command": "ninja -C /opt/gpu-cfd/aphros-build -t commands libaphros.so"
+    },
+    "ap_mfer_rebuild_commands.txt": {
+      "sha256": "b40d84def87c6f9ae3f0f3b58ecce5713779f02074cf888aca5234a716e78fea",
+      "bytes": 34561,
+      "remote_read_command": "ninja -C /opt/gpu-cfd/aphros-build -t commands ap.mfer"
+    },
+    "cmake_cache_selected.txt": {
+      "sha256": "408ffe4401caf4433da88265b1f7f9bfb0ec25a73a6caf3419c0a825d0cdcccf",
+      "bytes": 248,
+      "remote_read_command": "cat CMakeCache.txt then selected known keys"
+    }
+  }
+}

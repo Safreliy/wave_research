@@ -1,0 +1,7 @@
+Potential consistent Hermite-trace extension (design only, not implemented or validated)
+
+Use one cubic H_j(t) on each original boundary chord, with endpoint values psi_j, psi_{j+1} and endpoint tangents grad(psi) dot Delta_j. Evaluate that same cubic in boundary crossings and boundary conditions; integrate exact restrictions -Delta_j integral_a^b H_j(t) dt for physical subedges. Compute the declared physical moment target from integrals over whole original chords. A free-surface constant C=(Mx_source-Mx_H0)/L restores the prescribed horizontal moment. This does not change vertical moment because the periodic surface has total Delta_z=0; Mz must be validated separately.
+
+Intersection gradients must have tangential derivative H_j'(t)/|Delta_j|, with a separately consistent normal derivative. Receiver-bed remapping requires zero tangential derivative for a constant bed streamfunction. Simply removing the zero-Hermite-correction switch on physical edges is invalid because the current target, crossing interpolation and gradients correspond to a piecewise-linear trace; subedge cubics would not necessarily restrict one common parent cubic.
+
+The manuscript trace-error bound is valid for a prescribed C2 trace pulled back to fixed straight chords. It excludes geometric approximation, propagated harmonic-solve errors and Cartesian-edge errors. For curved source geometry, trace refinement can also change polygons/cut distances; the new flat native comparison instead freezes receiver geometry and all non-wet-velocity input fields.

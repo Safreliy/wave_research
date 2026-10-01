@@ -1,0 +1,128 @@
+{
+  "schema": "flat-matched-native-dynamic-analysis-v1",
+  "case": "L10",
+  "phase": "half",
+  "baseline_archive_sha256": "c8a484a279d4b0cd328ea187a0d651eaccc9b1dc277427da0b54c40651ce7ac8",
+  "matched_archive_sha256": "32ab7e3605fa8b741691fbcc08ee6bb83cd8c3bd3e0c9a1a8d5c478262ea5f31",
+  "code_sha256": "ba63b6edd7a7643295f384e7d4d115b92ba0aaa3bab89ea8c8b9efda0346ab02",
+  "reference_limit": "same-grid exact-initial numerical receiver branch, not exact physical trajectory",
+  "norm": "reference q-weighted full-domain velocity error",
+  "native_solver_steps": 420,
+  "observed_maximum_dt": 0.00125,
+  "maximum_post_start_flux_divergence_linf": 1.1879386363489175e-14,
+  "maximum_post_start_runtime_mass_relative_error": 4.120149918022872e-15,
+  "series": [
+    {
+      "time": 0.0,
+      "dump_index": 0,
+      "matched": {
+        "global_liquid_velocity_relative_l2": 0.00035377444249446696,
+        "vof_relative_l2": 0.0,
+        "column_depth_wave_relative_l2": null,
+        "column_depth_max_absolute": 0.0
+      },
+      "practical_control": {
+        "global_liquid_velocity_relative_l2": 0.0010898362004020724,
+        "vof_relative_l2": 0.0,
+        "column_depth_wave_relative_l2": null,
+        "column_depth_max_absolute": 0.0
+      },
+      "original_fitted": {
+        "global_liquid_velocity_relative_l2": 0.004699578381244488,
+        "vof_relative_l2": 0.0,
+        "column_depth_wave_relative_l2": null,
+        "column_depth_max_absolute": 0.0
+      }
+    },
+    {
+      "time": 0.1312500000000001,
+      "dump_index": 1,
+      "matched": {
+        "global_liquid_velocity_relative_l2": 0.00035898943109159535,
+        "vof_relative_l2": 4.538118922999807e-08,
+        "column_depth_wave_relative_l2": 4.307543845284379e-06,
+        "column_depth_max_absolute": 1.768271251645359e-08
+      },
+      "practical_control": {
+        "global_liquid_velocity_relative_l2": 0.0022601701480772576,
+        "vof_relative_l2": 4.552481394431555e-06,
+        "column_depth_wave_relative_l2": 0.00043211765806436904,
+        "column_depth_max_absolute": 1.300988785368773e-06
+      },
+      "original_fitted": {
+        "global_liquid_velocity_relative_l2": 0.022150631321359457,
+        "vof_relative_l2": 2.017769433203433e-05,
+        "column_depth_wave_relative_l2": 0.0019152495670973855,
+        "column_depth_max_absolute": 7.450735839964473e-06
+      }
+    },
+    {
+      "time": 0.2624999999999999,
+      "dump_index": 2,
+      "matched": {
+        "global_liquid_velocity_relative_l2": 0.0003725036149904217,
+        "vof_relative_l2": 1.1112026566029829e-07,
+        "column_depth_wave_relative_l2": 5.344422603768816e-06,
+        "column_depth_max_absolute": 4.318838453531981e-08
+      },
+      "practical_control": {
+        "global_liquid_velocity_relative_l2": 0.0030249080910931493,
+        "vof_relative_l2": 1.0878623841229337e-05,
+        "column_depth_wave_relative_l2": 0.0005232165600623749,
+        "column_depth_max_absolute": 3.3657787884555646e-06
+      },
+      "original_fitted": {
+        "global_liquid_velocity_relative_l2": 0.03036283312776288,
+        "vof_relative_l2": 6.505576646587051e-05,
+        "column_depth_wave_relative_l2": 0.0031289117850987536,
+        "column_depth_max_absolute": 2.6436045486355475e-05
+      }
+    },
+    {
+      "time": 0.3937499999999971,
+      "dump_index": 3,
+      "matched": {
+        "global_liquid_velocity_relative_l2": 0.0003970249220019413,
+        "vof_relative_l2": 1.9831395877959726e-07,
+        "column_depth_wave_relative_l2": 6.496502061804003e-06,
+        "column_depth_max_absolute": 8.77926866760248e-08
+      },
+      "practical_control": {
+        "global_liquid_velocity_relative_l2": 0.0037167413722288527,
+        "vof_relative_l2": 1.7980034814642526e-05,
+        "column_depth_wave_relative_l2": 0.000588985993282137,
+        "column_depth_max_absolute": 6.335867673734619e-06
+      },
+      "original_fitted": {
+        "global_liquid_velocity_relative_l2": 0.03765408523527403,
+        "vof_relative_l2": 0.00012319862239953977,
+        "column_depth_wave_relative_l2": 0.004035608011132227,
+        "column_depth_max_absolute": 5.3669773948938904e-05
+      }
+    },
+    {
+      "time": 0.5250717657631933,
+      "dump_index": 4,
+      "matched": {
+        "global_liquid_velocity_relative_l2": 0.00043618031730648083,
+        "vof_relative_l2": 3.023738782132505e-07,
+        "column_depth_wave_relative_l2": 7.655656934598752e-06,
+        "column_depth_max_absolute": 1.4264261483099006e-07
+      },
+      "practical_control": {
+        "global_liquid_velocity_relative_l2": 0.00446877208749557,
+        "vof_relative_l2": 2.507700091214609e-05,
+        "column_depth_wave_relative_l2": 0.0006347825272880317,
+        "column_depth_max_absolute": 9.680951428947537e-06
+      },
+      "original_fitted": {
+        "global_liquid_velocity_relative_l2": 0.04549385974919033,
+        "vof_relative_l2": 0.00018489455484806092,
+        "column_depth_wave_relative_l2": 0.004679914637468776,
+        "column_depth_max_absolute": 8.642550853943387e-05
+      }
+    }
+  ],
+  "endpoint_velocity_gain_vs_practical_control": 10.245240122459721,
+  "endpoint_wave_depth_gain_vs_practical_control": 82.9167937788871
+}

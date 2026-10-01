@@ -1,0 +1,20 @@
+{
+  "source_sha256": "a7af7dbabe842d252ffe9ea9971fa50888dc827ad3313f8228fc550a9a91cd82",
+  "native_archive_sha256": "f6a99920820d5491422d1b71e3f0e7463b1da8e6b4d6a5113bfc49e0cc3de3e0",
+  "time": 0.5256608823752456,
+  "rows_exact_matched_practical": {
+    "phase": [
+      0.0353352787007949,
+      0.03535843225971239,
+      0.03718423746544833
+    ],
+    "mass": [
+      0.017754647708803757,
+      0.017778264815800263,
+      0.018810903970891926
+    ]
+  },
+  "matched_gain_within_mixture_assignment": 1.0580843612012076,
+  "combined_gain_over_original_practical_assignment": 2.091556057394375,
+  "combined_reduction_percent": 52.188706754253424
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "native-bilinear-centroid-control-v1",
+  "scope": "diagnostic baseline, not qualified production state",
+  "source_sha256": "cc5ab66c553facedbea23536d7d6adc58a8c7f9e98e55da5f563c42b017979ea",
+  "input_hashes": {
+    "initial_state.json": "385cd60ae837998665c40bdf4f73da5f59930ce6fea0a420e8360c4c25cb6b1e",
+    "q.raw": "3e54f5747e4c694d410690b73d2deb97f5ea0eeef884d3b5458d6055831c1c7a",
+    "vx.raw": "b11ddd424113648a4fb3ec0d9b1d2d552a426e695d1a6b5fd70f6a0768a8daac",
+    "vy.raw": "d16062f62f5324bf9229827d5a816af8580eccf9f2e788dd2212be6fccf89917",
+    "receiver_bed.npz": "d444aa833b66d557352e0dc36e643c86d9726e3c1a83b522ca9705a41b242745"
+  },
+  "code_sha256": "9bc373d6bf7a5c6ad3d93257866a52ca4f5c1f589934070b4d8a5a38de47a53a",
+  "nx": 4096,
+  "ny": 256,
+  "mixed_cells": 8495,
+  "maximum_mixed_area_error": 1.6263032587282567e-19,
+  "momentum": [
+    1.3582949919565408,
+    -0.0072749306876067656
+  ],
+  "target_momentum": [
+    1.3582957463784884,
+    -0.007273640141039723
+  ],
+  "momentum_relative_error": 1.1005390159337588e-06,
+  "maximum_liquid_velocity_difference_from_fitted": 0.11416068121106641,
+  "maximum_gas_velocity_difference": 0.0,
+  "output_hashes": {
+    "vx.raw": "0247d9a06ca588307089eef533b3b3f6fb8ff1daba33563a9d992394a126afac",
+    "vy.raw": "c0d5a9b1d1f9befafb87ff68a92d2826e7bf3bbe4256f504721db13f047d5768"
+  }
+}

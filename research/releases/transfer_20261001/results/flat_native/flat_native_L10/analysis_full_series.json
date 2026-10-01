@@ -1,0 +1,645 @@
+{
+  "schema": "flat-harmonic-native-dynamic-analysis-v1",
+  "input_protocol_sha256": "51cfa2d821b2b88059750711bc39cc1c84907ecba5f4b1202f9e0dd74e9df3a9",
+  "launch_protocol_sha256": "f363c823ab90a22156e333ba26f3207b31b209826c3fc06be213f95772033092",
+  "target_time": 0.5250717657631933,
+  "fraction_linear_wave_period": 0.1,
+  "norm": "reference-branch liquid q weights for both numerator and denominator",
+  "reference_limit": "exact phase-mean initialisation, shared receiver dynamics; not exact physical truth",
+  "phases": {
+    "full": {
+      "runs": {
+        "fitted": {
+          "status_sha256": "7725e50f59163fa772b7ce6e7d3f3da80f42da7c5d60c890c3d24b2d94bac755",
+          "semantic_audit_sha256": "267fbfe9fdf6bac8fc15b2f9ff4b702c4c08008be1a1b7bc45379bc34309ad51",
+          "time": 0.5250717657631933,
+          "initial_dump_index": 0,
+          "final_dump_index": 4,
+          "recorded_dump_times": {
+            "0": 0.0,
+            "1": 0.1325000000000001,
+            "2": 0.2625000000000002,
+            "3": 0.3950000000000003,
+            "4": 0.5250717657631933
+          },
+          "status_state": "complete",
+          "solver_steps": 210,
+          "observed_maximum_dt": 0.0025,
+          "stat_sha256": "40656a92be7ae80cd564c36ff7933ddf629d7be724d0b1e70dd202f6dfc3f3e9",
+          "semantic_gate_summary": {
+            "audited_dumps": 6,
+            "maximum_initial_mass_relative_error": 8.011402618377808e-14,
+            "maximum_runtime_mass_relative_error_after_start": 8.011402618377808e-14,
+            "maximum_runtime_vof_mass_relative_error_after_start": 7.771075480158586e-14,
+            "maximum_embedded_volume_flux_divergence_linf_after_start": 1.6042722705833512e-14,
+            "initial_loaded_momentum_absolute_error": 4.343818997730976e-18,
+            "maximum_liquid_regular_speed": 0.03066670750372059,
+            "maximum_all_cell_speed": 0.10141040819349292
+          }
+        },
+        "bilinear_centroid": {
+          "status_sha256": "0a0591c19b10ca00b0c43f29d02fc1d9f4ce8074960ce49a13131f26dcca1dc5",
+          "semantic_audit_sha256": "430c77dd0d28d0df50fcda3730636db13b49bb0ff000471f29a9e086a73af32f",
+          "time": 0.5250717657631933,
+          "initial_dump_index": 0,
+          "final_dump_index": 4,
+          "recorded_dump_times": {
+            "0": 0.0,
+            "1": 0.1325000000000001,
+            "2": 0.2625000000000002,
+            "3": 0.3950000000000003,
+            "4": 0.5250717657631933
+          },
+          "status_state": "complete",
+          "solver_steps": 210,
+          "observed_maximum_dt": 0.0025,
+          "stat_sha256": "3c9821df6a0afbf4176a9f76c87c690d1fba028d3cda47379cc6f95796f0b2d2",
+          "semantic_gate_summary": {
+            "audited_dumps": 5,
+            "maximum_initial_mass_relative_error": 0.0,
+            "maximum_runtime_mass_relative_error_after_start": 0.0,
+            "maximum_runtime_vof_mass_relative_error_after_start": 0.0,
+            "maximum_embedded_volume_flux_divergence_linf_after_start": 2.3148150063434514e-14,
+            "initial_loaded_momentum_absolute_error": 7.572005419330121e-18,
+            "maximum_liquid_regular_speed": 0.03173688028113658,
+            "maximum_all_cell_speed": 0.09920000141021013
+          }
+        },
+        "exact_initial_means": {
+          "status_sha256": "1e34124fca0d03ba016924735760ca76f50a609630b626b5c30a287ed735f49e",
+          "semantic_audit_sha256": "af291c3cd35aa76b4375557967d79620600ae775ba19ff57856aafe2751ceb08",
+          "time": 0.5250717657631933,
+          "initial_dump_index": 0,
+          "final_dump_index": 4,
+          "recorded_dump_times": {
+            "0": 0.0,
+            "1": 0.1325000000000001,
+            "2": 0.2625000000000002,
+            "3": 0.3950000000000003,
+            "4": 0.5250717657631933
+          },
+          "status_state": "complete",
+          "solver_steps": 210,
+          "observed_maximum_dt": 0.0025,
+          "stat_sha256": "ad5e164f379f2283b7c41fc724e3842e31f561a49080a095839503a3f2979eca",
+          "semantic_gate_summary": {
+            "audited_dumps": 5,
+            "maximum_initial_mass_relative_error": 0.0,
+            "maximum_runtime_mass_relative_error_after_start": 0.0,
+            "maximum_runtime_vof_mass_relative_error_after_start": 0.0,
+            "maximum_embedded_volume_flux_divergence_linf_after_start": 2.3703261575747092e-14,
+            "initial_loaded_momentum_absolute_error": 3.5835510441148264e-17,
+            "maximum_liquid_regular_speed": 0.031192837174148454,
+            "maximum_all_cell_speed": 0.09941940585447095
+          }
+        }
+      },
+      "comparisons": {
+        "t0": {
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.004699578381244488,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0010898362004020724,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          }
+        },
+        "final": {
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.04339533410054209,
+            "vof_relative_l2": 0.00016643330038809028,
+            "column_depth_relative_l2": 4.272651116825625e-05,
+            "column_depth_wave_relative_l2": 0.00419952623119338,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.013940918555405099,
+            "reference_mode16_column_depth_imag": 0.0006848732670277882,
+            "reference_mode16_column_depth_amplitude": 0.013957731246887064,
+            "column_depth_max_absolute": 8.055954395791431e-05,
+            "mass_difference_relative": 8.011402618377808e-14
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0042597032615346074,
+            "vof_relative_l2": 2.146888141257063e-05,
+            "column_depth_relative_l2": 5.512050602821431e-06,
+            "column_depth_wave_relative_l2": 0.0005417713841192757,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.013940918555405099,
+            "reference_mode16_column_depth_imag": 0.0006848732670277882,
+            "reference_mode16_column_depth_amplitude": 0.013957731246887064,
+            "column_depth_max_absolute": 9.110525708289074e-06,
+            "mass_difference_relative": 1.144486088339687e-16
+          }
+        }
+      },
+      "time_series": [
+        {
+          "time": 0.0,
+          "dump_index": 0,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.004699578381244488,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0010898362004020724,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          }
+        },
+        {
+          "time": 0.1325000000000001,
+          "dump_index": 1,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.02050191386754913,
+            "vof_relative_l2": 1.4498493394137249e-05,
+            "column_depth_relative_l2": 3.732322106617109e-06,
+            "column_depth_wave_relative_l2": 0.0013611262320606156,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.003757266402417971,
+            "reference_mode16_column_depth_imag": 0.00018458265056246878,
+            "reference_mode16_column_depth_amplitude": 0.003761797651871715,
+            "column_depth_max_absolute": 6.395193843156122e-06,
+            "mass_difference_relative": 0.0
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0020973612415639484,
+            "vof_relative_l2": 3.748121732002982e-06,
+            "column_depth_relative_l2": 9.64872502152099e-07,
+            "column_depth_wave_relative_l2": 0.00035187565160702103,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.003757266402417971,
+            "reference_mode16_column_depth_imag": 0.00018458265056246878,
+            "reference_mode16_column_depth_amplitude": 0.003761797651871715,
+            "column_depth_max_absolute": 1.0496417685024184e-06,
+            "mass_difference_relative": 0.0
+          }
+        },
+        {
+          "time": 0.2625000000000002,
+          "dump_index": 2,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.028383269354464568,
+            "vof_relative_l2": 5.254924175422769e-05,
+            "column_depth_relative_l2": 1.3514188691892167e-05,
+            "column_depth_wave_relative_l2": 0.002521642408303802,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.007343422452873017,
+            "reference_mode16_column_depth_imag": 0.0003607591694725551,
+            "reference_mode16_column_depth_amplitude": 0.00735227859236292,
+            "column_depth_max_absolute": 2.3728113578536103e-05,
+            "mass_difference_relative": 0.0
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0028276699836218833,
+            "vof_relative_l2": 8.883660393056911e-06,
+            "column_depth_relative_l2": 2.284627880796684e-06,
+            "column_depth_wave_relative_l2": 0.0004262937778030642,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.007343422452873017,
+            "reference_mode16_column_depth_imag": 0.0003607591694725551,
+            "reference_mode16_column_depth_amplitude": 0.00735227859236292,
+            "column_depth_max_absolute": 3.0134099971990125e-06,
+            "mass_difference_relative": 1.144486088339687e-16
+          }
+        },
+        {
+          "time": 0.3950000000000003,
+          "dump_index": 3,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.03563522010356646,
+            "vof_relative_l2": 0.00010710200539479959,
+            "column_depth_relative_l2": 2.7517964666775166e-05,
+            "column_depth_wave_relative_l2": 0.0034884805668948843,
+            "reference_mean_column_depth": 0.9700624900000001,
+            "reference_mode16_column_depth_real": 0.010808700400542534,
+            "reference_mode16_column_depth_imag": 0.0005309973120306297,
+            "reference_mode16_column_depth_amplitude": 0.010821735650720364,
+            "column_depth_max_absolute": 4.974228226939381e-05,
+            "mass_difference_relative": 7.988512896611013e-14
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0035150762692461824,
+            "vof_relative_l2": 1.5100595744750602e-05,
+            "column_depth_relative_l2": 3.87999198254721e-06,
+            "column_depth_wave_relative_l2": 0.0004918705578238572,
+            "reference_mean_column_depth": 0.9700624900000001,
+            "reference_mode16_column_depth_real": 0.010808700400542534,
+            "reference_mode16_column_depth_imag": 0.0005309973120306297,
+            "reference_mode16_column_depth_amplitude": 0.010821735650720364,
+            "column_depth_max_absolute": 5.832369583291808e-06,
+            "mass_difference_relative": 1.1444860883396867e-16
+          }
+        },
+        {
+          "time": 0.5250717657631933,
+          "dump_index": 4,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.04339533410054209,
+            "vof_relative_l2": 0.00016643330038809028,
+            "column_depth_relative_l2": 4.272651116825625e-05,
+            "column_depth_wave_relative_l2": 0.00419952623119338,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.013940918555405099,
+            "reference_mode16_column_depth_imag": 0.0006848732670277882,
+            "reference_mode16_column_depth_amplitude": 0.013957731246887064,
+            "column_depth_max_absolute": 8.055954395791431e-05,
+            "mass_difference_relative": 8.011402618377808e-14
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0042597032615346074,
+            "vof_relative_l2": 2.146888141257063e-05,
+            "column_depth_relative_l2": 5.512050602821431e-06,
+            "column_depth_wave_relative_l2": 0.0005417713841192757,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.013940918555405099,
+            "reference_mode16_column_depth_imag": 0.0006848732670277882,
+            "reference_mode16_column_depth_amplitude": 0.013957731246887064,
+            "column_depth_max_absolute": 9.110525708289074e-06,
+            "mass_difference_relative": 1.144486088339687e-16
+          }
+        }
+      ]
+    },
+    "half": {
+      "runs": {
+        "fitted": {
+          "status_sha256": "59e7a957fc58706d4b73e7314ed83625d3b234d640f1247133bfbee778df6dae",
+          "semantic_audit_sha256": "0776b084db9647332a160564da5490ea6ee5d2510bcf00aceed57926163c560d",
+          "time": 0.5250717657631933,
+          "initial_dump_index": 0,
+          "final_dump_index": 4,
+          "recorded_dump_times": {
+            "0": 0.0,
+            "1": 0.1312500000000001,
+            "2": 0.2624999999999999,
+            "3": 0.3937499999999971,
+            "4": 0.5250717657631933
+          },
+          "status_state": "complete",
+          "solver_steps": 420,
+          "observed_maximum_dt": 0.00125,
+          "stat_sha256": "ee87f9a1ab3831c55ea6db92c966c543ae1a9cf36e75b3d9c9dc18c8ad850d23",
+          "semantic_gate_summary": {
+            "audited_dumps": 5,
+            "maximum_initial_mass_relative_error": 2.7925460555488357e-14,
+            "maximum_runtime_mass_relative_error_after_start": 2.7925460555488357e-14,
+            "maximum_runtime_vof_mass_relative_error_after_start": 2.708774881655278e-14,
+            "maximum_embedded_volume_flux_divergence_linf_after_start": 1.0158540675320182e-14,
+            "initial_loaded_momentum_absolute_error": 4.343818997730976e-18,
+            "maximum_liquid_regular_speed": 0.03127724810339443,
+            "maximum_all_cell_speed": 0.10080168098461238
+          }
+        },
+        "bilinear_centroid": {
+          "status_sha256": "b7b3657768433f3a24d3a5f4084d2edc74b63cb73eeba467080a83b712fc503c",
+          "semantic_audit_sha256": "baaf41b99cfa59f8d7e51048ea7982606b450c859e74d46f3809db462a9bad84",
+          "time": 0.5250717657631933,
+          "initial_dump_index": 0,
+          "final_dump_index": 4,
+          "recorded_dump_times": {
+            "0": 0.0,
+            "1": 0.1312500000000001,
+            "2": 0.2624999999999999,
+            "3": 0.3937499999999971,
+            "4": 0.5250717657631933
+          },
+          "status_state": "complete",
+          "solver_steps": 420,
+          "observed_maximum_dt": 0.00125,
+          "stat_sha256": "1658f839ee42ca28269a1b3a3fa2e15b72024b5fcbaa61648f57930c42be37d0",
+          "semantic_gate_summary": {
+            "audited_dumps": 5,
+            "maximum_initial_mass_relative_error": 1.6022805236755614e-14,
+            "maximum_runtime_mass_relative_error_after_start": 1.6022805236755614e-14,
+            "maximum_runtime_vof_mass_relative_error_after_start": 1.554215096031717e-14,
+            "maximum_embedded_volume_flux_divergence_linf_after_start": 1.176836406102666e-14,
+            "initial_loaded_momentum_absolute_error": 7.572005419330121e-18,
+            "maximum_liquid_regular_speed": 0.03187068214883084,
+            "maximum_all_cell_speed": 0.09839877692738863
+          }
+        },
+        "exact_initial_means": {
+          "status_sha256": "d03f3bb8580c25973f96e6fc0e766ba55ea582bd93ea782b482f66d870a57251",
+          "semantic_audit_sha256": "e2267ec865ba22e3416d3cb24e2e351a8aa3e181d1259ae957c4c5133265d079",
+          "time": 0.5250717657631933,
+          "initial_dump_index": 0,
+          "final_dump_index": 4,
+          "recorded_dump_times": {
+            "0": 0.0,
+            "1": 0.1312500000000001,
+            "2": 0.2624999999999999,
+            "3": 0.3937499999999971,
+            "4": 0.5250717657631933
+          },
+          "status_state": "complete",
+          "solver_steps": 420,
+          "observed_maximum_dt": 0.00125,
+          "stat_sha256": "14843868d91a004723f1bc4be42e0b02ac7137fb4ac982fb28be6ca0f26e045b",
+          "semantic_gate_summary": {
+            "audited_dumps": 5,
+            "maximum_initial_mass_relative_error": 3.467792847669251e-14,
+            "maximum_runtime_mass_relative_error_after_start": 3.467792847669251e-14,
+            "maximum_runtime_vof_mass_relative_error_after_start": 3.352663992868418e-14,
+            "maximum_embedded_volume_flux_divergence_linf_after_start": 1.1213252548714081e-14,
+            "initial_loaded_momentum_absolute_error": 3.5835510441148264e-17,
+            "maximum_liquid_regular_speed": 0.03185482454868499,
+            "maximum_all_cell_speed": 0.098635017672193
+          }
+        }
+      },
+      "comparisons": {
+        "t0": {
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.004699578381244488,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0010898362004020724,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          }
+        },
+        "final": {
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.04549385974919033,
+            "vof_relative_l2": 0.00018489455484806117,
+            "column_depth_relative_l2": 4.7469070285264814e-05,
+            "column_depth_wave_relative_l2": 0.004679914637468774,
+            "reference_mean_column_depth": 0.9700624900000336,
+            "reference_mode16_column_depth_real": 0.013898389043639794,
+            "reference_mode16_column_depth_imag": 0.0006827839322109603,
+            "reference_mode16_column_depth_amplitude": 0.013915150444980899,
+            "column_depth_max_absolute": 8.642550853943387e-05,
+            "mass_difference_relative": 6.752467921203918e-15
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.00446877208749557,
+            "vof_relative_l2": 2.5077000912146132e-05,
+            "column_depth_relative_l2": 6.438693595486477e-06,
+            "column_depth_wave_relative_l2": 0.0006347825272880319,
+            "reference_mean_column_depth": 0.9700624900000336,
+            "reference_mode16_column_depth_real": 0.013898389043639794,
+            "reference_mode16_column_depth_imag": 0.0006827839322109603,
+            "reference_mode16_column_depth_amplitude": 0.013915150444980899,
+            "column_depth_max_absolute": 9.680951428947537e-06,
+            "mass_difference_relative": 1.876957184877021e-14
+          }
+        }
+      },
+      "time_series": [
+        {
+          "time": 0.0,
+          "dump_index": 0,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.004699578381244488,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0010898362004020724,
+            "vof_relative_l2": 0.0,
+            "column_depth_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.0,
+            "reference_mode16_column_depth_imag": 0.0,
+            "reference_mode16_column_depth_amplitude": 0.0,
+            "column_depth_max_absolute": 0.0,
+            "mass_difference_relative": 0.0
+          }
+        },
+        {
+          "time": 0.1312500000000001,
+          "dump_index": 1,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.022150631321359457,
+            "vof_relative_l2": 2.017769433203431e-05,
+            "column_depth_relative_l2": 5.194371574800906e-06,
+            "column_depth_wave_relative_l2": 0.0019152495670973848,
+            "reference_mean_column_depth": 0.9700624900000001,
+            "reference_mode16_column_depth_real": 0.003716198618653297,
+            "reference_mode16_column_depth_imag": 0.00018256512022745978,
+            "reference_mode16_column_depth_amplitude": 0.0037206803405297182,
+            "column_depth_max_absolute": 7.450735839964473e-06,
+            "mass_difference_relative": 0.0
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0022601701480772576,
+            "vof_relative_l2": 4.552481394431554e-06,
+            "column_depth_relative_l2": 1.1719515401957878e-06,
+            "column_depth_wave_relative_l2": 0.00043211765806436893,
+            "reference_mean_column_depth": 0.9700624900000001,
+            "reference_mode16_column_depth_real": 0.003716198618653297,
+            "reference_mode16_column_depth_imag": 0.00018256512022745978,
+            "reference_mode16_column_depth_amplitude": 0.0037206803405297182,
+            "column_depth_max_absolute": 1.300988785368773e-06,
+            "mass_difference_relative": 1.144486088339687e-16
+          }
+        },
+        {
+          "time": 0.2624999999999999,
+          "dump_index": 2,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.03036283312776288,
+            "vof_relative_l2": 6.505576646587046e-05,
+            "column_depth_relative_l2": 1.673059838627489e-05,
+            "column_depth_wave_relative_l2": 0.0031289117850987536,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.00732672783840246,
+            "reference_mode16_column_depth_imag": 0.00035993901685667674,
+            "reference_mode16_column_depth_amplitude": 0.007335563844305177,
+            "column_depth_max_absolute": 2.6436045486355475e-05,
+            "mass_difference_relative": 1.144486088339687e-16
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.0030249080910931493,
+            "vof_relative_l2": 1.0878623841229334e-05,
+            "column_depth_relative_l2": 2.797690295118239e-06,
+            "column_depth_wave_relative_l2": 0.0005232165600623749,
+            "reference_mean_column_depth": 0.97006249,
+            "reference_mode16_column_depth_real": 0.00732672783840246,
+            "reference_mode16_column_depth_imag": 0.00035993901685667674,
+            "reference_mode16_column_depth_amplitude": 0.007335563844305177,
+            "column_depth_max_absolute": 3.3657787884555646e-06,
+            "mass_difference_relative": 1.144486088339687e-16
+          }
+        },
+        {
+          "time": 0.3937499999999971,
+          "dump_index": 3,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.03765408523527404,
+            "vof_relative_l2": 0.00012319862239953985,
+            "column_depth_relative_l2": 3.1655029975052504e-05,
+            "column_depth_wave_relative_l2": 0.00403560801113223,
+            "reference_mean_column_depth": 0.9700624900000336,
+            "reference_mode16_column_depth_real": 0.010747966010881717,
+            "reference_mode16_column_depth_imag": 0.0005280136263095161,
+            "reference_mode16_column_depth_amplitude": 0.010760928015772485,
+            "column_depth_max_absolute": 5.3669773948938904e-05,
+            "mass_difference_relative": 6.752467921203918e-15
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.003716741372228853,
+            "vof_relative_l2": 1.798003481464253e-05,
+            "column_depth_relative_l2": 4.619965373445984e-06,
+            "column_depth_wave_relative_l2": 0.000588985993282137,
+            "reference_mean_column_depth": 0.9700624900000336,
+            "reference_mode16_column_depth_real": 0.010747966010881717,
+            "reference_mode16_column_depth_imag": 0.0005280136263095161,
+            "reference_mode16_column_depth_amplitude": 0.010760928015772485,
+            "column_depth_max_absolute": 6.335867673734619e-06,
+            "mass_difference_relative": 1.8655123239936248e-14
+          }
+        },
+        {
+          "time": 0.5250717657631933,
+          "dump_index": 4,
+          "fitted": {
+            "global_liquid_velocity_relative_l2": 0.04549385974919033,
+            "vof_relative_l2": 0.00018489455484806117,
+            "column_depth_relative_l2": 4.7469070285264814e-05,
+            "column_depth_wave_relative_l2": 0.004679914637468774,
+            "reference_mean_column_depth": 0.9700624900000336,
+            "reference_mode16_column_depth_real": 0.013898389043639794,
+            "reference_mode16_column_depth_imag": 0.0006827839322109603,
+            "reference_mode16_column_depth_amplitude": 0.013915150444980899,
+            "column_depth_max_absolute": 8.642550853943387e-05,
+            "mass_difference_relative": 6.752467921203918e-15
+          },
+          "bilinear_centroid": {
+            "global_liquid_velocity_relative_l2": 0.00446877208749557,
+            "vof_relative_l2": 2.5077000912146132e-05,
+            "column_depth_relative_l2": 6.438693595486477e-06,
+            "column_depth_wave_relative_l2": 0.0006347825272880319,
+            "reference_mean_column_depth": 0.9700624900000336,
+            "reference_mode16_column_depth_real": 0.013898389043639794,
+            "reference_mode16_column_depth_imag": 0.0006827839322109603,
+            "reference_mode16_column_depth_amplitude": 0.013915150444980899,
+            "column_depth_max_absolute": 9.680951428947537e-06,
+            "mass_difference_relative": 1.876957184877021e-14
+          }
+        }
+      ]
+    }
+  },
+  "code_sha256": "4365470eb294ad4d69b5a25ed519bf8458569470d74d216cef47e43e3175825e",
+  "time_step_sensitivity": {
+    "fitted": {
+      "global_liquid_velocity_relative_l2": 0.01608823749103571,
+      "vof_relative_l2": 9.716856563501212e-05,
+      "column_depth_relative_l2": 2.4950805623003977e-05,
+      "column_depth_wave_relative_l2": 0.002454838292257777,
+      "reference_mean_column_depth": 0.9700624900000272,
+      "reference_mode16_column_depth_real": 0.013927022673575293,
+      "reference_mode16_column_depth_imag": 0.0006841907528825691,
+      "reference_mode16_column_depth_amplitude": 0.013943818613873688,
+      "column_depth_max_absolute": 4.5888763769763585e-05,
+      "mass_difference_relative": 5.20741170194543e-14
+    },
+    "bilinear_centroid": {
+      "global_liquid_velocity_relative_l2": 0.02087328169352487,
+      "vof_relative_l2": 0.00014371668290213459,
+      "column_depth_relative_l2": 3.690251824092261e-05,
+      "column_depth_wave_relative_l2": 0.0036398941428947367,
+      "reference_mean_column_depth": 0.9700624900000155,
+      "reference_mode16_column_depth_real": 0.013891783682675567,
+      "reference_mode16_column_depth_imag": 0.0006824595655190602,
+      "reference_mode16_column_depth_amplitude": 0.013908537124544033,
+      "column_depth_max_absolute": 5.2325192247848484e-05,
+      "mass_difference_relative": 1.5908356627921392e-14
+    },
+    "exact_initial_means": {
+      "global_liquid_velocity_relative_l2": 0.020424111444037007,
+      "vof_relative_l2": 0.00013930061056082374,
+      "column_depth_relative_l2": 3.576858123510615e-05,
+      "column_depth_wave_relative_l2": 0.0035263784581773456,
+      "reference_mean_column_depth": 0.9700624900000336,
+      "reference_mode16_column_depth_real": 0.013898389043639794,
+      "reference_mode16_column_depth_imag": 0.0006827839322109603,
+      "reference_mode16_column_depth_amplitude": 0.013915150444980899,
+      "column_depth_max_absolute": 5.1754738358278374e-05,
+      "mass_difference_relative": 3.4792377085525274e-14
+    }
+  },
+  "cross_time_reference": {
+    "description": "full-step candidate endpoint versus half-step exact-initial-input numerical reference; shared time-discretisation error is retained",
+    "fitted": {
+      "global_liquid_velocity_relative_l2": 0.053986401141835234,
+      "vof_relative_l2": 0.00027179482669111385,
+      "column_depth_relative_l2": 6.978407878380257e-05,
+      "column_depth_wave_relative_l2": 0.006879922648579211,
+      "reference_mean_column_depth": 0.9700624900000336,
+      "reference_mode16_column_depth_real": 0.013898389043639794,
+      "reference_mode16_column_depth_imag": 0.0006827839322109603,
+      "reference_mode16_column_depth_amplitude": 0.013915150444980899,
+      "column_depth_max_absolute": 0.00013231426933690837,
+      "mass_difference_relative": 4.532164909825003e-14
+    },
+    "bilinear_centroid": {
+      "global_liquid_velocity_relative_l2": 0.019380256675593562,
+      "vof_relative_l2": 0.00012066865794479056,
+      "column_depth_relative_l2": 3.098453218904647e-05,
+      "column_depth_wave_relative_l2": 0.003054725210652649,
+      "reference_mean_column_depth": 0.9700624900000336,
+      "reference_mode16_column_depth_real": 0.013898389043639794,
+      "reference_mode16_column_depth_imag": 0.0006827839322109603,
+      "reference_mode16_column_depth_amplitude": 0.013915150444980899,
+      "column_depth_max_absolute": 4.264445254076321e-05,
+      "mass_difference_relative": 3.467792847669131e-14
+    }
+  }
+}

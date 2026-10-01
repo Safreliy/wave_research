@@ -1,0 +1,65 @@
+{
+  "schema": "flat-harmonic-sliver-transfer-v1",
+  "reference": "closed-form liquid-volume means for harmonic velocity",
+  "baseline": "same solved streamfunction and q; arithmetic cell velocity from adjacent MAC faces",
+  "centroid_oracle": "exact harmonic velocity evaluated at each liquid-volume centroid; point-sampling lower-error control, no BIE quadrature or native projection",
+  "rows": [
+    {
+      "nx": 256,
+      "surface_liquid_fraction": 0.001,
+      "geometry_factor": 64,
+      "cut_cell_count": 512,
+      "fitted_relative_l2_all": 0.003716241442869386,
+      "baseline_relative_l2_all": 0.02032335203233435,
+      "fitted_relative_l2_cut": 0.00875332607327533,
+      "baseline_relative_l2_cut": 0.04796921286071812,
+      "centroid_oracle_relative_l2_all": 0.00016536127501984922,
+      "centroid_oracle_relative_l2_cut": 0.0003906893116570835,
+      "fitted_relative_l2_cut_q_weighted": 0.0018633204748859456,
+      "momentum": [
+        -1.4187145415975409e-16,
+        -3.4752067759949434e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -2.964688223307337e-15
+      ],
+      "volume_relative_error": 0.0,
+      "arrays": "nx256_q0.001.npz",
+      "arrays_sha256": "ceaf3f8ef7c2f7f81e6c86b2d8182ea45520a55e8f6b7cb848dfeda33f5d8ad6"
+    },
+    {
+      "nx": 512,
+      "surface_liquid_fraction": 0.001,
+      "geometry_factor": 128,
+      "cut_cell_count": 1024,
+      "fitted_relative_l2_all": 0.0002350868859779797,
+      "baseline_relative_l2_all": 0.0074427171136386295,
+      "fitted_relative_l2_cut": 0.0007110401548177154,
+      "baseline_relative_l2_cut": 0.02382531137120062,
+      "centroid_oracle_relative_l2_all": 3.051950075169206e-05,
+      "centroid_oracle_relative_l2_cut": 9.774678520671713e-05,
+      "fitted_relative_l2_cut_q_weighted": 0.0003832780390489853,
+      "momentum": [
+        3.6091396256147934e-16,
+        -1.3898963631495814e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -1.3951473992034527e-15
+      ],
+      "volume_relative_error": 1.123174632101578e-16,
+      "arrays": "nx512_q0.001.npz",
+      "arrays_sha256": "44ec356d360baf7bd60245316dfd59f9292d429fdd0db15bfde086bc7f3f4ae4"
+    }
+  ],
+  "code_sha256": "815d9f3eac14a8eb151a4a26b13f8f6bbd30767e002ef68b5a4f009cfbf083f2",
+  "runtime": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "shapely": "2.1.2"
+  },
+  "trace_multiplier": 4,
+  "curved_geometry_order_claim": false
+}

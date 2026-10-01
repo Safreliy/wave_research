@@ -1,0 +1,79 @@
+{
+  "schema": "flat-native-frozen-raw-endpoint-audit-v1",
+  "archive_sha256": "c8a484a279d4b0cd328ea187a0d651eaccc9b1dc277427da0b54c40651ce7ac8",
+  "code_sha256": "8433c4d6a6db398ea5868264e27e0a57ef7532a5f4ce67bc43c94973d66f8f83",
+  "relative_tolerance": 2e-12,
+  "all_passed": true,
+  "comparisons": [
+    {
+      "case": "flat_native_L9",
+      "branch": "fitted",
+      "computed_from_raw": 0.039883516227837715,
+      "recorded_in_analysis": 0.039883516227837715,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L9",
+      "branch": "bilinear_centroid",
+      "computed_from_raw": 0.013860926461719098,
+      "recorded_in_analysis": 0.013860926461719098,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L10",
+      "branch": "fitted",
+      "computed_from_raw": 0.04339533410054209,
+      "recorded_in_analysis": 0.04339533410054209,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L10",
+      "branch": "bilinear_centroid",
+      "computed_from_raw": 0.0042597032615346074,
+      "recorded_in_analysis": 0.0042597032615346074,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L9_trace4",
+      "branch": "fitted",
+      "computed_from_raw": 0.02921060963789478,
+      "recorded_in_analysis": 0.02921060963789478,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L9_trace4",
+      "branch": "bilinear_centroid",
+      "computed_from_raw": 0.013860926581447053,
+      "recorded_in_analysis": 0.013860926581447053,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L10_trace4",
+      "branch": "fitted",
+      "computed_from_raw": 0.0015344773286562632,
+      "recorded_in_analysis": 0.0015344773286562632,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L10_trace4",
+      "branch": "bilinear_centroid",
+      "computed_from_raw": 0.00425970326171504,
+      "recorded_in_analysis": 0.00425970326171504,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L11_resolved",
+      "branch": "fitted",
+      "computed_from_raw": 0.0005081781229137629,
+      "recorded_in_analysis": 0.0005081781229137629,
+      "relative_difference": 0.0
+    },
+    {
+      "case": "flat_native_L11_resolved",
+      "branch": "bilinear_centroid",
+      "computed_from_raw": 0.0017489016645195448,
+      "recorded_in_analysis": 0.0017489016645195448,
+      "relative_difference": 0.0
+    }
+  ]
+}

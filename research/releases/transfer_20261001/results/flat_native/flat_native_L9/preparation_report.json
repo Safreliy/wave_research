@@ -1,0 +1,304 @@
+{
+  "schema": "flat-harmonic-native-preparation-v1",
+  "protocol_sha256": "4373d871b766066916779a47fb6cdb7497f2149f95597d7b23fd6e84a30ce94d",
+  "source_sha256": "daeab6c81e0a86af2a7787c3e40070455f4efc68bce9887529d17b7474c9111b",
+  "trace_report": {
+    "flux_preflight": {
+      "checks": [
+        {
+          "factor": 4,
+          "net_flux": -6.906367838732663e-17,
+          "relative_flux_imbalance": 5.934644168760716e-17,
+          "pass": true
+        },
+        {
+          "factor": 8,
+          "net_flux": -7.665309359472516e-17,
+          "relative_flux_imbalance": 6.58581080829161e-17,
+          "pass": true
+        },
+        {
+          "factor": 16,
+          "net_flux": -7.28583859910259e-17,
+          "relative_flux_imbalance": 6.259544886401942e-17,
+          "pass": true
+        }
+      ],
+      "pass": true,
+      "meaning": "Necessary boundary compatibility, not full source qualification"
+    },
+    "removed_psi_derivative_mean": 1.2779447433664508e-17,
+    "momentum_target": [
+      0.0,
+      -5.0623481984036415e-17
+    ],
+    "momentum_trace_defect": 5.0623481984036415e-17,
+    "source_nodes": 512,
+    "geometry_factor": 8
+  },
+  "transfer_report": {
+    "backend": "numpy",
+    "iterations_or_restart_callbacks": 8,
+    "info": 0,
+    "relative_residual": 1.2587278342194322e-12,
+    "solve_seconds": 0.0007763000321574509,
+    "unknowns": 4096,
+    "nnz": 19456,
+    "assembly_seconds": 0.03532889997586608,
+    "geometry": {
+      "exact_clipped_polygon_area": 62.08399935999999,
+      "represented_polygon_area": 62.08399936,
+      "relative_polygon_quadrature_error": 1.144486088339687e-16,
+      "exact_boundary_cell_count": 3087
+    },
+    "continuation": "normal Taylor only at exterior liquid-cell corners",
+    "continuation_order": 2,
+    "continuation_vertices": 1024,
+    "continuation_max_distance": 0.12493749999999992,
+    "gas": {
+      "backend": "numpy",
+      "iterations": 27,
+      "fixed_change_linf": 0.0,
+      "relative_residual": 2.147865565780857e-12,
+      "fixed_vertices": 7168,
+      "gas_vertices": 9728,
+      "top_closure": "periodic half-space DtN; not a solver pressure boundary"
+    },
+    "liquid_support_bitwise_preserved": true,
+    "liquid_divergence_linf": 3.469446951953614e-17,
+    "maximum_liquid_speed": 0.028669732218009655,
+    "volume": 62.08399936,
+    "target_volume": 62.08399936000001,
+    "surface_geometry_shift": 0.0,
+    "relative_volume_error": 1.1444860883396867e-16,
+    "momentum": [
+      2.23955511254037e-18,
+      -1.3290476338012006e-19
+    ],
+    "full_l12_qualified": false,
+    "cutcell_moments": {
+      "schema": "boundary-fitted-hermite-liquid-moments-v2",
+      "mixed_cells": 1024,
+      "polygon_trace_momentum": [
+        3.097048916693261e-17,
+        0.0
+      ],
+      "momentum": [
+        2.23955511254037e-18,
+        -1.3290476338012006e-19
+      ],
+      "trace_closure_absolute": 2.873124145097049e-17,
+      "max_mixed_cell_velocity_change": 0.010510383101239425,
+      "global_rescale_applied": false
+    }
+  },
+  "runtime": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "shapely": "2.1.2"
+  },
+  "branches": {
+    "fitted": {
+      "preflight": {
+        "schema": "aphros-initial-preflight-v3",
+        "audited_utc": "2026-10-01T06:21:42.576163+00:00",
+        "valid": true,
+        "violations": [],
+        "nx": 512,
+        "ny": 32,
+        "expected_cells": 16384,
+        "expected_field_bytes": 131072,
+        "cell_size": 0.125,
+        "target_physical_liquid_volume": 62.08399936,
+        "aperture_liquid_volume": 62.08399936,
+        "normalized_embedded_liquid_volume": 62.08399936,
+        "aperture_relative_mass_error": 0.0,
+        "normalized_relative_mass_error": 0.0,
+        "maximum_abs_q_minus_vf_cs": 0.0,
+        "liquid_momentum": [
+          2.23955511254037e-18,
+          -1.3290476338012006e-19
+        ],
+        "target_liquid_momentum": [
+          0.0,
+          0.0
+        ],
+        "relative_liquid_momentum_error": 1.0082789863759418e+290,
+        "absolute_liquid_momentum_error": 2.2434952146672467e-18,
+        "maximum_speed_all_fluid_cells": 0.03209317134799082,
+        "maximum_speed_liquid_regular_cells": 0.028669732218009655,
+        "normal_velocity_divergence_l2": 3.3881453415172523e-18,
+        "normal_velocity_divergence_linf": 5.551115123125783e-17,
+        "shared_x_face_mismatch_linf": 0.0,
+        "shared_y_face_mismatch_linf": 0.0,
+        "finite_fields": {
+          "q": true,
+          "vf": true,
+          "cs": true,
+          "vx": true,
+          "vy": true,
+          "fluxx": true,
+          "fluxxp": true,
+          "fluxy": true,
+          "fluxyp": true,
+          "fluxeb": true
+        },
+        "semantics": {
+          "initial": "q.raw is aperture q=f*cs; init_vf_is_aperture=1",
+          "initial_flux": "raw Cartesian face fields are normal velocities; flux_init_raw_is_velocity=1 converts with Aphros EB areas",
+          "restart": "checkpoint vf.raw is normalized f; init_vf_is_aperture=0"
+        }
+      },
+      "input_hashes": {
+        "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+        "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+        "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+        "fluxx.raw": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+        "fluxxp.raw": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+        "fluxy.raw": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+        "fluxyp.raw": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+        "initial_state.json": "946b3d8bbfdea105cc58a7dbe6755ab88133658ee36f087578405cd0a50c8c0f",
+        "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+        "vx.raw": "a171d49522eb848b3be4fa739d4f1e798338047cb1160d2a894d03863cacfc45",
+        "vy.raw": "68e8c5cd4accfd752fe461d0ab538da01a8708bb5a56bb2421d50bec6f60624c"
+      },
+      "initial_global_liquid_velocity_error_against_exact_harmonic": 0.002987119846678915
+    },
+    "bilinear_centroid": {
+      "preflight": {
+        "schema": "aphros-initial-preflight-v3",
+        "audited_utc": "2026-10-01T06:21:42.607793+00:00",
+        "valid": true,
+        "violations": [],
+        "nx": 512,
+        "ny": 32,
+        "expected_cells": 16384,
+        "expected_field_bytes": 131072,
+        "cell_size": 0.125,
+        "target_physical_liquid_volume": 62.08399936,
+        "aperture_liquid_volume": 62.08399936,
+        "normalized_embedded_liquid_volume": 62.08399936,
+        "aperture_relative_mass_error": 0.0,
+        "normalized_relative_mass_error": 0.0,
+        "maximum_abs_q_minus_vf_cs": 0.0,
+        "liquid_momentum": [
+          -9.70040660041346e-18,
+          -1.1759861332543884e-19
+        ],
+        "target_liquid_momentum": [
+          0.0,
+          0.0
+        ],
+        "relative_liquid_momentum_error": 4.359908937255817e+290,
+        "absolute_liquid_momentum_error": 9.701119401759833e-18,
+        "maximum_speed_all_fluid_cells": 0.03400422088227295,
+        "maximum_speed_liquid_regular_cells": 0.028579616872528267,
+        "normal_velocity_divergence_l2": 3.3881453415172523e-18,
+        "normal_velocity_divergence_linf": 5.551115123125783e-17,
+        "shared_x_face_mismatch_linf": 0.0,
+        "shared_y_face_mismatch_linf": 0.0,
+        "finite_fields": {
+          "q": true,
+          "vf": true,
+          "cs": true,
+          "vx": true,
+          "vy": true,
+          "fluxx": true,
+          "fluxxp": true,
+          "fluxy": true,
+          "fluxyp": true,
+          "fluxeb": true
+        },
+        "semantics": {
+          "initial": "q.raw is aperture q=f*cs; init_vf_is_aperture=1",
+          "initial_flux": "raw Cartesian face fields are normal velocities; flux_init_raw_is_velocity=1 converts with Aphros EB areas",
+          "restart": "checkpoint vf.raw is normalized f; init_vf_is_aperture=0"
+        }
+      },
+      "input_hashes": {
+        "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+        "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+        "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+        "fluxx.raw": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+        "fluxxp.raw": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+        "fluxy.raw": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+        "fluxyp.raw": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+        "initial_state.json": "86ca2b1553a945713ac78e746a00cb6e0dde720eec43adb4b7580cfab7d77ced",
+        "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+        "vx.raw": "9ed0d0c2c5bf7ab27cb456713d2eb93c30655307d07ff9fe08520896b0708f37",
+        "vy.raw": "50809abccf76c63efa6463f389bdb392a22675e66874d44bdfefaf5eff772369"
+      },
+      "initial_global_liquid_velocity_error_against_exact_harmonic": 0.004086890762306497
+    },
+    "exact_initial_means": {
+      "preflight": {
+        "schema": "aphros-initial-preflight-v3",
+        "audited_utc": "2026-10-01T06:21:42.638228+00:00",
+        "valid": true,
+        "violations": [],
+        "nx": 512,
+        "ny": 32,
+        "expected_cells": 16384,
+        "expected_field_bytes": 131072,
+        "cell_size": 0.125,
+        "target_physical_liquid_volume": 62.08399936,
+        "aperture_liquid_volume": 62.08399936,
+        "normalized_embedded_liquid_volume": 62.08399936,
+        "aperture_relative_mass_error": 0.0,
+        "normalized_relative_mass_error": 0.0,
+        "maximum_abs_q_minus_vf_cs": 0.0,
+        "liquid_momentum": [
+          -2.5986530761676056e-17,
+          -4.665797610144568e-17
+        ],
+        "target_liquid_momentum": [
+          0.0,
+          0.0
+        ],
+        "relative_liquid_momentum_error": 2.4002176239791692e+291,
+        "absolute_liquid_momentum_error": 5.340661489844317e-17,
+        "maximum_speed_all_fluid_cells": 0.03209317134799082,
+        "maximum_speed_liquid_regular_cells": 0.028727172281690215,
+        "normal_velocity_divergence_l2": 3.3881453415172523e-18,
+        "normal_velocity_divergence_linf": 5.551115123125783e-17,
+        "shared_x_face_mismatch_linf": 0.0,
+        "shared_y_face_mismatch_linf": 0.0,
+        "finite_fields": {
+          "q": true,
+          "vf": true,
+          "cs": true,
+          "vx": true,
+          "vy": true,
+          "fluxx": true,
+          "fluxxp": true,
+          "fluxy": true,
+          "fluxyp": true,
+          "fluxeb": true
+        },
+        "semantics": {
+          "initial": "q.raw is aperture q=f*cs; init_vf_is_aperture=1",
+          "initial_flux": "raw Cartesian face fields are normal velocities; flux_init_raw_is_velocity=1 converts with Aphros EB areas",
+          "restart": "checkpoint vf.raw is normalized f; init_vf_is_aperture=0"
+        }
+      },
+      "input_hashes": {
+        "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+        "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+        "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+        "fluxx.raw": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+        "fluxxp.raw": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+        "fluxy.raw": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+        "fluxyp.raw": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+        "initial_state.json": "8117c6f4cb9af92060df26cd43edbea8c3b87d76217b2b61b3d16f5a1849e578",
+        "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+        "vx.raw": "65940a8e9dc01af89b5177791c83925b0b70faeccdc892d444b2630369190a07",
+        "vy.raw": "edb2ee744baa8a48bec8bd7a805f4016647b378a8064fe7e9bbc7925250e9b1f"
+      },
+      "initial_global_liquid_velocity_error_against_exact_harmonic": 0.0
+    }
+  }
+}

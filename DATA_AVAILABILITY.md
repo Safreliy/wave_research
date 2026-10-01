@@ -1,5 +1,16 @@
 # Data availability
 
+For the 1 October 2026 flat-strip transfer article in
+`manuscript/transfer_article.tex`, use
+[`research/releases/transfer_20261001/README.md`](research/releases/transfer_20261001/README.md)
+and its explicit `SHA256SUMS.json`. The material below the next heading
+describes the earlier variable-bathymetry study. The new curated
+release includes selected raw native fields and independent endpoint audits,
+while a clean third-party GPU solver replay remains to be performed. No DOI
+has been minted.
+
+## Earlier variable-bathymetry data
+
 This repository keeps the publication package small enough for ordinary Git
 while preserving the evidence needed to audit every numerical statement in
 the manuscript.

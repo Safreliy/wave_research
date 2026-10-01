@@ -1,0 +1,32 @@
+zero 2D axis 0 vol=-nan volstr=-nan flux=-nan fluxstr=-nan pass=0
+zero 2D axis 0.0005 vol=-nan volstr=-nan flux=-nan fluxstr=-nan pass=0
+nonzero 2D axis 0.0005 -0.0001 fluxbits=bf1a36e2eb1c432e fluxstrbits=bf1a36e2eb1c432e
+nonzero 2D axis 0.0005 0.0001 fluxbits=0 fluxstrbits=0
+zero 2D axis 0.5 vol=-nan volstr=-nan flux=-nan fluxstr=-nan pass=0
+nonzero 2D axis 0.5 -0.0001 fluxbits=bf1a36e2eb1c432e fluxstrbits=bf1a36e2eb1c432e
+nonzero 2D axis 0.5 0.0001 fluxbits=0 fluxstrbits=0
+zero 2D axis 1 vol=-nan volstr=-nan flux=-nan fluxstr=-nan pass=0
+zero 2D oblique 0 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+zero 2D oblique 0.0005 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+nonzero 2D oblique 0.0005 -0.0001 fluxbits=becea05b3310aa9a fluxstrbits=becea05b332f691e
+nonzero 2D oblique 0.0005 0.0001 fluxbits=0 fluxstrbits=0
+zero 2D oblique 0.5 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+nonzero 2D oblique 0.5 -0.0001 fluxbits=bf1a36e2eb1c432e fluxstrbits=bf1a36e2eb1c432e
+nonzero 2D oblique 0.5 0.0001 fluxbits=0 fluxstrbits=0
+zero 2D oblique 1 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+zero 3D axis 0 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+zero 3D axis 0.0005 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+nonzero 3D axis 0.0005 -0.0001 fluxbits=bf1a36e2eb1c432e fluxstrbits=bf1a36e2eb1c432e
+nonzero 3D axis 0.0005 0.0001 fluxbits=0 fluxstrbits=0
+zero 3D axis 0.5 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+nonzero 3D axis 0.5 -0.0001 fluxbits=bf1a36e2eb1c432e fluxstrbits=bf1a36e2eb1c432e
+nonzero 3D axis 0.5 0.0001 fluxbits=0 fluxstrbits=0
+zero 3D axis 1 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+zero 3D oblique 0 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+zero 3D oblique 0.0005 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+nonzero 3D oblique 0.0005 -0.0001 fluxbits=becea05b3310aa8f fluxstrbits=becea05b332f6929
+nonzero 3D oblique 0.0005 0.0001 fluxbits=0 fluxstrbits=0
+zero 3D oblique 0.5 vol=0 volstr=0 flux=0 fluxstr=0 pass=1
+nonzero 3D oblique 0.5 -0.0001 fluxbits=bf1a36e2eb1c432e fluxstrbits=bf1a36e2eb1c432e
+nonzero 3D oblique 0.5 0.0001 fluxbits=0 fluxstrbits=0
+zero 3D oblique 1 vol=0 volstr=0 flux=0 fluxstr=0 pass=1

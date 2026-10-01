@@ -1,0 +1,12 @@
+{
+  "source_sha256": "64465b67ad35d7c722df03e9c7d2653848dff46ca32b2b7ab08cfffc03f156aa",
+  "native_archive_sha256": "7bead00818085d9a4cdadf7a87817d13ed61846e74ecef53bbd959a5784ee134",
+  "nonzero_rows": 4,
+  "reduction_percent": [
+    13.012195610138145,
+    9.733337127616249,
+    7.010501278655368,
+    4.910159062512653
+  ],
+  "all_recorded_nonzero_times_favour_matched": true
+}

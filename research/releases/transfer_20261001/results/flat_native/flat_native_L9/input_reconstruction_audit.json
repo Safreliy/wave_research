@@ -1,0 +1,177 @@
+{
+  "schema": "flat-original-input-reconstruction-v1",
+  "claim_limit": "Current compatible preparation workflow reproduces all 33 numerical raw/body inputs byte-for-byte; refined workflows deliberately copy frozen exact-reference/common arrays. Executed earlier builder source snapshots are unavailable.",
+  "original_protocol_sha256": "4373d871b766066916779a47fb6cdb7497f2149f95597d7b23fd6e84a30ce94d",
+  "executed_original_builder_sha256_recorded_in_protocol": "0aed277bbe7b9fe0ea6ad1f5539b48a75c5277d43bbe1894a1339cdcc8b56b6f",
+  "current_builder_sha256": "ce067f63430ce20c87ac7339f8d9e96e4d7eeccf855ef0639a82083e583e1515",
+  "current_builder_source_same_as_executed_original": false,
+  "workflow_copied_frozen_reference_file_count": 0,
+  "workflow_newly_computed_file_count": 33,
+  "matching_inputs": [
+    {
+      "path": "bilinear_centroid/body.dat",
+      "sha256": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/cs.raw",
+      "sha256": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/fluxeb.raw",
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/fluxx.raw",
+      "sha256": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/fluxxp.raw",
+      "sha256": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/fluxy.raw",
+      "sha256": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/fluxyp.raw",
+      "sha256": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/q.raw",
+      "sha256": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/vf.raw",
+      "sha256": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/vx.raw",
+      "sha256": "9ed0d0c2c5bf7ab27cb456713d2eb93c30655307d07ff9fe08520896b0708f37",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "bilinear_centroid/vy.raw",
+      "sha256": "50809abccf76c63efa6463f389bdb392a22675e66874d44bdfefaf5eff772369",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/body.dat",
+      "sha256": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/cs.raw",
+      "sha256": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/fluxeb.raw",
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/fluxx.raw",
+      "sha256": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/fluxxp.raw",
+      "sha256": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/fluxy.raw",
+      "sha256": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/fluxyp.raw",
+      "sha256": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/q.raw",
+      "sha256": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/vf.raw",
+      "sha256": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/vx.raw",
+      "sha256": "65940a8e9dc01af89b5177791c83925b0b70faeccdc892d444b2630369190a07",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "exact_initial_means/vy.raw",
+      "sha256": "edb2ee744baa8a48bec8bd7a805f4016647b378a8064fe7e9bbc7925250e9b1f",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/body.dat",
+      "sha256": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/cs.raw",
+      "sha256": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/fluxeb.raw",
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/fluxx.raw",
+      "sha256": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/fluxxp.raw",
+      "sha256": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/fluxy.raw",
+      "sha256": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/fluxyp.raw",
+      "sha256": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/q.raw",
+      "sha256": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/vf.raw",
+      "sha256": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/vx.raw",
+      "sha256": "a171d49522eb848b3be4fa739d4f1e798338047cb1160d2a894d03863cacfc45",
+      "workflow_origin": "newly_computed"
+    },
+    {
+      "path": "fitted/vy.raw",
+      "sha256": "68e8c5cd4accfd752fe461d0ab538da01a8708bb5a56bb2421d50bec6f60624c",
+      "workflow_origin": "newly_computed"
+    }
+  ]
+}

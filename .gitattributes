@@ -13,3 +13,8 @@
 *.pdf binary
 *.png binary
 *.npz binary
+
+# Keep frozen research evidence byte-identical to SHA256SUMS.json on every OS.
+research/releases/transfer_20261001/** -text
+# This is an inspected upstream snapshot; preserve its original whitespace.
+research/releases/transfer_20261001/native_source_provenance/source_worktree_patch.diff whitespace=-trailing-space

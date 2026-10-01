@@ -1,16 +1,15 @@
 cff-version: 1.2.0
 message: >-
-  If you use this software or evidence package, please cite the accompanying
-  manuscript and the tagged version of this repository.
+  If you use the 2026-10-01 transfer study, cite this repository at the
+  specific commit used and its accompanying manuscript. A DOI is not yet assigned.
 title: >-
-  Conservative divergence-conforming state transfer from adaptive
-  potential-flow BIE to embedded VOF: overturning waves over variable
-  bathymetry
+  Geometry-consistent conservative transfer of potential-flow states
+  to an embedded-boundary volume-of-fluid solver
 type: software
 repository-code: "https://github.com/Safreliy/wave_research"
-license: MIT
 authors:
   - family-names: Baturin
     given-names: Saveliy
-version: "0.29.0"
-date-released: 2026-08-31
+    orcid: "https://orcid.org/0009-0005-4410-9520"
+version: "0.31.0"
+date-released: 2026-10-01

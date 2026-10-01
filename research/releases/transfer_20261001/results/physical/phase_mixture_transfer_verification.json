@@ -1,0 +1,21 @@
+{
+  "schema": "phase-mixture-transfer-verification-v1",
+  "helper_sha256": "66189a228ac66afa8be310afd9975f42eb9cc3d172625de779b5e6b0913a9c3d",
+  "tests": {
+    "random_cellwise_and_global_momentum_identity": "passed",
+    "full_liquid_gas_solid_and_cut_cell": "passed",
+    "inactive_nan_allowed_and_active_nan_rejected": "passed",
+    "invalid_fraction_density_shape_rejected": "passed"
+  },
+  "frozen_input_archive_sha256": "65631c5876c1b02cba090d71d181702e9cb48579b686b439ed38d49c05d8403e",
+  "frozen_regression": {
+    "A_mass": {
+      "max_absolute_velocity_difference": 6.776263578034403e-21,
+      "mixed_cells": 512
+    },
+    "Ahalf_mass": {
+      "max_absolute_velocity_difference": 3.3881317890172014e-21,
+      "mixed_cells": 512
+    }
+  }
+}

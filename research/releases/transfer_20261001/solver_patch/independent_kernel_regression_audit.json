@@ -1,0 +1,7 @@
+{
+  "zero_cases": 16,
+  "baseline_zero_failures": 4,
+  "guarded_zero_passes": 16,
+  "nonzero_cases": 16,
+  "nonzero_results_bitwise_identical": true
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "matched-flat-scheme-v1",
+  "scope": "conceptual flat-boundary schematic, not a computed field or curved-interface construction",
+  "notation_source": [
+    "eq:matched-jet",
+    "eq:matched-strip-mean",
+    "eq:mixture-projection"
+  ],
+  "code_sha256": "344ba3c1a64c01683f58162cf1402588d0e341debe8b0c2d4d88cbaa72e16e34",
+  "pdf_sha256": "74027cca70df822f81fc34de4719309ec051b3f48056b18f611c8a0bd3a7f5c3",
+  "png_sha256": "6b104b4af387cfc25a8c32fab0795d4c6a1d627bb9c35d0a23b6e2589bee85ab"
+}

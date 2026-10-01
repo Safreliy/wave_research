@@ -1,0 +1,10 @@
+{
+  "mode": "MiKTeX pdflatex --draftmode",
+  "source_sha256": "5e9d12e3b66cdb4c37b19412c0930b1b59b3aeef925c43560b1b35da53e58f47",
+  "passes": 2,
+  "issues": [],
+  "pdf_created": false,
+  "pages": 25,
+  "builtin_compiler": "failed: Unable to find standard directories for platform",
+  "scope": "syntax/reference/layout-warning check, not a rendered-PDF visual audit"
+}

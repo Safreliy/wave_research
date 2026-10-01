@@ -1,0 +1,189 @@
+{
+  "schema": "transfer-array-independent-audit-v1",
+  "passed": true,
+  "scope": "retained flat analytic arrays, hashes, norms and Gaussian-quadrature means; not a CFD convergence test",
+  "code_sha256": "5e5733d4f02d22b77746308ce564997f1dd19c13d2501db11059a7b45599a6c8",
+  "campaigns": [
+    {
+      "summary": "research\\results\\publication_package\\transfer_slivers_arrays_20261001\\result.json",
+      "summary_sha256": "e0a4cc400e09a48849e82ba87eea15bda1f8c1bc4a097b09740a74597c644bd5",
+      "cases": [
+        {
+          "arrays": "nx128_q0.001.npz",
+          "arrays_sha256": "6fda147e9ce73222fc064409595c38e5fbc585b074052fab38c545b5aaf66a07",
+          "independent_quadrature_relative_error": 1.9385301856791245e-13,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.01995320532680855,
+            "fitted_relative_l2_cut": 0.03585047037822096,
+            "baseline_relative_l2_all": 0.05412288908579947,
+            "baseline_relative_l2_cut": 0.09718827957537172,
+            "centroid_oracle_relative_l2_all": 0.000867479079941058,
+            "centroid_oracle_relative_l2_cut": 0.001560735526075992
+          }
+        },
+        {
+          "arrays": "nx128_q0.01.npz",
+          "arrays_sha256": "09fc187fd1a3303cdae7cb9ffd8e79a9d6eb7346d351e82beea3f0c8b6707bdc",
+          "independent_quadrature_relative_error": 3.4452230892555804e-14,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.0036809257709295665,
+            "fitted_relative_l2_cut": 0.006350103833837434,
+            "baseline_relative_l2_all": 0.053700519089784765,
+            "baseline_relative_l2_cut": 0.09637357239321188,
+            "centroid_oracle_relative_l2_all": 0.0008679179499621948,
+            "centroid_oracle_relative_l2_cut": 0.001560663300057104
+          }
+        },
+        {
+          "arrays": "nx128_q0.1.npz",
+          "arrays_sha256": "3be95fbcdb5426afa69b04ea03eb2cfaeea4f311737135b3e084e114a22a3872",
+          "independent_quadrature_relative_error": 6.4897420463354524e-15,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.0021827396772024455,
+            "fitted_relative_l2_cut": 0.0034267446714394017,
+            "baseline_relative_l2_all": 0.049416490266907157,
+            "baseline_relative_l2_cut": 0.08816470155634244,
+            "centroid_oracle_relative_l2_all": 0.000864801263542278,
+            "centroid_oracle_relative_l2_cut": 0.0015464988063283063
+          }
+        },
+        {
+          "arrays": "nx256_q0.001.npz",
+          "arrays_sha256": "9dd5d5ce8b2b6dc881c084fc1410c9be39fdf60d1014875f6fcbb4b6882d223a",
+          "independent_quadrature_relative_error": 8.568371876946709e-13,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.004482599413869938,
+            "fitted_relative_l2_cut": 0.010568550480624274,
+            "baseline_relative_l2_all": 0.020323352034770654,
+            "baseline_relative_l2_cut": 0.047969212866479836,
+            "centroid_oracle_relative_l2_all": 0.00016536127501984922,
+            "centroid_oracle_relative_l2_cut": 0.0003906893116570835
+          }
+        },
+        {
+          "arrays": "nx256_q0.01.npz",
+          "arrays_sha256": "8ed1644b79dfbe08fe9a776c4e48755a1f8488bc93e140f1ee71f07515f0c160",
+          "independent_quadrature_relative_error": 5.155561385902726e-14,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.0003826462903238866,
+            "fitted_relative_l2_cut": 0.0005888777293251535,
+            "baseline_relative_l2_all": 0.02015477712629277,
+            "baseline_relative_l2_cut": 0.04755480221496334,
+            "centroid_oracle_relative_l2_all": 0.0001654038815353697,
+            "centroid_oracle_relative_l2_cut": 0.0003906608817465889
+          }
+        },
+        {
+          "arrays": "nx256_q0.1.npz",
+          "arrays_sha256": "787202dc1173729661557cc242418eb155e1307acd8a88c6e07eb6b95c194d8d",
+          "independent_quadrature_relative_error": 6.455430967499832e-15,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.00042085665157334335,
+            "fitted_relative_l2_cut": 0.0007164619630016224,
+            "baseline_relative_l2_all": 0.018457252319615716,
+            "baseline_relative_l2_cut": 0.04339721118333554,
+            "centroid_oracle_relative_l2_all": 0.00016439944987019873,
+            "centroid_oracle_relative_l2_cut": 0.0003870071842580749
+          }
+        },
+        {
+          "arrays": "nx512_q0.001.npz",
+          "arrays_sha256": "9873dda821065eb74e4bfdb2f802f2d97e745ef202ffe955dce1ea4e61a7cb14",
+          "independent_quadrature_relative_error": 3.942661269302849e-13,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.002805462169248599,
+            "fitted_relative_l2_cut": 0.00898182276598424,
+            "baseline_relative_l2_all": 0.007442717111281026,
+            "baseline_relative_l2_cut": 0.023825311391966933,
+            "centroid_oracle_relative_l2_all": 3.051950075169206e-05,
+            "centroid_oracle_relative_l2_cut": 9.774678520671713e-05
+          }
+        },
+        {
+          "arrays": "nx512_q0.01.npz",
+          "arrays_sha256": "b4063d5a7a2ed09b54d1c8eeb3b5f08c9079db8456f242c5378101572f2ed569",
+          "independent_quadrature_relative_error": 5.108925735435644e-14,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.0002448401852914406,
+            "fitted_relative_l2_cut": 0.0007439014356542587,
+            "baseline_relative_l2_all": 0.007378853324587037,
+            "baseline_relative_l2_cut": 0.023616360143471442,
+            "centroid_oracle_relative_l2_all": 3.052247649973756e-05,
+            "centroid_oracle_relative_l2_cut": 9.77385005438692e-05
+          }
+        },
+        {
+          "arrays": "nx512_q0.1.npz",
+          "arrays_sha256": "78519e5ca8f6222c528e3aa339ace033ce5c2a587f6f87719ec1b87ecc2674e5",
+          "independent_quadrature_relative_error": 5.5848315130389014e-15,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 8.824066493306367e-05,
+            "fitted_relative_l2_cut": 0.00013576579180431435,
+            "baseline_relative_l2_all": 0.006738146726780263,
+            "baseline_relative_l2_cut": 0.02152424728997469,
+            "centroid_oracle_relative_l2_all": 3.0288330093934444e-05,
+            "centroid_oracle_relative_l2_cut": 9.681204031397782e-05
+          }
+        }
+      ]
+    },
+    {
+      "summary": "research\\results\\publication_package\\transfer_slivers_trace4_arrays_20261001\\result.json",
+      "summary_sha256": "abed7693fe4be492c60b9f4c8c4eb1d99c0bf9f2b3ab71bb99bfb3e7398772d5",
+      "cases": [
+        {
+          "arrays": "nx256_q0.001.npz",
+          "arrays_sha256": "ceaf3f8ef7c2f7f81e6c86b2d8182ea45520a55e8f6b7cb848dfeda33f5d8ad6",
+          "independent_quadrature_relative_error": 8.568371876946709e-13,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.003716241442869386,
+            "fitted_relative_l2_cut": 0.00875332607327533,
+            "baseline_relative_l2_all": 0.02032335203233435,
+            "baseline_relative_l2_cut": 0.04796921286071812,
+            "centroid_oracle_relative_l2_all": 0.00016536127501984922,
+            "centroid_oracle_relative_l2_cut": 0.0003906893116570835
+          }
+        },
+        {
+          "arrays": "nx512_q0.001.npz",
+          "arrays_sha256": "44ec356d360baf7bd60245316dfd59f9292d429fdd0db15bfde086bc7f3f4ae4",
+          "independent_quadrature_relative_error": 3.942661269302849e-13,
+          "recomputed_norms": {
+            "fitted_relative_l2_all": 0.0002350868859779797,
+            "fitted_relative_l2_cut": 0.0007110401548177154,
+            "baseline_relative_l2_all": 0.0074427171136386295,
+            "baseline_relative_l2_cut": 0.02382531137120062,
+            "centroid_oracle_relative_l2_all": 3.051950075169206e-05,
+            "centroid_oracle_relative_l2_cut": 9.774678520671713e-05
+          }
+        }
+      ]
+    }
+  ],
+  "native_reference": {
+    "sources": {
+      "resolved12b\\comparison.npz": "65b398ebd58e53ee817b82be92f0a97ed4d0e0bbc0fe6241e1371d655bae5eea",
+      "strict12\\comparison.npz": "2a66d33cc75b25a873c7e2cefaea5c0a3e7e3673cd312f8cda6bc523ef37ed2f",
+      "strict12\\assessment.json": "f88404dd8cce15364323de6792fa3e07727748ab8e4aa456b95cc19390cac98c",
+      "strict12\\reference5.npz": "9f4c28e67631d5b1c9ad858b51bdf0b65dc8b8bdf2adee6c654de28029724780"
+    },
+    "source_refinement_relative_change": 6.814448457064298e-11,
+    "groups": {
+      "moderate": {
+        "candidate": 4.823434836166972e-06,
+        "control": 0.0001776933667370858
+      },
+      "nearly_full": {
+        "candidate": 2.0717371502191326e-05,
+        "control": 2.8866297826751543e-05
+      },
+      "pooled": {
+        "candidate": 1.6105064724829035e-05,
+        "control": 0.00011702468299171255
+      }
+    },
+    "fitted_better_cell_count": 9,
+    "strict_accepted_quadrature_nodes": 1225,
+    "scope": "norm arithmetic and source-refinement sensitivity on 12 selected bed-cut cells; no full-domain accuracy claim"
+  }
+}

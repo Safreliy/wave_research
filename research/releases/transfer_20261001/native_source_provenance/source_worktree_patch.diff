@@ -1,0 +1,1035 @@
+diff --git a/deploy/CMakeLists.txt b/deploy/CMakeLists.txt
+index 375aa43..64ab7e4 100644
+--- a/deploy/CMakeLists.txt
++++ b/deploy/CMakeLists.txt
+@@ -265,18 +265,17 @@ if (USE_FPZIP)
+ endif ()
+ 
+ # AMGX
+-set(CUDA_ARCH 60 CACHE STRING "Cuda architecture version to be passed to AMGX")
+-set_property(CACHE CUDA_ARCH PROPERTY STRINGS 60 70)
++set(CUDA_ARCH 120 CACHE STRING "Cuda architecture version to be passed to AMGX")
++set_property(CACHE CUDA_ARCH PROPERTY STRINGS 80 86 89 90 100 120)
+ if (USE_AMGX)
+     ExternalProject_Add(amgx
+         GIT_REPOSITORY "https://github.com/NVIDIA/AMGX"
+-        GIT_TAG v2.1.x
++        GIT_TAG v2.5.0
+         GIT_SHALLOW ON
+-        PATCH_COMMAND git apply "${CMAKE_CURRENT_SOURCE_DIR}/amgx_no_comm_report.patch"
+         CMAKE_ARGS
+         -DCMAKE_INSTALL_PREFIX:STRING=${CMAKE_INSTALL_PREFIX}
+         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+-        -DCUDA_ARCH=${CUDA_ARCH}
++        -DCMAKE_CUDA_ARCHITECTURES=${CUDA_ARCH}
+         INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
+         )
+ endif ()
+diff --git a/deploy/scripts/sim_base.conf b/deploy/scripts/sim_base.conf
+index ddded13..a3a16ab 100644
+--- a/deploy/scripts/sim_base.conf
++++ b/deploy/scripts/sim_base.conf
+@@ -41,6 +41,9 @@ set int hypre_periodic_z 0 # 1 if domain is periodic in z
+ set double tmax 1e10
+ set double dt0 1e-6
+ set double dtmax 1e10
++set double dt_growth_max 0 # zero disables the optional growth limiter
++set int exact_tmax 0 # opt in to landing exactly on tmax
++set int initial_autodt 0 # compute stability limits before the first step
+ set double cfl 0.8
+ set double cfla 0.8
+ set double cflst 2
+@@ -140,6 +143,7 @@ set vect eb_model_rotation 0 0 0
+ set double eb_model_extent 1
+ set int eb_init_inverse 1
+ set double embed_gradlim 0.5
++set double embed_aperture_eps 0.001
+ set string bc_path bc.dat
+ set int embed_smoothen_iters 0
+ 
+@@ -265,6 +269,22 @@ set double inletcl 1          # inlet color
+ # Initial velocity.
+ set string vel_init zero
+ set string vellist_path vel.dat
++set string vel_init_raw_path_0 vx.raw
++set string vel_init_raw_path_1 vy.raw
++set string vel_init_raw_path_2 vz.raw
++
++# Initial pressure (used by field-based restarts).
++set string pressure_init zero
++set string pressure_init_raw_path p.raw
++set string flux_init zero
++set string flux_init_raw_path_0 fluxx.raw
++set string flux_init_raw_path_1 fluxy.raw
++set string flux_init_raw_path_2 fluxz.raw
++set string flux_init_raw_positive_path_0 fluxxp.raw
++set string flux_init_raw_positive_path_1 fluxyp.raw
++set string flux_init_raw_positive_path_2 fluxzp.raw
++set string flux_init_raw_embed_path fluxeb.raw
++set int flux_init_raw_is_velocity 0
+ 
+ # Initial contact angle.
+ set string init_contang uniform
+@@ -275,8 +295,15 @@ set string init_vf zero
+ set int vf_init_sm 0
+ set string list_path b.dat
+ set string init_vf_hdf_path vf.h5
++set string init_vf_raw_path vf.raw
++set int init_vf_is_aperture 0
+ set int init_vf_load_state 0
+ set string init_vf_state_dir state
++
++# Field-based restart.  Velocity and VOF paths are configured above.
++set double restart_time 0
++set int restart_iter 0
++set int restart_step 0
+ set int list_ls 1
+ 
+ # Lamb wave.
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f7db35f..c950ae6 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -73,6 +73,10 @@ endif()
+ 
+ if (USE_AMGX)
+   find_package(CUDAToolkit)
++  add_library(amgxsh SHARED IMPORTED GLOBAL)
++  set_target_properties(amgxsh PROPERTIES
++    IMPORTED_LOCATION "${APHROS_PREFIX}/lib/libamgxsh.so"
++    INTERFACE_INCLUDE_DIRECTORIES "${APHROS_PREFIX}/include")
+ endif()
+ 
+ if (USE_HYPRE)
+diff --git a/src/func/init_u.h b/src/func/init_u.h
+index 3c1f1b7..9189cb4 100644
+--- a/src/func/init_u.h
++++ b/src/func/init_u.h
+@@ -13,6 +13,7 @@
+ 
+ #include "debug/isnan.h"
+ #include "dump/hdf.h"
++#include "dump/raw.h"
+ #include "geom/block.h"
+ #include "geom/field.h"
+ #include "geom/vect.h"
+@@ -148,6 +149,11 @@ void InitVf(
+     if (sem.Nested()) {
+       dump::Hdf<M>::Read(fcu, var.String["init_vf_hdf_path"], m);
+     }
++  } else if (init_vf == "raw") {
++    if (sem.Nested()) {
++      const auto meta = dump::Xmf<typename M::Vect>::GetMeta(m);
++      dump::Raw<M>::Read(fcu, meta, var.String["init_vf_raw_path"], m);
++    }
+   } else {
+     if (sem("local")) {
+       auto func = CreateInitU<M>(var, m.IsRoot());
+diff --git a/src/gitrev b/src/gitrev
+index 142b6a1..c2f548b 100755
+--- a/src/gitrev
++++ b/src/gitrev
+@@ -21,12 +21,16 @@ if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ] ; then
+     echo "Not a git repository, no action" >&2
+   else
+     echo "Not a git repository, generating '$out' with unknown revision" >&2
+-    cat > "$out" << EOF
++    tmp="${out}.tmp.$$"
++    trap 'rm -f "$tmp"' EXIT HUP INT TERM
++    cat > "$tmp" << EOF
+ // unknown
+ const char* kGitRev = "unknown";
+ const char* kGitMsg = "";
+ const char* kGitDiff = "";
+ EOF
++    mv "$tmp" "$out"
++    trap - EXIT HUP INT TERM
+   fi
+   exit 0
+ fi
+@@ -39,10 +43,14 @@ headnew="// $(git describe --always --dirty) $(git diff --name-only | tr '\n' '
+ 
+ if [ "$headold" != "$headnew" ] ; then
+   echo "Updating '$out'" >&2
+-  cat > "$out" << EOF
++  tmp="${out}.tmp.$$"
++  trap 'rm -f "$tmp"' EXIT HUP INT TERM
++  cat > "$tmp" << EOF
+ $headnew
+ const char* kGitRev = "$(git describe --dirty --always --tags)";
+ const char* kGitMsg = R"EOF($(git log -1 --pretty=%B))EOF";
+ const char* kGitDiff = "$(git diff --name-only | tr '\n' ' ')";
+ EOF
++  mv "$tmp" "$out"
++  trap - EXIT HUP INT TERM
+ fi
+diff --git a/src/kernel/hydro.h b/src/kernel/hydro.h
+index d271745..6a34e31 100644
+--- a/src/kernel/hydro.h
++++ b/src/kernel/hydro.h
+@@ -133,7 +133,11 @@ class Hydro : public KernelMeshPar<M_, GPar<M_>> {
+   void InitNucleationPoints();
+   void SpawnParticles(ParticlesView& view);
+   void OverwriteBc();
+-  void InitFluid(const FieldCell<Vect>& fc_vel);
++  void InitFluid(
++      const FieldCell<Vect>& fc_vel, const FieldCell<Scal>* fc_pressure,
++      const FieldCell<Vect>* fc_flux,
++      const FieldCell<Vect>* fc_flux_positive,
++      const FieldCell<Scal>* fc_flux_embed);
+   void InitAdvection(const FieldCell<Scal>& fcvf, const FieldCell<Scal>& fccl);
+   template <class MEB>
+   void InitStat(const MEB& eb);
+diff --git a/src/kernel/hydro.ipp b/src/kernel/hydro.ipp
+index 6b8f378..5e5deda 100644
+--- a/src/kernel/hydro.ipp
++++ b/src/kernel/hydro.ipp
+@@ -185,7 +185,9 @@ void Hydro<M>::InitEmbed() {
+       FieldNode<Scal> fnl;
+     } * ctx(sem);
+     if (sem("ctor")) {
+-      eb_.reset(new Embed<M>(m, var.Double["embed_gradlim"]));
++      eb_.reset(new Embed<M>(
++          m, var.Double["embed_gradlim"],
++          var.Double("embed_aperture_eps", 1e-3)));
+     }
+     if (sem.Nested("levelset")) {
+       UEB::InitLevelSet(ctx->fnl, m, var, m.IsRoot() && !silent_);
+@@ -688,7 +690,11 @@ void Hydro<M>::InitTracer(Multi<FieldCell<Scal>>& vfcu) {
+ }
+ 
+ template <class M>
+-void Hydro<M>::InitFluid(const FieldCell<Vect>& fc_vel) {
++void Hydro<M>::InitFluid(
++    const FieldCell<Vect>& fc_vel, const FieldCell<Scal>* fc_pressure,
++    const FieldCell<Vect>* fc_flux,
++    const FieldCell<Vect>* fc_flux_positive,
++    const FieldCell<Scal>* fc_flux_embed) {
+   fcvm_ = fc_vel;
+ 
+   std::string fs = var.String["fluid_solver"];
+@@ -714,10 +720,11 @@ void Hydro<M>::InitFluid(const FieldCell<Vect>& fc_vel) {
+     std::shared_ptr<linear::Solver<M>> linsolver(
+         ULinear<M>::MakeLinearSolver(var, "symm", m));
+     linsolver_symm_ = linsolver;
+-    const ProjArgs<M> args{fc_vel,    mebc_fluid_, mc_velcond_, &fc_rho_,
+-                           &fc_mu_,   &fc_force_,  &febp_,      &fc_src_,
+-                           &fc_srcm_, 0.,          st_.dt,      linsolver,
+-                           par};
++    const ProjArgs<M> args{
++        fc_vel,      mebc_fluid_, mc_velcond_, &fc_rho_, &fc_mu_,
++        &fc_force_,  &febp_,      &fc_src_,     &fc_srcm_, fc_pressure,
++        fc_flux,     fc_flux_positive, fc_flux_embed, 0., st_.dt,
++        linsolver,   par};
+     if (eb_) {
+       fs_.reset(new Proj<Embed<M>>(m, *eb_, args));
+     } else {
+@@ -1260,6 +1267,17 @@ void Hydro<M>::Init() {
+     FieldCell<Vect> fcpot; // velocity potential (stream function)
+     FieldCell<Scal> fcpot_scal; // first componenet of velocity potential
+     typename Xmf::Meta meta; // metadata for velocity potential dump
++    std::array<FieldCell<Scal>, M::dim> raw_vel_components;
++    FieldCell<Scal> raw_pressure;
++    std::array<FieldCell<Scal>, M::dim> raw_flux_components;
++    FieldCell<Vect> raw_flux;
++    std::array<FieldCell<Scal>, M::dim> raw_flux_positive_components;
++    FieldCell<Vect> raw_flux_positive;
++    FieldCell<Scal> raw_flux_embed;
++    Scal aperture_raw_volume = 0;
++    Scal aperture_clipped_volume = 0;
++    Scal aperture_fluid_volume = 0;
++    Scal aperture_max_excess = 0;
+     Multi<FieldCell<Scal>> tracer_vfcu;
+     std::shared_ptr<linear::Solver<M>> linsolver_vort;
+     FieldCell<bool> fc_innermask;
+@@ -1300,6 +1318,47 @@ void Hydro<M>::Init() {
+   if (sem.Nested()) {
+     InitVf(fcvf, var, m, !silent_);
+   }
++  if (sem("vf-aperture") && var.Int("init_vf_is_aperture", 0)) {
++    // The embedded VOF solver advances the conditional Cartesian fraction f.
++    // Clip the imported physical aperture q=f*cs to the receiver's
++    // independently reconstructed cs, then recover f.  The global
++    // conservation repair remains in the offline remapper.
++    t.aperture_raw_volume = 0;
++    t.aperture_clipped_volume = 0;
++    t.aperture_fluid_volume = 0;
++    t.aperture_max_excess = 0;
++    for (auto c : m.Cells()) {
++      const Scal cs = eb_ ? eb_->GetVolumeFraction(c) : 1;
++      const Scal raw = fcvf[c];
++      t.aperture_raw_volume += raw * m.GetVolume(c);
++      t.aperture_fluid_volume += cs * m.GetVolume(c);
++      t.aperture_max_excess = std::max(t.aperture_max_excess, raw - cs);
++      fcvf[c] = std::max(Scal(0), std::min(raw, cs));
++      t.aperture_clipped_volume += fcvf[c] * m.GetVolume(c);
++      fcvf[c] = cs > 0 ? fcvf[c] / cs : 0;
++    }
++  }
++  if (sem("vf-aperture-reduce") && var.Int("init_vf_is_aperture", 0)) {
++    m.Reduce(&t.aperture_raw_volume, Reduction::sum);
++    m.Reduce(&t.aperture_clipped_volume, Reduction::sum);
++    m.Reduce(&t.aperture_fluid_volume, Reduction::sum);
++    m.Reduce(&t.aperture_max_excess, Reduction::max);
++  }
++  if (sem("vf-aperture-report") &&
++      var.Int("init_vf_is_aperture", 0)) {
++    if (m.IsRoot()) {
++      std::cerr << std::setprecision(17)
++                << "APERTURE_INIT_GLOBAL raw_volume="
++                << t.aperture_raw_volume
++                << " clipped_volume=" << t.aperture_clipped_volume
++                << " fluid_volume=" << t.aperture_fluid_volume
++                << " max_q_minus_cs=" << t.aperture_max_excess
++                << std::endl;
++    }
++  }
++  if (sem("vf-aperture-comm") && var.Int("init_vf_is_aperture", 0)) {
++    m.Comm(&fcvf);
++  }
+   if (sem.Nested("stepwise") && var.Int["enable_stepwise_body"]) {
+     InitStepwiseBody(t.fc_innermask, t.ff_innermask);
+   }
+@@ -1308,6 +1367,75 @@ void Hydro<M>::Init() {
+       InitTracerFields(t.tracer_vfcu);
+     }
+   }
++  if (sem("vel-raw-alloc") && var.String["vel_init"] == "raw") {
++    for (auto& component : t.raw_vel_components) {
++      component.Reinit(m);
++    }
++  }
++  for (size_t d = 0; d < M::dim; ++d) {
++    if (sem.Nested("vel-raw-" + std::to_string(d)) &&
++        var.String["vel_init"] == "raw") {
++      const auto meta = dump::Xmf<Vect>::GetMeta(m);
++      const std::string key = "vel_init_raw_path_" + std::to_string(d);
++      dump::Raw<M>::Read(t.raw_vel_components[d], meta, var.String[key], m);
++    }
++  }
++  if (sem("pressure-raw-alloc") && var.String["pressure_init"] == "raw") {
++    t.raw_pressure.Reinit(m);
++  }
++  if (sem.Nested("pressure-raw") && var.String["pressure_init"] == "raw") {
++    const auto meta = dump::Xmf<Vect>::GetMeta(m);
++    dump::Raw<M>::Read(
++        t.raw_pressure, meta, var.String["pressure_init_raw_path"], m);
++  }
++  if (sem("pressure-raw-comm") &&
++      var.String["pressure_init"] == "raw") {
++    m.Comm(&t.raw_pressure);
++    t.raw_pressure.SetHalo(2);
++  }
++  if (sem("flux-raw-alloc") && var.String["flux_init"] == "raw") {
++    for (auto& component : t.raw_flux_components) {
++      component.Reinit(m);
++    }
++  }
++  for (size_t d = 0; d < M::dim; ++d) {
++    if (sem.Nested("flux-raw-" + std::to_string(d)) &&
++        var.String["flux_init"] == "raw") {
++      const auto meta = dump::Xmf<Vect>::GetMeta(m);
++      const std::string key = "flux_init_raw_path_" + std::to_string(d);
++      dump::Raw<M>::Read(t.raw_flux_components[d], meta, var.String[key], m);
++    }
++  }
++  if (sem("flux-positive-raw-alloc") &&
++      var.String["flux_init"] == "raw") {
++    for (auto& component : t.raw_flux_positive_components) {
++      component.Reinit(m);
++    }
++  }
++  for (size_t d = 0; d < M::dim; ++d) {
++    if (sem.Nested("flux-positive-raw-" + std::to_string(d)) &&
++        var.String["flux_init"] == "raw") {
++      const auto meta = dump::Xmf<Vect>::GetMeta(m);
++      const std::string key =
++          "flux_init_raw_positive_path_" + std::to_string(d);
++      dump::Raw<M>::Read(
++          t.raw_flux_positive_components[d], meta, var.String[key], m);
++    }
++  }
++  if (sem("flux-embed-raw-alloc") && var.String["flux_init"] == "raw") {
++    t.raw_flux_embed.Reinit(m);
++  }
++  if (sem.Nested("flux-embed-raw") &&
++      var.String["flux_init"] == "raw") {
++    const auto meta = dump::Xmf<Vect>::GetMeta(m);
++    dump::Raw<M>::Read(
++        t.raw_flux_embed, meta, var.String["flux_init_raw_embed_path"], m);
++  }
++  if (sem("flux-embed-raw-comm") &&
++      var.String["flux_init"] == "raw") {
++    m.Comm(&t.raw_flux_embed);
++    t.raw_flux_embed.SetHalo(2);
++  }
+   if (sem("fields")) {
+     if (!t.fc_innermask.empty()) {
+       // XXX: Must be set before InitBc().
+@@ -1352,7 +1480,15 @@ void Hydro<M>::Init() {
+ 
+     // initial velocity
+     fcvel.Reinit(m, Vect(0));
+-    InitVel(fcvel, var, m);
++    if (var.String["vel_init"] == "raw") {
++      for (auto c : m.Cells()) {
++        for (size_t d = 0; d < M::dim; ++d) {
++          fcvel[c][d] = t.raw_vel_components[d][c];
++        }
++      }
++    } else {
++      InitVel(fcvel, var, m);
++    }
+     if (eb_) {
+       InitVelHook(fcvel, this, var, m, *eb_);
+     } else {
+@@ -1362,6 +1498,38 @@ void Hydro<M>::Init() {
+     fcvel.SetHalo(2);
+     fcvel.SetName("fcvel");
+ 
++    t.raw_flux.Reinit(m, Vect(0));
++    if (var.String["flux_init"] == "raw") {
++      const bool raw_is_velocity = var.Int["flux_init_raw_is_velocity"];
++      for (auto c : m.Cells()) {
++        for (size_t d = 0; d < M::dim; ++d) {
++          t.raw_flux[c][d] = t.raw_flux_components[d][c];
++          if (raw_is_velocity) {
++            const auto cf = m.GetFace(c, IdxNci(d * 2));
++            const Scal area = eb_ ? eb_->GetArea(cf) : m.GetArea(cf);
++            t.raw_flux[c][d] *= area;
++          }
++        }
++      }
++      m.Comm(&t.raw_flux);
++      t.raw_flux.SetHalo(2);
++
++      t.raw_flux_positive.Reinit(m, Vect(0));
++      for (auto c : m.Cells()) {
++        for (size_t d = 0; d < M::dim; ++d) {
++          t.raw_flux_positive[c][d] =
++              t.raw_flux_positive_components[d][c];
++          if (raw_is_velocity) {
++            const auto cf = m.GetFace(c, IdxNci(d * 2 + 1));
++            const Scal area = eb_ ? eb_->GetArea(cf) : m.GetArea(cf);
++            t.raw_flux_positive[c][d] *= area;
++          }
++        }
++      }
++      m.Comm(&t.raw_flux_positive);
++      t.raw_flux_positive.SetHalo(2);
++    }
++
+     if (m.IsRoot() && !silent_) {
+       std::cerr << "global mesh=" << m.GetGlobalSize() << '\n';
+       std::cerr << "surface tension dt=" << GetSurfaceTensionDt() << '\n';
+@@ -1523,10 +1691,19 @@ void Hydro<M>::Init() {
+     particles_dt_ = dt;
+   }
+   if (sem("solv")) {
+-    InitFluid(fcvel);
++    InitFluid(
++        fcvel, var.String["pressure_init"] == "raw" ? &t.raw_pressure
++                                                      : nullptr,
++        var.String["flux_init"] == "raw" ? &t.raw_flux : nullptr,
++        var.String["flux_init"] == "raw" ? &t.raw_flux_positive : nullptr,
++        var.String["flux_init"] == "raw" ? &t.raw_flux_embed : nullptr);
+ 
+     InitAdvection(fcvf, fccl);
+ 
++    const Scal restart_time = var.Double("restart_time", 0.);
++    fs_->SetTime(restart_time);
++    as_->SetTime(restart_time);
++
+     InitTracer(t.tracer_vfcu);
+ 
+     InitElectro();
+@@ -1539,8 +1716,15 @@ void Hydro<M>::Init() {
+       InitNucleationPoints();
+     }
+ 
+-    st_.iter = 0;
+-    st_.step = 0;
++    const int restart_iter = var.Int("restart_iter", 0);
++    const int restart_step = var.Int("restart_step", 0);
++    if (restart_time < 0 || restart_iter < 0 || restart_step < 0) {
++      throw std::invalid_argument(
++          "restart_time, restart_iter and restart_step must be non-negative");
++    }
++    st_.t = restart_time;
++    st_.iter = restart_iter;
++    st_.step = restart_step;
+ 
+     if (m.IsLead()) {
+       this->var_mutable.Int.Set("iter", st_.iter);
+@@ -1570,6 +1754,24 @@ void Hydro<M>::Init() {
+         });
+     events_->Parse();
+   }
++  // Initialize the PLIC and curvature before the first fluid step. The VOF
++  // constructor leaves its planes and fck_ as NaN until StartStep/PostStep.
++  if (sem.Nested("initial-advection-start")) {
++    as_->StartStep();
++  }
++  if (sem.Nested("initial-advection-post")) {
++    as_->PostStep();
++  }
++  if (sem.Nested("initial-curvature")) {
++    if (eb_) {
++      curv_estimator_->CalcCurvature(fck_, as_->GetPlic(), m, *eb_);
++    } else {
++      curv_estimator_->CalcCurvature(fck_, as_->GetPlic(), m, m);
++    }
++  }
++  if (sem("initial-advection-phase")) {
++    as_->SetStep(static_cast<size_t>(st_.step));
++  }
+   if (sem.Nested("inithook")) {
+     InitHook(this);
+   }
+@@ -1666,11 +1868,13 @@ void Hydro<M>::CalcDt() {
+   struct {
+     Scal dtmin;
+     Scal tmin;
++    Scal dtprev;
+   } * ctx(sem);
+   auto& t = *ctx;
+ 
+   if (sem("local")) {
+     st_.t = fs_->GetTime();
++    t.dtprev = st_.dt;
+     t.dtmin = fs_->GetAutoTimeStep();
+     m.Reduce(&t.dtmin, Reduction::min);
+   }
+@@ -1695,6 +1899,25 @@ void Hydro<M>::CalcDt() {
+         st_.dt = std::min<Scal>(st_.dt, dt);
+       }
+     }
++    // A large increase after the tiny first projection step reuses a pressure
++    // field scaled for the previous dt and can generate a destructive startup
++    // impulse.  Limit increases only; physical CFL/viscous/capillary limits
++    // remain free to reduce the step immediately.
++    const Scal growth_max = var.Double("dt_growth_max", 0.);
++    if (growth_max > 0) {
++      if (growth_max < 1) {
++        throw std::invalid_argument("dt_growth_max must be zero or at least one");
++      }
++      if (t.dtprev > 0) {
++        st_.dt = std::min(st_.dt, t.dtprev * growth_max);
++      }
++    }
++    if (var.Int("exact_tmax", 0)) {
++      const Scal remaining = var.Double["tmax"] - st_.t;
++      if (remaining > 0) {
++        st_.dt = std::min(st_.dt, remaining);
++      }
++    }
+     // FIXME: Without this reduction the time step turns out slighly
+     //        different on various blocks. Which shouldn't happen.
+     m.Reduce(&st_.dt, Reduction::min);
+@@ -2297,6 +2520,11 @@ void Hydro<M>::Run() {
+     Init();
+   }
+ 
++  if (sem.Nested("initial-calcdt") && initialized_ && st_.step == 0 &&
++      var.Int("initial_autodt", 0)) {
++    CalcDt();
++  }
++
+   sem.LoopBegin();
+ 
+   if (sem("events")) {
+@@ -2306,7 +2534,14 @@ void Hydro<M>::Run() {
+     }
+   }
+   if (sem("loop-check")) {
+-    if (st_.t + st_.dt * 0.25 > var.Double["tmax"]) {
++    const Scal tmax = var.Double["tmax"];
++    const Scal time_tolerance =
++        32 * std::numeric_limits<Scal>::epsilon() *
++        std::max(Scal(1), std::abs(tmax));
++    const bool reached_tmax = var.Int("exact_tmax", 0)
++                                  ? st_.t >= tmax - time_tolerance
++                                  : st_.t + st_.dt * 0.25 > tmax;
++    if (reached_tmax) {
+       if (m.IsRoot() && !silent_) {
+         std::cerr << "End of simulation, t > tmax=" << var.Double["tmax"]
+                   << std::endl;
+@@ -2445,7 +2680,7 @@ void Hydro<M>::Run() {
+ 
+ template <class M>
+ void Hydro<M>::ReportStep() {
+-  std::cerr << std::fixed << std::setprecision(8) << "STEP=" << st_.step
++  std::cerr << std::fixed << std::setprecision(17) << "STEP=" << st_.step
+             << " t=" << st_.t << " dt=" << st_.dt
+             << " wt=" << timer_.GetSeconds() << std::endl;
+ }
+diff --git a/src/linear/CMakeLists.txt b/src/linear/CMakeLists.txt
+index a4bfa4d..031a5e2 100644
+--- a/src/linear/CMakeLists.txt
++++ b/src/linear/CMakeLists.txt
+@@ -21,8 +21,8 @@ endif()
+ if (USE_AMGX)
+   set(T "linear_amgx")
+   add_object(${T} linear_amgx.cpp)
+-  target_include_directories(${T} PRIVATE ${APHROS_PREFIX}/include)
+-  object_link_libraries(${T} amgxsh use_mpi)
++  target_include_directories(${T}_obj PRIVATE ${APHROS_PREFIX}/include)
++  object_link_libraries(${T} amgxsh use_mpi use_dims)
+   if (CUDAToolkit_FOUND)
+     object_link_libraries(${T} CUDA::cudart_static)
+   endif()
+diff --git a/src/linear/linear_amgx.cpp b/src/linear/linear_amgx.cpp
+index 047a28b..88877a7 100644
+--- a/src/linear/linear_amgx.cpp
++++ b/src/linear/linear_amgx.cpp
+@@ -2,9 +2,11 @@
+ // Copyright 2020 ETH Zurich
+ 
+ #include <algorithm>
++#include <cmath>
+ #include <cstdlib>
+ #include <fstream>
+ #include <iostream>
++#include <limits>
+ #include <vector>
+ 
+ #include "distr/commmap.h"
+@@ -64,11 +66,57 @@ struct SolverAmgx<M>::Imp {
+       const auto comm = m.GetMpiComm();
+       auto& system = comm_map_.GetSystem();
+ 
++      if (!reported_system_) {
++        Scal diag_min = std::numeric_limits<Scal>::max();
++        Scal diag_max = -std::numeric_limits<Scal>::max();
++        Scal rhs_absmax = 0;
++        size_t diag_zero = 0;
++        size_t diag_negative = 0;
++        size_t nonfinite_data = 0;
++        size_t nonfinite_rhs = 0;
++        size_t reported_nonfinite = 0;
++        auto buf = comm_map_.GetBuffers();
++        for (int i = 0; i < system.n; ++i) {
++          Scal diag = std::numeric_limits<Scal>::quiet_NaN();
++          for (int k = system.row_ptrs[i]; k < system.row_ptrs[i + 1]; ++k) {
++            if (!std::isfinite(system.data[k])) {
++              ++nonfinite_data;
++              if (reported_nonfinite < 20) {
++                std::cerr << "AMGX_NONFINITE row=" << i
++                          << " col=" << system.cols[k]
++                          << " value=" << system.data[k] << std::endl;
++                ++reported_nonfinite;
++              }
++            }
++            if (system.cols[k] == i) {
++              diag = system.data[k];
++            }
++          }
++          nonfinite_rhs += !std::isfinite(buf.rhs[i]);
++          diag_min = std::min(diag_min, diag);
++          diag_max = std::max(diag_max, diag);
++          diag_zero += (diag == 0);
++          diag_negative += (diag < 0);
++          rhs_absmax = std::max(rhs_absmax, std::abs(buf.rhs[i]));
++        }
++        std::cerr << "AMGX_SYSTEM n=" << system.n << " nnz=" << system.nnz
++                  << " diag_min=" << diag_min << " diag_max=" << diag_max
++                  << " diag_zero=" << diag_zero
++                  << " diag_negative=" << diag_negative
++                  << " rhs_absmax=" << rhs_absmax
++                  << " nonfinite_data=" << nonfinite_data
++                  << " nonfinite_rhs=" << nonfinite_rhs << std::endl;
++        reported_system_ = true;
++      }
++
+       const int gpu_id = 0;
+ 
+       const Amgx::Mode mode(extra.mode);
+-      Amgx::Config config(
+-          extra.config_path, "communicator=MPI" + extra.config_extra);
++      std::string config_options = "config_version=2,communicator=MPI";
++      if (!extra.config_extra.empty()) {
++        config_options += "," + extra.config_extra;
++      }
++      Amgx::Config config(extra.config_path, config_options);
+       Amgx::Resources resources(config, comm, gpu_id);
+ 
+       Amgx::Matrix matrix(resources, mode);
+@@ -124,8 +172,11 @@ struct SolverAmgx<M>::Imp {
+   Extra extra;
+   CommMap<M> comm_map_;
+   bool comm_map_init_called_ = false;
+-  std::unique_ptr<Amgx::Library> amgx_;
++  bool reported_system_ = false;
+   std::unique_ptr<std::ofstream> logfile_;
++  // Keep the stream alive until AMGX has finalized and invoked its last
++  // print callback. Members are destroyed in reverse declaration order.
++  std::unique_ptr<Amgx::Library> amgx_;
+ };
+ 
+ template <class M>
+@@ -161,10 +212,12 @@ class ModuleLinearAmgx : public ModuleLinear<M> {
+   }
+ };
+ 
+-using M = MeshCartesian<double, 3>;
++#define X(dim) template class SolverAmgx<MeshCartesian<double, dim>>;
++MULTIDIMX
++#undef X
+ 
+-bool kReg_amgx[] = {
+-    RegisterModule<ModuleLinearAmgx<M>>(),
+-};
++#define X(dim) RegisterModule<ModuleLinearAmgx<MeshCartesian<double, dim>>>(),
++bool kReg_amgx[] = {MULTIDIMX};
++#undef X
+ 
+ } // namespace linear
+diff --git a/src/solver/advection.h b/src/solver/advection.h
+index 23ef911..acb98f8 100644
+--- a/src/solver/advection.h
++++ b/src/solver/advection.h
+@@ -75,6 +75,8 @@ class AdvectionSolver : public UnsteadyIterativeSolver {
+       , mebc_(mebc) {}
+   // Postprocessing after time step (dumps)
+   virtual void PostStep() {}
++  // Restore the directional-splitting phase for a field-based restart.
++  virtual void SetStep(size_t /*step*/) {}
+   // Volume fraction
+   virtual const FieldCell<Scal>& GetField(Step) const = 0;
+   // Volume fraction at last time step
+diff --git a/src/solver/embed.h b/src/solver/embed.h
+index 0cec032..535ec36 100644
+--- a/src/solver/embed.h
++++ b/src/solver/embed.h
+@@ -297,8 +297,14 @@ class Embed {
+   using Type = typename M::Type;
+   // Constructor
+   // fnl: level-set function on nodes, interface at fnl=0
+-  Embed(M& m_, Scal gradlim) : m(m_), eb(*this), gradlim_(gradlim) {}
+-  explicit Embed(M& m_) : Embed(m_, 0.5) {}
++  Embed(M& m_, Scal gradlim, Scal aperture_eps = 1e-3)
++      : m(m_), eb(*this), gradlim_(gradlim), aperture_eps_(aperture_eps) {
++    if (!(aperture_eps_ >= 0 && aperture_eps_ < 0.5)) {
++      throw std::invalid_argument(
++          "embedded aperture epsilon must be finite and in [0, 0.5)");
++    }
++  }
++  explicit Embed(M& m_) : Embed(m_, 0.5, 1e-3) {}
+   // Initializes embedded boundaries with level-set function.
+   // Suspendable, requires communication.
+   // fnl: level-set function [a]
+@@ -711,7 +717,8 @@ class Embed {
+   // ffs: face area for which fnl > 0
+   static void InitFaces(
+       const FieldNode<Scal>& fnl, FieldFace<Type>& fft,
+-      FieldFace<std::vector<Vect>>& ffpoly, FieldFace<Scal>& ffs, const M& m);
++      FieldFace<std::vector<Vect>>& ffpoly, FieldFace<Scal>& ffs, const M& m,
++      Scal aperture_eps);
+   // Determines the cell types, normals and plane constants.
+   // fnl: level-set on nodes [a]
+   // ffs: face area for which f > 0
+@@ -724,7 +731,8 @@ class Embed {
+   static void InitCells(
+       const FieldNode<Scal>& fnl, const FieldFace<Scal>& ffs,
+       FieldCell<Type>& fct, FieldCell<Vect>& fcn, FieldCell<Scal>& fca,
+-      FieldCell<Scal>& fcs, FieldCell<Scal>& fcv, const M& m);
++      FieldCell<Scal>& fcs, FieldCell<Scal>& fcv, const M& m,
++      Scal aperture_eps);
+   // Dump cut polygons
+   // ffs: face area for which f > 0
+   // fft: type of faces
+@@ -753,6 +761,7 @@ class Embed {
+   M& m;
+   const Embed& eb;
+   const Scal gradlim_;
++  const Scal aperture_eps_;
+   // nodes
+   FieldNode<Scal> fnl_; // level-set
+   // faces
+diff --git a/src/solver/embed.ipp b/src/solver/embed.ipp
+index d155bb4..6c2bf6e 100644
+--- a/src/solver/embed.ipp
++++ b/src/solver/embed.ipp
+@@ -12,8 +12,9 @@ void Embed<M>::Init(const FieldNode<Scal>& fnl) {
+   if (sem()) {
+     fnl.CheckHalo(2);
+     fnl_ = fnl;
+-    InitFaces(fnl_, fft_, ffpoly_, ffs_, m);
+-    InitCells(fnl_, ffs_, fct_, fcn_, fca_, fcs_, fcv_, m);
++    InitFaces(fnl_, fft_, ffpoly_, ffs_, m, aperture_eps_);
++    InitCells(
++        fnl_, ffs_, fct_, fcn_, fca_, fcs_, fcv_, m, aperture_eps_);
+     // volume of neighbor cells
+     fcvst3_.Reinit(m, 0);
+     for (auto c : eb.Cells()) {
+@@ -158,7 +159,8 @@ void Embed<M>::DumpPlaneSection(
+ template <class M>
+ void Embed<M>::InitFaces(
+     const FieldNode<Scal>& fnl, FieldFace<Type>& fft,
+-    FieldFace<std::vector<Vect>>& ffpoly, FieldFace<Scal>& ffs, const M& m) {
++    FieldFace<std::vector<Vect>>& ffpoly, FieldFace<Scal>& ffs, const M& m,
++    Scal aperture_eps) {
+   fft.Reinit(m);
+   ffpoly.Reinit(m);
+   ffs.Reinit(m, 0);
+@@ -217,9 +219,10 @@ void Embed<M>::InitFaces(
+         break;
+       }
+       case Type::cut: {
+-        const Scal eps = 1e-3;
+         const Scal area0 = m.GetArea(f);
+-        ffs[f] = std::min(std::max(area, area0 * eps), area0 * (1 - eps));
++        ffs[f] = std::min(
++            std::max(area, area0 * aperture_eps),
++            area0 * (1 - aperture_eps));
+         ffpoly[f] = xx;
+         break;
+       }
+@@ -234,7 +237,8 @@ template <class M>
+ void Embed<M>::InitCells(
+     const FieldNode<Scal>& fnl, const FieldFace<Scal>& ffs,
+     FieldCell<Type>& fct, FieldCell<Vect>& fcn, FieldCell<Scal>& fca,
+-    FieldCell<Scal>& fcs, FieldCell<Scal>& fcv, const M& m) {
++    FieldCell<Scal>& fcs, FieldCell<Scal>& fcv, const M& m,
++    Scal aperture_eps) {
+   fct.Reinit(m, Type::excluded);
+   fcn.Reinit(m, GetNan<Vect>());
+   fca.Reinit(m, GetNan<Scal>());
+@@ -314,7 +318,17 @@ void Embed<M>::InitCells(
+       }
+       fcs[c] = -sum.dot(fcn[c]);
+ 
+-      fcv[c] = R::GetLineU(fcn[c], fca[c], h) * m.GetVolume(c);
++      // Optional regularization keeps the pressure operator well conditioned
++      // when the level set passes numerically through a grid node.  Applying
++      // the same configurable fraction to faces and cells avoids the singular
++      // geometry mismatch caused by clipping faces alone.  An epsilon of zero
++      // preserves the reconstructed geometry without clipping.
++      const Scal volume0 = m.GetVolume(c);
++      const Scal volume = R::GetLineU(fcn[c], fca[c], h) * volume0;
++      fcv[c] =
++          std::min(
++              std::max(volume, volume0 * aperture_eps),
++              volume0 * (1 - aperture_eps));
+     } else if (fct[c] == Type::regular) {
+       fcv[c] = m.GetVolume(c);
+     }
+diff --git a/src/solver/proj.h b/src/solver/proj.h
+index c54adb8..e4b5631 100644
+--- a/src/solver/proj.h
++++ b/src/solver/proj.h
+@@ -46,6 +46,10 @@ struct ProjArgs {
+   const FieldEmbed<Scal>* ffbp;
+   const FieldCell<Scal>* fcsv;
+   const FieldCell<Scal>* fcsm;
++  const FieldCell<Scal>* fcp;
++  const FieldCell<Vect>* fcflux;
++  const FieldCell<Vect>* fcflux_positive;
++  const FieldCell<Scal>* fcflux_embed;
+   double t;
+   double dt;
+   std::shared_ptr<linear::Solver<M>> linsolver;
+diff --git a/src/solver/proj.ipp b/src/solver/proj.ipp
+index ac87bbb..d87c4d8 100644
+--- a/src/solver/proj.ipp
++++ b/src/solver/proj.ipp
+@@ -56,7 +56,11 @@ struct Proj<EB_>::Imp {
+ 
+     fcvel_diffusion_guess_ = fcvel_.time_curr;
+ 
+-    fcp_.time_curr.Reinit(m, 0.);
++    if (args.fcp) {
++      fcp_.time_curr = *args.fcp;
++    } else {
++      fcp_.time_curr.Reinit(m, 0.);
++    }
+     fcp_predict_ = fcp_.time_curr;
+ 
+     // Calc initial volume fluxes
+@@ -65,6 +69,25 @@ struct Proj<EB_>::Imp {
+     eb.LoopFaces([&](auto cf) { //
+       fev_.time_curr[cf] = (ffwe[cf] - par.meshvel).dot(eb.GetSurface(cf));
+     });
++    if (args.fcflux) {
++      for (auto c : m.Cells()) {
++        for (size_t d = 0; d < dim; ++d) {
++          const auto cf = m.GetFace(c, IdxNci(d * 2));
++          fev_.time_curr[cf] = (*args.fcflux)[c][d];
++        }
++      }
++    }
++    if (args.fcflux_positive) {
++      for (auto c : m.Cells()) {
++        for (size_t d = 0; d < dim; ++d) {
++          const auto cf = m.GetFace(c, IdxNci(d * 2 + 1));
++          fev_.time_curr[cf] = (*args.fcflux_positive)[c][d];
++        }
++      }
++    }
++    if (args.fcflux_embed) {
++      fev_.time_curr.GetFieldCell() = *args.fcflux_embed;
++    }
+   }
+ 
+   void UpdateDerivedConditions() {
+@@ -120,6 +143,10 @@ struct Proj<EB_>::Imp {
+           v += (*owner_->febp_)[cf] / ffdens_[cf] * dt * eb.GetArea(cf);
+         }
+       });
++      CHECKNAN(ffvel, m.flags.check_nan)
++      CHECKNAN(ffv, m.flags.check_nan)
++      CHECKNAN(ffdens_, m.flags.check_nan)
++      CHECKNAN(*owner_->febp_, m.flags.check_nan)
+     }
+     if (sem.Nested("project")) {
+       Project(fcp, ffv, dt);
+@@ -392,6 +419,9 @@ struct Proj<EB_>::Imp {
+       ctx->fcpcs = GetFluxSum(ctx->ffvc, *owner_->fcsv_);
+       ApplyCellCond(fcp, ctx->fcpcs);
+       ctx->fcpcs.SetName("pressure");
++      CHECKNAN(ffv, m.flags.check_nan)
++      CHECKNAN(ctx->ffvc, m.flags.check_nan)
++      CHECKNAN(ctx->fcpcs, m.flags.check_nan)
+     }
+     if (sem.Nested("solve")) {
+       linsolver_->Solve(ctx->fcpcs, &fcp, fcp, m);
+diff --git a/src/solver/vof.h b/src/solver/vof.h
+index 6634ac2..b029877 100644
+--- a/src/solver/vof.h
++++ b/src/solver/vof.h
+@@ -73,6 +73,7 @@ class Vof final : public AdvectionSolver<typename EB_::M> {
+   const EB& GetEmbed() const;
+   const Par& GetPar() const;
+   void SetPar(VofPar<M>);
++  void SetStep(size_t step) override;
+   void StartStep() override;
+   void MakeIteration() override;
+   void FinishStep() override;
+diff --git a/src/solver/vof.ipp b/src/solver/vof.ipp
+index 5119f16..f3c2bad 100644
+--- a/src/solver/vof.ipp
++++ b/src/solver/vof.ipp
+@@ -174,6 +174,9 @@ struct Vof<EB_>::Imp {
+       }
+     }
+   }
++  void SetStep(size_t step) {
++    count_ = step;
++  }
+   void StartStep() {
+     auto sem = m.GetSem("start");
+     if (sem("rotate")) {
+@@ -183,7 +186,10 @@ struct Vof<EB_>::Imp {
+       UpdateBc(mebc_);
+     }
+ 
+-    if (owner_->GetTime() == 0.) {
++    // A field-based restart constructs a fresh VOF solver at non-zero time.
++    // Reconstruct its PLIC planes on that first step as well; otherwise fca_
++    // and fcn_ still contain their NaN sentinels from the constructor.
++    if (owner_->GetTime() == 0. || count_ == 0) {
+       auto& fcu = fcu_.time_curr;
+       if (par.extrapolate_boundaries) {
+         ExtrapolateLinear(sem, fcu);
+@@ -712,6 +718,11 @@ void Vof<EB_>::SetPar(Par par) {
+   imp->par = par;
+ }
+ 
++template <class EB_>
++void Vof<EB_>::SetStep(size_t step) {
++  imp->SetStep(step);
++}
++
+ template <class EB_>
+ void Vof<EB_>::StartStep() {
+   imp->StartStep();
+diff --git a/src/solver/vofm.h b/src/solver/vofm.h
+index 9d6cac8..75cc7a7 100644
+--- a/src/solver/vofm.h
++++ b/src/solver/vofm.h
+@@ -44,6 +44,7 @@ class Vofm final : public AdvectionSolver<typename EB_::M> {
+   const EB& GetEmbed() const;
+   const Par& GetPar() const;
+   void SetPar(Par);
++  void SetStep(size_t step) override;
+   void StartStep() override;
+   void MakeIteration() override;
+   void FinishStep() override;
+diff --git a/src/solver/vofm.ipp b/src/solver/vofm.ipp
+index 3b474a0..c8cf41e 100644
+--- a/src/solver/vofm.ipp
++++ b/src/solver/vofm.ipp
+@@ -264,9 +264,12 @@ struct Vofm<EB_>::Imp {
+       }
+     }
+   }
++  void SetStep(size_t step) {
++    count_ = step;
++  }
+   void StartStep() {
+     auto sem = m.GetSem("start");
+-    if (owner_->GetTime() == 0.) {
++    if (owner_->GetTime() == 0. || count_ == 0) {
+       if (par.extrapolate_boundaries) {
+         ExtrapolateLinear(sem, fcu_.time_curr, fccl_);
+       }
+@@ -943,6 +946,11 @@ void Vofm<EB_>::SetPar(Par par) {
+   imp->par = par;
+ }
+ 
++template <class EB_>
++void Vofm<EB_>::SetStep(size_t step) {
++  imp->SetStep(step);
++}
++
+ template <class EB_>
+ void Vofm<EB_>::StartStep() {
+   imp->StartStep();
+diff --git a/src/util/CMakeLists.txt b/src/util/CMakeLists.txt
+index e6be09b..a6e583c 100644
+--- a/src/util/CMakeLists.txt
++++ b/src/util/CMakeLists.txt
+@@ -8,6 +8,9 @@ set(T "sysinfo")
+ add_object(${T} sysinfo.cpp)
+ object_link_libraries(${T} utilmpi utilsystem PRIVATE openmp)
+ object_compile_definitions(${T} PRIVATE _USE_AMGX_=$<BOOL:${USE_AMGX}>)
++if (USE_AMGX)
++  object_link_libraries(${T} PRIVATE CUDA::cudart)
++endif()
+ 
+ set(T "utilhydro")
+ add_object(${T} hydro.cpp)
+@@ -50,7 +53,7 @@ add_object(${T} timer.cpp)
+ 
+ set(T "gitgen")
+ add_object(${T} gitgen.cpp)
+-add_dependencies(${T} gitrev)
++add_dependencies(${T}_obj gitrev)
+ 
+ set(T "filesystem")
+ add_object(${T} filesystem.cpp)
+diff --git a/src/util/hydro_post.ipp b/src/util/hydro_post.ipp
+index bbc2b63..3decf53 100644
+--- a/src/util/hydro_post.ipp
++++ b/src/util/hydro_post.ipp
+@@ -208,6 +208,20 @@ struct HydroPost<M>::Imp {
+         dumpv(fc_flux, 1, "fluxy");
+         dumpv(fc_flux, 2, "fluxz");
+       }
++      if (dl.count("fluxxp") || dl.count("fluxyp") || dl.count("fluxzp")) {
++        stack_fcv.emplace(m, Vect(0));
++        auto& fc_flux = stack_fcv.top();
++        auto& ffv = hydro->fs_->GetVolumeFlux();
++        for (auto c : m.Cells()) {
++          for (auto d : m.dirs) {
++            fc_flux[c][d] = ffv[m.GetFace(c, IdxNci(d * 2 + 1))];
++          }
++        }
++        dumpv(fc_flux, 0, "fluxxp");
++        dumpv(fc_flux, 1, "fluxyp");
++        dumpv(fc_flux, 2, "fluxzp");
++      }
++      dump(hydro->fs_->GetVolumeFlux().GetFieldCell(), "fluxeb");
+       if (dl.count("dis") || dl.count("strain")) {
+         hydro->fc_strain_ = hydro->CalcStrain(hydro->fs_->GetVelocity());
+         if (dl.count("strain")) {

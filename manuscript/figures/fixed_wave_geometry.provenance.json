@@ -1,0 +1,10 @@
+{
+  "input_name": "transfer.npz",
+  "input_sha256": "b4f4a9e361ce3f75ce119450b0500559d3dc310c8da25acd4eac921263556612",
+  "plot_script_sha256": "a389f0627e90ed7ee3133887a2ec5ffa08b0783fde0213915b18b0f736a9dacf",
+  "geometry_archive_sha256": "8394e3ecc72e602cfe2124728fb84dff52c449e97781b0df217f0cc2877a3129",
+  "pdf_sha256": "b53cf0b2885c277b6922fb16f4cdc3d728df0f754d5e8a0e41471b19cd03d69d",
+  "png_sha256": "808ed056d906091ec57a01347ac473aff987687c812eca8f7b961b712387c4e7",
+  "scope": "actual v63 boundary polygon before native-bed adjustment; no inferred time trajectory",
+  "smoothing": false
+}

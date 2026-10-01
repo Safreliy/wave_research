@@ -1,0 +1,309 @@
+{
+  "schema": "guarded-mass-mixture-independent-audit-v1",
+  "scope": "Frozen mixture input and linear two-fluid analytic height; not an exact nonlinear trajectory",
+  "checker_sha256": "e6bee32cfb8f4380743248506b3af7a0652389c418b4e33e93403ff6963b14a6",
+  "protocol_sha256": "37ac136248d808b1759ce12eb375892267c049fef80f26cd3a527144a3247e4d",
+  "input_archive_sha256": "65631c5876c1b02cba090d71d181702e9cb48579b686b439ed38d49c05d8403e",
+  "output_archive_sha256": "c07f4bc7eb345ee107ced7e68892cdc28810ccf5a2da164b89a353c3347354d6",
+  "primary_analysis_sha256": "fd176c78e496e6fbfa59e181f30458a0d8139f275c347fbda06bf2798662fc9d",
+  "grid_shape_yx": [
+    32,
+    512
+  ],
+  "mixture_formula": "(rho_l*q*u_l + rho_g*(cs-q)*u_g)/(rho_l*q+rho_g*(cs-q))",
+  "native_height_formula": "h*sum_y(VF*EBVF)",
+  "analytic_height_formula": "depth+B*sin(omega*t)*sinc(k*h/2)*cos(k*xcenter)",
+  "input_checks": {
+    "A_mass": {
+      "amplitude": 2e-05,
+      "geometry_max_abs_difference": 8.881784197001252e-16,
+      "phase_input_max_abs_difference_from_closed_means": 2.2234614865425384e-19,
+      "mass_input_max_abs_difference_from_density_weighted_formula": 2.0286439086740493e-19,
+      "mass_input_max_abs_difference_from_wrong_volume_mean_on_mixed_cells": 1.696678508618515e-05,
+      "mixed_cell_count": 512
+    },
+    "Ahalf_mass": {
+      "amplitude": 1e-05,
+      "geometry_max_abs_difference": 8.881784197001252e-16,
+      "phase_input_max_abs_difference_from_closed_means": 1.1117307432712692e-19,
+      "mass_input_max_abs_difference_from_density_weighted_formula": 1.0143219543370247e-19,
+      "mass_input_max_abs_difference_from_wrong_volume_mean_on_mixed_cells": 8.483392543092574e-06,
+      "mixed_cell_count": 512
+    }
+  },
+  "branches": {
+    "zero": {
+      "amplitude": 0.0,
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1312500000000001,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2624999999999999,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3937499999999971,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5256608823752456,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16
+        }
+      ],
+      "status_complete": true
+    },
+    "A_phase": {
+      "amplitude": 2e-05,
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1312500000000001,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 4.1891046562982496e-08,
+          "physical_H_normalized_fixed_amplitude": 0.0024827108486905744,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2624999999999999,
+          "mean_height": 0.9700624900000001,
+          "physical_H_error_rms": 1.3689895629384027e-07,
+          "physical_H_normalized_fixed_amplitude": 0.008113440743337107,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3937499999999971,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 3.073270047273446e-07,
+          "physical_H_normalized_fixed_amplitude": 0.018214013526374757,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5256608823752456,
+          "mean_height": 0.9700624900000001,
+          "physical_H_error_rms": 5.962159492522712e-07,
+          "physical_H_normalized_fixed_amplitude": 0.0353352787007949,
+          "fixed_normalizer": 1.687310730731151e-05
+        }
+      ],
+      "status_complete": true
+    },
+    "Ahalf_phase": {
+      "amplitude": 1e-05,
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_normalized_fixed_amplitude": 1.3159674793795343e-11,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1312500000000001,
+          "mean_height": 0.9700624900000001,
+          "physical_H_error_rms": 2.0945807895773025e-08,
+          "physical_H_normalized_fixed_amplitude": 0.002482744584537398,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2624999999999999,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 6.845083591089373e-08,
+          "physical_H_normalized_fixed_amplitude": 0.008113601681562516,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3937499999999971,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.5366685107040012e-07,
+          "physical_H_normalized_fixed_amplitude": 0.018214410454654394,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5256608823752456,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 2.981141067837254e-07,
+          "physical_H_normalized_fixed_amplitude": 0.03533600555655159,
+          "fixed_normalizer": 8.436553653655755e-06
+        }
+      ],
+      "status_complete": true
+    },
+    "A_mass": {
+      "amplitude": 2e-05,
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1312500000000001,
+          "mean_height": 0.9700624900000001,
+          "physical_H_error_rms": 6.935239491654518e-09,
+          "physical_H_normalized_fixed_amplitude": 0.00041102325525123145,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2624999999999999,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 4.450536661105199e-09,
+          "physical_H_normalized_fixed_amplitude": 0.00026376508962144027,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3937499999999971,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 8.939498178906049e-08,
+          "physical_H_normalized_fixed_amplitude": 0.005298074632069907,
+          "fixed_normalizer": 1.687310730731151e-05
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5256608823752456,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 2.995760759941582e-07,
+          "physical_H_normalized_fixed_amplitude": 0.017754647708803757,
+          "fixed_normalizer": 1.687310730731151e-05
+        }
+      ],
+      "status_complete": true
+    },
+    "Ahalf_mass": {
+      "amplitude": 1e-05,
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_normalized_fixed_amplitude": 1.3159674793795343e-11,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1312500000000001,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 3.467879839490231e-09,
+          "physical_H_normalized_fixed_amplitude": 0.0004110540846246521,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2624999999999999,
+          "mean_height": 0.9700624900000001,
+          "physical_H_error_rms": 2.2243545349784897e-09,
+          "physical_H_normalized_fixed_amplitude": 0.0002636567757753339,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3937499999999971,
+          "mean_height": 0.97006249,
+          "physical_H_error_rms": 4.469604106098204e-08,
+          "physical_H_normalized_fixed_amplitude": 0.005297902780670897,
+          "fixed_normalizer": 8.436553653655755e-06
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5256608823752456,
+          "mean_height": 0.9700624899999999,
+          "physical_H_error_rms": 1.4978575188888263e-07,
+          "physical_H_normalized_fixed_amplitude": 0.017754376732254523,
+          "fixed_normalizer": 8.436553653655755e-06
+        }
+      ],
+      "status_complete": true
+    }
+  },
+  "common_observed_times": [
+    0.0,
+    0.1312500000000001,
+    0.2624999999999999,
+    0.3937499999999971,
+    0.5256608823752456
+  ],
+  "common_runtime_fingerprint": {
+    "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+    "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+    "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+    "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+  },
+  "endpoint": {
+    "zero": {
+      "dump_index": 4,
+      "time": 0.5256608823752456,
+      "mean_height": 0.97006249,
+      "physical_H_error_rms": 1.1102230246251565e-16
+    },
+    "A_phase": {
+      "dump_index": 4,
+      "time": 0.5256608823752456,
+      "mean_height": 0.9700624900000001,
+      "physical_H_error_rms": 5.962159492522712e-07,
+      "physical_H_normalized_fixed_amplitude": 0.0353352787007949,
+      "fixed_normalizer": 1.687310730731151e-05
+    },
+    "Ahalf_phase": {
+      "dump_index": 4,
+      "time": 0.5256608823752456,
+      "mean_height": 0.9700624899999999,
+      "physical_H_error_rms": 2.981141067837254e-07,
+      "physical_H_normalized_fixed_amplitude": 0.03533600555655159,
+      "fixed_normalizer": 8.436553653655755e-06
+    },
+    "A_mass": {
+      "dump_index": 4,
+      "time": 0.5256608823752456,
+      "mean_height": 0.9700624899999999,
+      "physical_H_error_rms": 2.995760759941582e-07,
+      "physical_H_normalized_fixed_amplitude": 0.017754647708803757,
+      "fixed_normalizer": 1.687310730731151e-05
+    },
+    "Ahalf_mass": {
+      "dump_index": 4,
+      "time": 0.5256608823752456,
+      "mean_height": 0.9700624899999999,
+      "physical_H_error_rms": 1.4978575188888263e-07,
+      "physical_H_normalized_fixed_amplitude": 0.017754376732254523,
+      "fixed_normalizer": 8.436553653655755e-06
+    }
+  }
+}

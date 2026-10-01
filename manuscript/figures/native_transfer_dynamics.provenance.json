@@ -1,0 +1,24 @@
+{
+  "inputs": [
+    {
+      "path": "research\\results\\publication_package\\transfer_dynamic_followup_20261001\\flat_native_L9\\analysis_full_series.json",
+      "sha256": "679a412d442943c00934bc163cbddddbf25cf8dc9a18bdbd9e72231727a90dec"
+    },
+    {
+      "path": "research\\results\\publication_package\\transfer_dynamic_followup_20261001\\flat_native_L9_trace4\\analysis_full_series.json",
+      "sha256": "d4c962aadbc8f0bf51c3204419680cd6bacbfa3dbb61652c51ec0aeb5572b68e"
+    },
+    {
+      "path": "research\\results\\publication_package\\transfer_dynamic_followup_20261001\\flat_native_L10\\analysis_full_series.json",
+      "sha256": "8bf7f070c55716e82a5236527f28543a7216b3c35f51c9226ec853f2e467d66b"
+    },
+    {
+      "path": "research\\results\\publication_package\\transfer_dynamic_followup_20261001\\flat_native_L10_trace4\\analysis_full_series.json",
+      "sha256": "fde41fbd133d408c2a068d3e079b348bd6babaf89232bc667b92f3eb01530233"
+    }
+  ],
+  "code_sha256": "6f8334126f4f64504905f888d723e12a26c95ff6376466bd10052cfb67b9e085",
+  "scope": "same-grid reference initialized with exact phase means; not exact Navier-Stokes solution",
+  "pdf_sha256": "f21717b960e9874075d7ce43dd2859bf2a1e0757524d4302aa356f44c8ea2a2d",
+  "png_sha256": "60d089b539e000807846bbec87901704f5b1e04702c39303b41e06e0e04b6a03"
+}

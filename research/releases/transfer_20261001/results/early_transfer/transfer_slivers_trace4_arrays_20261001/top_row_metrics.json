@@ -1,0 +1,29 @@
+{
+  "schema": "free-surface-sliver-row-analysis-v1",
+  "input_summary_sha256": "abed7693fe4be492c60b9f4c8c4eb1d99c0bf9f2b3ab71bb99bfb3e7398772d5",
+  "code_sha256": "fc5cb29bced96d0f798c03ccbc3dae8fc427410f8f19aeaf8f9835ce3316d3ce",
+  "rows": [
+    {
+      "nx": 256,
+      "surface_liquid_fraction": 0.001,
+      "surface_cut_cells": 256,
+      "arrays_sha256": "ceaf3f8ef7c2f7f81e6c86b2d8182ea45520a55e8f6b7cb848dfeda33f5d8ad6",
+      "top_row_relative_l2": {
+        "fitted": 0.0091403572706219,
+        "arithmetic_mac": 0.04984469861849361,
+        "centroid_oracle": 0.00040170775530453637
+      }
+    },
+    {
+      "nx": 512,
+      "surface_liquid_fraction": 0.001,
+      "surface_cut_cells": 512,
+      "arrays_sha256": "44ec356d360baf7bd60245316dfd59f9292d429fdd0db15bfde086bc7f3f4ae4",
+      "top_row_relative_l2": {
+        "fitted": 0.0007336876828850471,
+        "arithmetic_mac": 0.02472003119369412,
+        "centroid_oracle": 0.00010040576453434015
+      }
+    }
+  ]
+}

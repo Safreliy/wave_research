@@ -1,5 +1,15 @@
 # Conservative divergence-conforming BIE-to-VOF state transfer
 
+**Current transfer study (1 October 2026):** The new editable manuscript is
+[`manuscript/transfer_article.tex`](manuscript/transfer_article.tex), with
+figures, tables and the curated numerical evidence in
+[`research/releases/transfer_20261001/`](research/releases/transfer_20261001/README.md).
+The older `manuscript/main.tex` and `paper.pdf` below describe the prior
+variable-bathymetry work; `paper.pdf` is not a PDF of the new transfer article.
+The current release has no DOI yet.
+
+## Earlier variable-bathymetry study
+
 Research code and evidence package for the manuscript **“Conservative
 divergence-conforming state transfer from adaptive potential-flow BIE to
 embedded VOF: overturning waves over variable bathymetry.”**

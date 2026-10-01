@@ -1,0 +1,123 @@
+{
+  "schema": "native-flat-input-independent-audit-v1",
+  "passed": true,
+  "scope": "independent eight-point tensor Gaussian phase means; no dynamic accuracy assertion",
+  "code_sha256": "243f46139ff32a7cfe72aca94336add66e84c3dcdcffa18268981c7af37cdaf5",
+  "cases": [
+    {
+      "case": "flat_native_L9",
+      "input_hashes": {
+        "protocol.json": "4373d871b766066916779a47fb6cdb7497f2149f95597d7b23fd6e84a30ce94d",
+        "fitted/q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "fitted/vx.raw": "a171d49522eb848b3be4fa739d4f1e798338047cb1160d2a894d03863cacfc45",
+        "fitted/vy.raw": "68e8c5cd4accfd752fe461d0ab538da01a8708bb5a56bb2421d50bec6f60624c",
+        "bilinear_centroid/q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "bilinear_centroid/vx.raw": "9ed0d0c2c5bf7ab27cb456713d2eb93c30655307d07ff9fe08520896b0708f37",
+        "bilinear_centroid/vy.raw": "50809abccf76c63efa6463f389bdb392a22675e66874d44bdfefaf5eff772369",
+        "exact_initial_means/q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "exact_initial_means/vx.raw": "65940a8e9dc01af89b5177791c83925b0b70faeccdc892d444b2630369190a07",
+        "exact_initial_means/vy.raw": "edb2ee744baa8a48bec8bd7a805f4016647b378a8064fe7e9bbc7925250e9b1f"
+      },
+      "max_liquid_fraction_geometry_difference": 0.0,
+      "independent_gauss_reference_relative_error": 1.843403866943773e-14,
+      "global_liquid_weighted_initial_errors": {
+        "fitted": 0.002987119846678915,
+        "bilinear_centroid": 0.004086890762306497,
+        "exact_initial_means": 0.0
+      },
+      "gas_fields_identical": true
+    },
+    {
+      "case": "flat_native_L9_trace4",
+      "input_hashes": {
+        "protocol.json": "ecc605625bc1f6d088d5d78b244b3df3185cdf1d088f0ba8a96a2b61ca4e085b",
+        "fitted/q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "fitted/vx.raw": "50260a5f2278566fa7c906767cc481aa6e586737b639d0d02400d6ccd5db9ba0",
+        "fitted/vy.raw": "76b03e692b699d3f6044412b405cd015ce7cf79897cfad7414062652892717e1",
+        "bilinear_centroid/q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "bilinear_centroid/vx.raw": "d8d606d112d2055654c2624430fe08ff32462c5ac2ee18c705b35f572cf62637",
+        "bilinear_centroid/vy.raw": "2f9c1b36af289fafd49c4ee756d508ffad392af7bc4e3c1ba0098788dcfc61d3",
+        "exact_initial_means/q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+        "exact_initial_means/vx.raw": "65940a8e9dc01af89b5177791c83925b0b70faeccdc892d444b2630369190a07",
+        "exact_initial_means/vy.raw": "edb2ee744baa8a48bec8bd7a805f4016647b378a8064fe7e9bbc7925250e9b1f"
+      },
+      "max_liquid_fraction_geometry_difference": 0.0,
+      "independent_gauss_reference_relative_error": 1.843403866943773e-14,
+      "global_liquid_weighted_initial_errors": {
+        "fitted": 0.0024092844219608784,
+        "bilinear_centroid": 0.004086890762300743,
+        "exact_initial_means": 0.0
+      },
+      "gas_fields_identical": true
+    },
+    {
+      "case": "flat_native_L10",
+      "input_hashes": {
+        "protocol.json": "51cfa2d821b2b88059750711bc39cc1c84907ecba5f4b1202f9e0dd74e9df3a9",
+        "fitted/q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+        "fitted/vx.raw": "23aacab36a46f98585fa1660c7d85a16c37d4271ce415d904af28b56af086554",
+        "fitted/vy.raw": "83d5d916076077bfbf8ee9ae03b868c3b59ef2132788a46a65a7ce466b803d4e",
+        "bilinear_centroid/q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+        "bilinear_centroid/vx.raw": "b135ac91e24cc72f8682c44b78f928fca31f59d528afab465fb78820c1f75d9a",
+        "bilinear_centroid/vy.raw": "ffabaf6dc9642786f705cc6df11147793ea7841e919f42aa1a20366f470891c6",
+        "exact_initial_means/q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+        "exact_initial_means/vx.raw": "bc26ea36e97fa071e52d574697ea163f5758f6b96ca41962704f78da092cdf07",
+        "exact_initial_means/vy.raw": "e55cd06b3d040833d36371d53958d8d2c8f74e87c9ca8e3d9c00082fcf372dbb"
+      },
+      "max_liquid_fraction_geometry_difference": 0.0,
+      "independent_gauss_reference_relative_error": 1.8439532766749384e-14,
+      "global_liquid_weighted_initial_errors": {
+        "fitted": 0.004699578381244488,
+        "bilinear_centroid": 0.0010898362004020724,
+        "exact_initial_means": 0.0
+      },
+      "gas_fields_identical": true
+    },
+    {
+      "case": "flat_native_L10_trace4",
+      "input_hashes": {
+        "protocol.json": "3dc6e0cdae913ae81ce8be1214b9f7680cbd7029eb4f2f4afc2f86cc99dc8fb9",
+        "fitted/q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+        "fitted/vx.raw": "4a76f3d788ded815ca7be1000dda8b2a3246eb1bf8b7d6f3038759552c9bbc7c",
+        "fitted/vy.raw": "4e83eeb4ea1663537cc61e7dfd51f2ec5ac769e1eee41b1bd9a011a7348aba3a",
+        "bilinear_centroid/q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+        "bilinear_centroid/vx.raw": "e2acd8c8ff00117253e593d60da41739072fceca48078b27563ed4ed3bf4fbda",
+        "bilinear_centroid/vy.raw": "83f181903dfa12bb3bb08c5912322debb1cf64fc0b91c1200c01cf0a4e9acbb4",
+        "exact_initial_means/q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+        "exact_initial_means/vx.raw": "bc26ea36e97fa071e52d574697ea163f5758f6b96ca41962704f78da092cdf07",
+        "exact_initial_means/vy.raw": "e55cd06b3d040833d36371d53958d8d2c8f74e87c9ca8e3d9c00082fcf372dbb"
+      },
+      "max_liquid_fraction_geometry_difference": 0.0,
+      "independent_gauss_reference_relative_error": 1.8439532766749384e-14,
+      "global_liquid_weighted_initial_errors": {
+        "fitted": 0.00038819839465506603,
+        "bilinear_centroid": 0.001089836200402496,
+        "exact_initial_means": 0.0
+      },
+      "gas_fields_identical": true
+    },
+    {
+      "case": "flat_native_L11_resolved",
+      "input_hashes": {
+        "protocol.json": "16b5244b44d1981e469b3d992649ce255245f73a6db9146fd8616b052577d701",
+        "fitted/q.raw": "ce918c59be9270e0b4d2948e7f1798725644e0bbae26c1c28bf3fe15b75032aa",
+        "fitted/vx.raw": "0052abd70d779c5b3f5c2f79d17f89fc11bdcd8e2cd12cae27e21ab339ec8ec8",
+        "fitted/vy.raw": "10bd3abdef7852eabf2b91a28de025031180794740833f274e64948ebe6de97f",
+        "bilinear_centroid/q.raw": "ce918c59be9270e0b4d2948e7f1798725644e0bbae26c1c28bf3fe15b75032aa",
+        "bilinear_centroid/vx.raw": "1979a9108598de8e6ab2d10139b567223433d2b5e6f9b188fe4691b753e4476a",
+        "bilinear_centroid/vy.raw": "d62c04fe4611cc1f9a673a3f7bd02d59bc45122b27ca66fc5dda6c4010b59489",
+        "exact_initial_means/q.raw": "ce918c59be9270e0b4d2948e7f1798725644e0bbae26c1c28bf3fe15b75032aa",
+        "exact_initial_means/vx.raw": "aa5a497c9c741cab3828ee41888eea53a51f2c671bf048a4ce9b383362df4bf2",
+        "exact_initial_means/vy.raw": "41499d661e9fd99066ed93445b60e25818ca61cad29609d4599fb205b19e6ac4"
+      },
+      "max_liquid_fraction_geometry_difference": 0.0,
+      "independent_gauss_reference_relative_error": 1.85574752163452e-14,
+      "global_liquid_weighted_initial_errors": {
+        "fitted": 0.00010309435032543442,
+        "bilinear_centroid": 0.00033498067984201934,
+        "exact_initial_means": 0.0
+      },
+      "gas_fields_identical": true
+    }
+  ]
+}

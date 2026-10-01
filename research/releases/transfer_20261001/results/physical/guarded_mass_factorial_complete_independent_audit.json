@@ -1,0 +1,329 @@
+{
+  "schema": "guarded-mass-factorial-independent-raw-audit-v1",
+  "scope": "Linear-wave physical height and mass-exact same-grid native discrepancies, not exact nonlinear truth",
+  "checker_sha256": "6470e63722c246e0cd6b29fa051df49cae26ed248738d289e041c78b68ab50d0",
+  "output_archive_sha256": "f6a99920820d5491422d1b71e3f0e7463b1da8e6b4d6a5113bfc49e0cc3de3e0",
+  "primary_analysis_sha256": "a7af7dbabe842d252ffe9ea9971fa50888dc827ad3313f8228fc550a9a91cd82",
+  "protocol_sha256": "37ac136248d808b1759ce12eb375892267c049fef80f26cd3a527144a3247e4d",
+  "base_input_archive_sha256": "65631c5876c1b02cba090d71d181702e9cb48579b686b439ed38d49c05d8403e",
+  "phase_input_archive_sha256": "399e54d4be03083b92a00a9dc3003ac3ac137001eff468103c8fe44185970493",
+  "mass_input_archive_sha256": "59a282ce2d8335708f96fa79fc3a67a34c482fea69295911b666849f554343a7",
+  "analytic_height": "depth+B*sin(omega*t)*sinc(k*h/2)*cos(k*xcenter)",
+  "native_height": "h*sum_y(VF*EBVF)",
+  "fixed_normalizer": 1.687310730731151e-05,
+  "native_velocity_weight": "q_ref=VF_mass_exact*EBVF_mass_exact",
+  "branches_in_primary": [
+    "phase_exact_input",
+    "mass_exact_input",
+    "phase_matched",
+    "phase_practical",
+    "mass_matched",
+    "mass_practical"
+  ],
+  "input_checks": {
+    "A_matched_mass": {
+      "source_phase_branch": "A_matched",
+      "common_geometry_and_serialized_faces_byte_identical": true,
+      "gas_only_input_velocity_bit_identical_to_mass_exact": true,
+      "max_absolute_difference_from_independently_integrated_density_mixture": 1.503483481376383e-19,
+      "mixed_phase_cells": 512
+    },
+    "A_practical_mass": {
+      "source_phase_branch": "A_practical",
+      "common_geometry_and_serialized_faces_byte_identical": true,
+      "gas_only_input_velocity_bit_identical_to_mass_exact": true,
+      "max_absolute_difference_from_independently_integrated_density_mixture": 1.503483481376383e-19,
+      "mixed_phase_cells": 512
+    }
+  },
+  "series": [
+    {
+      "dump_index": 0,
+      "time": 0.0,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_normalized": 6.579837396897672e-12,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.013340318933283718
+        },
+        "mass_exact_input": {
+          "physical_H_normalized": 6.579837396897672e-12,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.0
+        },
+        "phase_matched": {
+          "physical_H_normalized": 6.579837396897672e-12,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.013415205154145703
+        },
+        "phase_practical": {
+          "physical_H_normalized": 6.579837396897672e-12,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.01478003656705746
+        },
+        "mass_matched": {
+          "physical_H_normalized": 6.579837396897672e-12,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.0014203880688994904
+        },
+        "mass_practical": {
+          "physical_H_normalized": 6.579837396897672e-12,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.0039974103298931465
+        }
+      },
+      "zero_height_floor_rms": 1.1102230246251565e-16
+    },
+    {
+      "dump_index": 1,
+      "time": 0.1312500000000001,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_normalized": 0.0024827108486905744,
+          "same_mass_exact_native_H_normalized": 0.002893733952732045,
+          "same_mass_exact_native_velocity_Eu": 0.133344479411428
+        },
+        "mass_exact_input": {
+          "physical_H_normalized": 0.00041102325525123145,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.0
+        },
+        "phase_matched": {
+          "physical_H_normalized": 0.002487603128703193,
+          "same_mass_exact_native_H_normalized": 0.0028986262329105607,
+          "same_mass_exact_native_velocity_Eu": 0.13326821848893702
+        },
+        "phase_practical": {
+          "physical_H_normalized": 0.0028597148142218373,
+          "same_mass_exact_native_H_normalized": 0.0032707379232068475,
+          "same_mass_exact_native_velocity_Eu": 0.14198875786908763
+        },
+        "mass_matched": {
+          "physical_H_normalized": 0.00040605606373514516,
+          "same_mass_exact_native_H_normalized": 4.9671925054999916e-06,
+          "same_mass_exact_native_velocity_Eu": 0.0014182768459271976
+        },
+        "mass_practical": {
+          "physical_H_normalized": 0.00016171330302067286,
+          "same_mass_exact_native_H_normalized": 0.00024931011822763323,
+          "same_mass_exact_native_velocity_Eu": 0.003848540310082321
+        }
+      },
+      "zero_height_floor_rms": 1.1102230246251565e-16
+    },
+    {
+      "dump_index": 2,
+      "time": 0.2624999999999999,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_normalized": 0.008113440743337107,
+          "same_mass_exact_native_H_normalized": 0.007849698664868112,
+          "same_mass_exact_native_velocity_Eu": 0.1596486252152973
+        },
+        "mass_exact_input": {
+          "physical_H_normalized": 0.00026376508962144027,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.0
+        },
+        "phase_matched": {
+          "physical_H_normalized": 0.0081247129864751,
+          "same_mass_exact_native_H_normalized": 0.007860970910642634,
+          "same_mass_exact_native_velocity_Eu": 0.15957804800377035
+        },
+        "phase_practical": {
+          "physical_H_normalized": 0.009000790245188937,
+          "same_mass_exact_native_H_normalized": 0.008737048269409926,
+          "same_mass_exact_native_velocity_Eu": 0.1699504699084517
+        },
+        "mass_matched": {
+          "physical_H_normalized": 0.00027524204405885106,
+          "same_mass_exact_native_H_normalized": 1.1477989339313597e-05,
+          "same_mass_exact_native_velocity_Eu": 0.0015130709516052877
+        },
+        "mass_practical": {
+          "physical_H_normalized": 0.0007998260075732365,
+          "same_mass_exact_native_H_normalized": 0.0005360771482868049,
+          "same_mass_exact_native_velocity_Eu": 0.0042698636360038135
+        }
+      },
+      "zero_height_floor_rms": 1.1102230246251565e-16
+    },
+    {
+      "dump_index": 3,
+      "time": 0.3937499999999971,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_normalized": 0.018214013526374757,
+          "same_mass_exact_native_H_normalized": 0.012915963974098405,
+          "same_mass_exact_native_velocity_Eu": 0.17631199881413998
+        },
+        "mass_exact_input": {
+          "physical_H_normalized": 0.005298074632069907,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.0
+        },
+        "phase_matched": {
+          "physical_H_normalized": 0.018231534494846168,
+          "same_mass_exact_native_H_normalized": 0.012933484960457858,
+          "same_mass_exact_native_velocity_Eu": 0.17622916141373976
+        },
+        "phase_practical": {
+          "physical_H_normalized": 0.019606014383940436,
+          "same_mass_exact_native_H_normalized": 0.014307965694368034,
+          "same_mass_exact_native_velocity_Eu": 0.18743235005219314
+        },
+        "mass_matched": {
+          "physical_H_normalized": 0.0053159354244186685,
+          "same_mass_exact_native_H_normalized": 1.7860938301571374e-05,
+          "same_mass_exact_native_velocity_Eu": 0.001675821269276531
+        },
+        "mass_practical": {
+          "physical_H_normalized": 0.0061091991298189005,
+          "same_mass_exact_native_H_normalized": 0.0008111296104142226,
+          "same_mass_exact_native_velocity_Eu": 0.004503453764405918
+        }
+      },
+      "zero_height_floor_rms": 1.1102230246251565e-16
+    },
+    {
+      "dump_index": 4,
+      "time": 0.5256608823752456,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_normalized": 0.0353352787007949,
+          "same_mass_exact_native_H_normalized": 0.017580693002936448,
+          "same_mass_exact_native_velocity_Eu": 0.1802509324256106
+        },
+        "mass_exact_input": {
+          "physical_H_normalized": 0.017754647708803757,
+          "same_mass_exact_native_H_normalized": 0.0,
+          "same_mass_exact_native_velocity_Eu": 0.0
+        },
+        "phase_matched": {
+          "physical_H_normalized": 0.03535843225971239,
+          "same_mass_exact_native_H_normalized": 0.01760384662627563,
+          "same_mass_exact_native_velocity_Eu": 0.18014930427387266
+        },
+        "phase_practical": {
+          "physical_H_normalized": 0.03718423746544833,
+          "same_mass_exact_native_H_normalized": 0.019429655257127153,
+          "same_mass_exact_native_velocity_Eu": 0.19116666001941854
+        },
+        "mass_matched": {
+          "physical_H_normalized": 0.017778264815800263,
+          "same_mass_exact_native_H_normalized": 2.361731968793266e-05,
+          "same_mass_exact_native_velocity_Eu": 0.0017936790430651925
+        },
+        "mass_practical": {
+          "physical_H_normalized": 0.018810903970891926,
+          "same_mass_exact_native_H_normalized": 0.0010562640025260821,
+          "same_mass_exact_native_velocity_Eu": 0.00437392932600485
+        }
+      },
+      "zero_height_floor_rms": 1.1102230246251565e-16
+    }
+  ],
+  "common_observed_times": [
+    0.0,
+    0.1312500000000001,
+    0.2624999999999999,
+    0.3937499999999971,
+    0.5256608823752456
+  ],
+  "common_runtime_fingerprint": {
+    "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+    "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+    "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+    "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+  },
+  "all_initial_preflights_and_semantic_audits_valid": true,
+  "endpoint": {
+    "phase_exact_input": {
+      "physical_H_normalized": 0.0353352787007949,
+      "same_mass_exact_native_H_normalized": 0.017580693002936448,
+      "same_mass_exact_native_velocity_Eu": 0.1802509324256106
+    },
+    "mass_exact_input": {
+      "physical_H_normalized": 0.017754647708803757,
+      "same_mass_exact_native_H_normalized": 0.0,
+      "same_mass_exact_native_velocity_Eu": 0.0
+    },
+    "phase_matched": {
+      "physical_H_normalized": 0.03535843225971239,
+      "same_mass_exact_native_H_normalized": 0.01760384662627563,
+      "same_mass_exact_native_velocity_Eu": 0.18014930427387266
+    },
+    "phase_practical": {
+      "physical_H_normalized": 0.03718423746544833,
+      "same_mass_exact_native_H_normalized": 0.019429655257127153,
+      "same_mass_exact_native_velocity_Eu": 0.19116666001941854
+    },
+    "mass_matched": {
+      "physical_H_normalized": 0.017778264815800263,
+      "same_mass_exact_native_H_normalized": 2.361731968793266e-05,
+      "same_mass_exact_native_velocity_Eu": 0.0017936790430651925
+    },
+    "mass_practical": {
+      "physical_H_normalized": 0.018810903970891926,
+      "same_mass_exact_native_H_normalized": 0.0010562640025260821,
+      "same_mass_exact_native_velocity_Eu": 0.00437392932600485
+    }
+  },
+  "endpoint_phase_practical_over_mass_matched_ratio": 2.091556057394375,
+  "endpoint_phase_practical_to_mass_matched_error_reduction_percent": 52.188706754253424,
+  "endpoint_mass_practical_over_mass_matched_ratio": 1.0580843612012076,
+  "endpoint_mass_practical_to_mass_matched_error_reduction_percent": 5.489577516793309,
+  "nonzero_physical_H_rankings": [
+    {
+      "time": 0.1312500000000001,
+      "best_to_worst": [
+        "mass_practical",
+        "mass_matched",
+        "mass_exact_input",
+        "phase_exact_input",
+        "phase_matched",
+        "phase_practical"
+      ]
+    },
+    {
+      "time": 0.2624999999999999,
+      "best_to_worst": [
+        "mass_exact_input",
+        "mass_matched",
+        "mass_practical",
+        "phase_exact_input",
+        "phase_matched",
+        "phase_practical"
+      ]
+    },
+    {
+      "time": 0.3937499999999971,
+      "best_to_worst": [
+        "mass_exact_input",
+        "mass_matched",
+        "mass_practical",
+        "phase_exact_input",
+        "phase_matched",
+        "phase_practical"
+      ]
+    },
+    {
+      "time": 0.5256608823752456,
+      "best_to_worst": [
+        "mass_exact_input",
+        "mass_matched",
+        "mass_practical",
+        "phase_exact_input",
+        "phase_matched",
+        "phase_practical"
+      ]
+    }
+  ],
+  "all_nonzero_mass_matched_better_than_phase_practical": true,
+  "mass_matched_better_than_mass_practical_by_nonzero_time": [
+    false,
+    true,
+    true,
+    true
+  ]
+}

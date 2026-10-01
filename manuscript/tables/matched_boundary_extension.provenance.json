@@ -1,0 +1,8 @@
+{
+  "input_sha256": "118b8cdf2454942b184bdc6a6e1add26d6897214ef3e80d4ea5b0a0b2cbf799c",
+  "rows": 15,
+  "gain_min": 2.7067812920740133,
+  "gain_max": 12.598176027755532,
+  "all_favourable_against_same_psi_control": true,
+  "max_matched_momentum_closure": 2.600123971673397e-15
+}

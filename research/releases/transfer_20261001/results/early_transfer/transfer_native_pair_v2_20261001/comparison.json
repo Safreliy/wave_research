@@ -1,0 +1,79 @@
+{
+  "schema": "native-pair-comparison-v1",
+  "run_status_sha256": {
+    "fitted": "236b12a53464b5ef8c293c04d098af7f05f51b31ab77a16568856d5fc3105cd9",
+    "bilinear_centroid": "30d8661d2d9ae885970c14165aea27f5de15cc4c75967ec789f096f83cca97df"
+  },
+  "audit_sha256": {
+    "fitted": "30d88b570d08c4b7ee7dae41007d2dd1f0b2e9ef4aed41ebdbc1c25369a3a52e",
+    "bilinear_centroid": "f9f4f6cc7cfd5ff4a8284b84f9e8da7a6c320487b3b7646856da58ff39e3893b"
+  },
+  "rows": [
+    {
+      "dump_index": 0,
+      "time_fitted": 0.0,
+      "time_control": 0.0,
+      "time_gap": 0.0,
+      "fitted_mass": 40.5262785994476,
+      "control_mass": 40.5262785994476,
+      "mass_difference_relative": 0.0,
+      "vof_relative_l2": 0.0,
+      "liquid_velocity_relative_l2": 0.0009374004875276272,
+      "fitted_liquid_energy": 0.43920171285001186,
+      "control_liquid_energy": 0.43921864777308584,
+      "column_depth_relative_l2": 0.0,
+      "column_depth_max_abs": 0.0,
+      "gauge_free_pressure_relative_l2": 0.0
+    },
+    {
+      "dump_index": 1,
+      "time_fitted": 0.001988646012959259,
+      "time_control": 0.001984011913916262,
+      "time_gap": 4.634099042996782e-06,
+      "fitted_mass": 40.526278599447636,
+      "control_mass": 40.52627859944761,
+      "mass_difference_relative": 7.013155516033833e-16,
+      "vof_relative_l2": 9.75401485723586e-06,
+      "liquid_velocity_relative_l2": 0.0009102914232642065,
+      "fitted_liquid_energy": 0.4393370626815044,
+      "control_liquid_energy": 0.4393552248859188,
+      "column_depth_relative_l2": 1.5984843571048433e-06,
+      "column_depth_max_abs": 3.4327927564747895e-05,
+      "gauge_free_pressure_relative_l2": 0.0015271339844145934
+    },
+    {
+      "dump_index": 3,
+      "time_fitted": 0.006041914182411921,
+      "time_control": 0.006032676909942062,
+      "time_gap": 9.237272469859656e-06,
+      "fitted_mass": 40.526278599447636,
+      "control_mass": 40.526278599447615,
+      "mass_difference_relative": 5.259866637025375e-16,
+      "vof_relative_l2": 2.790433514028439e-05,
+      "liquid_velocity_relative_l2": 0.0009643763170111641,
+      "fitted_liquid_energy": 0.4395235490111494,
+      "control_liquid_energy": 0.4395452820867803,
+      "column_depth_relative_l2": 3.937829774805349e-06,
+      "column_depth_max_abs": 8.753355668256191e-05,
+      "gauge_free_pressure_relative_l2": 0.0004488691970821545
+    },
+    {
+      "dump_index": 5,
+      "time_fitted": 0.01,
+      "time_control": 0.01,
+      "time_gap": 0.0,
+      "fitted_mass": 40.526278599447636,
+      "control_mass": 40.526278599447615,
+      "mass_difference_relative": 5.259866637025375e-16,
+      "vof_relative_l2": 4.373190116068964e-05,
+      "liquid_velocity_relative_l2": 0.0009487208993501033,
+      "fitted_liquid_energy": 0.4396705398307437,
+      "control_liquid_energy": 0.4396950443805192,
+      "column_depth_relative_l2": 5.801904983687435e-06,
+      "column_depth_max_abs": 0.00011610385837412807,
+      "gauge_free_pressure_relative_l2": 0.002156375271208044
+    }
+  ],
+  "interpretation_limit": "paired branch difference, not absolute error against a physical reference",
+  "code_sha256": "b13a53d8b726d7a00b29896f9619ece1e54dd35f83fa72e8c6310dedaccdecf8"
+}

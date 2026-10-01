@@ -1,0 +1,52 @@
+{
+  "schema": "flat-harmonic-native-dynamic-benchmark-v1",
+  "claim_scope": "same-grid error propagation relative to an exact initial phase-mean input, not exact Navier--Stokes trajectory",
+  "geometry": {
+    "period": 64.0,
+    "nx": 512,
+    "ny": 32,
+    "bed_solver_y_before_native_offset": 0.53,
+    "bed_solver_y_effective": 0.5300000100000001,
+    "surface_solver_y": 1.5000625,
+    "depth": 0.97006249,
+    "horizontal_mode": 16,
+    "wave_number": 1.5707963267948966
+  },
+  "initial_field": {
+    "potential_amplitude": 0.02,
+    "background_current": 0.0,
+    "boundary_source_nodes": 512,
+    "boundary_trace_refinement_factor": 8
+  },
+  "physics": {
+    "gravity": 1.0,
+    "surface_tension": 0.001,
+    "liquid_density": 1.0
+  },
+  "linear_capillary_gravity_period": 5.250717657631933,
+  "target_time_one_tenth_period": 0.5250717657631933,
+  "controls": [
+    "bilinear streamfunction curl at liquid centroids from same sampled psi",
+    "closed-form exact initial phase means"
+  ],
+  "methods": [
+    "fitted",
+    "bilinear_centroid",
+    "exact_initial_means"
+  ],
+  "primary_metric": "global liquid-volume-weighted velocity relative L2 at identical times against exact-initial-means native branch",
+  "secondary_metrics": [
+    "VOF relative L2",
+    "column depth relative L2"
+  ],
+  "same_runtime_fields": [
+    "q",
+    "vf",
+    "cs",
+    "body.dat",
+    "gas velocities",
+    "MAC face velocities"
+  ],
+  "comparison_limit": "exact initial means are not exact later-time physical fields; the branch shares Aphros truncation and projection errors",
+  "code_sha256": "0aed277bbe7b9fe0ea6ad1f5539b48a75c5277d43bbe1894a1339cdcc8b56b6f"
+}

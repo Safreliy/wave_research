@@ -1,0 +1,25 @@
+{
+  "schema": "transfer-flat-input-archives-v1",
+  "archives": [
+    {
+      "path": "flat_native_L9_inputs.tar.gz",
+      "sha256": "dd80126c52acc7e6acd887a4a2e78648b72b1260b3c6998edb875c6b0f9c6508"
+    },
+    {
+      "path": "flat_native_L10_inputs.tar.gz",
+      "sha256": "3c51176b97f7ee4326058b063859e72e2ae39b87b1010674b829d70b25ee91e3"
+    },
+    {
+      "path": "flat_native_L9_trace4_inputs.tar.gz",
+      "sha256": "e1344021902fa953f8238273a9d664b1f514efbba14e80dcaa6f2d4c5334655e"
+    },
+    {
+      "path": "flat_native_L10_trace4_inputs.tar.gz",
+      "sha256": "6a8bf666c9a61906da5434378bab56c822ac498d88dad2d544f09cbe19461638"
+    },
+    {
+      "path": "flat_native_L11_resolved_inputs.tar.gz",
+      "sha256": "5740392d35ec72e5aa1c74c235d85784f8bff29da77428c9b2d20f57cbbe0b78"
+    }
+  ]
+}

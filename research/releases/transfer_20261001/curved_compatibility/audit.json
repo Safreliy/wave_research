@@ -1,0 +1,22 @@
+{
+  "schema": "matched-curved-source-compatibility-v1",
+  "source_path": "C:\\Users\\Savely\\Desktop\\wave_simulation\\research\\results\\publication_package\\transfer_paper_campaign_20261001\\results\\boundary_2304.npz",
+  "source_sha256": "0a09d3f9ed3e5e3bd1158d3318780b265ce4bec5edf94abe14cb41961bdd132b",
+  "code_sha256": "c53d7d22502dc761ad4f0248d6a6108b1d58afaed709222a52bbac045e125079",
+  "physical_trace_source_sha256": "7ce596620d0b3251b8dc84dc7f96f042b1b5a1d7bb1c6f872ccad498d3ab3b48",
+  "boundary_trace_source_sha256": "8a04c933c9b7f3f0c42319ecc873f00fda50c130c330c79642773f5c684fa6c5",
+  "source_nodes": 2304,
+  "resample_factor": 16,
+  "resampled_nodes": 36864,
+  "receiver_nx": 1024,
+  "source_surface_height_span": 0.7710250756063562,
+  "resampled_surface_height_span": 0.7710403162907755,
+  "flat_surface_height_tolerance": 1e-10,
+  "source_nonpositive_x_segments": 20,
+  "resampled_nonpositive_x_segments": 323,
+  "resampled_min_dx": -0.00017475038805514487,
+  "flat_matched_jet_rejection": "matched source-jet edges require a flat surface",
+  "supported_by_current_method": false,
+  "trace_preflight_pass": true,
+  "interpretation": "This audits method-domain compatibility only. It is not a native trajectory or physical accuracy test."
+}

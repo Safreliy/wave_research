@@ -1,0 +1,72 @@
+INTERNAL DRAFT — NOT FOR SUBMISSION
+Proposed journal: Computational Mathematics and Mathematical Physics
+Article type: original research article; conventional publication (not optional paid OA)
+Date: [submission date]
+
+Dear Editor,
+
+Please consider my manuscript, "Geometry-consistent conservative transfer of
+potential-flow states to an embedded-boundary volume-of-fluid solver," for
+publication as an original research article in Computational Mathematics and
+Mathematical Physics.
+
+The paper presents a conservative transfer construction for potential-flow
+boundary-integral states and a two-phase embedded-boundary VOF receiver.
+Its main development is a consistent boundary-normal extension: the physical
+boundary and its neighbouring Cartesian edge use the same prescribed trace
+in moment integration. A local estimate shows cancellation of the trace-error
+term otherwise amplified by inverse liquid-strip thickness. Identical shared
+edge integrals retain an algebraic liquid-moment closure identity.
+
+The construction reduces global, liquid-volume-weighted velocity error in
+all 21 analytic initial-field tests against a practical bilinear control
+using the same streamfunction, by factors 2.71–32.07. An isolated higher-order
+physical trace is retained as an ablation and does not achieve this result.
+Native wave continuations on two grids, including a time-step halving, show
+7.88–10.25-fold reductions in propagated velocity error and 65.0–82.9-fold
+reductions in surface-profile error. These norms use exact-initial-input
+numerical trajectories at identical receiver settings and were independently
+recomputed from archived raw fields.
+An additional small-amplitude two-fluid wave test uses an independent
+analytic linear reference, with a rest control and amplitude halving.
+A complete factorial comparison separates the boundary extension from a
+density-weighted mixture assignment. Together they reduce physical
+surface-profile error by 52.19% relative to the original practical
+assignment at the endpoint; at common mixture assignment, the extension
+contributes a 5.49% reduction. The first intermediate time favours the
+practical control within mixture assignment and is reported explicitly.
+These physical errors are distinguished from the larger transfer-only gains.
+
+For a fixed overturning-wave state, matching the receiver geometry removes
+a measured loading loss. The original fitted moments also reduce pooled
+error on 12 selected bed-cut cells by 7.27 times against an independent BIE
+reference, with stricter quadrature confirming that comparison.
+
+The new extension and its estimate apply to flat surface strips in a
+two-dimensional periodic setting. The manuscript distinguishes propagated
+transfer error from the receiver's physical truncation error and retains
+the baseline failures that motivate the construction. Frozen source,
+declared comparison matrices, raw-field audits and input hashes document
+the new experiments; older source-provenance limitations remain explicit.
+
+The code and selected experimental evidence are available at
+https://github.com/Safreliy/wave_research/tree/main/research/releases/transfer_20261001
+
+[Before submission: add the actual versioned data/code archive DOI and any
+manuscript preprint URL/DOI. A code/data archive is not a journal submission.
+Do not send this draft until the final manuscript and evidence are verified.]
+
+I am the sole author. I have received no funding for this work and report no
+competing interests. This is original work, has not previously been submitted
+to a journal, and is not under consideration elsewhere.
+
+The required research-assistance declaration is supplied separately. The
+author's critical verification of the scientific content, references and final
+wording must be completed before this draft is submitted.
+
+Sincerely,
+
+Saveliy Baturin
+Independent Researcher
+saveliy.xo@gmail.com
+ORCID: 0009-0005-4410-9520

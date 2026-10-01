@@ -1,0 +1,32 @@
+CMMP preparation check, 1 October 2026
+
+Official journal guide:
+https://www.pleiades.online/en/journal/commat/authors-instructions/
+
+The guide specifies numbered square-bracket citations in order of first
+appearance, a 150--250-word abstract, 4--6 keywords, informative captions,
+and citations to every table in numerical order. It requests author
+affiliation/location, email and available ORCID. Its text guidance specifies
+10-point Times New Roman. The current TeX draft uses 10-point Times-compatible
+fonts, 230 abstract words, six keywords, and numbered references. Author
+city/country still need to be supplied; no location has been inferred.
+
+Publisher LaTeX route:
+https://www.pleiades.online/en/authors/guidlines/prepare-electonic-version/tex-latex/
+This provides a legacy REVTeX 4 / MAIK package and examples for editorial
+boards accepting TeX. The present editable article-class file remains the
+review master, not a claimed CMMP production template. Confirm the portal's
+accepted source format before final delivery; if required, prepare its Word
+or MAIK submission version from this same scientific content. Do not replace
+the current editor document merely to imitate a typeset journal article.
+
+Preprints:
+The CMMP guide says that the journal follows Springer Nature editorial
+policies. Springer Nature's explicit preprint policy allows posting before
+and during review and does not classify it as prior publication:
+https://support.springernature.com/en/support/solutions/articles/6000258807-preprints
+No CMMP-specific preprint prohibition was found in the checked guide. This
+supports keeping an author preprint online. Disclose its URL/DOI at submission.
+This finding does not grant redistribution rights to the eventual publisher
+PDF; that is a separate version and agreement. A code/data DOI is also distinct
+from a manuscript preprint DOI. No manuscript or DOI deposit was submitted here.

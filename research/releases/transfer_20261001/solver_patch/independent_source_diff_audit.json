@@ -1,0 +1,36 @@
+{
+  "scope": "independent byte comparison of frozen source trees; source manifest expected to differ",
+  "file_counts": {
+    "baseline": 1606,
+    "guarded": 1606
+  },
+  "changed_members": [
+    "SOURCE_TREE_MANIFEST.json",
+    "src/solver/reconst.h",
+    "src/util/gitgen.cpp"
+  ],
+  "metadata_scan": {
+    "baseline": {
+      "git_remote_has_userinfo": false,
+      "license_files": [
+        "LICENSE"
+      ]
+    },
+    "guarded": {
+      "git_remote_has_userinfo": false,
+      "license_files": [
+        "LICENSE"
+      ]
+    }
+  },
+  "archives": {
+    "aphros_guard_baseline_source.tar.gz": "aae50e414034a0882ece453f28ea76320273722667e6eb2340d520c202a9806b",
+    "aphros_guard_patched_source.tar.gz": "8167630fa6207126e15647772bc0495ee9d09d3f0f19bac757b0849ba12595a9"
+  },
+  "change_classification": {
+    "src/solver/reconst.h": "four exact-zero return guards recorded in zero_flux_guard.patch",
+    "src/util/gitgen.cpp": "generated provenance only: adds src/solver/reconst.h to dirty-file string and comment; revision/message unchanged",
+    "SOURCE_TREE_MANIFEST.json": "per-file manifest of changed source tree"
+  },
+  "only_numerical_source_change": "src/solver/reconst.h"
+}

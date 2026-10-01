@@ -1,0 +1,233 @@
+{
+  "schema": "flat-harmonic-sliver-transfer-v1",
+  "reference": "closed-form liquid-volume means for harmonic velocity",
+  "baseline": "same solved streamfunction and q; arithmetic cell velocity from adjacent MAC faces",
+  "centroid_oracle": "exact harmonic velocity evaluated at each liquid-volume centroid; point-sampling lower-error control, no BIE quadrature or native projection",
+  "rows": [
+    {
+      "nx": 128,
+      "surface_liquid_fraction": 0.001,
+      "geometry_factor": 8,
+      "cut_cell_count": 256,
+      "fitted_relative_l2_all": 0.01995320532680855,
+      "baseline_relative_l2_all": 0.05412288908579947,
+      "fitted_relative_l2_cut": 0.03585047037822096,
+      "baseline_relative_l2_cut": 0.09718827957537172,
+      "centroid_oracle_relative_l2_all": 0.000867479079941058,
+      "centroid_oracle_relative_l2_cut": 0.001560735526075992,
+      "fitted_relative_l2_cut_q_weighted": 0.007133698539388638,
+      "momentum": [
+        2.9398141906944453e-16,
+        -1.6093625997831706e-19
+      ],
+      "target_momentum": [
+        0.0,
+        -2.6159013735064736e-15
+      ],
+      "volume_relative_error": 1.163908294719074e-16,
+      "arrays": "nx128_q0.001.npz",
+      "arrays_sha256": "6fda147e9ce73222fc064409595c38e5fbc585b074052fab38c545b5aaf66a07"
+    },
+    {
+      "nx": 128,
+      "surface_liquid_fraction": 0.01,
+      "geometry_factor": 8,
+      "cut_cell_count": 256,
+      "fitted_relative_l2_all": 0.0036809257709295665,
+      "baseline_relative_l2_all": 0.053700519089784765,
+      "fitted_relative_l2_cut": 0.006350103833837434,
+      "baseline_relative_l2_cut": 0.09637357239321188,
+      "centroid_oracle_relative_l2_all": 0.0008679179499621948,
+      "centroid_oracle_relative_l2_cut": 0.001560663300057104,
+      "fitted_relative_l2_cut_q_weighted": 0.005565943005041699,
+      "momentum": [
+        2.723515857283587e-16,
+        3.3650924928518844e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -1.2207539743030211e-15
+      ],
+      "volume_relative_error": 1.1625371985603736e-16,
+      "arrays": "nx128_q0.01.npz",
+      "arrays_sha256": "09fc187fd1a3303cdae7cb9ffd8e79a9d6eb7346d351e82beea3f0c8b6707bdc"
+    },
+    {
+      "nx": 128,
+      "surface_liquid_fraction": 0.1,
+      "geometry_factor": 8,
+      "cut_cell_count": 256,
+      "fitted_relative_l2_all": 0.0021827396772024455,
+      "baseline_relative_l2_all": 0.049416490266907157,
+      "fitted_relative_l2_cut": 0.0034267446714394017,
+      "baseline_relative_l2_cut": 0.08816470155634244,
+      "centroid_oracle_relative_l2_all": 0.000864801263542278,
+      "centroid_oracle_relative_l2_cut": 0.0015464988063283063,
+      "fitted_relative_l2_cut_q_weighted": 0.004141273637870558,
+      "momentum": [
+        -3.686287386450715e-16,
+        3.350184712980209e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -1.9183276739047473e-15
+      ],
+      "volume_relative_error": 0.0,
+      "arrays": "nx128_q0.1.npz",
+      "arrays_sha256": "3be95fbcdb5426afa69b04ea03eb2cfaeea4f311737135b3e084e114a22a3872"
+    },
+    {
+      "nx": 256,
+      "surface_liquid_fraction": 0.001,
+      "geometry_factor": 16,
+      "cut_cell_count": 512,
+      "fitted_relative_l2_all": 0.004482599413869938,
+      "baseline_relative_l2_all": 0.020323352034770654,
+      "fitted_relative_l2_cut": 0.010568550480624274,
+      "baseline_relative_l2_cut": 0.047969212866479836,
+      "centroid_oracle_relative_l2_all": 0.00016536127501984922,
+      "centroid_oracle_relative_l2_cut": 0.0003906893116570835,
+      "fitted_relative_l2_cut_q_weighted": 0.002028710568638963,
+      "momentum": [
+        3.259619950259779e-16,
+        -3.1262292017261717e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -1.9183276739047473e-15
+      ],
+      "volume_relative_error": 0.0,
+      "arrays": "nx256_q0.001.npz",
+      "arrays_sha256": "9dd5d5ce8b2b6dc881c084fc1410c9be39fdf60d1014875f6fcbb4b6882d223a"
+    },
+    {
+      "nx": 256,
+      "surface_liquid_fraction": 0.01,
+      "geometry_factor": 16,
+      "cut_cell_count": 512,
+      "fitted_relative_l2_all": 0.0003826462903238866,
+      "baseline_relative_l2_all": 0.02015477712629277,
+      "fitted_relative_l2_cut": 0.0005888777293251535,
+      "baseline_relative_l2_cut": 0.04755480221496334,
+      "centroid_oracle_relative_l2_all": 0.0001654038815353697,
+      "centroid_oracle_relative_l2_cut": 0.0003906608817465889,
+      "fitted_relative_l2_cut_q_weighted": 0.0013496475690282783,
+      "momentum": [
+        5.030901368240082e-16,
+        -1.6534083130403943e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -5.231802747012948e-16
+      ],
+      "volume_relative_error": 0.0,
+      "arrays": "nx256_q0.01.npz",
+      "arrays_sha256": "8ed1644b79dfbe08fe9a776c4e48755a1f8488bc93e140f1ee71f07515f0c160"
+    },
+    {
+      "nx": 256,
+      "surface_liquid_fraction": 0.1,
+      "geometry_factor": 16,
+      "cut_cell_count": 512,
+      "fitted_relative_l2_all": 0.00042085665157334335,
+      "baseline_relative_l2_all": 0.018457252319615716,
+      "fitted_relative_l2_cut": 0.0007164619630016224,
+      "baseline_relative_l2_cut": 0.04339721118333554,
+      "centroid_oracle_relative_l2_all": 0.00016439944987019873,
+      "centroid_oracle_relative_l2_cut": 0.0003870071842580749,
+      "fitted_relative_l2_cut_q_weighted": 0.0009975805127372,
+      "momentum": [
+        -9.540979117872439e-18,
+        -3.7730235602495554e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -1.5695408241038843e-15
+      ],
+      "volume_relative_error": 0.0,
+      "arrays": "nx256_q0.1.npz",
+      "arrays_sha256": "787202dc1173729661557cc242418eb155e1307acd8a88c6e07eb6b95c194d8d"
+    },
+    {
+      "nx": 512,
+      "surface_liquid_fraction": 0.001,
+      "geometry_factor": 32,
+      "cut_cell_count": 1024,
+      "fitted_relative_l2_all": 0.002805462169248599,
+      "baseline_relative_l2_all": 0.007442717111281026,
+      "fitted_relative_l2_cut": 0.00898182276598424,
+      "baseline_relative_l2_cut": 0.023825311391966933,
+      "centroid_oracle_relative_l2_all": 3.051950075169206e-05,
+      "centroid_oracle_relative_l2_cut": 9.774678520671713e-05,
+      "fitted_relative_l2_cut_q_weighted": 0.0012919306531756173,
+      "momentum": [
+        4.958801923769796e-16,
+        1.2129511804681581e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -1.7439342490043159e-15
+      ],
+      "volume_relative_error": 1.123174632101578e-16,
+      "arrays": "nx512_q0.001.npz",
+      "arrays_sha256": "9873dda821065eb74e4bfdb2f802f2d97e745ef202ffe955dce1ea4e61a7cb14"
+    },
+    {
+      "nx": 512,
+      "surface_liquid_fraction": 0.01,
+      "geometry_factor": 32,
+      "cut_cell_count": 1024,
+      "fitted_relative_l2_all": 0.0002448401852914406,
+      "baseline_relative_l2_all": 0.007378853324587037,
+      "fitted_relative_l2_cut": 0.0007439014356542587,
+      "baseline_relative_l2_cut": 0.023616360143471442,
+      "centroid_oracle_relative_l2_all": 3.052247649973756e-05,
+      "centroid_oracle_relative_l2_cut": 9.77385005438692e-05,
+      "fitted_relative_l2_cut_q_weighted": 0.0004558086277631518,
+      "momentum": [
+        -9.51360301301718e-16,
+        4.6627469680454725e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -2.7902947984069054e-15
+      ],
+      "volume_relative_error": 0.0,
+      "arrays": "nx512_q0.01.npz",
+      "arrays_sha256": "b4063d5a7a2ed09b54d1c8eeb3b5f08c9079db8456f242c5378101572f2ed569"
+    },
+    {
+      "nx": 512,
+      "surface_liquid_fraction": 0.1,
+      "geometry_factor": 32,
+      "cut_cell_count": 1024,
+      "fitted_relative_l2_all": 8.824066493306367e-05,
+      "baseline_relative_l2_all": 0.006738146726780263,
+      "fitted_relative_l2_cut": 0.00013576579180431435,
+      "baseline_relative_l2_cut": 0.02152424728997469,
+      "centroid_oracle_relative_l2_all": 3.0288330093934444e-05,
+      "centroid_oracle_relative_l2_cut": 9.681204031397782e-05,
+      "fitted_relative_l2_cut_q_weighted": 0.00023426170984603768,
+      "momentum": [
+        3.1539780010782226e-16,
+        -6.938893903907228e-17
+      ],
+      "target_momentum": [
+        0.0,
+        -3.1390816482077686e-15
+      ],
+      "volume_relative_error": 0.0,
+      "arrays": "nx512_q0.1.npz",
+      "arrays_sha256": "78519e5ca8f6222c528e3aa339ace033ce5c2a587f6f87719ec1b87ecc2674e5"
+    }
+  ],
+  "code_sha256": "815d9f3eac14a8eb151a4a26b13f8f6bbd30767e002ef68b5a4f009cfbf083f2",
+  "runtime": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "shapely": "2.1.2"
+  },
+  "trace_multiplier": 1,
+  "curved_geometry_order_claim": false
+}

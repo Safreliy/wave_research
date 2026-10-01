@@ -1,0 +1,16 @@
+{
+  "scope": "matched-setting propagated transfer error against same-grid exact-input numerical trajectory",
+  "source": {
+    "L9": {
+      "input_sha256": "fe4c0249b21a30280a59695123cd4402eb5a3a74629e1bb7ba8855fd72e29763",
+      "native_archive_sha256": "623aa8c32fb5e8dc9bf358c176a90efe346502530763571bc89f66c4d2cc9ed1"
+    },
+    "L10": {
+      "input_sha256": "826f0daf09b14e1c17636104d0df530714052a1010d4926927414411248bdbe9",
+      "native_archive_sha256": "d77e007881188ac2916df2775af79ee75b3fb211c9aa0eb283e79247d97ed193"
+    }
+  },
+  "code_sha256": "64e9faff9c57782f52ae93028efedb0ead49401ea667637e0a3aa8ac9d9ef3c5",
+  "pdf_sha256": "a38d31ba3841f427a4110cb37744c070650d44802e82c1945acb01311a0e7628",
+  "png_sha256": "c8c22b81c0d94f88797c295c9272c642ba0c95231900047d91e2ac22d70aaafd"
+}

@@ -1,0 +1,570 @@
+{
+  "schema": "guarded-twofluid-mass-factorial-height-v1",
+  "archive_sha256": "f6a99920820d5491422d1b71e3f0e7463b1da8e6b4d6a5113bfc49e0cc3de3e0",
+  "analysis_code_sha256": "ea14843ceea52c8ebe6aed1f93716dffe70baf3d37bb38f0fa880726da623c23",
+  "analytic_reference_code_sha256": "4694883f7aa81b967c1157ccfac1b39b63a9e0b340b460eaead2078f83946472",
+  "numerical_reference_branch": "mass_exact_input",
+  "reference_scope": "linear two-fluid inviscid wave; A/2 phase and mass input plus zero-floor controls are separate",
+  "fixed_H_normalization": 1.687310730731151e-05,
+  "runtime_flux_note": "same stored face arrays; native flux_init zero reconstructs actual t0 flux from each cell velocity independently",
+  "branch_meta": {
+    "phase_exact_input": {
+      "audits": 6,
+      "initial_flux_divergence_linf": 6.593231904616613e-05,
+      "maximum_post_start_flux_divergence_linf": 9.37780669091337e-16,
+      "maximum_runtime_mass_relative_error": 0.0,
+      "maximum_speed": 0.00023698666122527195
+    },
+    "mass_exact_input": {
+      "audits": 6,
+      "initial_flux_divergence_linf": 1.9762859703984886e-05,
+      "maximum_post_start_flux_divergence_linf": 8.814563662307151e-16,
+      "maximum_runtime_mass_relative_error": 0.0,
+      "maximum_speed": 0.00024007347693746244
+    },
+    "phase_matched": {
+      "audits": 5,
+      "initial_flux_divergence_linf": 6.595578148404179e-05,
+      "maximum_post_start_flux_divergence_linf": 9.076127436419279e-16,
+      "maximum_runtime_mass_relative_error": 0.0,
+      "maximum_speed": 0.00023697499017791767
+    },
+    "phase_practical": {
+      "audits": 6,
+      "initial_flux_divergence_linf": 7.045863086678703e-05,
+      "maximum_post_start_flux_divergence_linf": 8.884494702432466e-16,
+      "maximum_runtime_mass_relative_error": 0.0,
+      "maximum_speed": 0.00023648058051168314
+    },
+    "mass_matched": {
+      "audits": 5,
+      "initial_flux_divergence_linf": 1.9734418992895295e-05,
+      "maximum_post_start_flux_divergence_linf": 1.0535192510041647e-15,
+      "maximum_runtime_mass_relative_error": 0.0,
+      "maximum_speed": 0.00024006172469580048
+    },
+    "mass_practical": {
+      "audits": 5,
+      "initial_flux_divergence_linf": 1.98481811382393e-05,
+      "maximum_post_start_flux_divergence_linf": 8.95212181294125e-16,
+      "maximum_runtime_mass_relative_error": 0.0,
+      "maximum_speed": 0.00023970499679040557
+    }
+  },
+  "series": [
+    {
+      "dump_index": 0,
+      "time": 0.0,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_error_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "analytic_first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "first_mode_physical_error_normalized_amplitude": 6.154442033111828e-28,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 7.748214807175886e-28,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.013340318933283718
+        },
+        "mass_exact_input": {
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_error_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "analytic_first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "first_mode_physical_error_normalized_amplitude": 6.154442033111828e-28,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 7.748214807175886e-28,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0
+        },
+        "phase_matched": {
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_error_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "analytic_first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "first_mode_physical_error_normalized_amplitude": 6.154442033111828e-28,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 7.748214807175886e-28,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.013415205154145703
+        },
+        "phase_practical": {
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_error_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "analytic_first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "first_mode_physical_error_normalized_amplitude": 6.154442033111828e-28,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 7.748214807175886e-28,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.01478003656705746
+        },
+        "mass_matched": {
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_error_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "analytic_first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "first_mode_physical_error_normalized_amplitude": 6.154442033111828e-28,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 7.748214807175886e-28,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0014203880688994904
+        },
+        "mass_practical": {
+          "physical_H_error_rms": 1.1102230246251565e-16,
+          "physical_H_error_normalized_fixed_amplitude": 6.579837396897672e-12,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "analytic_first_mode_complex": [
+            0.0,
+            0.0
+          ],
+          "first_mode_physical_error_normalized_amplitude": 6.154442033111828e-28,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 7.748214807175886e-28,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0039974103298931465
+        }
+      }
+    },
+    {
+      "dump_index": 1,
+      "time": 0.1312500000000001,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_error_rms": 4.1891046562982496e-08,
+          "physical_H_error_normalized_fixed_amplitude": 0.0024827108486905744,
+          "H_difference_from_exact_input_branch_normalized": 0.002893733952732045,
+          "first_mode_complex": [
+            3.668969516651402e-06,
+            -2.8658660182346185e-17
+          ],
+          "analytic_first_mode_complex": [
+            3.7282124010625e-06,
+            7.220045976669102e-21
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.0024827107740840425,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.086484096058434e-07,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.133344479411428
+        },
+        "mass_exact_input": {
+          "physical_H_error_rms": 6.935239491654518e-09,
+          "physical_H_error_normalized_fixed_amplitude": 0.00041102325525123145,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            3.7380203083280593e-06,
+            -1.4469747370914965e-16
+          ],
+          "analytic_first_mode_complex": [
+            3.7282124010625e-06,
+            7.220045976669102e-21
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.0004110231512437899,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.924020237930612e-07,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0
+        },
+        "phase_matched": {
+          "physical_H_error_rms": 4.1973594528612827e-08,
+          "physical_H_error_normalized_fixed_amplitude": 0.002487603128703193,
+          "H_difference_from_exact_input_branch_normalized": 0.0028986262329105607,
+          "first_mode_complex": [
+            3.668852776192868e-06,
+            -7.862262655644071e-17
+          ],
+          "analytic_first_mode_complex": [
+            3.7282124010625e-06,
+            7.220045976669102e-21
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.0024876030543478016,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.08221507830652e-07,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.13326821848893702
+        },
+        "phase_practical": {
+          "physical_H_error_rms": 4.825227492867346e-08,
+          "physical_H_error_normalized_fixed_amplitude": 0.0028597148142218373,
+          "H_difference_from_exact_input_branch_normalized": 0.0032707379232068475,
+          "first_mode_complex": [
+            3.6599733811020374e-06,
+            -9.968092917265521e-17
+          ],
+          "analytic_first_mode_complex": [
+            3.7282124010625e-06,
+            7.220045976669102e-21
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.0028597147446966296,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.305906146330054e-07,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.14198875786908763
+        },
+        "mass_matched": {
+          "physical_H_error_rms": 6.851427536187627e-09,
+          "physical_H_error_normalized_fixed_amplitude": 0.00040605606373514516,
+          "H_difference_from_exact_input_branch_normalized": 4.9671925054999916e-06,
+          "first_mode_complex": [
+            3.7379017803008017e-06,
+            -5.726743413592506e-17
+          ],
+          "analytic_first_mode_complex": [
+            3.7282124010625e-06,
+            7.220045976669102e-21
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.00040605595875764863,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.9198199762783717e-07,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0014182768459271976
+        },
+        "mass_practical": {
+          "physical_H_error_rms": 2.728605914887596e-09,
+          "physical_H_error_normalized_fixed_amplitude": 0.00016171330302067286,
+          "H_difference_from_exact_input_branch_normalized": 0.00024931011822763323,
+          "first_mode_complex": [
+            3.732071226113763e-06,
+            -5.2853370912673655e-17
+          ],
+          "analytic_first_mode_complex": [
+            3.7282124010625e-06,
+            7.220045976669102e-21
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.00016171303313990376,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.9544296962922735e-07,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.003848540310082321
+        }
+      }
+    },
+    {
+      "dump_index": 2,
+      "time": 0.2624999999999999,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_error_rms": 1.3689895629384027e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.008113440743337107,
+          "H_difference_from_exact_input_branch_normalized": 0.007849698664868112,
+          "first_mode_complex": [
+            7.171249726350335e-06,
+            -1.0412973646317568e-16
+          ],
+          "analytic_first_mode_complex": [
+            7.364854052987066e-06,
+            1.4283341227259405e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.008113439317283654,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 4.810446789716084e-06,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.1596486252152973
+        },
+        "mass_exact_input": {
+          "physical_H_error_rms": 4.450536661105199e-09,
+          "physical_H_error_normalized_fixed_amplitude": 0.00026376508962144027,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            7.358560623485547e-06,
+            -5.413794493268676e-16
+          ],
+          "analytic_first_mode_complex": [
+            7.364854052987066e-06,
+            1.4283341227259405e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.00026374079156809817,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 3.5801349191574558e-06,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0
+        },
+        "phase_matched": {
+          "physical_H_error_rms": 1.3708915406190174e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.0081247129864751,
+          "H_difference_from_exact_input_branch_normalized": 0.007860970910642634,
+          "first_mode_complex": [
+            7.170980746014232e-06,
+            -2.8290637891167207e-16
+          ],
+          "analytic_first_mode_complex": [
+            7.364854052987066e-06,
+            1.4283341227259405e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.008124711563479948,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 4.8086227090200985e-06,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.15957804800377035
+        },
+        "phase_practical": {
+          "physical_H_error_rms": 1.518712996576756e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.009000790245188937,
+          "H_difference_from_exact_input_branch_normalized": 0.008737048269409926,
+          "first_mode_complex": [
+            7.1500756328661505e-06,
+            -5.535783533131362e-16
+          ],
+          "analytic_first_mode_complex": [
+            7.364854052987066e-06,
+            1.4283341227259405e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.009000788921328244,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 4.8817602401069085e-06,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.1699504699084517
+        },
+        "mass_matched": {
+          "physical_H_error_rms": 4.6441885448887565e-09,
+          "physical_H_error_normalized_fixed_amplitude": 0.00027524204405885106,
+          "H_difference_from_exact_input_branch_normalized": 1.1477989339313597e-05,
+          "first_mode_complex": [
+            7.358286733673785e-06,
+            -3.0325620898465556e-16
+          ],
+          "analytic_first_mode_complex": [
+            7.364854052987066e-06,
+            1.4283341227259405e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.0002752187807533363,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 3.5784826870456395e-06,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0015130709516052877
+        },
+        "mass_practical": {
+          "physical_H_error_rms": 1.3495550052961768e-08,
+          "physical_H_error_normalized_fixed_amplitude": 0.0007998260075732365,
+          "H_difference_from_exact_input_branch_normalized": 0.0005360771482868049,
+          "first_mode_complex": [
+            7.345768655598161e-06,
+            -2.7487255058042177e-16
+          ],
+          "analytic_first_mode_complex": [
+            7.364854052987066e-06,
+            1.4283341227259405e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.0007998179392533956,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 3.5925532694914057e-06,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0042698636360038135
+        }
+      }
+    },
+    {
+      "dump_index": 3,
+      "time": 0.3937499999999971,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_error_rms": 3.073270047308994e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.018214013526585436,
+          "H_difference_from_exact_input_branch_normalized": 0.012915963974098405,
+          "first_mode_complex": [
+            1.0385977626731162e-05,
+            -1.5440851867942116e-16
+          ],
+          "analytic_first_mode_complex": [
+            1.082060332801374e-05,
+            2.0988880862920524e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.018214000246516402,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.1994693393114214e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.17631199881413998
+        },
+        "mass_exact_input": {
+          "physical_H_error_rms": 8.939498179261592e-08,
+          "physical_H_error_normalized_fixed_amplitude": 0.005298074632280623,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            1.069418064182872e-05,
+            -9.03819192436725e-16
+          ],
+          "analytic_first_mode_complex": [
+            1.082060332801374e-05,
+            2.0988880862920524e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.005298036518650602,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.009617525901029e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0
+        },
+        "phase_matched": {
+          "physical_H_error_rms": 3.076226379120455e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.018231534495056843,
+          "H_difference_from_exact_input_branch_normalized": 0.012933484960457858,
+          "first_mode_complex": [
+            1.0385559537829181e-05,
+            -5.726813306218364e-16
+          ],
+          "analytic_first_mode_complex": [
+            1.082060332801374e-05,
+            2.0988880862920524e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.018231521233750447,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.1989719282856105e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.17622916141373976
+        },
+        "phase_practical": {
+          "physical_H_error_rms": 3.308143845724747e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.01960601438415111,
+          "H_difference_from_exact_input_branch_normalized": 0.014307965694368034,
+          "first_mode_complex": [
+            1.035276143496749e-05,
+            -1.4215507569751668e-15
+          ],
+          "analytic_first_mode_complex": [
+            1.082060332801374e-05,
+            2.0988880862920524e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.019606001969347083,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.2063759843007543e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.18743235005219314
+        },
+        "mass_matched": {
+          "physical_H_error_rms": 8.969634885851017e-08,
+          "physical_H_error_normalized_fixed_amplitude": 0.005315935424629384,
+          "H_difference_from_exact_input_branch_normalized": 1.7860938301571374e-05,
+          "first_mode_complex": [
+            1.0693754440971258e-05,
+            -6.546524320675721e-16
+          ],
+          "analytic_first_mode_complex": [
+            1.082060332801374e-05,
+            2.0988880862920524e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.005315897456234325,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.0091630870076527e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.001675821269276531
+        },
+        "mass_practical": {
+          "physical_H_error_rms": 1.030811724827237e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.006109199130029608,
+          "H_difference_from_exact_input_branch_normalized": 0.0008111296104142226,
+          "first_mode_complex": [
+            1.0674825323366688e-05,
+            -5.892234522934331e-16
+          ],
+          "analytic_first_mode_complex": [
+            1.082060332801374e-05,
+            2.0988880862920524e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.006109166127871839,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 2.0080647845537186e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.004503453764405918
+        }
+      }
+    },
+    {
+      "dump_index": 4,
+      "time": 0.5256608823752456,
+      "results": {
+        "phase_exact_input": {
+          "physical_H_error_rms": 5.962159492522712e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.0353352787007949,
+          "H_difference_from_exact_input_branch_normalized": 0.017580693002936448,
+          "first_mode_complex": [
+            1.318266073746406e-05,
+            1.160035717036008e-16
+          ],
+          "analytic_first_mode_complex": [
+            1.4025835841873495e-05,
+            2.7171228761141853e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.03533521260765244,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.834350627232934e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.1802509324256106
+        },
+        "mass_exact_input": {
+          "physical_H_error_rms": 2.995760759941582e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.017754647708803757,
+          "H_difference_from_exact_input_branch_normalized": 0.0,
+          "first_mode_complex": [
+            1.360217434364904e-05,
+            -1.5992323462959022e-15
+          ],
+          "analytic_first_mode_complex": [
+            1.4025835841873495e-05,
+            2.7171228761141853e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.017754519832417055,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.738533994643925e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0
+        },
+        "phase_matched": {
+          "physical_H_error_rms": 5.966066217364323e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.03535843225971239,
+          "H_difference_from_exact_input_branch_normalized": 0.01760384662627563,
+          "first_mode_complex": [
+            1.318210824158831e-05,
+            -7.791498996193676e-16
+          ],
+          "analytic_first_mode_complex": [
+            1.4025835841873495e-05,
+            2.7171228761141853e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.03535836623153475,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.8332286167539e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.18014930427387266
+        },
+        "phase_practical": {
+          "physical_H_error_rms": 6.274136288950626e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.03718423746544833,
+          "H_difference_from_exact_input_branch_normalized": 0.019429655257127153,
+          "first_mode_complex": [
+            1.3138540472457332e-05,
+            -2.704208318622993e-15
+          ],
+          "analytic_first_mode_complex": [
+            1.4025835841873495e-05,
+            2.7171228761141853e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.03718417486491769,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.823123972177645e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.19116666001941854
+        },
+        "mass_matched": {
+          "physical_H_error_rms": 2.9997456997479856e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.017778264815800263,
+          "H_difference_from_exact_input_branch_normalized": 2.361731968793266e-05,
+          "first_mode_complex": [
+            1.3601610783046431e-05,
+            -1.1944018049513473e-15
+          ],
+          "analytic_first_mode_complex": [
+            1.4025835841873495e-05,
+            2.7171228761141853e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.01777813714939699,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.737475752989734e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.0017936790430651925
+        },
+        "mass_practical": {
+          "physical_H_error_rms": 3.1739840124839166e-07,
+          "physical_H_error_normalized_fixed_amplitude": 0.018810903970891926,
+          "H_difference_from_exact_input_branch_normalized": 0.0010562640025260821,
+          "first_mode_complex": [
+            1.3576969585168906e-05,
+            -1.0321358446937257e-15
+          ],
+          "analytic_first_mode_complex": [
+            1.4025835841873495e-05,
+            2.7171228761141853e-20
+          ],
+          "first_mode_physical_error_normalized_amplitude": 0.018810783821904604,
+          "orthogonal_physical_error_normalized_fixed_amplitude": 6.723248983553374e-05,
+          "global_liquid_velocity_difference_from_exact_input_branch_relative_l2": 0.00437392932600485
+        }
+      }
+    }
+  ],
+  "endpoint_mass_practical_over_mass_matched_physical_H_error_ratio": 1.0580843612012076,
+  "endpoint_phase_practical_over_mass_matched_physical_H_error_ratio": 2.091556057394375,
+  "endpoint_mass_practical_over_mass_matched_transfer_H_error_ratio": 44.72412689005448,
+  "endpoint_mass_practical_over_mass_matched_velocity_difference_ratio": 2.4385239616393717
+}
