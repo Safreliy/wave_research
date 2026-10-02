@@ -1,0 +1,12 @@
+[
+  {
+    "archive": "aphros_guard_baseline_source.tar.gz",
+    "verified_payloads": 1605,
+    "mismatches": []
+  },
+  {
+    "archive": "aphros_guard_patched_source.tar.gz",
+    "verified_payloads": 1605,
+    "mismatches": []
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "physical_memory_bytes": 33848913920,
+  "captured_utc": "2026-10-02T15:56:55.0445767Z",
+  "cpu": {
+    "Name": "Intel(R) Core(TM) Ultra 7 155H",
+    "NumberOfCores": 16,
+    "NumberOfLogicalProcessors": 22
+  }
+}

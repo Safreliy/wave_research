@@ -1,0 +1,124 @@
+{
+  "schema": "auditor-transfer-cost-v1",
+  "nx": 512,
+  "ny": 32,
+  "trace_refinement_factor": 8,
+  "warmup_runs": 1,
+  "measured_runs": 3,
+  "hardware": {
+    "machine": "lenovo-baturin",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "operating_system": "Windows-11-10.0.26200-SP0"
+  },
+  "libraries": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "shapely": "2.1.2"
+  },
+  "stage_definition": {
+    "trace": "boundary data resampling and streamfunction trace, in memory",
+    "assembly": "geometry reconciliation and sparse harmonic-system assembly",
+    "solve": "harmonic liquid streamfunction solve only",
+    "gas": "gas continuation solve",
+    "moments": "fitted liquid-cell moment construction",
+    "other": "remaining in-memory steps including aperture and flux assembly",
+    "total": "transfer() wall time, excludes trace, serialization, checkpoint and CFD"
+  },
+  "stages": {
+    "trace": {
+      "samples_seconds": [
+        0.022450099990237504,
+        0.021244000003207475,
+        0.01673619996290654
+      ],
+      "median_seconds": 0.021244000003207475,
+      "minimum_seconds": 0.01673619996290654,
+      "maximum_seconds": 0.022450099990237504
+    },
+    "total": {
+      "samples_seconds": [
+        3.828530300001148,
+        3.777895700011868,
+        5.670167300035246
+      ],
+      "median_seconds": 3.828530300001148,
+      "minimum_seconds": 3.777895700011868,
+      "maximum_seconds": 5.670167300035246
+    },
+    "assembly": {
+      "samples_seconds": [
+        0.111360999988392,
+        0.10198679997120053,
+        0.10275049996562302
+      ],
+      "median_seconds": 0.10275049996562302,
+      "minimum_seconds": 0.10198679997120053,
+      "maximum_seconds": 0.111360999988392
+    },
+    "solve": {
+      "samples_seconds": [
+        0.0016922999639064074,
+        0.0017728999955579638,
+        0.0017647999920882285
+      ],
+      "median_seconds": 0.0017647999920882285,
+      "minimum_seconds": 0.0016922999639064074,
+      "maximum_seconds": 0.0017728999955579638
+    },
+    "gas": {
+      "samples_seconds": [
+        0.014382600027602166,
+        0.008503500022925436,
+        0.019174500019289553
+      ],
+      "median_seconds": 0.014382600027602166,
+      "minimum_seconds": 0.008503500022925436,
+      "maximum_seconds": 0.019174500019289553
+    },
+    "moments": {
+      "samples_seconds": [
+        1.8201240000198595,
+        1.9354822000022978,
+        2.2679929999867454
+      ],
+      "median_seconds": 1.9354822000022978,
+      "minimum_seconds": 1.8201240000198595,
+      "maximum_seconds": 2.2679929999867454
+    },
+    "other": {
+      "samples_seconds": [
+        1.880970400001388,
+        1.7301503000198863,
+        3.2784845000714995
+      ],
+      "median_seconds": 1.880970400001388,
+      "minimum_seconds": 1.7301503000198863,
+      "maximum_seconds": 3.2784845000714995
+    }
+  },
+  "repeat_check": [
+    {
+      "volume": 62.08399936,
+      "velocity_sha256": "fcfad0e597054fbc9b16b3e664cfbb076bb5d01f403f91b31776fd8bef817234"
+    },
+    {
+      "volume": 62.08399936,
+      "velocity_sha256": "fcfad0e597054fbc9b16b3e664cfbb076bb5d01f403f91b31776fd8bef817234"
+    },
+    {
+      "volume": 62.08399936,
+      "velocity_sha256": "fcfad0e597054fbc9b16b3e664cfbb076bb5d01f403f91b31776fd8bef817234"
+    },
+    {
+      "volume": 62.08399936,
+      "velocity_sha256": "fcfad0e597054fbc9b16b3e664cfbb076bb5d01f403f91b31776fd8bef817234"
+    }
+  ],
+  "source_sha256": {
+    "liquid_dirichlet_transfer.py": "8a04c933c9b7f3f0c42319ecc873f00fda50c130c330c79642773f5c684fa6c5",
+    "cutcell_transfer.py": "3b090393de8dee3abeda5c323c805b2451dbe82f85503c3d055b353f853deb07",
+    "physical_trace.py": "7ce596620d0b3251b8dc84dc7f96f042b1b5a1d7bb1c6f872ccad498d3ab3b48"
+  },
+  "benchmark_script_sha256": "49349af832996cb3e12d7cee934f06d82fc4257d74b065384e075eee14766a85"
+}

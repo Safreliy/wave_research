@@ -1,0 +1,19 @@
+{
+  "schema": "auditor-guarded-source-build-match-v1",
+  "upstream_commit": "b60ce3da52c19935fa24c778f62f02141eaf7f80",
+  "fresh_remote_source_archive_sha256": "377e0ad4adba7fd7b33c2f57ebb4b11daad59ab10d6bccc059e5ed21ccabc049",
+  "frozen_patched_source_archive_sha256": "8167630fa6207126e15647772bc0495ee9d09d3f0f19bac757b0849ba12595a9",
+  "matched_source_files": 1605,
+  "missing_only_generated_manifest": [
+    "SOURCE_TREE_MANIFEST.json"
+  ],
+  "changed_source_files": [],
+  "zero_flux_patch_sha256": "bd275268036253e96bbe5fb59c713dab442c65c7829b9bea6cb1626ffb04bc7a",
+  "build_manifest_sha256": "f425e23b54633ca17c329073494e16be7c05a26330f3dd1f42b372818b268707",
+  "guarded_runtime_sha256": {
+    "bin/ap.mfer": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154",
+    "lib/libaphros.so": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+    "lib/libaphros_c.so": "aaf0001fabbeb8a25fb730800ab24a5892f5580c772ca29ced171f7ec4dade48"
+  },
+  "meaning": "fresh guarded source bytes match the source tree tied to the saved CMake/Ninja build receipt; execute only when live binary hashes match the receipt"
+}

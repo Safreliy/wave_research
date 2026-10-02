@@ -1,0 +1,40 @@
+{
+  "schema": "auditor-runtime-config-dependency-v1",
+  "aphros_base_include": "/opt/gpu-cfd/aphros/deploy/scripts/sim_base.conf",
+  "aphros_base_sha256": "5b34f67f1870941633db84fbebe68ee3a7a8412059b15249535086f5cc821adb",
+  "aphros_base_matches_guarded_source_archive": true,
+  "aphros_base_has_nested_include": false,
+  "amgx_config": "/opt/gpu-cfd/prefix/lib/configs/PCG_AGGREGATION_JACOBI.json",
+  "amgx_config_sha256": "41d53573165713cee074a9987a05cfdba0a21503f0a5c7610f7cb2bb89ffc668",
+  "campaigns": {
+    "dynamic": {
+      "L9": {
+        "config_sha256": "3a4fa9d685e4d7dc80c35d64ec244c03a79d273e908e5cc8aa1fc3821bef2970",
+        "base_include_sha256": "5b34f67f1870941633db84fbebe68ee3a7a8412059b15249535086f5cc821adb",
+        "amgx_config_sha256": "41d53573165713cee074a9987a05cfdba0a21503f0a5c7610f7cb2bb89ffc668"
+      },
+      "L10": {
+        "config_sha256": "28963a92c7abeddf4bafec8d8aae71662a77dba4fabdc39cb751b234667c2c1e",
+        "base_include_sha256": "5b34f67f1870941633db84fbebe68ee3a7a8412059b15249535086f5cc821adb",
+        "amgx_config_sha256": "41d53573165713cee074a9987a05cfdba0a21503f0a5c7610f7cb2bb89ffc668"
+      },
+      "L11": {
+        "config_sha256": "f4143e646d109a5b7d56e1d09cdb65cb0ba6f0f445773a356edc57fa092a088d",
+        "base_include_sha256": "5b34f67f1870941633db84fbebe68ee3a7a8412059b15249535086f5cc821adb",
+        "amgx_config_sha256": "41d53573165713cee074a9987a05cfdba0a21503f0a5c7610f7cb2bb89ffc668"
+      }
+    },
+    "physical": {
+      "L9": {
+        "config_sha256": "11b1510df6410affee34128c9cc6a740eefeb3452d6e08b77a8f0ea09b5841db",
+        "base_include_sha256": "5b34f67f1870941633db84fbebe68ee3a7a8412059b15249535086f5cc821adb",
+        "amgx_config_sha256": "41d53573165713cee074a9987a05cfdba0a21503f0a5c7610f7cb2bb89ffc668"
+      },
+      "L10": {
+        "config_sha256": "235b8239d273ab3adb83476310568e6ccca098bf78f7210eaacf63b556613d1b",
+        "base_include_sha256": "5b34f67f1870941633db84fbebe68ee3a7a8412059b15249535086f5cc821adb",
+        "amgx_config_sha256": "41d53573165713cee074a9987a05cfdba0a21503f0a5c7610f7cb2bb89ffc668"
+      }
+    }
+  }
+}

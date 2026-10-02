@@ -1,0 +1,248 @@
+{
+  "schema": "auditor-physical-initial-momentum-erratum-v1",
+  "executed_campaign_sha256": "1956c40e25fa62c479f8209b8f35f09f66553a834dbfed0514d16eb1e38768f9",
+  "executed_generator_sha256": "b76256ea77c0b11a933f1beca618ad9fee3c38b9dd0d623be7226b6393a38b89",
+  "future_generator_sha256": "62e4415faa4e0f27a2e614db6f11f4597d6d710329fb745f0bd2a40e4b84844e",
+  "erratum": "executed initial_state.liquid_momentum is sum(q*u_receiver)*h^2, a receiver-velocity loading diagnostic; it is not the liquid-phase momentum sum(q*u_liquid)*h^2",
+  "preflight_limit": "the native preflight gates initial receiver velocity and near-zero target, but does not independently verify phase momentum or mixture formula",
+  "grids": {
+    "L9": {
+      "exact": {
+        "source_input_sha256": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+          "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "fluxx.raw": "f89cf836f40cd3a0cae86824b53134d914e32ebe92aba0f27796b1b8bf009025",
+          "fluxxp.raw": "c2c8a914ca17d1e7a26111ea33dfcec63289cd165b162dd4f62eb8cc2411d199",
+          "fluxy.raw": "4c553a42b48d1766f0cd1bba77675c05f9a1f5e4824bab96973d5cb0e2d8354e",
+          "fluxyp.raw": "29aab91d97914fe7ec675dac748cb0d64f75f731a90f5e6fb525e6516c388ade",
+          "initial_state.json": "a95f24df39c39187a8b5b0ea010fa8d068a488a7fdbfa9215175c26b7a120f54",
+          "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+          "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+          "vx.raw": "6a8f23ec31326ecd089b42c59e24b71cf48b008a6be309af2d1f4f205d321a40",
+          "vy.raw": "65928f62c6c0ccaf7e4bda83dd7e49a11129dd9f62fcd1bc28a5619c1520041c"
+        },
+        "receiver_q_weighted_momentum": [
+          -1.0553435211241485e-21,
+          -2.613332711871521e-20
+        ],
+        "true_liquid_phase_momentum": [
+          -1.0554404563521821e-21,
+          -2.6133582381482364e-20
+        ],
+        "true_gas_phase_momentum": [
+          -1.0555858591942324e-21,
+          -3.766877111989919e-20
+        ],
+        "density_weighted_mixture_momentum": [
+          -1.0544381107533466e-21,
+          -2.6177668523192027e-20
+        ],
+        "density_weighted_phase_sum": [
+          -1.0566823220688812e-21,
+          -2.6177898582799893e-20
+        ],
+        "mixture_formula_max_absolute_defect": 6.776263578034403e-21,
+        "mixture_momentum_closure_linf": 2.244211315534686e-24,
+        "executed_metadata_defect_linf": 0.0
+      },
+      "matched": {
+        "source_input_sha256": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+          "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "fluxx.raw": "f89cf836f40cd3a0cae86824b53134d914e32ebe92aba0f27796b1b8bf009025",
+          "fluxxp.raw": "c2c8a914ca17d1e7a26111ea33dfcec63289cd165b162dd4f62eb8cc2411d199",
+          "fluxy.raw": "4c553a42b48d1766f0cd1bba77675c05f9a1f5e4824bab96973d5cb0e2d8354e",
+          "fluxyp.raw": "29aab91d97914fe7ec675dac748cb0d64f75f731a90f5e6fb525e6516c388ade",
+          "initial_state.json": "9403b96bda2573b8cd89d97c9896e569da3aa3733aa6f1bffe490cad8b7f36f0",
+          "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+          "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+          "vx.raw": "a35d94b53497e75dd474ab35914c83a1056a3f83a488a41fed9b94b32708bb63",
+          "vy.raw": "966c4b6cc0376bdde423d351ad9ad6a8cfed3b6208ca6ab369897dd99628a318"
+        },
+        "receiver_q_weighted_momentum": [
+          -1.0720538619674268e-20,
+          1.5819506097649876e-22
+        ],
+        "true_liquid_phase_momentum": [
+          -6.93926016397283e-21,
+          1.6067983398842563e-22
+        ],
+        "true_gas_phase_momentum": [
+          -1.0555858591942324e-21,
+          -3.766877111989919e-20
+        ],
+        "density_weighted_mixture_momentum": [
+          -6.939204552434456e-21,
+          1.1636104773148294e-22
+        ],
+        "density_weighted_phase_sum": [
+          -6.94050202968953e-21,
+          1.1636363267089718e-22
+        ],
+        "mixture_formula_max_absolute_defect": 0.0,
+        "mixture_momentum_closure_linf": 1.2974772550736035e-24,
+        "executed_metadata_defect_linf": 0.0
+      },
+      "bilinear": {
+        "source_input_sha256": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+          "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "fluxx.raw": "f89cf836f40cd3a0cae86824b53134d914e32ebe92aba0f27796b1b8bf009025",
+          "fluxxp.raw": "c2c8a914ca17d1e7a26111ea33dfcec63289cd165b162dd4f62eb8cc2411d199",
+          "fluxy.raw": "4c553a42b48d1766f0cd1bba77675c05f9a1f5e4824bab96973d5cb0e2d8354e",
+          "fluxyp.raw": "29aab91d97914fe7ec675dac748cb0d64f75f731a90f5e6fb525e6516c388ade",
+          "initial_state.json": "bdcc691572bce94e9db27831128457f447c9fb353ee3d4cdc78792ed9971af3e",
+          "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+          "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+          "vx.raw": "f306588cb55b547e3382b8856cd1f3b753ebae12dfcd685ebc9cbdc9d7f3a814",
+          "vy.raw": "8e0e95bb339c1d4f2e0f922464abc1a99f8bec7c6c5226a8e41d3b878e2650ec"
+        },
+        "receiver_q_weighted_momentum": [
+          -1.895402624956288e-20,
+          -9.097338839206734e-22
+        ],
+        "true_liquid_phase_momentum": [
+          -1.89190390945913e-20,
+          -9.071230951123029e-22
+        ],
+        "true_gas_phase_momentum": [
+          -1.0555858591942324e-21,
+          -3.766877111989919e-20
+        ],
+        "density_weighted_mixture_momentum": [
+          -1.8919229052297278e-20,
+          -9.517229935305429e-22
+        ],
+        "density_weighted_phase_sum": [
+          -1.8920280960307998e-20,
+          -9.514392964298314e-22
+        ],
+        "mixture_formula_max_absolute_defect": 0.0,
+        "mixture_momentum_closure_linf": 1.0519080107204187e-24,
+        "executed_metadata_defect_linf": 0.0
+      }
+    },
+    "L10": {
+      "exact": {
+        "source_input_sha256": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+          "fluxeb.raw": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+          "fluxx.raw": "7992604e30a5bb05a4d7a35f673d0a4b7cacb91a6bfcb1d5c853af30e02140b4",
+          "fluxxp.raw": "dc8f1b0420dc3dfcaa4bec6515ea4415825466fbedd06c552b80df9f7baaa768",
+          "fluxy.raw": "6cb5098921344693bb5ebd38449ab706b3cd7a27ab2dd1a085a14e1ec26e9e3b",
+          "fluxyp.raw": "0c9f77d8308e0d25fc46ea5d21596d7f6a35b88e3a87535edbb5fc5929d0875b",
+          "initial_state.json": "a5f039d6ebbe871c78c16caa70d9b7590ccd027d1c619130ff897d3819e5e642",
+          "q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+          "vf.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+          "vx.raw": "e895778a1c7446af845b28b16646664ac7ca364509ede7d111984e6b835e48a1",
+          "vy.raw": "0b1792fefb97e730205d4d147fca2431d817aee4c73e6988339d65bac6c5102d"
+        },
+        "receiver_q_weighted_momentum": [
+          3.6980572463390106e-21,
+          -2.430365207136193e-20
+        ],
+        "true_liquid_phase_momentum": [
+          3.6984771917087396e-21,
+          -2.4303522824391218e-20
+        ],
+        "true_gas_phase_momentum": [
+          -2.6713571700201284e-21,
+          -3.70461109137999e-20
+        ],
+        "density_weighted_mixture_momentum": [
+          3.6953606168423776e-21,
+          -2.4347423173580482e-20
+        ],
+        "density_weighted_phase_sum": [
+          3.6953344185675395e-21,
+          -2.4347106484289806e-20
+        ],
+        "mixture_formula_max_absolute_defect": 6.776263578034403e-21,
+        "mixture_momentum_closure_linf": 3.1668929067614585e-25,
+        "executed_metadata_defect_linf": 0.0
+      },
+      "matched": {
+        "source_input_sha256": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+          "fluxeb.raw": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+          "fluxx.raw": "7992604e30a5bb05a4d7a35f673d0a4b7cacb91a6bfcb1d5c853af30e02140b4",
+          "fluxxp.raw": "dc8f1b0420dc3dfcaa4bec6515ea4415825466fbedd06c552b80df9f7baaa768",
+          "fluxy.raw": "6cb5098921344693bb5ebd38449ab706b3cd7a27ab2dd1a085a14e1ec26e9e3b",
+          "fluxyp.raw": "0c9f77d8308e0d25fc46ea5d21596d7f6a35b88e3a87535edbb5fc5929d0875b",
+          "initial_state.json": "6b7fa42cdf4b8caf3fba21272f123954208329dd0d07e38d6c77ba8a047fe6ed",
+          "q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+          "vf.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+          "vx.raw": "59caccec2bd9ccfb4adaefe4de02fc562884e56d0e30263519c0c97d50ef685e",
+          "vy.raw": "2e0bb86a30c66e5c3a6426810303be4ad9c4eca6f79f8ed9b4a477c82cf4bf3b"
+        },
+        "receiver_q_weighted_momentum": [
+          -7.736222998856599e-21,
+          -5.32626766301723e-22
+        ],
+        "true_liquid_phase_momentum": [
+          -6.579717709673561e-21,
+          -5.308173087117632e-22
+        ],
+        "true_gas_phase_momentum": [
+          -2.6713571700201284e-21,
+          -3.70461109137999e-20
+        ],
+        "density_weighted_mixture_momentum": [
+          -6.582211639782875e-21,
+          -5.746918085068854e-22
+        ],
+        "density_weighted_phase_sum": [
+          -6.582860482814761e-21,
+          -5.744009686103514e-22
+        ],
+        "mixture_formula_max_absolute_defect": 0.0,
+        "mixture_momentum_closure_linf": 6.48843031885371e-25,
+        "executed_metadata_defect_linf": 0.0
+      },
+      "bilinear": {
+        "source_input_sha256": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+          "fluxeb.raw": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+          "fluxx.raw": "7992604e30a5bb05a4d7a35f673d0a4b7cacb91a6bfcb1d5c853af30e02140b4",
+          "fluxxp.raw": "dc8f1b0420dc3dfcaa4bec6515ea4415825466fbedd06c552b80df9f7baaa768",
+          "fluxy.raw": "6cb5098921344693bb5ebd38449ab706b3cd7a27ab2dd1a085a14e1ec26e9e3b",
+          "fluxyp.raw": "0c9f77d8308e0d25fc46ea5d21596d7f6a35b88e3a87535edbb5fc5929d0875b",
+          "initial_state.json": "28e7ca676c1a31c1a0eb5c6b887b8cc0ddd45c415638217d0120e69039996b36",
+          "q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+          "vf.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+          "vx.raw": "869e30935a219d9b043f9fe0933212fec9388c8355e6cd6bf3bf4555eb27df5e",
+          "vy.raw": "ef4555d04841bbf8ad21f22b3339f69659e215022d09638fc5bf922880c0a8b7"
+        },
+        "receiver_q_weighted_momentum": [
+          8.663100193399369e-21,
+          3.0232158919106047e-22
+        ],
+        "true_liquid_phase_momentum": [
+          8.67313574104768e-21,
+          3.0404057390152223e-22
+        ],
+        "true_gas_phase_momentum": [
+          -2.6713571700201284e-21,
+          -3.70461109137999e-20
+        ],
+        "density_weighted_mixture_momentum": [
+          8.669748239792028e-21,
+          2.5941644167627384e-22
+        ],
+        "density_weighted_phase_sum": [
+          8.66999296790648e-21,
+          2.604569140029341e-22
+        ],
+        "mixture_formula_max_absolute_defect": 0.0,
+        "mixture_momentum_closure_linf": 1.0404723266602802e-24,
+        "executed_metadata_defect_linf": 0.0
+      }
+    }
+  }
+}

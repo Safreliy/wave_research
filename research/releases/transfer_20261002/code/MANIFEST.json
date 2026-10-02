@@ -1,0 +1,143 @@
+{
+  "schema": "auditor-python-source-bundle-v1",
+  "files": [
+    {
+      "path": "research/bie_interior_evaluation.py",
+      "sha256": "deefe28930281620c12bac1664f1f42a5e6d0de6ee9999fb1cbd2b36559fdcdb",
+      "bytes": 3914
+    },
+    {
+      "path": "research/gpu/extend_gas_streamfunction.py",
+      "sha256": "20b3a23890507fb443fbcf40bfe0091f6853e7eb7fe2115c92bd62a65b9cf051",
+      "bytes": 4291
+    },
+    {
+      "path": "research/gpu_port/campaign_integrity.py",
+      "sha256": "20c9ddcf7c45c779a1bfc6b5d3c5368abfd9dd650bb22aa9b462b93e5e4e161b",
+      "bytes": 6104
+    },
+    {
+      "path": "research/gpu_port/rebuild_bie_velocity_source.py",
+      "sha256": "b4d67b9a75878df154b7d7b03dd9486374d73da8a2f464518c0a62335c0f4eab",
+      "bytes": 9381
+    },
+    {
+      "path": "research/gpu_port/prepare_aphros_initial_state.py",
+      "sha256": "6fc0f5f543cbc6981e766f078cfb6fd3e90fbfbff5340b3b14e110ec6c636649",
+      "bytes": 30707
+    },
+    {
+      "path": "research/gpu_port/cutcell_transfer.py",
+      "sha256": "3b090393de8dee3abeda5c323c805b2451dbe82f85503c3d055b353f853deb07",
+      "bytes": 11980
+    },
+    {
+      "path": "research/gpu_port/physical_trace.py",
+      "sha256": "7ce596620d0b3251b8dc84dc7f96f042b1b5a1d7bb1c6f872ccad498d3ab3b48",
+      "bytes": 8533
+    },
+    {
+      "path": "research/gpu_port/liquid_dirichlet_transfer.py",
+      "sha256": "8a04c933c9b7f3f0c42319ecc873f00fda50c130c330c79642773f5c684fa6c5",
+      "bytes": 23388
+    },
+    {
+      "path": "research/gpu_port/prepare_flat_dynamic_benchmark.py",
+      "sha256": "96244b4666e72db8871dc179f2f2c16700a2d17b2baf6f164e730f1b70d5588d",
+      "bytes": 15554
+    },
+    {
+      "path": "research/gpu_port/prepare_twofluid_physical_pilot.py",
+      "sha256": "08f550c8cda4614cd54125abebae65dc145922b86e6ffdf774f14e142baf59f3",
+      "bytes": 9930
+    },
+    {
+      "path": "research/gpu_port/linear_twofluid_wave_reference.py",
+      "sha256": "4694883f7aa81b967c1157ccfac1b39b63a9e0b340b460eaead2078f83946472",
+      "bytes": 8941
+    },
+    {
+      "path": "research/gpu_port/aphros_checkpoint_supervisor.py",
+      "sha256": "14ef495681d0510d69f20fccb268b75238ba1b288a70c71aea3a750779f0336b",
+      "bytes": 67864
+    },
+    {
+      "path": "research/gpu_port/prepare_auditor_runtime_campaign.py",
+      "sha256": "c2dee97220f46cd1d770118631300e4a12763efc2dee42475da6306e293e3683",
+      "bytes": 6910
+    },
+    {
+      "path": "research/gpu_port/prepare_auditor_twofluid_grid.py",
+      "sha256": "62e4415faa4e0f27a2e614db6f11f4597d6d710329fb745f0bd2a40e4b84844e",
+      "bytes": 11894
+    },
+    {
+      "path": "research/gpu_port/remote_auditor_runtime_campaign.py",
+      "sha256": "6d902db544f18023e74b8c827b08dad6f943049c738b613e1b337bfa64d07d5e",
+      "bytes": 3893
+    },
+    {
+      "path": "research/gpu_port/remote_auditor_physical.py",
+      "sha256": "e48108bbaa7da5b4d98a954cd878335be1b0e6eab6d326532ea23939f6550aed",
+      "bytes": 3745
+    },
+    {
+      "path": "research/gpu_port/remote_flat_dynamic.py",
+      "sha256": "99dfa01b764a805e17d313481d29f898a5e652d775e1117452c278594b3b537b",
+      "bytes": 15896
+    },
+    {
+      "path": "research/gpu_port/benchmark_auditor_transfer_cost.py",
+      "sha256": "49349af832996cb3e12d7cee934f06d82fc4257d74b065384e075eee14766a85",
+      "bytes": 5951
+    },
+    {
+      "path": "research/gpu_port/audit_auditor_joint_refinement.py",
+      "sha256": "355ef6d5f7d0386af44406e33a6f362b9d96bcf166fb5d5cc03ebfaf0bf02af6",
+      "bytes": 4664
+    },
+    {
+      "path": "research/gpu_port/audit_auditor_runtime_provenance.py",
+      "sha256": "4889eac4b24aabb6bf5bf12b8bd3f12aa2e07e47e0a6a9d7e4374ba4aeee4bff",
+      "bytes": 3882
+    },
+    {
+      "path": "research/gpu_port/audit_auditor_dynamic_outputs.py",
+      "sha256": "5cc8378bad96f16d0f7e9839299df32ca57a647292e34a5e9929d31daa771a76",
+      "bytes": 8066
+    },
+    {
+      "path": "research/gpu_port/audit_auditor_physical_outputs.py",
+      "sha256": "59146c2f4495892ecbce0589bef52bccaad6dbe5839b4f6f8fdf1858aafdb197",
+      "bytes": 7000
+    },
+    {
+      "path": "research/gpu_port/audit_auditor_physical_metadata.py",
+      "sha256": "958b84eaefe42f9435f319530db99569d314b45a9fc062c02d29114eeed647d1",
+      "bytes": 5488
+    },
+    {
+      "path": "research/results/transfer_auditor_revision_20261002/dynamic/source/prepare_flat_dynamic_benchmark.py",
+      "sha256": "a9a7180ebd5daa3d69c6e2c4ac74daad18b2fbb36d0328eb6446ed2480c4c438",
+      "bytes": 15306
+    },
+    {
+      "path": "research/results/transfer_auditor_revision_20261002/physical/prepare_auditor_twofluid_grid_executed.py",
+      "sha256": "b76256ea77c0b11a933f1beca618ad9fee3c38b9dd0d623be7226b6393a38b89",
+      "bytes": 10395
+    },
+    {
+      "path": "research/gpu_port/audit_auditor_runtime_config.py",
+      "sha256": "cc89246688fae15540014d88f3aec45f6df6cf7cd76a4b5121a0f697cee12a0d",
+      "bytes": 3863
+    }
+  ],
+  "environment": {
+    "python": "3.13.3",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1",
+    "shapely": "2.1.2",
+    "paramiko": "5.0.0"
+  },
+  "note": "the dynamic/source directory retains the original generator bytes used before the optional explicit --trace-factor flag was added; physical/prepare_auditor_twofluid_grid_executed.py retains the executed metadata generator, while the current generator documents phase versus receiver momentum for future runs"
+}

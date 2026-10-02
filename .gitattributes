@@ -16,14 +16,30 @@
 
 # Keep frozen research evidence byte-identical to SHA256SUMS.json on every OS.
 research/releases/transfer_20261001/** -text
+research/releases/transfer_20261002/** -text
 # This is an inspected upstream snapshot; preserve its original whitespace.
 research/releases/transfer_20261001/native_source_provenance/source_worktree_patch.diff whitespace=-trailing-space
+# Preserve inspected build receipts and upstream solver configuration verbatim.
+research/releases/transfer_20261002/runtime_provenance/AMGX_CMakeCache_20261002.txt whitespace=-trailing-space
+research/releases/transfer_20261002/runtime_provenance/AMGX_PCG_AGGREGATION_JACOBI.json whitespace=-trailing-space
+research/releases/transfer_20261002/runtime_provenance/guard_build_CMakeCache_txt whitespace=-trailing-space
+research/releases/transfer_20261002/runtime_provenance/guard_build_build_ninja whitespace=-trailing-space
 
 # Preserve publication asset bytes and their provenance hashes in release archives.
 manuscript/transfer_article.tex -text
+manuscript/transfer_article.build.json -text
 manuscript/figures/** -text
 manuscript/tables/** -text
 scripts/build_transfer_pdf.py -text
+scripts/summarize_matched_boundary_extension.py -text
+scripts/summarize_transfer_dynamics.py -text
+scripts/summarize_physical_wave.py -text
+scripts/summarize_mixture_factorial.py -text
+scripts/plot_transfer_stress.py -text
+scripts/plot_transfer_dynamics.py -text
+scripts/plot_matched_native_dynamics.py -text
+scripts/summarize_auditor_revision.py -text
+scripts/plot_audited_dynamics.py -text
 
 # Release metadata and verifier are covered by the publication manifest.
 CITATION.cff -text
@@ -31,6 +47,8 @@ README.md -text
 DATA_AVAILABILITY.md -text
 LICENSE.md -text
 RELEASE_v0.31.0.txt -text
+RELEASE_v0.32.0.txt -text
+AUDITOR_REVISION_RESPONSE.txt -text
 scripts/verify_transfer_publication.py -text
 .gitattributes -text
 .gitignore -text

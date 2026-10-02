@@ -1,0 +1,133 @@
+{
+  "schema": "auditor-fixed-ratio-three-level-initial-v1",
+  "family": "W16 flat harmonic wave initial data",
+  "reference": "closed-form exact liquid-cell means of prescribed harmonic field",
+  "claim_scope": "initial transfer consistency at fixed refined trace/grid ratio; no native time evolution or unconditional convergence theorem",
+  "rows": [
+    {
+      "grid": "512x32",
+      "nx": 512,
+      "trace_factor": 8,
+      "trace_points": 4096,
+      "trace_spacing_over_h": 0.125,
+      "cut_cell_count": 1024,
+      "wet_cell_count": 4608,
+      "protocol_sha256": "d8b1aeb6035f181f2de4963b65105a150e4f0df0316b2a2a4f4fa7f698f86d46",
+      "preparation_report_sha256": "9794f1f53071b74ec644e7c3cbc4584e11a77fcc1ffd60dc6ced1247f767e059",
+      "methods": {
+        "matched": {
+          "all_wet": {
+            "liquid_volume_weighted_relative_l2": 0.0014203093601337538,
+            "cell_unweighted_relative_l2": 0.0012499932080265266,
+            "max_absolute_velocity_vector_error": 5.750171466775816e-05
+          },
+          "cut_cells": {
+            "liquid_volume_weighted_relative_l2": 0.004389759102206541,
+            "cell_unweighted_relative_l2": 0.0013039950836168605,
+            "max_absolute_velocity_vector_error": 5.750171466775816e-05
+          }
+        },
+        "bilinear": {
+          "all_wet": {
+            "liquid_volume_weighted_relative_l2": 0.004086890762306505,
+            "cell_unweighted_relative_l2": 0.033834436572588486,
+            "max_absolute_velocity_vector_error": 0.002676055479722176
+          },
+          "cut_cells": {
+            "liquid_volume_weighted_relative_l2": 0.005320385551805889,
+            "cell_unweighted_relative_l2": 0.06059039456863344,
+            "max_absolute_velocity_vector_error": 0.002676055479722176
+          }
+        }
+      },
+      "global_gain_bilinear_over_matched": 2.877465203722683
+    },
+    {
+      "grid": "1024x64",
+      "nx": 1024,
+      "trace_factor": 16,
+      "trace_points": 8192,
+      "trace_spacing_over_h": 0.125,
+      "cut_cell_count": 2048,
+      "wet_cell_count": 17408,
+      "protocol_sha256": "29562e58a6c4a0ae29f6d6c4c9e8234df63e2db92a381e8de7023da0b59faa53",
+      "preparation_report_sha256": "278109dc3cad86bf89f9ef074b5c859cff00513344a30321e4f0a4c9eb8477da",
+      "methods": {
+        "matched": {
+          "all_wet": {
+            "liquid_volume_weighted_relative_l2": 0.00035377916132421676,
+            "cell_unweighted_relative_l2": 0.00035213185517022965,
+            "max_absolute_velocity_vector_error": 2.150275837896224e-05
+          },
+          "cut_cells": {
+            "liquid_volume_weighted_relative_l2": 0.001630498396326231,
+            "cell_unweighted_relative_l2": 0.00048492659190966814,
+            "max_absolute_velocity_vector_error": 2.150275837896224e-05
+          }
+        },
+        "bilinear": {
+          "all_wet": {
+            "liquid_volume_weighted_relative_l2": 0.0010898362004076088,
+            "cell_unweighted_relative_l2": 0.013126787222078488,
+            "max_absolute_velocity_vector_error": 0.0013723972037687855
+          },
+          "cut_cells": {
+            "liquid_volume_weighted_relative_l2": 0.004565816742434496,
+            "cell_unweighted_relative_l2": 0.030938852627587696,
+            "max_absolute_velocity_vector_error": 0.0013723972037687855
+          }
+        }
+      },
+      "global_gain_bilinear_over_matched": 3.080555102025473
+    },
+    {
+      "grid": "2048x128",
+      "nx": 2048,
+      "trace_factor": 32,
+      "trace_points": 16384,
+      "trace_spacing_over_h": 0.125,
+      "cut_cell_count": 4096,
+      "wet_cell_count": 67584,
+      "protocol_sha256": "8150edca3f68f19a181311ef5b592a7d09cf0baa2e31a8497ba323e04ff111ad",
+      "preparation_report_sha256": "b16b8ebd33cbbfd0d1fb26be50d09dbaeb667d8f7080e9856dddabc961aed42d",
+      "methods": {
+        "matched": {
+          "all_wet": {
+            "liquid_volume_weighted_relative_l2": 8.0414000272697e-05,
+            "cell_unweighted_relative_l2": 9.034926045421624e-05,
+            "max_absolute_velocity_vector_error": 6.99645421024592e-06
+          },
+          "cut_cells": {
+            "liquid_volume_weighted_relative_l2": 0.0004332721143217742,
+            "cell_unweighted_relative_l2": 0.0001575613921765051,
+            "max_absolute_velocity_vector_error": 6.99645421024592e-06
+          }
+        },
+        "bilinear": {
+          "all_wet": {
+            "liquid_volume_weighted_relative_l2": 0.00033498067108215444,
+            "cell_unweighted_relative_l2": 0.004878607354589585,
+            "max_absolute_velocity_vector_error": 0.0006930546590352317
+          },
+          "cut_cells": {
+            "liquid_volume_weighted_relative_l2": 0.009598086491164176,
+            "cell_unweighted_relative_l2": 0.015606261712140222,
+            "max_absolute_velocity_vector_error": 0.0006930546590352317
+          }
+        }
+      },
+      "global_gain_bilinear_over_matched": 4.1657008723130335
+    }
+  ],
+  "observed_two_level_orders": {
+    "matched": [
+      2.005284223467578,
+      2.1373304662817905
+    ],
+    "bilinear": [
+      1.9068923644419384,
+      1.701961560637309
+    ]
+  },
+  "analysis_code_sha256": "355ef6d5f7d0386af44406e33a6f362b9d96bcf166fb5d5cc03ebfaf0bf02af6"
+}

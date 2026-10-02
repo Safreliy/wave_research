@@ -1,0 +1,763 @@
+{
+  "schema": "auditor-single-runtime-dynamic-raw-audit-v1",
+  "campaign_sha256": "23922407411c06aba4aef92995068e3f83a40875fa3563bec419c268a76405d6",
+  "input_archive_sha256": "c17f7f1d306d4e85f4252064425b0efdeb50b99a2a03820ef22108d4704fe764",
+  "runtime_sha256": {
+    "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154",
+    "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f"
+  },
+  "source_build_match_sha256": "715ac177750d1253693b4934ea2a09eb441126209c5111cbe50b8547f335f40e",
+  "claim_scope": "same-grid numerical exact-input trajectory; no exact nonlinear flow claim",
+  "grids": {
+    "L9": {
+      "nx": 512,
+      "ny": 32,
+      "config_sha256": "3a4fa9d685e4d7dc80c35d64ec244c03a79d273e908e5cc8aa1fc3821bef2970",
+      "supervisor_sha256": "14ef495681d0510d69f20fccb268b75238ba1b288a70c71aea3a750779f0336b",
+      "input_hashes": {
+        "exact": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+          "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "fluxx.raw": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+          "fluxxp.raw": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+          "fluxy.raw": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+          "fluxyp.raw": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+          "initial_state.json": "8117c6f4cb9af92060df26cd43edbea8c3b87d76217b2b61b3d16f5a1849e578",
+          "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+          "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+          "vx.raw": "65940a8e9dc01af89b5177791c83925b0b70faeccdc892d444b2630369190a07",
+          "vy.raw": "edb2ee744baa8a48bec8bd7a805f4016647b378a8064fe7e9bbc7925250e9b1f"
+        },
+        "matched": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+          "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "fluxx.raw": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+          "fluxxp.raw": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+          "fluxy.raw": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+          "fluxyp.raw": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+          "initial_state.json": "9282694bc979c435bf4e0350fe85194e1d848cea06fba81f1de396cb1ab617c9",
+          "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+          "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+          "vx.raw": "5175b801000a2d61d63cce9f7ee812d6d6116150c4cf67ec823973607ad55d78",
+          "vy.raw": "f225454fef212579978648da4edea47735fe94d4349454ae3b7d5d70e015f881"
+        },
+        "bilinear": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+          "fluxeb.raw": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "fluxx.raw": "b9474f2be94a1525c32e31415ae87b291d0dd6511632ea3538b27b85ef8f839f",
+          "fluxxp.raw": "1f549da67fb885c745d101eb60c7bd46fb653185b73b4b646e06cf807862b3cb",
+          "fluxy.raw": "3d440e8a723afd31d7ac728e1d9ac77ff65e83e722319716754a7cf87883d65c",
+          "fluxyp.raw": "e73f0f11b36a166a8186f8794dff14b956eb6d4133894de78606a9745f8abedf",
+          "initial_state.json": "86ca2b1553a945713ac78e746a00cb6e0dde720eec43adb4b7580cfab7d77ced",
+          "q.raw": "c240b2feae0424ac1b39f23832f099afb4e9b0a48bcb9fc5b83e891dbfba2d7b",
+          "vf.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+          "vx.raw": "9ed0d0c2c5bf7ab27cb456713d2eb93c30655307d07ff9fe08520896b0708f37",
+          "vy.raw": "50809abccf76c63efa6463f389bdb392a22675e66874d44bdfefaf5eff772369"
+        }
+      },
+      "runs": {
+        "exact": {
+          "archive_sha256": "5916d600750dc87079d55048dc6f4d66ef46c9710dc11c35c917afe8367b26aa",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "60a901a8a70368291d5c07fa0d8c4cd768bf6f5ba555fd02a0c24cdd5efdccb4",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 6,
+          "maximum_post_start_mass_relative_error": 7.147315621681344e-13,
+          "maximum_post_start_flux_divergence_linf": 4.912736883966318e-15,
+          "raw_field_sha256": {
+            "vx_0000.raw": "65940a8e9dc01af89b5177791c83925b0b70faeccdc892d444b2630369190a07",
+            "vx_0001.raw": "4fba125a70fd4078aaf444b280fde7132bc7ae6f9ec973886dbd1b07ba13ac4b",
+            "vx_0002.raw": "1599744a688a18e0c6ff25b5fb33281d5aad336761ac362dc70538a8b6d1b386",
+            "vx_0003.raw": "1272bcc7469a013fa296e466ae6792514fae80cf66d342cf3f478136664b2d71",
+            "vx_0004.raw": "bf41fa25305ee2046a70d5f660622ea82f749b0edbfe451150342b25995b372c",
+            "vy_0000.raw": "edb2ee744baa8a48bec8bd7a805f4016647b378a8064fe7e9bbc7925250e9b1f",
+            "vy_0001.raw": "6ee598793948fd655abf82fcc8345cb3099b28509084fe62f196709ccb4cc5b1",
+            "vy_0002.raw": "f2ec162398bf4e92ba1f971bbea71a5a7ba56d0024f98c969cdd4c36925f2506",
+            "vy_0003.raw": "995f3e1d3e85c3bfddfe3a8f9aed9e0a584dfde4e5945807f0f03557710c2c85",
+            "vy_0004.raw": "2691283bb26dceb8fa1fca46e7a6328506216a43e84df43a51b2ee83ca362593",
+            "vf_0000.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+            "vf_0001.raw": "cfcef6c60cdf560df8800183ca1fbb60f00ebbae8294b41332ccd1fa883f2469",
+            "vf_0002.raw": "b2f60d331fb74af945dc993c0d919ec6b1694c47cb8f528c5e152b878c81b57f",
+            "vf_0003.raw": "ea2482948aaab6d07fea22fd1d4ebc6116f8f14246b2c1bcdbc6474d60ee3a15",
+            "vf_0004.raw": "83c78f2cca9bcead3d673da7498573d69b2e1565208da711551b6d06a64c6c6e",
+            "ebvf_0000.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0001.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0002.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0003.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0004.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5"
+          }
+        },
+        "matched": {
+          "archive_sha256": "6404f0224ad8dd477889a807f62c4de758b591b9f2ff5fbb68ee8d1db82b8b57",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "6593dee2d21a9d7bad901008223df2d72ebe8e5f03e7eda745296325705b13f5",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 5,
+          "maximum_post_start_mass_relative_error": 4.1762297363515173e-13,
+          "maximum_post_start_flux_divergence_linf": 4.9404924595819466e-15,
+          "raw_field_sha256": {
+            "vx_0000.raw": "5175b801000a2d61d63cce9f7ee812d6d6116150c4cf67ec823973607ad55d78",
+            "vx_0001.raw": "98331a02c8ce21a74c6e6b036678681d3e2971a99475d4cefffd3504e52501b2",
+            "vx_0002.raw": "bab937a56be6a5dac92e7011ad92c8d4df59d0051401fb05b4cdcfec081502f6",
+            "vx_0003.raw": "483545b29a055d3ba338ccfc696c05f429033c12b0a15591a6948f00a29ffc45",
+            "vx_0004.raw": "53028778dcee5e1a4ef69109983d80ddb76f1be632364073f45f88e79e838813",
+            "vy_0000.raw": "f225454fef212579978648da4edea47735fe94d4349454ae3b7d5d70e015f881",
+            "vy_0001.raw": "2c437d0b304524156081422f3ce0542f921c25e1d0d0bc50e9187f0527d14d1e",
+            "vy_0002.raw": "8afcee7a4f2a80bcfc164d84e37b638b6b5fa358814e4c1df1c4790a88f450eb",
+            "vy_0003.raw": "1d5c178c257bf57a6bafd9a90392e586dbfe331f449c459056c650d8f2cbeb82",
+            "vy_0004.raw": "78d83b16a4907d3720e408996587afb5390fb294f93044dc7e9e5461415affe5",
+            "vf_0000.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+            "vf_0001.raw": "1263fe0a54c8f0394121660540c759cbb877629f83be456a615c95b7206a8bf4",
+            "vf_0002.raw": "9a52e5df54ea90559f6223b236532c1627c3849c47f2ed7ec1db49c782908dd2",
+            "vf_0003.raw": "368b50210e2876fa83705cd4bc720eedb933e7fe0ae01fa494857897acbf8352",
+            "vf_0004.raw": "37c8130bf07f2434f7616750e0cdddcd986ca48e2d58c9d246edf96b79ba1e6c",
+            "ebvf_0000.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0001.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0002.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0003.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0004.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5"
+          }
+        },
+        "bilinear": {
+          "archive_sha256": "da61252b8be165015d1c5e4ee55f80b02b5f5be072618a9d383f47dd0d1c4ac9",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "c31dabfebce6f902fddc6fa7df6122568d141bd727923c9a9675cc32a7d6bee3",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 5,
+          "maximum_post_start_mass_relative_error": 5.848323911415799e-14,
+          "maximum_post_start_flux_divergence_linf": 4.65599780952175e-15,
+          "raw_field_sha256": {
+            "vx_0000.raw": "9ed0d0c2c5bf7ab27cb456713d2eb93c30655307d07ff9fe08520896b0708f37",
+            "vx_0001.raw": "44331c8b05292fd096fe8ad6c43c8484169893e0476d5137faa2780d605daf6b",
+            "vx_0002.raw": "3eb59c1fe913956cae454b8f2ffff7c4b5b80c4b11f29a1a093413708a259955",
+            "vx_0003.raw": "fbf1e88a229b583f6240278849f86655f8b5791358ad2368226beb098066bae0",
+            "vx_0004.raw": "b6e842ac70b94e3dd7ef9dd818586f83b2b8d354af6d78a49384d03c936da8da",
+            "vy_0000.raw": "50809abccf76c63efa6463f389bdb392a22675e66874d44bdfefaf5eff772369",
+            "vy_0001.raw": "fa013867200c3b2e87386643192dc7ee6bfb32f5bc21927c009f40bbc414aac5",
+            "vy_0002.raw": "5131cb63a0e1777f9a74dac7d13006a2c5b3a680628b9e91ddf04e6447e86634",
+            "vy_0003.raw": "552614f3e14f5cd3d8889164f50bc81417ad23456110c8c2b5b68a38b18d262d",
+            "vy_0004.raw": "38029e5ce2036d8aacbc489f9bb7d238d033cc1798d9f47f6275688f802033f5",
+            "vf_0000.raw": "b643d2cc1e6185c07bbdb86dc1ed46ed4692bdfcbb6a94fa2379b63875bc8bb6",
+            "vf_0001.raw": "1a9f8ce42458fa103a24f1368405831ec9a83b8368e2f9dfd8d7cdbc525fe5d7",
+            "vf_0002.raw": "db9b7c4e88e8f731578b46ddd3b3af065b96f4bcd98d00c6acc7e8bc81a1cbf9",
+            "vf_0003.raw": "6ef613d7fe65fcf9e82ff905ffd3a08a5915bb7591450ae57254f0d3e228226a",
+            "vf_0004.raw": "f98ef7efa7fa59d42bb55ff70f3d823025cd18fdafb0495a4296403da15bb477",
+            "ebvf_0000.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0001.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0002.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0003.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5",
+            "ebvf_0004.raw": "52f5706bb6521d9f9676f59403644108cae427fe52d874f1ed512663905252e5"
+          }
+        }
+      },
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.0014203093601337538,
+            "vof_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "column_depth_max_absolute": 0.0
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.004086890762306497,
+            "vof_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "column_depth_max_absolute": 0.0
+          }
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1325000000000001,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.0014472752589540728,
+            "vof_relative_l2": 1.8649268458882755e-07,
+            "column_depth_wave_relative_l2": 2.490484334526969e-05,
+            "column_depth_max_absolute": 1.0141672601715612e-07
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.008022794240938772,
+            "vof_relative_l2": 1.3759306303976572e-05,
+            "column_depth_wave_relative_l2": 0.001837462787364751,
+            "column_depth_max_absolute": 6.3366879420323485e-06
+          }
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2625000000000002,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.0015058575734786435,
+            "vof_relative_l2": 4.492874735957522e-07,
+            "column_depth_wave_relative_l2": 3.076157768379248e-05,
+            "column_depth_max_absolute": 2.4849084745426353e-07
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.010345343033681913,
+            "vof_relative_l2": 3.2411344923071853e-05,
+            "column_depth_wave_relative_l2": 0.002219122862895599,
+            "column_depth_max_absolute": 1.4037698757740635e-05
+          }
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3950000000000003,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.0016076638475745848,
+            "vof_relative_l2": 7.578549078797024e-07,
+            "column_depth_wave_relative_l2": 3.5304174539663165e-05,
+            "column_depth_max_absolute": 4.2062794358699307e-07
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.012118036775188688,
+            "vof_relative_l2": 5.2185310765382214e-05,
+            "column_depth_wave_relative_l2": 0.0024309821118634082,
+            "column_depth_max_absolute": 2.1429906159498024e-05
+          }
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5250717657631933,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.0017584869765284263,
+            "vof_relative_l2": 1.0855922701317854e-06,
+            "column_depth_wave_relative_l2": 3.926273128748838e-05,
+            "column_depth_max_absolute": 6.002719618036778e-07
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.013860926461719098,
+            "vof_relative_l2": 7.059063595972946e-05,
+            "column_depth_wave_relative_l2": 0.0025528134323772786,
+            "column_depth_max_absolute": 2.8580279016754417e-05
+          }
+        }
+      ],
+      "endpoint_gain_bilinear_over_matched": {
+        "global_liquid_velocity_relative_l2": 7.882302596908105,
+        "vof_relative_l2": 65.02499870523224,
+        "column_depth_wave_relative_l2": 65.01874293169126
+      }
+    },
+    "L10": {
+      "nx": 1024,
+      "ny": 64,
+      "config_sha256": "28963a92c7abeddf4bafec8d8aae71662a77dba4fabdc39cb751b234667c2c1e",
+      "supervisor_sha256": "14ef495681d0510d69f20fccb268b75238ba1b288a70c71aea3a750779f0336b",
+      "input_hashes": {
+        "exact": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+          "fluxeb.raw": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+          "fluxx.raw": "4acc2a382bcb9f9dd9f257cb024bf14dfc8e2c01a0b4be58c9421ab8cb5094e8",
+          "fluxxp.raw": "630bd2147a478394ad1f7c4a1df7fd44424dcc07f64b3da823c3619be1c78dbe",
+          "fluxy.raw": "0346e946d05630d9da1d4df9776076db425ecddd1f4017f429234ecc94c006c9",
+          "fluxyp.raw": "f156f2e62c808d41180be6ce45941dcfc7c9bed31ebb77b6942c27d14c80ee3e",
+          "initial_state.json": "9515a266baa5ad8adcb11b8eb1865b8511a7c1c0466cf9e825ae519d6c64def0",
+          "q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+          "vf.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+          "vx.raw": "bc26ea36e97fa071e52d574697ea163f5758f6b96ca41962704f78da092cdf07",
+          "vy.raw": "e55cd06b3d040833d36371d53958d8d2c8f74e87c9ca8e3d9c00082fcf372dbb"
+        },
+        "matched": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+          "fluxeb.raw": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+          "fluxx.raw": "4acc2a382bcb9f9dd9f257cb024bf14dfc8e2c01a0b4be58c9421ab8cb5094e8",
+          "fluxxp.raw": "630bd2147a478394ad1f7c4a1df7fd44424dcc07f64b3da823c3619be1c78dbe",
+          "fluxy.raw": "0346e946d05630d9da1d4df9776076db425ecddd1f4017f429234ecc94c006c9",
+          "fluxyp.raw": "f156f2e62c808d41180be6ce45941dcfc7c9bed31ebb77b6942c27d14c80ee3e",
+          "initial_state.json": "31d950dff3fa26498107406ed394171ce92f096b89072297a126f0468a24b50e",
+          "q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+          "vf.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+          "vx.raw": "93e12e0bdc42daf406b797930b473bde6e443f86b1c934115a15a75a9d749dfd",
+          "vy.raw": "70a8e9e1d659f0da65e63a789ed4d18f007b0e0de0d031b80086f7107039ccad"
+        },
+        "bilinear": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+          "fluxeb.raw": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+          "fluxx.raw": "4acc2a382bcb9f9dd9f257cb024bf14dfc8e2c01a0b4be58c9421ab8cb5094e8",
+          "fluxxp.raw": "630bd2147a478394ad1f7c4a1df7fd44424dcc07f64b3da823c3619be1c78dbe",
+          "fluxy.raw": "0346e946d05630d9da1d4df9776076db425ecddd1f4017f429234ecc94c006c9",
+          "fluxyp.raw": "f156f2e62c808d41180be6ce45941dcfc7c9bed31ebb77b6942c27d14c80ee3e",
+          "initial_state.json": "ecd2ffa8057c029ab3640f3b5ac0163f6c7d1f5b8ab62a7ed3fbaa74de13dbeb",
+          "q.raw": "17b68589cc514fcca9cbcdb7896f45dfb899bcb91f15109cce70d5f06f16c2ee",
+          "vf.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+          "vx.raw": "b135ac91e24cc72f8682c44b78f928fca31f59d528afab465fb78820c1f75d9a",
+          "vy.raw": "ffabaf6dc9642786f705cc6df11147793ea7841e919f42aa1a20366f470891c6"
+        }
+      },
+      "runs": {
+        "exact": {
+          "archive_sha256": "2354a53c823a2c1945541256505ee8398e15c0ce105d07619f28da11361427bf",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "c9a6471e90d278830705a35c5c4b149e04e8a145c334613c8eecbf3c30051375",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 5,
+          "maximum_post_start_mass_relative_error": 0.0,
+          "maximum_post_start_flux_divergence_linf": 2.3703261575747092e-14,
+          "raw_field_sha256": {
+            "vx_0000.raw": "bc26ea36e97fa071e52d574697ea163f5758f6b96ca41962704f78da092cdf07",
+            "vx_0001.raw": "93d3383d851a4259679f43d6c7b6cd723bf9c8048ce8ed1bba2c9eea2f716caa",
+            "vx_0002.raw": "11dc571bce5a98803d3682bffd715ae28c52523bfc7f6b1d08ef2431cfa83b7d",
+            "vx_0003.raw": "ff407582a8a8ee1768090dbba9084c688aa67130e7d204286564cf85f8c85c7d",
+            "vx_0004.raw": "88a558d90d7c3d38396190843cd5e16db0dd753aff470636a7e74b2525973aa9",
+            "vy_0000.raw": "e55cd06b3d040833d36371d53958d8d2c8f74e87c9ca8e3d9c00082fcf372dbb",
+            "vy_0001.raw": "1f08a2aad317a55a71bbd85564538a340eddfbbeafa04574274eaa66bd360852",
+            "vy_0002.raw": "901c467f3803160ac09aee80783dccc14dcb74358094c3656aed3a4a2ecf53d8",
+            "vy_0003.raw": "5690d610d68e4e12665e93d88e781243303ed9c9faec3a37adfe1c7cd3aa92c2",
+            "vy_0004.raw": "b87771ad9e846cd164bdaf70a8e73aee360a2e923f9fb37db4b99f6cfa014af4",
+            "vf_0000.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+            "vf_0001.raw": "ff4c437b74a4962c6cf4ca15fc7aaeb536136b7949dd50e6709828ce647232ba",
+            "vf_0002.raw": "d8541da8bf81d539c52397378bd9b2cf9062695b80d25914f136c2851e59980e",
+            "vf_0003.raw": "c27033c1881b87dcb3fea6150240ed5f18daf01407b541350b4adc757c11f15b",
+            "vf_0004.raw": "acb01fa9b1e4ab3fc061a14f6c8d065645623c239757b27a4059bf6dfccfd5aa",
+            "ebvf_0000.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0001.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0002.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0003.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0004.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793"
+          }
+        },
+        "matched": {
+          "archive_sha256": "ef079c59e23fa022c29062f26f0f86183e8dbb2a1949bc11e72b7b9c1f24950f",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "69aa71ccebddf010de1e84d9f7963c43ea370de729a8a5c0a2e162dcbc35cf66",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 5,
+          "maximum_post_start_mass_relative_error": 0.0,
+          "maximum_post_start_flux_divergence_linf": 2.2093438190040615e-14,
+          "raw_field_sha256": {
+            "vx_0000.raw": "93e12e0bdc42daf406b797930b473bde6e443f86b1c934115a15a75a9d749dfd",
+            "vx_0001.raw": "2e56014f8ad1446d7beed94b810e73ce759b9edc7234fc8886f34d9ebfb687ca",
+            "vx_0002.raw": "b8093f9ae1099ebb9e1995185be3e612d5d681bf42e0832dc86d1d79ea62ec1d",
+            "vx_0003.raw": "cf56f708a297971c2dd37b99576387d919ee408f4ca7496f3d09bdeecff09b52",
+            "vx_0004.raw": "4560d15b0720afc630ec5facdb400ee8dbb693b7f6bfab2cf55c7d18f2c5782d",
+            "vy_0000.raw": "70a8e9e1d659f0da65e63a789ed4d18f007b0e0de0d031b80086f7107039ccad",
+            "vy_0001.raw": "349d3aff0284b7c149ce8beff7e2f5d005bfe29e87318083e03b77efed7b921b",
+            "vy_0002.raw": "4a31bfa937d22ce922a3ffaf659cca548ca8f2d3616aa9e51f9cdc28dbd555b8",
+            "vy_0003.raw": "0418cf7f41db9226a240bb1a31b093eec546eba05d36e17441e6e85114fc1ef4",
+            "vy_0004.raw": "fc62d983393dc0463d66260b8911f2f3b83080bbd0a72996636e88fdd40ebcbb",
+            "vf_0000.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+            "vf_0001.raw": "e321613e80bc0c28d5c24dfe212e3285533dddf4631484bafba85740b11a5487",
+            "vf_0002.raw": "fb6bba6652519465c5ac546659ddd5df7f00e578f06082db14703511925d2913",
+            "vf_0003.raw": "73edafca455a647a13641b603325153472adee27a30cabd1de346bfb16c992e1",
+            "vf_0004.raw": "c895668a64ec4fce206262377f4926095ffa0162b828f6c5a750ba135c050607",
+            "ebvf_0000.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0001.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0002.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0003.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0004.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793"
+          }
+        },
+        "bilinear": {
+          "archive_sha256": "c9c5396badce5d761a44948a153a9774a83040f3cede4669ba871740ca5c1577",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "5de0c93d17b1b24226dc60047f4bba296f05385917788e3c05848e5f5d44cdd0",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 6,
+          "maximum_post_start_mass_relative_error": 0.0,
+          "maximum_post_start_flux_divergence_linf": 2.3148150063434514e-14,
+          "raw_field_sha256": {
+            "vx_0000.raw": "b135ac91e24cc72f8682c44b78f928fca31f59d528afab465fb78820c1f75d9a",
+            "vx_0001.raw": "ae3852c528cea7c9204e3163ce2185df2ae84e683fa2796cdb0dad0b302d10f0",
+            "vx_0002.raw": "be9ddece780c8e1344d26fa4cd4dae91d7760c8eeb816499a8c837292b719872",
+            "vx_0003.raw": "8f058bed5620a01798d1063206ff1f6d7359a14d9178328330fcf7a0195277d6",
+            "vx_0004.raw": "14a3134bc92cdba161f5b97a899b88dbacce8c974af2c2d152fbddabd2e12b5e",
+            "vy_0000.raw": "ffabaf6dc9642786f705cc6df11147793ea7841e919f42aa1a20366f470891c6",
+            "vy_0001.raw": "9dffb2cd88629ea0d02e3e5146a1d21d9cd3a193797bcdb6328883e9afea4718",
+            "vy_0002.raw": "d8893434cbb267b1e05d2ce37304557fa4ec3c717158f083ac3acd98f3c91b8f",
+            "vy_0003.raw": "a5ce8d37408cc0403a3d3b083a7eb8e89e301ec34f859b272eac804d0b31f045",
+            "vy_0004.raw": "1af00169d7836748d971c7c7c8b2edfa36a4be273725ccf0068b3bc1f88659a8",
+            "vf_0000.raw": "bf879d0f88ee90f8ca96470ed7e46991405335101740085caa3cd6a1c112bb47",
+            "vf_0001.raw": "a1d76789555be566dd82b98ee9f620181fc89db38d4668f1efea092e55d77122",
+            "vf_0002.raw": "a785fed6fbad2a9f9c61151322379b32be79083571961d46f67b0918630de072",
+            "vf_0003.raw": "c2d7c86aff59bfcb02653f7f56b866b08db688d7517e3335eb3b15dbe0b830b7",
+            "vf_0004.raw": "16444ca4621cb8721ff7f48722b8d0fd74e12c805fc4c0f3b0bc3df2c2b8f018",
+            "ebvf_0000.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0001.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0002.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0003.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793",
+            "ebvf_0004.raw": "ab0c14f1d10d234c592f25938b02e9086ea65b1a11350f04c152875659168793"
+          }
+        }
+      },
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.00035377444249446696,
+            "vof_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "column_depth_max_absolute": 0.0
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.0010898362004020724,
+            "vof_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "column_depth_max_absolute": 0.0
+          }
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1325000000000001,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.0003582003018260768,
+            "vof_relative_l2": 4.1682895391478994e-08,
+            "column_depth_wave_relative_l2": 3.913212276625008e-06,
+            "column_depth_max_absolute": 1.6356707210896104e-08
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.0020973612415639484,
+            "vof_relative_l2": 3.748121732002985e-06,
+            "column_depth_wave_relative_l2": 0.00035187565160702124,
+            "column_depth_max_absolute": 1.0496417685024184e-06
+          }
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2625000000000002,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.0003713281415690316,
+            "vof_relative_l2": 1.0260015922700284e-07,
+            "column_depth_wave_relative_l2": 4.923399538875385e-06,
+            "column_depth_max_absolute": 4.216140525592493e-08
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.0028276699836218833,
+            "vof_relative_l2": 8.883660393056925e-06,
+            "column_depth_wave_relative_l2": 0.0004262937778030639,
+            "column_depth_max_absolute": 3.0134099971990125e-06
+          }
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3950000000000003,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.00039591336296071066,
+            "vof_relative_l2": 1.8832501898225183e-07,
+            "column_depth_wave_relative_l2": 6.134649250924624e-06,
+            "column_depth_max_absolute": 8.664920636558548e-08
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.003515076269246182,
+            "vof_relative_l2": 1.5100595744750587e-05,
+            "column_depth_wave_relative_l2": 0.0004918705578238576,
+            "column_depth_max_absolute": 5.832369583291808e-06
+          }
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5250717657631933,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 0.00043460301719009097,
+            "vof_relative_l2": 2.907188403540409e-07,
+            "column_depth_wave_relative_l2": 7.338555944743691e-06,
+            "column_depth_max_absolute": 1.405153259304015e-07
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.0042597032615346074,
+            "vof_relative_l2": 2.1468881412570614e-05,
+            "column_depth_wave_relative_l2": 0.0005417713841192757,
+            "column_depth_max_absolute": 9.110525708289074e-06
+          }
+        }
+      ],
+      "endpoint_gain_bilinear_over_matched": {
+        "global_liquid_velocity_relative_l2": 9.801366058329632,
+        "vof_relative_l2": 73.84757515689576,
+        "column_depth_wave_relative_l2": 73.82533950801648
+      }
+    },
+    "L11": {
+      "nx": 2048,
+      "ny": 128,
+      "config_sha256": "f4143e646d109a5b7d56e1d09cdb65cb0ba6f0f445773a356edc57fa092a088d",
+      "supervisor_sha256": "14ef495681d0510d69f20fccb268b75238ba1b288a70c71aea3a750779f0336b",
+      "input_hashes": {
+        "exact": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+          "fluxeb.raw": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+          "fluxx.raw": "772b850578e8b50223116cb24d4dc8a8c550682ff7882ed8edcc4c1e0363e4c5",
+          "fluxxp.raw": "079a8761b53187ac08bf4112a9ce2c86797d19c541b8dd2387d9354861b4ab8f",
+          "fluxy.raw": "50f9d9a54f888604d5ae5f393877175315c8f5100b1700f34104cef5111fd099",
+          "fluxyp.raw": "08e6f4961f59021bd9fcc43512a9b15f1d888f610dbeec86cd88158d17dcf557",
+          "initial_state.json": "0719f96e669feb6aa5ec741fc976d3d4b77c489c4bb4a3ba15b9a45a907de20b",
+          "q.raw": "ce918c59be9270e0b4d2948e7f1798725644e0bbae26c1c28bf3fe15b75032aa",
+          "vf.raw": "352e3bb6c52287c6ad7a0a9a415b62acc0d58d6d434fbdef1e3e7a4385dd444c",
+          "vx.raw": "aa5a497c9c741cab3828ee41888eea53a51f2c671bf048a4ce9b383362df4bf2",
+          "vy.raw": "41499d661e9fd99066ed93445b60e25818ca61cad29609d4599fb205b19e6ac4"
+        },
+        "matched": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+          "fluxeb.raw": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+          "fluxx.raw": "772b850578e8b50223116cb24d4dc8a8c550682ff7882ed8edcc4c1e0363e4c5",
+          "fluxxp.raw": "079a8761b53187ac08bf4112a9ce2c86797d19c541b8dd2387d9354861b4ab8f",
+          "fluxy.raw": "50f9d9a54f888604d5ae5f393877175315c8f5100b1700f34104cef5111fd099",
+          "fluxyp.raw": "08e6f4961f59021bd9fcc43512a9b15f1d888f610dbeec86cd88158d17dcf557",
+          "initial_state.json": "e74c5cd48b367e003a605f785607a195787e54b328f97f7f5d522ef611d9f992",
+          "q.raw": "ce918c59be9270e0b4d2948e7f1798725644e0bbae26c1c28bf3fe15b75032aa",
+          "vf.raw": "352e3bb6c52287c6ad7a0a9a415b62acc0d58d6d434fbdef1e3e7a4385dd444c",
+          "vx.raw": "a5ed4df7d3c6c691e63c5d0b06f1a3cebef1ba383b22d53258a9d47d9bbec7bf",
+          "vy.raw": "4899b6bfd944549254d7818f20cb1454523d9b3d05ff733fe358b0036dc375c0"
+        },
+        "bilinear": {
+          "body.dat": "c8e8d9772f86e3a1ec87c67d99923096773a393414043f73ebb7303e679e3d48",
+          "cs.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+          "fluxeb.raw": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+          "fluxx.raw": "772b850578e8b50223116cb24d4dc8a8c550682ff7882ed8edcc4c1e0363e4c5",
+          "fluxxp.raw": "079a8761b53187ac08bf4112a9ce2c86797d19c541b8dd2387d9354861b4ab8f",
+          "fluxy.raw": "50f9d9a54f888604d5ae5f393877175315c8f5100b1700f34104cef5111fd099",
+          "fluxyp.raw": "08e6f4961f59021bd9fcc43512a9b15f1d888f610dbeec86cd88158d17dcf557",
+          "initial_state.json": "d67923bb80b351ed0a701214fc646f4099c598731bb9b67c0d46c5a5fca4a04e",
+          "q.raw": "ce918c59be9270e0b4d2948e7f1798725644e0bbae26c1c28bf3fe15b75032aa",
+          "vf.raw": "352e3bb6c52287c6ad7a0a9a415b62acc0d58d6d434fbdef1e3e7a4385dd444c",
+          "vx.raw": "1979a9108598de8e6ab2d10139b567223433d2b5e6f9b188fe4691b753e4476a",
+          "vy.raw": "d62c04fe4611cc1f9a673a3f7bd02d59bc45122b27ca66fc5dda6c4010b59489"
+        }
+      },
+      "runs": {
+        "exact": {
+          "archive_sha256": "0708a7deb4526555b651ce24a1fcd84214925e5a7bb12e8ca570df327e1b7e64",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "d8364f6b709fdedfb2b60bcbb519d412dd87d49a16a52d0ceb1f85e38e2ab8d3",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 6,
+          "maximum_post_start_mass_relative_error": 0.0,
+          "maximum_post_start_flux_divergence_linf": 6.761258219967203e-14,
+          "raw_field_sha256": {
+            "vx_0000.raw": "aa5a497c9c741cab3828ee41888eea53a51f2c671bf048a4ce9b383362df4bf2",
+            "vx_0001.raw": "8a92aa85dbbc85b90f3d9d9897be7b3219e003ffab33b683f10063153a523631",
+            "vx_0002.raw": "dbb950e0ce7ae3c97b045842592818895d7a4c665578886833e99837cb052caf",
+            "vx_0003.raw": "7641f660f8125a92d6c8c5ece56ac52fd83c376f2e1ad485798576d16be667d3",
+            "vx_0004.raw": "531277e7eb10930acc23720e63a36ee558e1a69dcb3bbc3986673b989e54945c",
+            "vy_0000.raw": "41499d661e9fd99066ed93445b60e25818ca61cad29609d4599fb205b19e6ac4",
+            "vy_0001.raw": "75b8c2d6cffcea66a45ea93903ca171230689b53aad3a6091ba507bd323ba9d4",
+            "vy_0002.raw": "6871bc29e406927653780bd83f6253ae85d2e0c323b23a52b224dab9d14a072c",
+            "vy_0003.raw": "88cff097d88ccf78cf4d2a6b117bc5048fca6ae8046bac799491e7924edba1a1",
+            "vy_0004.raw": "b79571dd0d0ac2ba770f0092b34ecb3024ddacfb7622d0046e93c97f3f350436",
+            "vf_0000.raw": "352e3bb6c52287c6ad7a0a9a415b62acc0d58d6d434fbdef1e3e7a4385dd444c",
+            "vf_0001.raw": "7c2c23d5cccefaab4bc01af7be166fc4ab589d8b740ca2a96d89180eb939d7de",
+            "vf_0002.raw": "448d15d0c60602a64493781931cc89ff7067230b58eddcdd0e2bfb71c54171f7",
+            "vf_0003.raw": "ab8a71fb861d1abc62350d78149225320cc494abbe70110b796a8180dae9cd94",
+            "vf_0004.raw": "de6f40875202c7054a2fbdc78e53d66fe4a3d0224b9719c99aadffbfbbadf118",
+            "ebvf_0000.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0001.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0002.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0003.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0004.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690"
+          }
+        },
+        "matched": {
+          "archive_sha256": "3b55b5e50a47fc8a94cc240cb54e2ce25d047a960324c080a26684c8e732f127",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "a22b1f9062ef0e74b59158e8d2d96e2b18b1bb63e7b76666bf2ad26b2db3faf9",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 5,
+          "maximum_post_start_mass_relative_error": 0.0,
+          "maximum_post_start_flux_divergence_linf": 6.843137168033309e-14,
+          "raw_field_sha256": {
+            "vx_0000.raw": "a5ed4df7d3c6c691e63c5d0b06f1a3cebef1ba383b22d53258a9d47d9bbec7bf",
+            "vx_0001.raw": "1f0dc1587335758904e4de3952aaba8d4e7c51d7ded68bd998accb7c36ab83c0",
+            "vx_0002.raw": "90861e4e38a8415c4ec4a3c22febbb4c72d57f977606cb6f2b7483c7680afe5c",
+            "vx_0003.raw": "ae7f81c2374f618e823b1f93bc8c0eb55abd03e27bf73108266dbfbfb738df50",
+            "vx_0004.raw": "4bef1434c7483b70b21916cdb39d2bb899a57b128d379483e6528c75b0bdf646",
+            "vy_0000.raw": "4899b6bfd944549254d7818f20cb1454523d9b3d05ff733fe358b0036dc375c0",
+            "vy_0001.raw": "03b334282ae62fcfe6a10e00a086ebc77374b723a462ce7b02e7eaf09c9251a1",
+            "vy_0002.raw": "708d1eba950826d36ea49407905dd8ec938e5a8df781059341b7db87c2451139",
+            "vy_0003.raw": "9050467b81dca1bf6b399a430bd4c0d574233833f831d28c1db2508ed7d684c7",
+            "vy_0004.raw": "78dca49f86d6d5a6578fd165cdab23bc2c9f4f50e2ea40c0b5ad57695e0e0b7e",
+            "vf_0000.raw": "352e3bb6c52287c6ad7a0a9a415b62acc0d58d6d434fbdef1e3e7a4385dd444c",
+            "vf_0001.raw": "08c1bddd9e7d6c70e0762186aecac65ae4abd865d77f58004404aefd31571cf1",
+            "vf_0002.raw": "ccaa3d9bb2b302aaaf808d43243466d3252810fb0bda47748f2c8b83ab47d7ef",
+            "vf_0003.raw": "93e0fbda5d8895194a0f1c025043f07bbf467e057f507ab87a6054142b4da1e2",
+            "vf_0004.raw": "951cb2889810e3caab615687a0025e67709399b72e150d673bf4fbae7119deff",
+            "ebvf_0000.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0001.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0002.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0003.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0004.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690"
+          }
+        },
+        "bilinear": {
+          "archive_sha256": "a8992b62cc86286848eb49bf6de6af4206ec800adf6bad6361404aec23f152fe",
+          "status": "complete",
+          "runtime_fingerprint": {
+            "solver_library_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libaphros.so",
+            "solver_library_sha256": "039091fe16b554635eea7507eda87de4216289a9ec20c9abb8ba06a415dd374f",
+            "solver_path": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/bin/ap.mfer",
+            "solver_sha256": "8d89145282ab58164d8f4acfcb761b126fc48607100797ab8b980e6152578154"
+          },
+          "effective_config_sha256": "9ffdf21cb77d7d17bfa2a1667c22117ce40a2670daa0c679e876b9f4bafcd4c5",
+          "endpoint_time": 0.5250717657631933,
+          "audit_records": 5,
+          "maximum_post_start_mass_relative_error": 0.0,
+          "maximum_post_start_flux_divergence_linf": 6.983302824892235e-14,
+          "raw_field_sha256": {
+            "vx_0000.raw": "1979a9108598de8e6ab2d10139b567223433d2b5e6f9b188fe4691b753e4476a",
+            "vx_0001.raw": "db1cbf98c09f8ef748b8f96ce3fa53e2c261dab89f1d398b5df49a1a1e18df37",
+            "vx_0002.raw": "813e733c7934a03c67762090aff71001e8077282153658703e4967ae6bb1b23c",
+            "vx_0003.raw": "44f79ed5bc2d91ee5d1b34d76d42a77f0f79d2714144737082210bdd3523942c",
+            "vx_0004.raw": "6b91e028d389ae2b888a387b9e5889cf0dd939c449e4d65d8ece427e3df98b87",
+            "vy_0000.raw": "d62c04fe4611cc1f9a673a3f7bd02d59bc45122b27ca66fc5dda6c4010b59489",
+            "vy_0001.raw": "c6f53859ef2ba49bb2dafeedb5d8100bfd972ca9d48566b4465a040b6ae919f7",
+            "vy_0002.raw": "8f0886d856f8f3d5e1e250d80646fb30c45129c10bc60482c7b8f88a9530bac9",
+            "vy_0003.raw": "2f873da413f9c821b35b7e9bc06f104d6c23389fdf3daa6035e6596cbb8c1346",
+            "vy_0004.raw": "7f15b6038cf1fc3a05b3c34a0abc8d7b108452b08e673f04f5ef856cd7497fec",
+            "vf_0000.raw": "352e3bb6c52287c6ad7a0a9a415b62acc0d58d6d434fbdef1e3e7a4385dd444c",
+            "vf_0001.raw": "47e0952f8e309837b49e0757c0a6617c21f0965d516474abb3262c8939df82f6",
+            "vf_0002.raw": "6bcd04c328d571487d083e50f19ce03befa2c98f451f6c1bd152613a011675ae",
+            "vf_0003.raw": "111adc2928e5e32d96948d8ea0d214e838923676d9981c7b545179c00035b380",
+            "vf_0004.raw": "f3f3e730dc1897d4b06639ced63c053850f9c872da564d9c53f9bba93a2aa41b",
+            "ebvf_0000.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0001.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0002.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0003.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690",
+            "ebvf_0004.raw": "f95b5e15aa00c840615d21106f0a77e8a0bb89758bdfb6bcce8c5895d0d73690"
+          }
+        }
+      },
+      "series": [
+        {
+          "dump_index": 0,
+          "time": 0.0,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 8.041238676409292e-05,
+            "vof_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "column_depth_max_absolute": 0.0
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.00033498067984201934,
+            "vof_relative_l2": 0.0,
+            "column_depth_wave_relative_l2": null,
+            "column_depth_max_absolute": 0.0
+          }
+        },
+        {
+          "dump_index": 1,
+          "time": 0.1325000000000001,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 8.114213530401704e-05,
+            "vof_relative_l2": 6.689613508694784e-09,
+            "column_depth_wave_relative_l2": 4.4405009326273043e-07,
+            "column_depth_max_absolute": 2.5212449905609446e-09
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.000861623176217938,
+            "vof_relative_l2": 1.137693592829964e-06,
+            "column_depth_wave_relative_l2": 7.537198279374886e-05,
+            "column_depth_max_absolute": 3.326389551583375e-07
+          }
+        },
+        {
+          "dump_index": 2,
+          "time": 0.2625000000000002,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 8.396982885857444e-05,
+            "vof_relative_l2": 2.558010209647829e-08,
+            "column_depth_wave_relative_l2": 8.657140767943626e-07,
+            "column_depth_max_absolute": 9.587247662423692e-09
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.0011860488974685132,
+            "vof_relative_l2": 3.2908568128650885e-06,
+            "column_depth_wave_relative_l2": 0.0001113733266748856,
+            "column_depth_max_absolute": 1.1715668228884368e-06
+          }
+        },
+        {
+          "dump_index": 3,
+          "time": 0.3950000000000003,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 8.94474042029431e-05,
+            "vof_relative_l2": 5.521539878044145e-08,
+            "column_depth_wave_relative_l2": 1.2676279139654025e-06,
+            "column_depth_max_absolute": 2.0722088045488363e-08
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.001465578219299658,
+            "vof_relative_l2": 6.267438109123215e-06,
+            "column_depth_wave_relative_l2": 0.00014388702557759312,
+            "column_depth_max_absolute": 2.426241807795826e-06
+          }
+        },
+        {
+          "dump_index": 4,
+          "time": 0.5250717657631933,
+          "matched": {
+            "global_liquid_velocity_relative_l2": 9.82152106699138e-05,
+            "vof_relative_l2": 9.148842727167099e-08,
+            "column_depth_wave_relative_l2": 1.6264953358611919e-06,
+            "column_depth_max_absolute": 3.3937045396115195e-08
+          },
+          "bilinear": {
+            "global_liquid_velocity_relative_l2": 0.0017489016645195448,
+            "vof_relative_l2": 9.366270281275683e-06,
+            "column_depth_wave_relative_l2": 0.000166514727080099,
+            "column_depth_max_absolute": 3.8009954319573325e-06
+          }
+        }
+      ],
+      "endpoint_gain_bilinear_over_matched": {
+        "global_liquid_velocity_relative_l2": 17.806831066089487,
+        "vof_relative_l2": 102.37655800402976,
+        "column_depth_wave_relative_l2": 102.37639383818662
+      }
+    }
+  }
+}

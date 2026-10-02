@@ -1,0 +1,34 @@
+--- a/src/solver/reconst.h
++++ b/src/solver/reconst.h
+@@ -289,6 +289,7 @@
+   template <class Vect>
+   static Scal GetLineVol0(
+       const Vect& n, Scal a, const Vect& h, Scal dx, size_t d) {
++    if (dx == 0.) return 0.; // zero transported volume; avoid degenerate box
+     // Acceptor is a rectangular box adjacent to current cell.
+     Vect hh = h; // acceptor size
+     hh[d] = dx;
+@@ -328,6 +329,7 @@
+   template <class Vect>
+   static Scal GetLineVolStr0(
+       Vect n, Scal a, Vect h, Scal dx, Scal dxu, size_t d) {
++    if (dx == 0.) return 0.; // no transported volume
+     const Scal u = GetLineU(n, a, h); // volume fraction
+     Vect sh = h; // stretched size
+     sh[d] = h[d] + dx - dxu;
+@@ -369,6 +371,7 @@
+   // fluid volume flux
+   template <class Vect>
+   static Scal GetLineFlux(Vect n, Scal a, Vect h, Scal q, Scal dt, size_t d) {
++    if (q == 0.) return 0.; // exact zero flux, independent of PLIC normal
+     const Scal s = h.prod() / h[d]; // face area
+     const Scal dx = q / s * dt; // displacement
+     Scal v = GetLineVol(n, a, h, dx, d);
+@@ -390,6 +393,7 @@
+   template <class Vect>
+   static Scal GetLineFluxStr(
+       Vect n, Scal a, Vect h, Scal q, Scal qu, Scal dt, size_t d) {
++    if (q == 0.) return 0.; // exact zero flux, independent of stretching
+     const Scal s = h.prod() / h[d]; // face area
+     const Scal dx = q / s * dt; // displacement
+     const Scal dxu = qu / s * dt; // displacement on upwind face

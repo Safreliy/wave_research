@@ -1,0 +1,14 @@
+{
+  "schema": "auditor-amgx-runtime-dependency-v1",
+  "upstream_repository": "https://github.com/NVIDIA/AMGX",
+  "source_git_head": "cc1cebdbb32b14d33762d4ddabcb2e23c1669f47",
+  "source_git_status": "clean",
+  "source_archive": "AMGX_source_cc1cebdb_20261002.tar.gz",
+  "source_archive_sha256": "79e02c8e514b40ebeafac7127fa84a2478b763bdf75c21a51863c27c337f450e",
+  "build_cache": "AMGX_CMakeCache_20261002.txt",
+  "build_cache_sha256": "8b4268b77e456ce833f17f272c42ebc5281270e9eeb67e870ccbf2cb37ef0192",
+  "loaded_library_link": "/opt/gpu-cfd/prefix_zero_flux_guard_20261001/lib/libamgxsh.so",
+  "resolved_library_path": "/opt/gpu-cfd/prefix/lib/libamgxsh.so",
+  "loaded_library_sha256": "0b30819d796baae6053812a215eb11f517a7199f864b41d3ad52dc4db1da95b5",
+  "note": "The native supervisor prepends the guarded prefix lib directory to LD_LIBRARY_PATH. The loaded AMGX library is a symlink to the pre-existing prefix library. Exact binary SHA is recorded; the 147 MB binary is not duplicated in this evidence bundle."
+}
