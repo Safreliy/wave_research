@@ -1,5 +1,7 @@
 # Conservative transfer of potential-flow states to embedded-boundary VOF
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23104556.svg)](https://doi.org/10.5281/zenodo.23104556)
+
 The current study is **Geometry-consistent conservative transfer of potential-flow
 states to an embedded-boundary volume-of-fluid solver** by Saveliy Baturin.
 
@@ -25,15 +27,21 @@ The document also uses standard pdfLaTeX packages: on another TeX distribution,
 run `pdflatex -interaction=nonstopmode -halt-on-error transfer_article.tex`
 twice from `manuscript/`.
 
+The archived **v0.31.0** code and numerical experiments are available at
+[doi:10.5281/zenodo.23104557](https://doi.org/10.5281/zenodo.23104557).
+The badge above links to the series of releases; cite the version DOI for
+these experiments. The current manuscript adds the archive citation after
+the release; the archived tag and experiment files remain unchanged.
+
 The older `manuscript/main.tex` and root `paper.pdf` describe the earlier
 variable-bathymetry study below. They are preserved as historical material
 and are not the transfer article linked above.
 
 ## Earlier variable-bathymetry study
 
-Research code and evidence package for the manuscript **“Conservative
+Research code and evidence package for the manuscript **вЂњConservative
 divergence-conforming state transfer from adaptive potential-flow BIE to
-embedded VOF: overturning waves over variable bathymetry.”**
+embedded VOF: overturning waves over variable bathymetry.вЂќ**
 
 The earlier manuscript is available as [`paper.pdf`](paper.pdf). Its central
 result is a one-way transition that preserves the physical liquid measure,
@@ -153,7 +161,7 @@ are not spatial-convergence evidence.
 
 ## Citation
 
-Use [`CITATION.cff`](CITATION.cff) from GitHub’s “Cite this repository” menu.
+Use [`CITATION.cff`](CITATION.cff) from GitHubвЂ™s вЂњCite this repositoryвЂќ menu.
 The publication revision is tagged `v0.29.0-openmp-visualization`. Update the
 citation metadata with the journal DOI and the repository archive DOI when
 those identifiers exist.

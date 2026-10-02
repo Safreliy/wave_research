@@ -1,10 +1,13 @@
 {
-  "built_at_utc": "2026-10-02T13:50:32.517424+00:00",
+  "built_at_utc": "2026-10-02T14:18:59.106321+00:00",
   "passes": [
     {
       "number": 1,
       "exit_code": 0,
-      "unresolved": [],
+      "unresolved": [
+        "Package natbib Warning: There were undefined citations",
+        "(?:Citation|Reference) [`'].+? undefined"
+      ],
       "overfull_hboxes": 0
     },
     {
@@ -15,7 +18,7 @@
     }
   ],
   "input_sha256": {
-    "manuscript/transfer_article.tex": "520c7a29ca770934285e8458504c3ac6efcd6efdccb319b979c5fcadf8b27297",
+    "manuscript/transfer_article.tex": "d0559ef69ba0af759d1e1efd992ad840bbe27f4447f97351e32f555bbfcd37a3",
     "manuscript/figures/fixed_wave_geometry.pdf": "b53cf0b2885c277b6922fb16f4cdc3d728df0f754d5e8a0e41471b19cd03d69d",
     "manuscript/figures/flat_sliver_comparison.pdf": "38ece49f21379726ba4f0119f8f8d01dfb7e1ca7320b8363f8d58b65a074e228",
     "manuscript/figures/matched_native_dynamics.pdf": "a38d31ba3841f427a4110cb37744c070650d44802e82c1945acb01311a0e7628",
@@ -26,10 +29,10 @@
     "manuscript/tables/native_dynamic_errors.tex": "304cf2524dab28089fe54b5ef4a5562bd708265ce0534e52c6c869d8d12baa8f",
     "manuscript/tables/physical_wave_comparison.tex": "ee9cd07d11f96617eded85fdd4613c6352f899c69709a152d240aa21ee324962"
   },
-  "pdf_sha256": "d5e55c5f6e86fa7eb60eca376f3f16feb74df0ad4061740cfc5e0154d01b6a30",
-  "pdf_bytes": 376257,
+  "pdf_sha256": "16d7d43cf640f10d43e1b9f261dbb108fc2d62384e612fad0ca28758319318ff",
+  "pdf_bytes": 377074,
   "pdf_pages": 18,
   "schema": "transfer-manuscript-build-v1",
   "compiler": "pdfLaTeX (MiKTeX), two successful passes",
-  "scope": "Current manuscript build; no scientific experiments rerun for this editorial snapshot."
+  "scope": "Post-release manuscript update adding the citation to archived v0.31.0; numerical experiment archives and release tag unchanged."
 }

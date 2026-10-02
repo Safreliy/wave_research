@@ -106,7 +106,8 @@ Original research code in `research/` is MIT-licensed; manuscript, figures
 and original derived data are CC BY 4.0 under the repository `LICENSE.md`.
 The Aphros material keeps its own MIT licence, copied to `solver_patch/APHROS_LICENSE`
 and `native_source_provenance/aphros_LICENSE`. This release does not relicense
-third-party code. Cite the repository's `CITATION.cff` and the DOI of the archived version used.
+third-party code. Cite the repository's `CITATION.cff` and the archived version DOI:
+[10.5281/zenodo.23104557](https://doi.org/10.5281/zenodo.23104557) (v0.31.0).
 
 ## Publication snapshot
 

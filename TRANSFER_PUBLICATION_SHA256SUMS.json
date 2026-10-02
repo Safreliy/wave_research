@@ -15,13 +15,13 @@
     },
     {
       "path": "CITATION.cff",
-      "size": 1346,
-      "sha256": "858085bcf86595d6d83c4e66ebe9f4fe430b47e38834b5d39d34a3c92aca4467"
+      "size": 1406,
+      "sha256": "43746e8d2d0b6d22ce32680e5f635d55bddad8c93f1781ad7cc5557fbf62253c"
     },
     {
       "path": "DATA_AVAILABILITY.md",
-      "size": 2933,
-      "sha256": "98ab032c20cf95f033f0a21e91b14a1333d7d48d577eeb86e27ca2aabd686a71"
+      "size": 3155,
+      "sha256": "ce851042730484362aaf4dd61e2a24ad44cf7f60926f8d5914cceacbc38b438a"
     },
     {
       "path": "LICENSE.md",
@@ -30,13 +30,13 @@
     },
     {
       "path": "README.md",
-      "size": 6864,
-      "sha256": "73fb2c6e9f1260a7940c31afb8cde0d23dd90c40848682ec1ac25156d5dee893"
+      "size": 7352,
+      "sha256": "71f9b3f17a37d8e57167bdee5c1584b97a68e124da669e898d507b94fc58ba0c"
     },
     {
       "path": "RELEASE_v0.31.0.txt",
-      "size": 3227,
-      "sha256": "82e9e2fbfe52bea4b311c81957169eee83305dadffc1f31454f4cbd26d3880d4"
+      "size": 3293,
+      "sha256": "5cca6e37d94aeacb30f73593e8dd97af60b566f0155897de3c7fc96840828762"
     },
     {
       "path": "manuscript/figures/fixed_wave_geometry.pdf",
@@ -150,18 +150,18 @@
     },
     {
       "path": "manuscript/transfer_article.pdf",
-      "size": 376257,
-      "sha256": "d5e55c5f6e86fa7eb60eca376f3f16feb74df0ad4061740cfc5e0154d01b6a30"
+      "size": 377074,
+      "sha256": "16d7d43cf640f10d43e1b9f261dbb108fc2d62384e612fad0ca28758319318ff"
     },
     {
       "path": "manuscript/transfer_article.tex",
-      "size": 76898,
-      "sha256": "520c7a29ca770934285e8458504c3ac6efcd6efdccb319b979c5fcadf8b27297"
+      "size": 77154,
+      "sha256": "d0559ef69ba0af759d1e1efd992ad840bbe27f4447f97351e32f555bbfcd37a3"
     },
     {
       "path": "research/releases/transfer_20261001/SHA256SUMS.json",
       "size": 29123,
-      "sha256": "c9188b03cbb0ff5c1b725fa48e02c9dc39351670cfe7f8773ed6d37edb084e96"
+      "sha256": "de27561778a413bbc4a6d114e4247f36586f3e97ab11002375fc2b5f79a1ca63"
     },
     {
       "path": "scripts/build_transfer_pdf.py",

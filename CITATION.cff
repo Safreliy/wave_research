@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: >-
   If you use this code or its numerical evidence, cite this release and the
-  accompanying manuscript. Cite the version DOI once assigned by Zenodo.
+  accompanying manuscript. The DOI identifies the archived v0.31.0 release.
 title: >-
   Geometry-consistent conservative transfer of potential-flow states
   to an embedded-boundary volume-of-fluid solver: code and numerical experiments
@@ -22,6 +22,8 @@ authors:
     affiliation: Independent Researcher
     orcid: "https://orcid.org/0009-0005-4410-9520"
 version: "0.31.0"
+doi: "10.5281/zenodo.23104557"
+date-released: 2026-10-02
 keywords:
   - potential flow
   - volume of fluid

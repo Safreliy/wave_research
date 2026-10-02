@@ -398,8 +398,8 @@
     },
     {
       "path": "README.md",
-      "size": 8025,
-      "sha256": "ac468efb666a41051a9521529b42a26a0a42fea1941884894d4c8e2a7ae115f9"
+      "size": 8091,
+      "sha256": "f14bfee0b75eb462c09b39fb31bfd04494466c3b00dee2b1a7c594e3caac4d48"
     },
     {
       "path": "replay_physical_audit.py",
@@ -593,8 +593,8 @@
     },
     {
       "path": "results/manuscript_build_20261002.json",
-      "size": 1859,
-      "sha256": "074d6e92ea68809a50bf1f1f50b7bd6ae6d7119f0219dfa1664a924a1d50b2b8"
+      "size": 2028,
+      "sha256": "33923eb1210b2945efb8147a1982e2dddb915f6e112203142a7120fea497e2c7"
     },
     {
       "path": "results/manuscript_draftmode_validation.json",
