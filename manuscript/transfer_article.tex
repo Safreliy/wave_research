@@ -35,28 +35,20 @@ to an embedded-boundary volume-of-fluid solver}
 \begin{abstract}
 Transferring a potential-flow state to a volume-of-fluid (VOF) solver
 requires accurate liquid-cell velocities on the geometry used by the
-receiver. We reconstruct a harmonic streamfunction in the liquid and
-integrate its edge values to obtain cell momentum. Shared edges cancel in
-the global sum, preserving momentum on the represented polygonal domain.
-In thin flat surface strips, we use a common boundary trace for the
-physical edge and a normal extension to the adjacent Cartesian edge. This
-cancels the trace error that would otherwise be amplified by division by
-the strip thickness. We derive a local horizontal-mean estimate and compare
-the reconstruction with analytic cell means. Across 21 initial-field tests,
-its global velocity error is 2.71--32.07 times smaller than that of a
-bilinear control using the same streamfunction. Matching the receiver's
-embedded geometry also removes liquid loss on loading a fixed wave state;
-on 12 selected bed-cut cells, the original reconstruction reduces velocity
-error by a factor of 7.27. In two-grid smooth-wave continuations, the
-boundary extension reduces propagated velocity error by 7.88--10.25 times
-and surface-profile error by 65.0--82.9 times at $0.1T$. These comparisons
-use numerical trajectories started from exact cell means at the same grid
-and time step. In a separate two-fluid wave test, the extension reduces
-endpoint surface-profile error against the analytic linear solution by
-4.91\%. Combining it with a density-weighted mixture assignment reduces
-that physical error by 52.19\% relative to the original practical transfer;
-the extension alone gives a 5.49\% reduction when both transfers use the
-mixture assignment.
+receiver. We reconstruct liquid-cell moments by integrating a harmonic
+streamfunction over the polygonal cell boundary. For thin strips beneath a
+flat free surface, a boundary-normal extension uses one trace for the
+physical edge and its neighbouring Cartesian edge. Their common trace
+error cancels within the extension; a smooth blend connects it to the
+interior reconstruction. We give an error bound for the combined operator
+and test it against analytic cell means. In 21
+initial-field cases, global velocity error is 2.71--32.07 times smaller
+than for a bilinear control using the same streamfunction. In subsequent
+smooth-wave calculations, the method also reduces the difference from
+same-grid numerical trajectories started with exact cell means. Against an
+independent linear two-fluid wave, it reduces endpoint physical
+surface-profile error by 2.81--5.49\% on two grids when receiver velocity
+assignment is held fixed.
 \end{abstract}
 \noindent\textbf{Keywords:} conservative transfer; boundary integral method;
 streamfunction; cut cells; embedded boundaries; volume of fluid.
@@ -85,6 +77,9 @@ Taylor reconstruction combined with geometric moments also
 supports high-order embedded-boundary discretisations, including an unsteady
 Stokes method~\citep{overton}. Here the physical trace and the adjacent
 Cartesian edge must be represented consistently in thin liquid strips.
+Table~\ref{tab:related-methods} compares the inputs, outputs, and target
+properties of these related constructions.
+\input{tables/related_methods.tex}
 We combine a BIE-derived liquid reconstruction with phase-volume moments
 on the geometry used by the receiver. This requires care with three
 distinctions: Cartesian face averages differ from liquid-cell means;
@@ -106,20 +101,21 @@ The density-weighted assignment used below is a standard projection; the
 factorial experiment measures its contribution separately from that of
 the new boundary extension.
 
-We reconstruct boundary-fitted liquid moments on the receiver's geometry.
-Internal edge contributions cancel, leaving the physical boundary terms.
-For flat surface strips, a boundary-normal extension uses the same trace as
-the moment integral. Its common trace error then cancels before division by
-the strip thickness. We test this mechanism with an estimate and analytic
-cell means, including a higher-order-trace control. Independent BIE samples
-test the original reconstruction on a fixed wave geometry. Native
-smooth-wave runs show how transfer error affects later velocity and surface
-profiles under common solver settings.
+The general construction integrates liquid moments on receiver-matched
+polygons. Its internal edge contributions cancel by a standard discrete
+Green identity; this provides conservation on the represented geometry.
+The central accuracy improvement is narrower: for thin strips below a flat
+free surface, a boundary-normal extension uses the same trace on the
+physical and neighbouring Cartesian edges. This cancels the shared trace
+error before division by strip thickness. We test that mechanism against
+analytic cell means, propagated transfer error, and an independent physical
+wave. Additional tests of the general polygonal operator on an overturning
+state appear in Appendix~\ref{app:general-tests}.
 The numerical scope is periodic, two-dimensional, square Cartesian grids,
 an impermeable single-valued bed, and a resolved non-self-intersecting free
-surface. No general three-dimensional or post-contact convergence claim is made.
+surface.
 
-\section{Transfer problem and distinct receiver variables}
+\section{Transfer problem}
 Let $\Omega_\ell$ be the liquid region in a periodic strip of length $L$.
 Its upper boundary $\Gamma_f$ may overturn and its bed $\Gamma_b$ is
 single-valued. The source supplies potential and normal-derivative traces
@@ -228,6 +224,15 @@ In the baseline operator, the physical-boundary trace is piecewise linear, so
 the correction in~\eqref{eq:hermite} is omitted. This keeps the physical
 trace integral identical to the one used to define the polygonal target.
 Cartesian edges use the Hermite rule in both full and cut cells.
+We call this \emph{Linear} (L). \emph{Hermite} (H) changes only the physical
+trace to cubic Hermite integration. \emph{Matched} (M) also couples that
+trace to the neighbouring Cartesian edge in a flat surface strip through
+\eqref{eq:matched-jet} and the blend below. \emph{Bilinear} (B) takes the
+curl of a piecewise-bilinear interpolant of the same solved streamfunction
+and evaluates its liquid-polygon mean at the polygon centroid (the exact
+mean of that affine velocity field). It does not use the liquid edge
+integral. These names refer to transfer
+variants, not to the later receiver velocity assignment.
 
 At Cartesian vertices the gradients are centred differences of the completed
 streamfunction, with second-order one-sided differences at artificial
@@ -308,8 +313,8 @@ therefore does not guarantee accuracy as the liquid fraction vanishes.
 \subsection{A consistent boundary extension for flat surface strips}
 Increasing the order of the physical trace alone need not remove the
 small-cell amplification: its integral and that on the neighbouring
-Cartesian edge can still use incompatible approximations. An optional
-extension instead makes those two representations coincide as the strip
+Cartesian edge can still use incompatible approximations. The Matched
+extension makes those two representations coincide as the strip
 thickness tends to zero. It is restricted here to a flat upper boundary.
 
 Write $H(x)$ for a cubic Hermite trace on each physical boundary chord,
@@ -328,20 +333,36 @@ edge of width $h$ a distance $d$ below the surface, set
 Every average is integrated over the restrictions of its parent chords.
 The physical upper edge uses precisely $\langle H\rangle$.
 
-\begin{proposition}[Cancellation of trace error in a flat strip]
-For a rectangular liquid strip of width $h$ and thickness $d>0$, using
-\eqref{eq:matched-jet} on its lower edge gives the horizontal mean
+The implemented extension blends this edge average with the original
+Cartesian average $I_C$ for $0<d<h$:
+\begin{equation}
+ I(d)=(1-\beta(d/h))J(d)+\beta(d/h)I_C,
+ \qquad \beta(s)=3s^2-2s^3.
+ \label{eq:matched-blend}
+\end{equation}
+It uses $I_C$ for $d\ge h$. The two adjacent cells use the same blended
+edge integral.
+
+\begin{samepage}
+\begin{proposition}[Flat-strip error of the blended operator]
+Let a rectangular liquid strip have width $h$, thickness $0<d\le h$,
+and flat upper boundary $z=z_s$. Suppose the exact streamfunction is
+$C^3$ in the closed strip and the physical and lower-edge approximations
+use the same $\langle H\rangle$ in~\eqref{eq:matched-jet}.
+For the unblended edge $J(d)$ the horizontal mean is
 \begin{equation}
  \overline u_J=\langle N\rangle-\tfrac12d\langle S\rangle.
  \label{eq:matched-strip-mean}
 \end{equation}
-If the exact streamfunction is three times continuously differentiable
-in the strip, its exact horizontal mean $\overline u$ satisfies
+Define
+$E_N=\|N-\psi_z(\cdot,z_s)\|_{\infty}$,
+$E_S=\|S-\psi_{zz}(\cdot,z_s)\|_{\infty}$, and
+$C_3=\|\psi_{zzz}\|_{\infty,P_K}$. The actual blended mean
+$\overline u_I=(\langle H\rangle-I(d))/d$ satisfies
 \begin{equation}
- |\overline u_J-\overline u|
- \le \|N-\psi_z(\cdot,z_s)\|_\infty
- +\tfrac12d\|S-\psi_{zz}(\cdot,z_s)\|_\infty
- +\tfrac16d^2\|\psi_{zzz}\|_{\infty,P_K}.
+ |\overline u_I-\overline u|
+ \le E_N+\tfrac12d E_S+\tfrac16d^2 C_3
+ +\frac{\beta(d/h)}{d}|I_C-J(d)|.
  \label{eq:matched-strip-bound}
 \end{equation}
 \end{proposition}
@@ -350,23 +371,40 @@ The horizontal Green moment is
 $h(\langle H\rangle-J(d))$. Division by $hd$ gives
 \eqref{eq:matched-strip-mean}; the same trace average cancels exactly.
 Taylor expansion of $\psi(x,z_s-d)$ at $z_s$, followed by horizontal
-averaging, gives the stated remainder bound.
+averaging, bounds $|\overline u_J-\overline u|$ by the first three terms
+in~\eqref{eq:matched-strip-bound}. Equation~\eqref{eq:matched-blend} gives
+$\overline u_I-\overline u_J=\beta(d/h)(J(d)-I_C)/d$; the triangle
+inequality completes the proof.
 \end{proof}
+\end{samepage}
 
-The implemented extension blends this edge average with the original
-Cartesian average $I_C$ for $0\le d<h$:
+Since $\beta(d/h)/d\le3d/h^2$, a bounded $|I_C-J(d)|$ produces no
+$1/d$ singularity as $d\to0$ at fixed $h$. This alone does not prove
+uniform convergence under joint refinement. If $N$ and $S$ are piecewise
+linear interpolants of sampled normal derivatives with maximum horizontal
+spacing $\delta\sigma$, the indicated second horizontal derivatives are
+bounded, and the sample errors are at most $\eta_N$ and
+$\eta_S$, respectively, then on each parent interval
 \begin{equation}
- I(d)=(1-\beta(d/h))J(d)+\beta(d/h)I_C,
- \qquad \beta(s)=3s^2-2s^3.
+ E_N\le\eta_N+\frac{(\delta\sigma)^2}{8}
+       \|\partial_{xx}\psi_z(\cdot,z_s)\|_\infty,
+ \qquad
+ E_S\le\eta_S+\frac{(\delta\sigma)^2}{8}
+       \|\partial_{xx}\psi_{zz}(\cdot,z_s)\|_\infty.
+ \label{eq:normal-trace-sampling}
 \end{equation}
-It uses $I_C$ for $d\ge h$. The additional strip-mean discrepancy is
-$\beta(d/h)|I_C-J(d)|/d$, bounded by
-$3d|I_C-J(d)|/h^2$ for $0<d\le h$. Thus a bounded discrepancy between
-the edge representations no longer produces a $1/d$ singularity at fixed
-$h$. Both adjacent cells use the identical blended edge integral, preserving
-the discrete moment-closure identity. The estimate concerns the horizontal
-mean on flat strips. It does not control both velocity components in curved
-cut cells or floating-point cancellation at arbitrarily small volumes.
+Here $\eta_S$ includes errors from differentiating source data; it cannot
+be replaced by the error in the trace values. For example, suppose
+$\delta\sigma=O(h)$, $\eta_N=O(h^2)$, $\eta_S=O(h)$, the indicated
+derivatives and $C_3$ stay bounded, and
+$|I_C-J(d)|\le C h^3$ uniformly for $0<d\le h$. Then
+\eqref{eq:matched-strip-bound} gives a uniform $O(h^2)$ horizontal-mean
+bound on those strips. The final condition is a separate compatibility
+assumption on the Cartesian edge and the matched extension; it does not
+follow from an $O(h^2)$ pointwise streamfunction error alone.
+The estimate concerns the horizontal mean in flat strips. A vector-error
+bound for curved cut cells and floating-point effects at arbitrarily small
+volumes require separate analysis.
 
 In a thin strip, the horizontal mean is the difference between two
 edge-averaged streamfunction values divided by $d$. Using a common trace
@@ -463,6 +501,29 @@ and gravity is $(0,-1)$. The controls are CFL 0.05 and maximum
 time step $6.25\times10^{-4}$. These settings specify this initialisation
 experiment; the study does not calibrate them to a laboratory wave case.
 
+\paragraph{Transfer procedure.}
+The following steps specify how the geometry, streamfunction, and receiver
+data are coupled. Steps 1--3 and 5 apply to the general polygonal operator;
+step 4 is used only for the flat-strip Matched variant.
+\begin{enumerate}
+\item Reconstruct the receiver's embedded bed from its nodal signed-distance
+data, clip the liquid polygons on that geometry, and check source boundary
+flux compatibility.
+\item Integrate the source normal-velocity trace to obtain the boundary
+streamfunction and fix the relative boundary constant from source transport.
+Solve the liquid harmonic Dirichlet problem and complete the vertices needed
+by the liquid polygons.
+\item Give each shared polygon edge one scalar streamfunction integral,
+with opposite orientation in its two cells.
+\item On flat upper strips, use the same cubic boundary trace on the physical
+edge and in $J(d)$; blend its neighbouring Cartesian edge through
+\eqref{eq:matched-blend}. Both adjacent cells use this shared edge integral.
+\item Sum the oriented edge moments using~\eqref{eq:green}, divide by
+liquid area, and supply the liquid means and matched fractions to the receiver. If
+the receiver instead requires a mixture velocity, use the separately
+defined projection~\eqref{eq:mixture-projection} with prescribed gas means.
+\end{enumerate}
+
 \section{Numerical experiments}
 \subsection{Error measures and test cases}
 For a reference liquid volume $V_*$ and momentum $\boldsymbol M_*$, report
@@ -486,6 +547,377 @@ Probe and sampled-reference results below use their stated norms, which
 may differ from~\eqref{eq:l2}. Sources for the experimental code and data
 are given in \hyperref[sec:data-code]{Data and code availability}.
 
+\subsection{Native propagation of transfer error}\label{sec:native-protocol}
+A separate smooth-wave benchmark measures the subsequent influence of
+initial transfer error against a computable reference input. The periodic
+length is 64, the flat receiver bed is at $y_b=0.53000001$, and the initially
+flat free surface is at $y_s=1.5000625$. We use grids $512\times32$,
+$1024\times64$ and $2048\times128$, with the same physical geometry. Their
+upper liquid-row fractions are respectively 0.0005, 0.001 and 0.002. The prescribed initial potential is
+\begin{equation}
+ \phi(x,y)=A\cos(kx)\frac{\cosh(k(y-y_b))}{\cosh(kD)},\qquad
+ A=0.02,\quad k=2\pi\,16/64,\quad D=y_s-y_b.
+\end{equation}
+There is no background current. The reference input consists of exact
+liquid-cell means of $\nabla\phi$, integrated analytically over the rectangular
+liquid portions. An independent eight-point tensor Gaussian integration
+agrees with these means to $1.86\times10^{-14}$ in relative liquid-weighted norm.
+
+The principal comparison uses Matched (M), Bilinear (B) and exact initial
+means on one corrected receiver build. The boundary source has 512 nodes;
+trace factors 8, 8 and 16 give trace/grid-spacing ratios 0.125, 0.25 and
+0.25. The first two levels reproduce the previous input policy, while the
+third retains the second level's ratio. Earlier Linear (L) and time-step
+comparisons are retained in Appendix~\ref{app:general-tests}.
+Their geometry, gas velocities, physical coefficients and receiver settings
+are identical, and the receiver reconstructs its initial face fluxes from
+each branch's own cell velocities. Zero target momentum is checked with an
+absolute tolerance $10^{-6}$, rather than an ill-defined relative error.
+The physical coefficients are those listed above. The nominal inviscid
+capillary--gravity time scale, neglecting gas density in the dispersion
+relation \citep{fitzpatrick}, is
+$T=2\pi/\sqrt{(gk+\sigma k^3/\rho_\ell)\tanh(kD)}=5.25072$;
+it is used only to specify the common endpoint $t=0.1T=0.52507177$.
+The reference branch is a numerical continuation from exact initial means,
+not an exact later-time two-phase solution.
+
+With $R$ denoting the exact-input reference and $A$ a tested initialisation,
+the primary global error is
+\begin{equation}
+ E_u^2(t)=\frac{\sum_Kq_K^R(t)\|\boldsymbol u_K^A(t)-\boldsymbol u_K^R(t)\|_2^2}
+                    {\sum_Kq_K^R(t)\|\boldsymbol u_K^R(t)\|_2^2}.
+ \label{eq:dynamic-error}
+\end{equation}
+VOF and column-depth differences use the reference branch in their relative
+norm denominators. The primary runs use $\Delta t_{\max}=0.0025$ and
+CFL 0.1. The earlier half-step control uses 0.00125 and CFL 0.05.
+
+\section{Results}
+The main comparisons concern the Matched extension on flat surface strips.
+Tests of the general polygonal construction and earlier transfer
+variants are reported in Appendix~\ref{app:general-tests}.
+
+\subsection{Analytic initial-field tests of the Matched extension}
+We evaluate the extension in~\eqref{eq:matched-jet} in 15 cases:
+mode-4 manufactured fields at $n_x=128,256$, with upper-strip liquid
+fractions $10^{-5},10^{-3},10^{-2},10^{-1}$; mode-16 wave fields at
+$n_x=512$ with fractions $0.0005,0.001,0.01,0.1$; and mode-16 fields at
+$n_x=1024$ with fractions $0.001,0.01,0.1$. Closed-form phase-cell means
+provide the reference. Source data, geometry and the comparison cases
+are fixed within each comparison. No analytic interior field is used by
+the matched operator.
+
+Hermite (H), which changes only the physical trace, isolates the role of
+edge compatibility. In the manufactured $128$-column case at
+$q_{\rm top}=0.001$, its top-row relative error rises to 0.08046 from
+0.03757 for Linear (L). Matched (M) lowers it to $9.07\times10^{-6}$.
+For the wave case with $512$ columns and $q_{\rm top}=0.0005$, the three
+L, H, and M errors are 0.18570, 0.15833 and $3.70\times10^{-5}$. This ablation supports
+a major role for the mismatch of edge representations: increasing the
+physical-trace order alone does not deliver the observed improvement.
+
+M reduces both the top-row error and the all-liquid, volume-weighted error
+in all 15 cases relative to L and H. It also improves the global error
+relative to B in all 15 cases,
+by factors 2.71--12.60 (Table~\ref{tab:matched-extension}). Its maximum
+top-row relative error over this matrix is $5.16\times10^{-5}$; the maximum
+absolute moment-closure defect is $2.61\times10^{-15}$.
+For the original wave geometries, the global initial error decreases from
+0.002987 to 0.001420 at $512$ columns and from 0.004700 to 0.0003538 at
+$1024$ columns. The remaining global error includes the interior and bed
+cells, which the surface extension does not directly correct. These
+measurements concern initial phase means; the evolved-field comparisons
+follow below.
+
+\input{tables/matched_boundary_extension.tex}
+
+A further six cases use mode~7 at
+$n_x=512,1024$ and $q_{\rm top}=0.3,0.7,0.99$ with the same operator.
+The global error remains lower than B in all six cases, by factors
+3.73--32.07. These larger
+fractions also exercise the transition back to Cartesian integration.
+At $q_{\rm top}=0.99$ the M and H top-row errors
+nearly coincide, with the M value about 0.2\% larger; the matched
+extension therefore is not uniformly superior to that ablation at all
+fractions. Its moment-closure defect remains below $5.32\times10^{-17}$.
+
+Table~\ref{tab:joint-refinement} tests the final M operator on three grids
+while refining the boundary trace with the receiver: its spacing is $h/8$
+throughout. The global velocity error decreases from $1.4203\times10^{-3}$
+to $3.5378\times10^{-4}$ and $8.0414\times10^{-5}$, with observed orders
+2.005 and 2.137. B uses the same computed streamfunction and has larger
+errors on all three grids. These are transfer-refinement results for a
+fixed boundary source state; they do not establish convergence of the
+upstream boundary solver. The cut-cell errors and maximum vector errors
+are retained with the global norms in the accompanying data.
+\input{tables/joint_refinement.tex}
+
+\subsection{Propagation of transfer error}
+The three-grid comparison uses the same corrected receiver executable and
+library for all nine M, B and exact-input branches. Common geometry, gas
+velocities, physical coefficients and time-step controls isolate the
+initial transfer. The receiver reconstructs its face fluxes from each
+branch's cell velocities; the common supplied face arrays are not imposed
+as runtime fluxes.
+
+Table~\ref{tab:audited-dynamics} reports the errors at $t=0.1T$.
+M reduces the global velocity discrepancy by factors of 7.88, 9.80 and
+17.81 on the three grids. The corresponding surface-profile reductions
+are 65.0, 73.8 and 102.4. Both improvements hold at every recorded
+nonzero time (Fig.~\ref{fig:audited-dynamics}). The maximum recorded
+relative liquid-mass discrepancy is $7.15\times10^{-13}$, and the maximum
+post-start flux divergence is $6.99\times10^{-14}$.
+
+The M endpoint velocity errors are $1.7585\times10^{-3}$,
+$4.3460\times10^{-4}$ and $9.8215\times10^{-5}$.
+Their two-level observed orders are 2.017 and 2.146. This native series
+uses the trace policy specified in Section~\ref{sec:native-protocol};
+the fixed trace/grid-ratio initial test is reported separately in
+Table~\ref{tab:joint-refinement}. The earlier full- and half-step
+comparisons are retained in Appendix~\ref{app:old-matched}; the three-grid
+results here establish the transfer advantage on one documented corrected
+receiver build.
+\input{tables/audited_dynamics.tex}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/audited_native_dynamics.pdf}
+\caption{Propagated transfer error on three grids using the common corrected
+receiver build and $\Delta t_{\max}=0.0025$. Each curve is compared with the
+exact-input numerical trajectory on its own grid. Filled markers and solid
+lines denote M; open markers and dashed lines denote B. Surface error is
+shown at every nonzero output time; its normalisation is undefined for the
+initially flat profile.}\label{fig:audited-dynamics}
+\end{figure}
+
+\subsection{Independent small-amplitude two-fluid wave}
+An additional benchmark compares the evolved column depth with an
+independent linear two-fluid capillary--gravity wave. It uses the same
+physical geometry and density ratio, but zero viscosity, a slip bottom
+and a pressure-release upper boundary. The assignment comparison uses
+$512\times32$ cells; its spatial check adds $1024\times64$ cells.
+Let $D_\ell=y_s-y_b$ and
+$D_g=4-y_s$. The linear frequency and surface amplitude for initial liquid
+potential $A\cos(kx)\cosh(k(y-y_b))/\cosh(kD_\ell)$ are
+\begin{equation}
+ \omega^2=\frac{(\rho_\ell-\rho_g)gk+\sigma k^3}
+ {\rho_\ell\coth(kD_\ell)+\rho_g\tanh(kD_g)},\qquad
+ B=\frac{Ak\tanh(kD_\ell)}{\omega}.
+\end{equation}
+The corresponding initial gas potential is
+$-A\tanh(kD_\ell)\sinh(k(4-y))\cos(kx)/\cosh(kD_g)$.
+It satisfies the linear kinematic condition at the interface and the
+pressure-release condition at the top. We check the boundary-equation
+residuals and evaluate the phase-cell means independently by quadrature.
+The reference column depth averaged over a horizontal cell is
+\begin{equation}
+ H_i^{\rm lin}(t)=D_\ell+B\sin(\omega t)
+ \operatorname{sinc}(kh/2)\cos(kx_i),\qquad
+ \operatorname{sinc}(s)=\sin(s)/s.
+\end{equation}
+Here the depth-error RMS is normalised by the fixed quantity
+$B\operatorname{sinc}(kh/2)/\sqrt{2}$; this differs from the instantaneous
+numerical-reference normalisation in Fig.~\ref{fig:audited-dynamics}.
+The endpoint is $t=0.1(2\pi/\omega)=0.52566088$ and
+$\Delta t_{\max}=0.00125$.
+
+A zero-amplitude control exposed an undefined zero-displacement operation
+in the receiver's two-dimensional geometric VOF flux routine. Returning
+zero transported volume for zero displacement prevents the 0.403\% first-step
+liquid loss of the unmodified build. The corrected rest control preserves
+mass and has endpoint depth-error RMS $1.11\times10^{-16}$.
+The physical-reference tests and the three-grid propagation comparison
+use this same corrected build. The earlier unmodified-runtime comparisons
+are retained in Appendix~\ref{app:old-matched}.
+
+With exact initial phase means, $A=2\times10^{-5}$ gives normalised
+depth error 0.03533528 at the endpoint; $A=10^{-5}$ gives 0.03533601.
+The absolute errors are $5.96216\times10^{-7}$ and
+$2.98114\times10^{-7}$. Their near-linear amplitude scaling and the
+separate rest control support comparison with the linear reference at
+these amplitudes. This reference tests a smooth inviscid wave, not a
+nonlinear breaking-wave solution.
+
+For the transfer comparison, M and B
+liquid inputs are scaled by $10^{-3}$ to $A=2\times10^{-5}$, without
+retuning the operator. The corresponding scaled exact liquid field agrees
+with the independently integrated phase means within
+$5.88\times10^{-17}$ in maximum absolute velocity. Geometry and dry/gas
+cell velocities are identical across the three branches, and each branch
+uses the same native flux-reconstruction procedure.
+Table~\ref{tab:physical-wave} reports the complete nonzero-time comparison.
+At the endpoint, M reduces the normalised physical depth
+error from 0.03718424 to 0.03535843, a 4.91\% reduction. It improves this
+metric at every recorded nonzero time, with reductions from 4.91\% to
+13.01\% over the four samples.
+
+The discrepancy from the exact-input numerical trajectory is much smaller:
+its normalised depth RMS is $2.31536\times10^{-5}$ for M
+and $1.84896\times10^{-3}$ for B, a factor of 79.86.
+Their global liquid-weighted velocity discrepancies are 0.00168245 and
+0.01070309, a factor of 6.36. The moderate 4.91\% improvement against
+the analytic wave is therefore compatible with a much larger reduction
+of the transfer contribution: the exact-input receiver already has a
+physical depth error of 0.03533528. Each of these three branches preserves liquid mass;
+the maximum measured post-start flux divergence is below $10^{-15}$.
+The three branches share endpoint times, geometry, and receiver settings.
+\input{tables/physical_wave_comparison.tex}
+
+The alternative assignment in~\eqref{eq:mixture-projection} uses the same
+wave protocol. With exact phase means it reduces
+the endpoint physical depth error from 0.03533528 to 0.01775465.
+At half amplitude the corresponding error is 0.01775438, again preserving
+the linear scaling, and both runs preserve liquid mass. This experiment
+supports the density-weighted assignment for this receiver and state;
+it does not establish a universal VOF velocity contract.
+
+The complete factorial comparison retains all six combinations of phase
+reconstruction and receiver assignment (Table~\ref{tab:mixture-factorial}).
+With density-weighted projection, M gives endpoint physical
+depth error 0.01777826, compared with 0.01881090 for B:
+a 5.49\% reduction under identical receiver assignment.
+The combined M-plus-mixture construction reduces the error from
+the original B liquid-mean assignment, 0.03718424, by 52.19\%
+(a factor of 2.092). The latter improvement includes both changes and
+must not be attributed to the boundary extension alone.
+
+The combined construction improves on the original B assignment
+at every recorded nonzero time. Within the mixture assignment, however,
+the B control has the smaller physical error at the first sample
+($t=0.13125$: 0.00016171 versus 0.00040606); M is better
+at the three later samples. Lower initial transfer error therefore need
+not minimise total physical error at each individual time.
+Against the exact-mixture-input numerical trajectory, the endpoint depth
+discrepancies are $2.36173\times10^{-5}$ and $1.05626\times10^{-3}$
+for M and B, respectively. These transfer-only
+discrepancies are distinct from the physical errors in the table.
+The mixed-cell inputs use separately integrated gas-phase means and satisfy
+the density-weighted formula to roundoff.
+\input{tables/mixture_factorial.tex}
+
+The spatial check repeats M, B and exact-input runs with mixture assignment
+on $512\times32$ and $1024\times64$ cells, holding the amplitude, physical
+geometry, boundary conditions and time-step limit fixed.
+Table~\ref{tab:physical-refinement} includes every recorded nonzero time.
+The coarse-grid endpoint reproduces the 5.49\% reduction. On the finer
+grid, M reduces physical depth error from 0.00985114 to 0.00957410,
+a 2.81\% reduction, and improves on B at all four nonzero samples.
+The M endpoint error decreases by a factor of 1.857 under refinement;
+the exact-input error decreases from 0.01775465 to 0.00957065.
+The remaining physical error is therefore close to that of the exact-input
+receiver, even though the transfer contribution is much smaller with M.
+All six runs preserve liquid mass at output precision, with maximum recorded
+post-start flux divergence $5.51\times10^{-15}$.
+\input{tables/physical_refinement.tex}
+
+\subsection{Computational cost of the transfer}
+Table~\ref{tab:transfer-cost} isolates the in-memory Matched transfer on
+an Intel Core Ultra 7 155H CPU under Windows 11, using Python 3.13.3,
+NumPy 2.3.5, SciPy 1.17.1 and Shapely 2.1.2. The trace factors are 8 and
+16 on the two grids. Each timing uses three repetitions after one warm-up;
+the output velocity arrays are byte-identical across repetitions.
+The measured transfer includes geometry, the liquid solve, gas continuation,
+cell moments and flux preparation, but excludes serialization, checkpoints
+and subsequent flow evolution. Boundary-trace preparation is timed
+separately. Liquid-cell moment construction accounts for approximately
+half of the median transfer time in this implementation. These measurements
+describe the current CPU code, rather than a GPU speedup or an asymptotic
+complexity estimate.
+\input{tables/transfer_cost.tex}
+
+\section{Discussion and limitations}
+The main gain comes from coupling two edge representations. Raising the
+physical-trace order alone does not remove their mismatch in a thin strip.
+The bound~\eqref{eq:matched-strip-bound} explains cancellation of the
+common trace error, while the derivative errors and the Cartesian blend
+remain. It gives a uniform refinement rate only under the stated bounds
+on derivative sampling and $I_C-J(d)$; those bounds have not been proved
+for the coupled harmonic solve. The observed refinement rates therefore complement the local mechanism
+rather than establish an unconditional convergence theorem.
+
+The smooth-wave trajectories started from exact cell means isolate the
+effect of initial transfer under a common numerical receiver. Their error
+against each other should not be read as physical error. The independent
+linear two-fluid wave supplies a physical reference and shows a smaller
+gain. Receiver velocity assignment also matters: the 52.19\% combined
+reduction on the coarse grid includes both Matched transfer and the standard
+mixture projection, whereas the 2.81--5.49\% comparisons hold assignment
+fixed. With mixture assignment, B is better at the first recorded nonzero
+time on the coarse grid; M is better at the three later samples and all
+four fine-grid samples. Cross-step comparisons can reverse
+the ranking because temporal and transfer errors interact
+(Appendix~\ref{app:general-tests}).
+
+The polygonal moment construction has a wider geometric scope than the
+flat-strip extension, but its discrete closure does not ensure local
+accuracy. The earlier Linear variant improves selected native bed-cut
+cells over B, while an exact-field centroid sample is more accurate in
+the nine pooled flat cut-cell tests (Appendix~\ref{app:general-tests}).
+The fixed overturning state has surface-height span 0.77104 and a
+non-monotone horizontal parametrisation. M rejects this geometry; its
+transfer and native startup test only the general polygonal construction.
+The fixed-state continuation has no independent evolved reference.
+
+The tests use two-dimensional periodic geometry and zero background
+current. The local estimate covers the horizontal mean in flat strips;
+the independent BIE sample covers 12 selected bed-cut cells. The smooth
+native runs are short, and neither the upstream wave formation nor a
+complete breaking-wave trajectory has been shown to converge in space
+and time. An extension to overturning boundaries would require a
+curved-boundary construction and its own accuracy analysis.
+
+\section{Conclusions}
+For thin strips beneath a flat surface, Matched transfer uses one physical
+trace on both sides of the edge difference. The common trace error cancels
+before division by the small strip thickness. The bound for the implemented
+blend identifies the remaining derivative and Cartesian-edge errors.
+Across 21 analytic initial-field tests, M lowers global velocity error
+relative to B. A separate three-grid initial test gives observed orders
+2.005 and 2.137 under joint trace/grid refinement. On a common corrected
+receiver build, the three-grid continuations reduce propagated velocity
+error by factors of 7.88--17.81 and surface-profile error by 65.0--102.4
+against same-grid numerical trajectories started from exact cell means.
+
+Against an independent linear two-fluid wave, M lowers endpoint physical
+surface-profile error by 5.49\% and 2.81\% on the two grids when mixture
+assignment is held fixed. On the coarse grid, combining M with that
+standard assignment lowers the error by 52.19\% relative to the original
+practical B input with liquid-mean assignment;
+this larger reduction includes both changes. The more general polygonal
+construction preserves discrete liquid moments by shared-edge cancellation,
+and receiver-matched geometry avoids liquid loss on loading. The flat-strip
+accuracy estimate does not apply to overturning surfaces, and these short
+continuations do not validate a complete breaking-wave trajectory.
+
+\section*{Data and code availability}\phantomsection\label{sec:data-code}
+The original code, benchmark inputs and numerical evidence are archived
+as v0.31.0~\citep{baturin-transfer}. The additional refinement, dynamic,
+physical-reference and cost experiments are provided in the follow-up
+package~\citep{baturin-followup}. It includes the input and output fields,
+analysis scripts, transfer sources, corrected receiver source and patch,
+build records, and runtime configuration hashes used in the principal
+comparisons. Its verifier recomputes the three main numerical audits from
+the archived fields. Historical source-provenance limits remain documented
+with the original archive; its DOI does not identify the later experiments.
+
+\section*{Funding}
+The work received no external funding.
+\section*{Conflict of interest}
+The author declares no competing interests.
+\section*{Additional information}
+\ifdefined\BlindReview
+The manuscript has one author.
+\else
+Saveliy Baturin is the sole author.
+\fi
+The work is original and has not been submitted to another journal.
+
+\clearpage
+\appendix
+\section{General polygonal transfer and earlier variants}\label{app:general-tests}
+These tests document the base polygonal operator, trace resolution,
+and receiver sensitivity. They do not use the flat-strip Matched
+extension on the overturning geometry.
+
 The fixed wave state has 2304 nodes on each boundary and comes from a
 refined boundary solve on a fixed geometry. The convergence of its upstream
 nonlinear BIE trajectory was not assessed here.
@@ -496,7 +928,7 @@ same source tests the transfer and receiver sensitivity, not the convergence
 of the upstream time-dependent BIE solution.
 Figure~\ref{fig:geometry} shows the source boundary geometry.
 
-\begin{figure}[tbp]\centering
+\begin{figure}[hbp]\centering
 \includegraphics[width=\linewidth]{figures/fixed_wave_geometry.pdf}
 \caption{The fixed wave boundary and bed used in the offline
 transfer tests, before matching the receiver's bed convention. The curves
@@ -537,70 +969,30 @@ its value at that polygon's area centroid. This is a computable
 liquid-domain control, distinct from both whole-cell arithmetic averaging
 and the exact-field centroid control used in the flat test.
 
-The control and fitted initialisations use identical liquid fractions,
+The control and L initialisations use identical liquid fractions,
 embedded geometry, gas velocities, source streamfunction, receiver executable,
 and solver parameters. The native receiver reconstructs its initial face
 fluxes from each input cell-velocity field and applies the same projection.
 No momentum correction is applied to the control. Its initial momentum
 error, $1.100539\times10^{-6}$, exceeds the $10^{-6}$ tolerance used for
-the fitted input. The control comparison therefore uses a $2\times10^{-6}$
+the L input. The control comparison therefore uses a $2\times10^{-6}$
 momentum tolerance, while mass, finite-field, flux-divergence and runtime
 checks are unchanged.
 
 Comparisons use the exact common final time $t=0.01$. Scheduled intermediate
 dumps differ in time by up to $9.24\times10^{-6}$ between the two branches
-and are not treated as simultaneous fields. With superscripts $F$ and $C$
-denoting fitted and control solutions, define
+and are not treated as simultaneous fields. With superscripts $L$ and $B$
+denoting Linear and Bilinear solutions, define
 \begin{equation}
- D_u^2=\frac{\sum_K q_K^F\|\boldsymbol u_K^F-\boldsymbol u_K^C\|_2^2}
- {\sum_K q_K^F\|\boldsymbol u_K^F\|_2^2},\qquad
- D_f=\frac{\|f^F-f^C\|_2}{\|f^F\|_2}.
+ D_u^2=\frac{\sum_K q_K^L\|\boldsymbol u_K^L-\boldsymbol u_K^B\|_2^2}
+ {\sum_K q_K^L\|\boldsymbol u_K^L\|_2^2},\qquad
+ D_f=\frac{\|f^L-f^B\|_2}{\|f^L\|_2}.
 \end{equation}
 Column liquid depths are $H_i=h\sum_jq_{ij}$, with relative difference
-$D_H=\|H^F-H^C\|_2/\|H^F\|_2$. These quantities measure sensitivity
+$D_H=\|H^L-H^B\|_2/\|H^L\|_2$. These quantities measure sensitivity
 to the initial reconstruction; neither branch is a physical reference.
 
-\subsection{Native propagation of transfer error}
-A separate smooth-wave benchmark measures the subsequent influence of
-initial transfer error against a computable reference input. The periodic
-length is 64, the flat receiver bed is at $y_b=0.53000001$, and the initially
-flat free surface is at $y_s=1.5000625$. We use grids $512\times32$ and
-$1024\times64$, with the same physical geometry. Their upper liquid-row
-fractions are respectively 0.0005 and 0.001. The prescribed initial potential is
-\begin{equation}
- \phi(x,y)=A\cos(kx)\frac{\cosh(k(y-y_b))}{\cosh(kD)},\qquad
- A=0.02,\quad k=2\pi\,16/64,\quad D=y_s-y_b.
-\end{equation}
-There is no background current. The reference input consists of exact
-liquid-cell means of $\nabla\phi$, integrated analytically over the rectangular
-liquid portions. An independent eight-point tensor Gaussian integration
-agrees with these means to $1.86\times10^{-14}$ in relative liquid-weighted norm.
-
-In the original comparison, three native branches at each grid and time
-setting use fitted transfer,
-the same-streamfunction bilinear-centroid control, and exact initial means.
-Their geometry, gas velocities, physical coefficients and receiver settings
-are identical, and the receiver reconstructs its initial face fluxes from
-each branch's own cell velocities. Zero target momentum is checked with an
-absolute tolerance $10^{-6}$, rather than an ill-defined relative error.
-The physical coefficients are those listed above. The nominal inviscid
-capillary--gravity time scale, neglecting gas density in the dispersion
-relation \citep{fitzpatrick}, is
-$T=2\pi/\sqrt{(gk+\sigma k^3/\rho_\ell)\tanh(kD)}=5.25072$;
-it is used only to specify the common endpoint $t=0.1T=0.52507177$.
-The reference branch is a numerical continuation from exact initial means,
-not an exact later-time two-phase solution.
-
-With $R$ denoting the exact-input reference and $A$ a tested initialisation,
-the primary global error is
-\begin{equation}
- E_u^2(t)=\frac{\sum_Kq_K^R(t)\|\boldsymbol u_K^A(t)-\boldsymbol u_K^R(t)\|_2^2}
-                    {\sum_Kq_K^R(t)\|\boldsymbol u_K^R(t)\|_2^2}.
- \label{eq:dynamic-error}
-\end{equation}
-VOF and column-depth differences use the reference branch in their relative
-norm denominators. Full and half time-step limits are 0.0025 and 0.00125;
-the CFL controls are respectively 0.1 and 0.05. A single additional intervention increases the
+A single additional intervention increases the
 boundary-trace factor from 8 to 32 for both reconstructions, keeping the 512
 source nodes and physical geometry fixed. Both trace densities are compared.
 The exact-input reference, liquid fractions, embedded geometry,
@@ -624,13 +1016,12 @@ wave mode and endpoint remain fixed; the upper-row liquid fraction becomes
 coverage consists of both original-trace grids and the denser-trace
 $1024\times64$ case; no half-step trajectory is inferred for untested cases.
 
-\section{Results}
 \subsection{Manufactured field}
 Table~\ref{tab:manufactured} shows matched grid and trace refinement.
 The observed order is $p=\log_2(e_h/e_{h/2})$ for this flat-boundary test.
 
 \begin{table}[htbp]\centering
-\caption{Matched refinement of Cartesian resolution and boundary-trace sampling
+\caption{Joint refinement of Cartesian resolution and boundary-trace sampling
 on exact flat boundaries.}
 \label{tab:manufactured}
 \begin{tabular}{rrrr}\toprule
@@ -654,10 +1045,10 @@ prescribed fraction $q_s\in\{0.001,0.01,0.1\}$. The bed remains at $-D$.
 This is a family of slightly shifted flat domains, each compared with its own
 exact phase-volume means. Boundary potentials and normal derivatives are
 evaluated consistently at the shifted surface. Horizontal resolutions are
-128, 256, and 512 with the same matched trace-factor policy as above.
+128, 256, and 512 with the same joint trace-factor policy as above.
 
 Three reconstructions are compared before any native receiver projection:
-the proposed shared-edge moments; the arithmetic average of neighbouring MAC
+the L shared-edge moments; the arithmetic average of neighbouring MAC
 face values from the same solved streamfunction; and the exact harmonic
 velocity sampled at the centroid of the liquid rectangle. The last uses
 the exact interior field and is a sampling control rather than a BIE
@@ -670,12 +1061,12 @@ phase-volume weights.
 \includegraphics[width=\linewidth]{figures/flat_sliver_comparison.pdf}
 \caption{Flat-boundary stress tests before native projection. The prescribed
 surface fraction is shown above each panel; the error norm includes both
-cut rows. The proposed reconstruction improves on adjacent-face averaging,
+cut rows. The L reconstruction improves on adjacent-face averaging,
 but the exact-field centroid control is more accurate in all nine cases.}\label{fig:slivers}
 \end{figure}
 
 Figure~\ref{fig:slivers} shows how cut-cell accuracy depends on liquid
-fraction. For $q_s=0.001$, the proposed cut-cell errors are
+fraction. For $q_s=0.001$, the L cut-cell errors are
 0.03585, 0.01057, and 0.008982. For $q_s=0.01$, they are 0.006350,
 0.0005889, and 0.0007439, including a nonmonotone final step. At $q_s=0.1$,
 the errors decrease from 0.003427 to 0.0007165 to 0.0001358. The analytic
@@ -697,7 +1088,7 @@ or that additional sampling yields uniform convergence as $q_s\to0$.
 
 A comparison over all liquid cells uses the liquid-volume-weighted
 norm in equation~\eqref{eq:l2}, rather than the unweighted cut-cell
-norm in Figure~\ref{fig:slivers}. Across the same nine cases, the proposed
+norm in Figure~\ref{fig:slivers}. Across the same nine cases, the L
 reconstruction reduces this global error by factors 4.30--27.05 relative
 to arithmetic MAC averaging. However, its global errors are 4.61--27.39
 times larger than those of the exact-field centroid control. Thus a global
@@ -706,10 +1097,10 @@ integral does not establish superiority in a global velocity norm.
 
 A surface-row-only norm confirms that the poor thin-cell result is not
 caused by pooling the bed row. At 512 cells and
-$q_s=0.001$, its fitted error decreases from 0.0093744 to 0.00073369
+$q_s=0.001$, its L error decreases from 0.0093744 to 0.00073369
 under fourfold trace refinement, compared with an unchanged exact-field centroid
 error of 0.0001004. Conversely, for $q_s=0.1$ on the finest original grid,
-the fitted surface-row error is $8.7735\times10^{-5}$, slightly below the
+the L surface-row error is $8.7735\times10^{-5}$, slightly below the
 control error. This local exception does not change the ranking of the
 pooled cut-cell norm in Figure~\ref{fig:slivers}.
 
@@ -785,14 +1176,14 @@ using the unweighted norm over the sampled cell means
 Errors are unweighted relative Euclidean norms of phase-mean velocities.}
 \label{tab:native-reference}
 \begin{tabular}{lrrr}\toprule
-Liquid-fraction interval & Cells & Fitted moments & Bilinear-centroid control\\\midrule
+Liquid-fraction interval & Cells & L moments & Bilinear-centroid control\\\midrule
 $(0.05,0.95)$ & 6 & $4.82343\,10^{-6}$ & $1.77693\,10^{-4}$\\
 $(0.95,1)$ & 6 & $2.07174\,10^{-5}$ & $2.88663\,10^{-5}$\\
 Pooled sample & 12 & $1.61051\,10^{-5}$ & $1.17025\,10^{-4}$\\
 \bottomrule\end{tabular}
 \end{table}
 
-The pooled fitted error is smaller by a factor of 7.27. It is smaller in
+The pooled L error is smaller by a factor of 7.27. It is smaller in
 nine individual cells, whereas the control is more accurate in three.
 This sampled comparison does not cover the thinnest liquid cells. An
 attempted four-cell BIE reference for thinner cells failed the close-evaluation
@@ -830,7 +1221,7 @@ it is not a transfer-only cost or a speedup comparison.
 \subsection{Paired native initialisations}
 Both L12 branches complete the exact common interval $0\le t\le0.01$.
 Their input phase moments differ:
-the fitted relative momentum error is $6.96337\times10^{-8}$, about
+the L relative momentum error is $6.96337\times10^{-8}$, about
 15.8 times smaller than the uncorrected bilinear-centroid control's error.
 This improves the initial integral constraint; subsequent accuracy requires
 an independent evolved reference.
@@ -852,7 +1243,7 @@ Relative liquid-volume difference & 0 & $5.25987\,10^{-16}$\\
 
 At $t=0.01$, the density-normalised liquid kinetic energies
 $\tfrac12h^2\sum_Kq_K\|\boldsymbol u_K\|_2^2$ are 0.43967054
-and 0.43969504 for the fitted and control branches. The maximum column-depth
+and 0.43969504 for the L and control branches. The maximum column-depth
 difference is $1.16104\times10^{-4}$. The receiver thus retains some
 sensitivity to the input moment operator, while liquid volume agrees to
 roundoff. An independent evolved reference is needed to rank their accuracy.
@@ -870,9 +1261,9 @@ with the first-listed state supplying the denominator and liquid weights.
 \label{tab:timestep}
 \begin{tabular}{lrr}\toprule
 Comparison at $t=0.01$ & $D_u$ & $D_f$\\\midrule
-Full-step fitted versus control & $9.48721\,10^{-4}$ & $4.37319\,10^{-5}$\\
-Half-step fitted versus control & $9.58218\,10^{-4}$ & $4.28176\,10^{-5}$\\
-Fitted full versus half step & $5.13667\,10^{-3}$ & $1.21956\,10^{-4}$\\
+Full-step L versus control & $9.48721\,10^{-4}$ & $4.37319\,10^{-5}$\\
+Half-step L versus control & $9.58218\,10^{-4}$ & $4.28176\,10^{-5}$\\
+L full versus half step & $5.13667\,10^{-3}$ & $1.21956\,10^{-4}$\\
 Control full versus half step & $5.15092\,10^{-3}$ & $1.22843\,10^{-4}$\\
 \bottomrule\end{tabular}
 \end{table}
@@ -886,10 +1277,10 @@ order or an error against the physical trajectory.
 
 \subsection{Propagation and boundary-trace resolution}
 The smooth native benchmark separates a global initial norm from the later
-influence of that error. With the original trace factor, fitted transfer
+influence of that error. With the original trace factor, L transfer
 has a smaller initial global error on the $512\times32$ grid, but its error
 at $0.1T$ is 2.88 times the bilinear control's error. On $1024\times64$, the
-initial fitted error is already 4.31 times larger and the endpoint error is
+initial L error is already 4.31 times larger and the endpoint error is
 10.19 times larger. Thus a small initial global norm, like a closed global
 moment balance, does not ensure a better subsequent state.
 Figure~\ref{fig:dynamics} compares the corresponding error histories and
@@ -901,7 +1292,7 @@ the effect of increasing the trace density. Its vertical axes are logarithmic.
 benchmark, using the full time-step limit. Each curve is measured against
 the same-grid native branch initialised with exact liquid-cell means.
 The two trace densities give practically coincident bilinear-control
-curves. The refined fitted transfer improves the finer-grid result but
+curves. The refined L transfer improves the finer-grid result but
 still loses to the control on the coarse grid. This is not an error plot
 against an exact two-phase trajectory.}\label{fig:dynamics}
 \end{figure}
@@ -909,17 +1300,17 @@ against an exact two-phase trajectory.}\label{fig:dynamics}
 The trace-density intervention keeps source values, geometry, gas fields
 and reference inputs fixed. The computed streamfunction changes by only
 $4.65\times10^{-13}$ and $1.39\times10^{-12}$ in relative norm at the two
-grids, while a fitted wet-cell velocity component changes by as much as
+grids, while a L wet-cell velocity component changes by as much as
 0.0136; recomputed preprocessing MAC face velocities change by at most
 $2.15\times10^{-12}$.
 Together with the unchanged liquid fractions, this localises the main
 change to boundary-trace and edge-moment reconstruction, including trace
 values at boundary intersections, rather than geometry or the bulk harmonic
 solve. The data do not isolate physical-edge integrals from all other
-boundary-dependent edge terms. In the original $1024\times64$ input, 99.43\% of the fitted
+boundary-dependent edge terms. In the original $1024\times64$ input, 99.43\% of the L
 squared liquid-weighted velocity error is in the upper thin liquid row.
 
-On $1024\times64$, fourfold trace refinement lowers the fitted initial
+On $1024\times64$, fourfold trace refinement lowers the L initial
 error from $4.69958\times10^{-3}$ to $3.8820\times10^{-4}$.
 At $0.1T$, its global velocity error is $1.53448\times10^{-3}$, compared
 with $4.25970\times10^{-3}$ for the same-streamfunction bilinear control:
@@ -932,13 +1323,13 @@ $2.518\times10^{-6}$ and $9.111\times10^{-6}$. The reference wave's mode-16
 amplitude is 0.01396. These measurements demonstrate a reduced propagated
 transfer error in this finer-grid case.
 
-The coarse-grid result remains unfavourable: refined fitted and control
+The coarse-grid result remains unfavourable: refined L and control
 velocity errors are $2.92106\times10^{-2}$ and $1.38609\times10^{-2}$.
 The density intervention therefore does not establish a grid-independent
 advantage or a uniform small-cell accuracy guarantee.
 
 The favourable $1024\times64$ comparison survives one time-step halving:
-the fitted and control velocity errors become $1.59996\times10^{-3}$ and
+the L and control velocity errors become $1.59996\times10^{-3}$ and
 $4.46877\times10^{-3}$, giving a 2.79-fold reduction. Their wave-normalised
 column-depth errors are $1.48757\times10^{-4}$ and $6.34783\times10^{-4}$,
 a 4.27-fold reduction. Recorded step counts are 210 and 420, with observed
@@ -947,19 +1338,19 @@ comparison remains unfavourable by a factor of 10.18.
 
 The transfer ranking persists under this step halving, but temporal
 convergence of the exact-input reference is not established. Its full-versus-half-step velocity
-difference is $2.04241\times10^{-2}$, larger than the fitted-versus-reference
+difference is $2.04241\times10^{-2}$, larger than the L-versus-reference
 differences at either time setting. The primary ratios therefore quantify
 the propagation of initialisation error under a common numerical evolution,
 not the total error against a physical wave solution.
 
 A further comparison uses the half-step exact-input branch as the common
 reference for both full-step candidates. Their velocity discrepancies are
-0.0209794 (fitted) and 0.0193803 (control): the fitted result is 8.3\% worse.
+0.0209794 (L) and 0.0193803 (control): the L result is 8.3\% worse.
 Thus the favourable matched-step ratios cannot be promoted to an assertion
 of improved total trajectory accuracy. Common temporal error and its
 interaction with initialisation dominate this cross-step comparison.
 On $512\times32$ with the refined trace, the cross-step velocity ranking
-also changes: discrepancies are 0.0204883 (fitted) and 0.0223687 (control),
+also changes: discrepancies are 0.0204883 (L) and 0.0223687 (control),
 whereas wave-normalised column-depth discrepancies are 0.00362516 and
 0.00354270. The matched-step transfer ranking therefore does not extend
 to this cross-step comparison.
@@ -977,7 +1368,7 @@ $b=u_*^{\Delta t}-u_*^{\Delta t/2}$. Then
  \label{eq:temporal-error-decomposition}
 \end{equation}
 At the common endpoint of the refined $1024\times64$ case, the normalised
-transfer norms are 0.00153846 and 0.00427009 for fitted and control inputs,
+transfer norms are 0.00153846 and 0.00427009 for L and control inputs,
 while $\|b\|/\|u_*^{\Delta t/2}\|=0.02042411$. The corresponding error-vector
 cosines are $+0.3282$ and $-0.3427$. Thus the smaller control discrepancy
 against the half-step reference includes cancellation of temporal error;
@@ -988,7 +1379,7 @@ These norms differ slightly from the matched-step values because their
 weights and normalising reference are held fixed to the half-step branch.
 
 The $2048\times128$ joint-refinement check gives the same matched-step
-ranking. Initial fitted and control errors are
+ranking. Initial L and control errors are
 $1.03094\times10^{-4}$ and $3.34981\times10^{-4}$. At $0.1T$, their global
 velocity errors are $5.08178\times10^{-4}$ and $1.74890\times10^{-3}$,
 a 3.44-fold reduction. Wave-normalised column-depth errors are
@@ -1002,73 +1393,29 @@ complete tested matrix.
 
 \input{tables/native_dynamic_errors.tex}
 
-\subsection{Matched boundary extension: initial-field tests}
-We evaluate the extension in~\eqref{eq:matched-jet} in 15 cases:
-mode-4 manufactured fields at $n_x=128,256$, with upper-strip liquid
-fractions $10^{-5},10^{-3},10^{-2},10^{-1}$; mode-16 wave fields at
-$n_x=512$ with fractions $0.0005,0.001,0.01,0.1$; and mode-16 fields at
-$n_x=1024$ with fractions $0.001,0.01,0.1$. Closed-form phase-cell means
-provide the reference. Source data, geometry and the comparison cases
-are fixed within each comparison. No analytic interior field is used by
-the matched operator.
 
-An isolated cubic physical trace was also tested as an ablation. It does
-not suffice: for the manufactured $128$-column case at $q_{\rm top}=0.001$,
-the top-row relative error increases from 0.03757 to 0.08046. Matching the
-neighbouring Cartesian edge reduces it to $9.07\times10^{-6}$.
-For the wave case with $512$ columns and $q_{\rm top}=0.0005$, the three
-errors are 0.18570, 0.15833 and $3.70\times10^{-5}$. This ablation supports
-a major role for the mismatch of edge representations: increasing the
-physical-trace order alone does not deliver the observed improvement.
-
-The matched extension reduces both the top-row error and the all-liquid,
-volume-weighted error in all 15 cases relative to the original
-linear-trace and isolated-Hermite operators. It also improves the global
-error relative to the same-streamfunction centroid control in all 15 cases,
-by factors 2.71--12.60 (Table~\ref{tab:matched-extension}). Its maximum
-top-row relative error over this matrix is $5.16\times10^{-5}$; the maximum
-absolute moment-closure defect is $2.61\times10^{-15}$.
-For the original wave geometries, the global initial error decreases from
-0.002987 to 0.001420 at $512$ columns and from 0.004700 to 0.0003538 at
-$1024$ columns. The remaining global error includes the interior and bed
-cells, which the surface extension does not directly correct. These
-measurements concern initial phase means; the evolved-field comparisons
-above used the earlier operators.
-
-\input{tables/matched_boundary_extension.tex}
-
-A further six cases use mode~7 at
-$n_x=512,1024$ and $q_{\rm top}=0.3,0.7,0.99$ with the same operator.
-The global error remains lower than the same-streamfunction
-centroid control in all six cases, by factors 3.73--32.07. These larger
-fractions also exercise the transition back to Cartesian integration.
-At $q_{\rm top}=0.99$ the matched and isolated-Hermite top-row errors
-nearly coincide, with the matched value about 0.2\% larger; the matched
-extension therefore is not uniformly superior to that ablation at all
-fractions. Its moment-closure defect remains below $5.32\times10^{-17}$.
-
-\subsection{Propagation with the matched boundary extension}
-Two native continuations replace the original fitted cell means by the
-matched extension, retaining the source resolution and trace factor~8.
+\subsection{Earlier Matched continuations and time-step control}\label{app:old-matched}
+These earlier continuations use the original common receiver build. They
+compare M with B and exact-input branches, retaining
+the source resolution and trace factor~8.
 At $512\times32$ and $1024\times64$, geometry, volume fractions, supplied
 face data and gas velocities are identical to those of the exact-input
 branches. The solver executable, library,
 physical coefficients and full-step settings are unchanged. Both runs
 complete 210 steps to the same endpoint $t=0.1T$.
-As in the original comparison, the receiver reconstructs its initial face
+The receiver reconstructs its initial face
 fluxes from each branch's cell velocities; the common supplied face arrays
 are not loaded as prescribed runtime fluxes.
 
 At $512\times32$, the global velocity discrepancy against the exact-input
-trajectory is 0.00175849, compared with 0.01386093 for the practical
-centroid control: a 7.88-fold reduction. The wave-normalised surface-profile
+trajectory is 0.00175849, compared with 0.01386093 for B:
+a 7.88-fold reduction. The wave-normalised surface-profile
 error decreases from $2.55281\times10^{-3}$ to $3.92627\times10^{-5}$,
 a 65.0-fold reduction. At $1024\times64$, velocity errors are
 0.000434603 and 0.004259703, a 9.80-fold reduction, while surface-profile
 errors are $7.33856\times10^{-6}$ and $5.41771\times10^{-4}$,
-a 73.8-fold reduction. Thus the extension removes the earlier coarse-grid
-failure and improves both subsequent observables without the fourfold
-increase in trace density. The favourable comparison holds at every
+a 73.8-fold reduction. Thus M improves both subsequent observables at the
+original trace density. The favourable comparison holds at every
 recorded nonzero time, not only at the endpoint.
 Doubling the grid resolution reduces the matched global velocity error
 by factors 4.015 initially and 4.046 at the endpoint, corresponding to
@@ -1079,7 +1426,7 @@ not a multi-level asymptotic convergence study of the receiver.
 Halving the time step on $1024\times64$ preserves the improvement.
 The matched run completes 420 steps and gives velocity error
 0.0004361803 against the half-step exact-input branch, versus 0.0044687721
-for the half-step practical control (10.25-fold reduction). The respective
+for the half-step B control (10.25-fold reduction). The respective
 surface-profile errors are $7.65566\times10^{-6}$ and
 $6.34783\times10^{-4}$ (82.9-fold reduction). The common receiver settings
 are held fixed within each comparison; these ratios measure propagated
@@ -1093,8 +1440,8 @@ discretisation.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/matched_native_dynamics.pdf}
-\caption{Propagation of transfer error with the matched boundary extension
-and practical centroid control. L9 and L10 denote $512\times32$ and
+\caption{Propagation of transfer error with Matched (M)
+and Bilinear (B) initialisations. L9 and L10 denote $512\times32$ and
 $1024\times64$ grids, both with $\Delta t_{\max}=0.0025$.
 Each curve uses the exact-input numerical trajectory
 at its own grid and identical time-step settings as the reference. The
@@ -1102,200 +1449,6 @@ surface error is undefined at the initially flat state and is shown only
 at nonzero times.}\label{fig:matched-dynamics}
 \end{figure}
 
-\subsection{Independent small-amplitude two-fluid wave}
-An additional benchmark compares the evolved column depth with an
-independent linear two-fluid capillary--gravity wave. It uses the same
-$512\times32$ geometry and density ratio, but zero viscosity, a slip
-bottom and a pressure-release upper boundary. Let $D_\ell=y_s-y_b$ and
-$D_g=4-y_s$. The linear frequency and surface amplitude for initial liquid
-potential $A\cos(kx)\cosh(k(y-y_b))/\cosh(kD_\ell)$ are
-\begin{equation}
- \omega^2=\frac{(\rho_\ell-\rho_g)gk+\sigma k^3}
- {\rho_\ell\coth(kD_\ell)+\rho_g\tanh(kD_g)},\qquad
- B=\frac{Ak\tanh(kD_\ell)}{\omega}.
-\end{equation}
-The corresponding initial gas potential is
-$-A\tanh(kD_\ell)\sinh(k(4-y))\cos(kx)/\cosh(kD_g)$.
-It satisfies the linear kinematic condition at the interface and the
-pressure-release condition at the top. We check the boundary-equation
-residuals and evaluate the phase-cell means independently by quadrature.
-The reference column depth averaged over a horizontal cell is
-\begin{equation}
- H_i^{\rm lin}(t)=D_\ell+B\sin(\omega t)
- \operatorname{sinc}(kh/2)\cos(kx_i),\qquad
- \operatorname{sinc}(s)=\sin(s)/s.
-\end{equation}
-Here the depth-error RMS is normalised by the fixed quantity
-$B\operatorname{sinc}(kh/2)/\sqrt{2}$; this differs from the instantaneous
-numerical-reference normalisation in Fig.~\ref{fig:matched-dynamics}.
-The endpoint is $t=0.1(2\pi/\omega)=0.52566088$ and
-$\Delta t_{\max}=0.00125$.
-
-A zero-amplitude control exposed an undefined zero-displacement operation
-in the receiver's two-dimensional geometric VOF flux routine. Returning
-zero transported volume for zero displacement prevents the 0.403\% first-step
-liquid loss of the unmodified build. The corrected rest control preserves
-mass and has endpoint depth-error RMS $1.11\times10^{-16}$.
-The physical-reference tests use this corrected build; the preceding
-transfer-error comparisons use their original common build.
-
-With exact initial phase means, $A=2\times10^{-5}$ gives normalised
-depth error 0.03533528 at the endpoint; $A=10^{-5}$ gives 0.03533601.
-The absolute errors are $5.96216\times10^{-7}$ and
-$2.98114\times10^{-7}$. Their near-linear amplitude scaling and the
-separate rest control support comparison with the linear reference at
-these amplitudes. This reference tests a smooth inviscid wave, not a
-nonlinear breaking-wave solution.
-
-For the transfer comparison, the matched and practical
-liquid inputs are scaled by $10^{-3}$ to $A=2\times10^{-5}$, without
-retuning the operator. The corresponding scaled exact liquid field agrees
-with the independently integrated phase means within
-$5.88\times10^{-17}$ in maximum absolute velocity. Geometry and dry/gas
-cell velocities are identical across the three branches, and each branch
-uses the same native flux-reconstruction procedure.
-Table~\ref{tab:physical-wave} reports the complete nonzero-time comparison.
-At the endpoint, matched transfer reduces the normalised physical depth
-error from 0.03718424 to 0.03535843, a 4.91\% reduction. It improves this
-metric at every recorded nonzero time, with reductions from 4.91\% to
-13.01\% over the four samples.
-
-The discrepancy from the exact-input numerical trajectory is much smaller:
-its normalised depth RMS is $2.31536\times10^{-5}$ for matched transfer
-and $1.84896\times10^{-3}$ for the practical control, a factor of 79.86.
-Their global liquid-weighted velocity discrepancies are 0.00168245 and
-0.01070309, a factor of 6.36. The moderate 4.91\% improvement against
-the analytic wave is therefore compatible with a much larger reduction
-of the transfer contribution: the exact-input receiver already has a
-physical depth error of 0.03533528. Each of these three branches preserves liquid mass;
-the maximum measured post-start flux divergence is below $10^{-15}$.
-The three branches share endpoint times, geometry, and receiver settings.
-\input{tables/physical_wave_comparison.tex}
-
-The alternative assignment in~\eqref{eq:mixture-projection} uses the same
-wave protocol. With exact phase means it reduces
-the endpoint physical depth error from 0.03533528 to 0.01775465.
-At half amplitude the corresponding error is 0.01775438, again preserving
-the linear scaling, and both runs preserve liquid mass. This experiment
-supports the density-weighted assignment for this receiver and state;
-it does not establish a universal VOF velocity contract.
-
-The complete factorial comparison retains all six combinations of phase
-reconstruction and receiver assignment (Table~\ref{tab:mixture-factorial}).
-With density-weighted projection, matched transfer gives endpoint physical
-depth error 0.01777826, compared with 0.01881090 for the practical
-control: a 5.49\% reduction under identical receiver assignment.
-The combined matched-plus-mixture construction reduces the error from
-the original practical liquid-mean assignment, 0.03718424, by 52.19\%
-(a factor of 2.092). The latter improvement includes both changes and
-must not be attributed to the boundary extension alone.
-
-The combined construction improves on the original practical assignment
-at every recorded nonzero time. Within the mixture assignment, however,
-the practical control has the smaller physical error at the first sample
-($t=0.13125$: 0.00016171 versus 0.00040606); matched transfer is better
-at the three later samples. Lower initial transfer error therefore need
-not minimise total physical error at each individual time.
-Against the exact-mixture-input numerical trajectory, the endpoint depth
-discrepancies are $2.36173\times10^{-5}$ and $1.05626\times10^{-3}$
-for matched and practical transfer, respectively. These transfer-only
-discrepancies are distinct from the physical errors in the table.
-The mixed-cell inputs use separately integrated gas-phase means and satisfy
-the density-weighted formula to roundoff.
-\input{tables/mixture_factorial.tex}
-
-\section{Discussion and limitations}
-Shared-edge cancellation and matched receiver geometry secure integral
-consistency, but local velocity accuracy still depends on trace sampling
-and liquid fraction. The fitted method improves the selected native
-bed-cut cells over a bilinear control; in the nine pooled flat-boundary
-cut-cell tests, sampling the exact field at liquid centroids is more
-accurate. That control samples an exact interior field and is not a transfer
-from boundary data. The trace-refinement experiments show a substantial
-sampling effect without establishing uniform accuracy as the liquid
-fraction vanishes.
-
-The fixed overturning state comes from an earlier unpublished wave-formation
-experiment. Its surface-height span is 0.77104, and its horizontal
-parametrisation is non-monotone. The flat-strip extension rejects this
-geometry; the curved-state transfer and native startup therefore test the
-general moment construction only. Applying the extension through overturning
-would require an orientation-aware curved-boundary operator. The fixed-state
-continuation has no independent evolved reference, so its paired-branch
-differences measure sensitivity rather than physical accuracy.
-
-In the smooth-wave runs, exact-input numerical trajectories separate the
-effect of initial transfer from the receiver's time discretisation. The
-matched extension improves the transfer comparison on both tested grids,
-whereas comparing across time steps can reverse the ranking because temporal
-and transfer errors interact. The analytic two-fluid wave supplies a separate
-physical reference. Its factorial comparison shows that receiver assignment
-also affects the physical profile error; the matched transfer and mixture
-projection contribute distinct improvements, with an early-time exception
-to the matched ranking within the mixture assignment.
-
-The tests use two-dimensional periodic geometry and zero background current.
-The local estimate covers horizontal velocity in flat surface strips, while
-the BIE sample covers only selected bed-cut cells. The smooth native runs are
-short, and neither the upstream wave formation nor a complete breaking-wave
-trajectory has been shown to converge in space and time. Longer runs,
-independent physical references, and curved-interface extensions are needed
-to assess breaking-wave predictions.
-
-\section{Conclusions}
-Integrating streamfunction values over shared edges preserves liquid
-momentum on the reconstructed polygonal domain. Matching the embedded
-geometry to the receiver also prevents the liquid loss observed when the
-two geometries differ. These properties do not by themselves ensure
-accurate local velocities: on 12 selected native bed-cut cells, the
-original reconstruction reduces the pooled velocity error by a factor
-of 7.27 relative to a bilinear-streamfunction control, while an exact-field
-centroid control remains more accurate in the pooled thin-cell tests.
-
-For flat surface strips, the matched boundary extension makes the
-physical and neighbouring Cartesian edges share a trace. The local estimate
-explains why their common trace error cancels before division by strip
-thickness. Global initial velocity error is lower than that of the
-same-streamfunction control in all 21 analytic tests. In two-grid native
-smooth-wave continuations, the extension reduces propagated velocity error
-by factors of 7.88--10.25 and surface-profile error by 65.0--82.9 against
-same-grid, exact-input numerical trajectories. The improvement persists
-under a time-step halving. It measures the effect of transfer under common
-receiver settings; temporal error can change the ranking against a
-cross-step reference.
-
-Against an independent analytic two-fluid wave, the extension reduces
-endpoint physical surface-profile error by 4.91\% with the original
-receiver assignment. Combining it with density-weighted mixture assignment
-reduces that error by 52.19\% relative to the original practical transfer;
-with the assignment held fixed, the extension contributes a 5.49\%
-reduction. The flat-strip estimate does not extend to arbitrary curved cut
-cells, and the tested continuations do not validate a complete breaking-wave
-trajectory.
-
-\section*{Data and code availability}\phantomsection\label{sec:data-code}
-Code, experiment inputs, selected raw fields, and instructions are archived
-in release v0.31.0 of the accompanying software and numerical experiments
-\citep{baturin-transfer}. Its README identifies the larger historical
-archives by SHA-256 hash and distinguishes files in the public release from
-those retained separately. Repeating the native runs also requires the
-receiver executable and its runtime environment. Source snapshots for the
-historical linear-trace input generators were not retained, although
-compatibility checks reproduced their native input files byte for byte.
-Historical build records likewise do not establish the exact compile-time
-source patch of the receiver; the README documents these provenance limits.
-
-\section*{Funding}
-The work received no external funding.
-\section*{Conflict of interest}
-The author declares no competing interests.
-\section*{Additional information}
-\ifdefined\BlindReview
-The manuscript has one author.
-\else
-Saveliy Baturin is the sole author.
-\fi
-The work is original and has not been submitted to another journal.
 
 \begin{thebibliography}{99}
 \bibitem[Lachaume et al.(2003)]{lachaume}
@@ -1385,5 +1538,9 @@ S. Baturin, \emph{Geometry-consistent conservative transfer of potential-flow
 states to an embedded-boundary volume-of-fluid solver: code and numerical
 experiments}, version v0.31.0 (Zenodo, 2026).
 \url{https://doi.org/10.5281/zenodo.23104557}.
+\bibitem[Baturin(2026b)]{baturin-followup}
+S. Baturin, \emph{Three-grid transfer and two-grid physical-wave validation},
+code and numerical experiment package (2026).
+\href{https://github.com/Safreliy/wave_research/tree/e3ad0a9e0d5fa7c3399a23addb38874d345da5b2/research/releases/transfer_20261002}{GitHub, commit \texttt{e3ad0a9}}.
 \end{thebibliography}
 \end{document}

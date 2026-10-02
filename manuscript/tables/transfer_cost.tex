@@ -1,0 +1,13 @@
+\begin{table}[tbp]\centering\small
+\caption{CPU transfer cost in seconds: median [minimum, maximum] over three repetitions after one warm-up. Stages exclude file output, checkpoints and CFD evolution. Stage medians need not sum to the median total.}\label{tab:transfer-cost}
+\begin{tabular}{@{}lrr@{}}\toprule
+Stage & $512\times32$ & $1024\times64$\\\midrule
+Boundary trace & 0.0212 [0.0167, 0.0225] & 0.0450 [0.0409, 0.0483]\\
+Geometry and harmonic-system assembly & 0.1028 [0.1020, 0.1114] & 0.4387 [0.3556, 0.4480]\\
+Liquid harmonic solve & 0.0018 [0.0017, 0.0018] & 0.1013 [0.0539, 0.1332]\\
+Gas continuation & 0.0144 [0.0085, 0.0192] & 0.3019 [0.2840, 0.3689]\\
+Liquid-cell moments & 1.9355 [1.8201, 2.2680] & 12.3647 [10.1513, 12.4287]\\
+Remaining in-memory operations & 1.8810 [1.7302, 3.2785] & 11.1201 [10.4661, 12.9108]\\
+Transfer total, excluding trace & 3.8285 [3.7779, 5.6702] & 23.5884 [22.1545, 26.1844]\\
+\bottomrule\end{tabular}
+\end{table}

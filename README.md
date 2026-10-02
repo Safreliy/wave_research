@@ -7,17 +7,21 @@ states to an embedded-boundary volume-of-fluid solver** by Saveliy Baturin.
 
 - [Read the article (PDF)](manuscript/transfer_article.pdf), or use its
   [LaTeX source](manuscript/transfer_article.tex).
-- [Code, numerical experiments and replay instructions](research/releases/transfer_20261001/README.md)
-  accompany the transfer study, including the 21 analytic initial-field cases,
-  smooth-wave continuations and the two-fluid physical-reference comparison.
-- [Release title and description](RELEASE_v0.31.0.txt) and [citation metadata](CITATION.cff)
-  describe the v0.31.0 snapshot.
+- [New experiment package and replay instructions](research/releases/transfer_20261002/README.md)
+  provide the three-grid transfer tests, two-grid physical-wave comparison,
+  separate transfer timings and documented corrected receiver build.
+- [Original benchmark archive](research/releases/transfer_20261001/README.md)
+  retains the 21 analytic cases and earlier continuations.
+- [Revision response](AUDITOR_REVISION_RESPONSE.txt) records the theoretical,
+  experimental and presentation changes. [Next release text](RELEASE_v0.32.0.txt)
+  and [citation metadata](CITATION.cff) describe the prepared revision.
 
 Verify the publication files and numerical archive before analysis:
 
 ```sh
 python scripts/verify_transfer_publication.py
 python research/releases/transfer_20261001/verify_release.py
+python research/releases/transfer_20261002/verify_release.py --replay
 ```
 
 On Windows with an existing MiKTeX installation, build the current article with
@@ -29,9 +33,11 @@ twice from `manuscript/`.
 
 The archived **v0.31.0** code and numerical experiments are available at
 [doi:10.5281/zenodo.23104557](https://doi.org/10.5281/zenodo.23104557).
-The badge above links to the series of releases; cite the version DOI for
-these experiments. The current manuscript adds the archive citation after
-the release; the archived tag and experiment files remain unchanged.
+The badge above links to the series of releases. The current **0.32.0**
+revision adds evidence beyond that archive; it has no new version DOI yet.
+Cite the version DOI only for the v0.31.0 material and the repository commit
+for the new package. The archived tag and original experiment files remain
+unchanged.
 
 The older `manuscript/main.tex` and root `paper.pdf` describe the earlier
 variable-bathymetry study below. They are preserved as historical material

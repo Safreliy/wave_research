@@ -1,13 +1,20 @@
 # Data availability
 
-For the flat-strip transfer article in
-`manuscript/transfer_article.tex`, use
-[`research/releases/transfer_20261001/README.md`](research/releases/transfer_20261001/README.md)
-and its explicit `SHA256SUMS.json`. The archived version is
-[v0.31.0, doi:10.5281/zenodo.23104557](https://doi.org/10.5281/zenodo.23104557). The material below the next heading
-describes the earlier variable-bathymetry study. The new curated
-release includes selected raw native fields and independent endpoint audits,
-while a clean third-party GPU solver replay remains to be performed.
+The current flat-strip transfer article is `manuscript/transfer_article.tex`.
+Its new [experiment package](research/releases/transfer_20261002/README.md)
+contains all fields used by the three-grid dynamic and two-grid physical
+audits, initial refinement data, timings, source snapshots, build records,
+runtime configuration dependencies and SHA-256 manifests. The included
+verifier can repeat the three principal numerical audits from these files.
+This development revision has no new archival DOI yet.
+
+The [original benchmark package](research/releases/transfer_20261001/README.md)
+is archived as [v0.31.0, doi:10.5281/zenodo.23104557](https://doi.org/10.5281/zenodo.23104557).
+That DOI does not identify the later experiments. The earlier provenance
+limits remain documented with that package. The corrected receiver used
+for the new central comparisons has a matched source/build/runtime record;
+a new third-party clean GPU build and simulation replay has not been performed.
+The material below describes the separate earlier variable-bathymetry study.
 
 ## Earlier variable-bathymetry data
 

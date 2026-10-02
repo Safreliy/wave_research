@@ -1,9 +1,9 @@
 {
   "input_name": "result.json",
   "input_sha256": "e0a4cc400e09a48849e82ba87eea15bda1f8c1bc4a097b09740a74597c644bd5",
-  "plot_script_sha256": "af943a485cb5e8839ac98b95f3356858a3f98f3bfbed87ed9c7cc99a1ca852e1",
-  "pdf_sha256": "38ece49f21379726ba4f0119f8f8d01dfb7e1ca7320b8363f8d58b65a074e228",
-  "png_sha256": "589a08eb38fb9a17ffd119a70cfa0b760b1cc7109df9504c3b9382540c1aa745",
+  "plot_script_sha256": "7c9832cb002b88e38971f5adf3fc4f8cd029aa664d17df60beb45aa20fb78a2c",
+  "pdf_sha256": "52c2ca67509303c8f19ef3ea0da0f2189639043bf7bd4317a8ca3bda95bbb282",
+  "png_sha256": "f2054b8dc0028e4d8baab988d105196922b992dc84a33020b7b89f7d99cc1913",
   "metric": "unweighted relative Euclidean error over both surface and bed cut rows",
   "scope": "flat analytic field, varied top liquid fraction; oracle has exact interior information"
 }

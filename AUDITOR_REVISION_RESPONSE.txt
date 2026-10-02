@@ -1,0 +1,91 @@
+Response to the external manuscript assessment
+Revision date: 2 October 2026
+
+This document records changes against the assessment supplied by the author.
+It is a revision checklist, not a journal acceptance statement.
+
+1. Central contribution and geometric scope
+The introduction now distinguishes the general polygonal liquid-moment
+construction from the Matched extension for horizontal flat surface strips.
+Shared-edge cancellation is identified as a discrete Green identity. The
+new accuracy mechanism is cancellation of the common physical trace in the
+thin-strip edge difference. The overturning example remains a test of the
+general construction, not a validation of the flat-strip extension.
+
+2. Closest methods
+A compact table compares conservative scalar remapping, Curl-Flow, an
+embedded-boundary Stokes discretisation and the present construction by
+input/output, preserved property and objective. It does not rank accuracy
+between unrelated algorithms. The cited primary works support the entries.
+
+3. Analysis of the implemented operator
+Proposition 2 now bounds the actual blended edge operator, including the
+term beta(d/h)|I_C-J(d)|/d. The normal-derivative errors, their sampling
+contributions and the Taylor remainder are explicit. A conditional uniform
+second-order implication is separated from the fixed-grid removal of the
+1/d pole. The additional O(h^3) edge-compatibility assumption is not claimed
+to follow from pointwise second-order accuracy of the harmonic solve.
+
+4. Structure and terminology
+The main results start with the final Matched operator, its mechanism
+ablation, propagated transfer errors and independent physical comparison.
+Detailed earlier protocols, unsuccessful variants and ranking reversals
+remain in an appendix. Linear (L), Hermite (H), Matched (M) and Bilinear (B)
+are consistent across text, tables and plots. A five-step procedure connects
+geometry, reconstruction, edge integrals and receiver assignment.
+
+5. Targeted experiments
+The new campaign is recorded under transfer_auditor_revision_20261002.
+All policies were fixed before the corresponding outcomes were analysed.
+The fixed trace/grid-ratio initial comparison has three grids, 512x32,
+1024x64 and 2048x128, and trace factors 8, 16 and 32. Matched global errors
+are 1.4203093601e-3, 3.5377916132e-4 and 8.0414000273e-5; observed orders
+are 2.0053 and 2.1373. The source boundary state remains fixed, so this is
+not an upstream boundary-source convergence claim.
+All nine dynamic branches on the corrected receiver completed to 0.1T.
+The Bilinear-to-Matched endpoint velocity-error ratios are 7.882, 9.801 and
+17.807; the surface-profile ratios are 65.019, 73.825 and 102.376. Matched
+improves both metrics at every saved nonzero time on each grid. Relative
+mass discrepancy remains below 7.15e-13. This native comparison retains
+the explicitly declared 8/8/16 trace policy, distinct from the fixed-ratio
+initial refinement test. Earlier unmodified-runtime and half-step results
+remain available in the appendix rather than being silently replaced.
+CPU timings now isolate trace preparation and in-memory transfer, excluding
+serialization, checkpointing and CFD. Median transfer times on an Intel
+Core Ultra 7 155H are 3.8285 s and 23.5884 s for the two tested grids;
+the table reports all stage medians and ranges over three measured runs.
+The two-grid independent physical comparison is complete, with all six
+branches run on that same corrected runtime. Under identical mixture
+assignment, Matched reduces endpoint physical profile error by 5.4896%
+on 512x32 and 2.8123% on 1024x64. The full eight-row nonzero-time table
+retains the first coarse-grid sample where Bilinear is better; Matched is
+better at the other three coarse samples and all four fine samples. The
+fine-grid errors are 0.0095706471 for exact input, 0.0095740968 for Matched
+and 0.0098511410 for Bilinear. Physical refinement and propagated transfer
+accuracy are kept distinct in the interpretation.
+
+6. Reproducibility
+The corrected Aphros runtime is tied to its saved build receipt and patched
+source snapshot. The fresh source tree matches all 1605 recorded source
+files byte for byte; the only absent archive member is a generated manifest.
+Executable/library hashes are checked against the build record. The narrow
+zero-displacement guard and the full source changes are retained separately.
+This verification does not claim a new independent clean rebuild.
+The original v0.31.0 tag, Zenodo record and frozen numerical archives are
+preserved. New follow-up evidence is not attributed to that earlier DOI.
+
+7. Deliberate scope limits
+No 3D or curved-interface extension is introduced. A new analytic curved
+boundary benchmark was optional in the assessment and is not needed for
+the explicitly flat-strip accuracy claim. Existing curved-state tests and
+their limits are retained. No complete breaking-wave convergence claim is
+made. CMMP remains the intended venue; no submission has been made here.
+
+8. Final checks
+The new supplement contains 93 manifest-listed files and all 15 completed
+native runs. Its standalone verifier checks 180 input files and successfully
+recomputes all three principal numerical audits from the archived fields.
+The evidence is fixed at repository commit e3ad0a9e0d5fa7c3399a23addb38874d345da5b2.
+The publication PDF is built from the revised source with two pdfLaTeX
+passes; the publication manifest and build receipt link source, tables,
+figures and PDF by SHA-256. The original v0.31.0 release is unchanged.

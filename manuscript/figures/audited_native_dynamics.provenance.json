@@ -1,0 +1,8 @@
+{
+  "input_name": "dynamic_three_grid_audit.json",
+  "input_sha256": "c9bbbb329f874fcb9fc1b01cd479b7222142b231431849739fc5972ddde9eed3",
+  "generator_sha256": "eb47e2b1f9611b7f6cb051b4d931eba295dab4008294db0a258d63d0f76fc285",
+  "pdf_sha256": "f25c33548376dce8fff4227119d38c814f3ac56f47ea13c1da55e6783d82855d",
+  "png_sha256": "810f4cc538d0512cc7159415470fbeb5e4e90e0ffa720121fcf798d8adb2c8c4",
+  "scope": "same-grid exact-input numerical reference, common corrected receiver runtime"
+}

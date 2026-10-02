@@ -1,7 +1,7 @@
 """Verify the current transfer publication snapshot and its evidence manifest.
 
-After intentional publication edits, --refresh updates both manifests. Frozen
-scientific archives may not be changed by that operation.
+After intentional publication edits, --refresh updates the publication manifest.
+Both scientific evidence manifests remain immutable to that operation.
 """
 from __future__ import annotations
 
@@ -12,8 +12,10 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = ROOT / 'research/releases/transfer_20261001'
+RELEASES = [ROOT / ('research/releases/transfer_' + date)
+            for date in ('20261001', '20261002')]
 MANIFEST = ROOT / 'TRANSFER_PUBLICATION_SHA256SUMS.json'
+RECEIPT = ROOT / 'manuscript/transfer_article.build.json'
 
 
 def sha(path):
@@ -41,10 +43,19 @@ def verify(root, entries):
 
 def publication_files():
     names = ['CITATION.cff', 'README.md', 'DATA_AVAILABILITY.md', 'LICENSE.md',
-             'RELEASE_v0.31.0.txt', '.gitattributes', '.gitignore',
+             'RELEASE_v0.31.0.txt', 'RELEASE_v0.32.0.txt',
+             'AUDITOR_REVISION_RESPONSE.txt', '.gitattributes', '.gitignore',
              'scripts/build_transfer_pdf.py', 'scripts/verify_transfer_publication.py',
              'manuscript/transfer_article.tex', 'manuscript/transfer_article.pdf',
-             'research/releases/transfer_20261001/SHA256SUMS.json']
+             'manuscript/transfer_article.build.json',
+             'research/releases/transfer_20261001/SHA256SUMS.json',
+             'research/releases/transfer_20261002/SHA256SUMS.json']
+    names += ['scripts/' + name for name in (
+        'summarize_matched_boundary_extension.py', 'summarize_transfer_dynamics.py',
+        'summarize_physical_wave.py', 'summarize_mixture_factorial.py',
+        'plot_transfer_stress.py', 'plot_transfer_dynamics.py',
+        'plot_matched_native_dynamics.py', 'summarize_auditor_revision.py',
+        'plot_audited_dynamics.py')]
     source = (ROOT / 'manuscript/transfer_article.tex').read_text(encoding='utf-8')
     for relative in re.findall(r'\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}', source):
         for suffix in ('.pdf', '.png', '.provenance.json'):
@@ -61,30 +72,24 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--refresh', action='store_true')
     args = parser.parse_args()
-    evidence_manifest = RELEASE / 'SHA256SUMS.json'
+    for release in RELEASES:
+        evidence = json.loads((release / 'SHA256SUMS.json').read_text(encoding='utf-8'))
+        verify(release, evidence['files'])
+    receipt = json.loads(RECEIPT.read_text(encoding='utf-8'))
+    if receipt['pdf_sha256'] != sha(ROOT / 'manuscript/transfer_article.pdf'):
+        raise AssertionError('PDF differs from the checked build receipt')
+    for name, expected in receipt['input_sha256'].items():
+        if sha(ROOT / name) != expected:
+            raise AssertionError('Build input changed: ' + name)
     if args.refresh:
-        old = json.loads(evidence_manifest.read_text(encoding='utf-8'))
-        verify(RELEASE, [item for item in old['files'] if item['path'].endswith('.tar.gz')])
-        files = [p for p in sorted(RELEASE.rglob('*'))
-                 if p.is_file() and p != evidence_manifest and '__pycache__' not in p.parts
-                 and p.suffix != '.pyc']
-        evidence_manifest.write_text(json.dumps({
-            'schema': 'transfer-20261001-explicit-allowlist-v1',
-            'files': [entry(p, RELEASE) for p in files]}, indent=2)+'\n', encoding='utf-8')
         MANIFEST.write_text(json.dumps({
-            'schema': 'transfer-publication-snapshot-v1', 'version': '0.31.0',
+            'schema': 'transfer-publication-snapshot-v2', 'version': '0.32.0',
             'scope': 'Current transfer manuscript, publication metadata and numerical evidence manifest; historical root paper.pdf is a separate study.',
             'files': [entry(p, ROOT) for p in publication_files()]}, indent=2)+'\n', encoding='utf-8')
     manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
     verify(ROOT, manifest['files'])
     if {item['path'] for item in manifest['files']} != {p.relative_to(ROOT).as_posix() for p in publication_files()}:
         raise AssertionError('Publication allowlist differs from current source dependencies')
-    receipt = json.loads((RELEASE / 'results/manuscript_build_20261002.json').read_text())
-    if receipt['pdf_sha256'] != sha(ROOT / 'manuscript/transfer_article.pdf'):
-        raise AssertionError('PDF differs from the checked build receipt')
-    for name, expected in receipt['input_sha256'].items():
-        if sha(ROOT / name) != expected:
-            raise AssertionError('Build input changed: ' + name)
     print(json.dumps({'publication_files_verified': len(manifest['files']),
                       'pdf_pages': receipt['pdf_pages'], 'version': manifest['version']}))
 

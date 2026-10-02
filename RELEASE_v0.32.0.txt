@@ -1,0 +1,28 @@
+Prepared tag: v0.32.0 (not created by this revision)
+
+Title:
+Geometry-consistent conservative transfer of potential-flow states to an embedded-boundary volume-of-fluid solver: revised theory and numerical validation
+
+Description:
+
+This release strengthens the analysis and numerical validation of a conservative transfer method for potential-flow states and an embedded-boundary volume-of-fluid receiver. The manuscript now centres on a shared boundary trace that removes a thin-strip error-amplification mechanism. Its error bound covers the implemented blended operator, with explicit derivative-sampling and edge-compatibility terms.
+
+The new evidence package includes a three-grid initial-transfer study, nine dynamic branches on one documented corrected Aphros runtime, a two-grid physical-wave comparison, and separate CPU transfer timings. Initial Matched errors show observed refinement orders of 2.005 and 2.137. In the three-grid continuations, Matched transfer reduces endpoint velocity discrepancies by factors of 7.88-17.81 and surface-profile discrepancies by 65.0-102.4 relative to same-grid numerical trajectories started from exact cell means. Under identical density-weighted mixture assignment, endpoint physical profile errors fall by 5.49% on 512x32 and 2.81% on 1024x64. The independent two-fluid comparison retains every recorded nonzero time, including the first coarse-grid time where Bilinear is better.
+
+Source snapshots, build receipts, runtime configuration dependencies, input hashes and full native output fields are included. The verifier repeats the three principal numerical audits from the archived fields. The manuscript also adds a comparison with related methods, a transfer algorithm and consistent notation. Earlier variants, failures and time-step controls remain in the appendix.
+
+See research/releases/transfer_20261002/README.md for the new package and its replay commands. The earlier v0.31.0 archive remains available at https://doi.org/10.5281/zenodo.23104557; that DOI does not identify these additional experiments.
+
+Original research code is MIT-licensed. The original manuscript, figures and derived data are CC BY 4.0. Third-party material retains its own licence; see LICENSE.md for scope.
+
+Archival metadata:
+Resource type: Software
+Creator: Saveliy Baturin
+Affiliation: Independent Researcher
+ORCID: https://orcid.org/0009-0005-4410-9520
+Release version: 0.32.0
+Licences: MIT for original code; CC BY 4.0 for manuscript, figures and original derived data, with file-specific scope.
+
+The repository metadata is prepared for version 0.32.0; the tag and release have not been created.
+Create v0.32.0 from the completed revision, then use its new Zenodo version
+DOI for the new evidence. Preserve the existing v0.31.0 tag and DOI.

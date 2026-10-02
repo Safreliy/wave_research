@@ -1,12 +1,12 @@
 \begin{table}[tbp]\centering\small
 \caption{Global propagated transfer errors at $t=0.1T$. The trace factor
 is the number of trace samples per original source segment. Ratios
-$R_u=E_u^{\rm control}/E_u^{\rm fitted}$ and $R_H$ for wave-normalised
-column depth exceed one when the fitted transfer is better. Every
+$R_u=E_u^B/E_u^L$ and $R_H$ for wave-normalised
+column depth exceed one when Linear (L) is better than Bilinear (B). Every
 comparison uses a reference with the same grid and time-step limit.}
 \label{tab:dynamic-errors}
 \begin{tabular}{rrrrrrr}\toprule
-$n_x$ & Trace & $10^3\Delta t_{\max}$ & $E_u^{\rm fitted}$ & $E_u^{\rm control}$ & $R_u$ & $R_H$ \\
+$n_x$ & Trace & $10^3\Delta t_{\max}$ & $E_u^L$ & $E_u^B$ & $R_u$ & $R_H$ \\
 \midrule
 512 & 8 & 2.5 & 0.03988 & 0.01386 & 0.35 & 0.64 \\
 512 & 8 & 1.25 & 0.04084 & 0.01419 & 0.35 & 0.60 \\

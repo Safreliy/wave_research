@@ -1,0 +1,30 @@
+\begin{table}[tbp]\centering\small
+\caption{Related numerical constructions and the transfer problem considered here.
+The rows compare their inputs and objectives; they are not a ranking of accuracy.}
+\label{tab:related-methods}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}
+                  >{\raggedright\arraybackslash}p{0.23\linewidth}
+                  >{\raggedright\arraybackslash}p{0.25\linewidth}
+                  >{\raggedright\arraybackslash}p{0.25\linewidth}@{}}
+\toprule
+Construction & Input and output & Main property & Relation to the present problem\\
+\midrule
+Conservative remapping~\citep{ullrich}
+& Discretised scalar fields on a source mesh to fields on a target mesh.
+& Global integral and constant fields; monotonicity for suitable maps.
+& Mesh-to-mesh transfer of scalar fields, rather than liquid velocity means from boundary data.\\[5pt]
+Curl-Flow~\citep{curlflow}
+& Discretely divergence-free staggered velocities to a continuous velocity interpolant.
+& Pointwise incompressibility and solid-wall non-penetration.
+& Reconstructs a vector potential from grid velocities; the target is pointwise interpolation.\\[5pt]
+High-order embedded-boundary Stokes method~\citep{overton}
+& Cell data and boundary conditions to a finite-volume time evolution.
+& High-order spatial operators with an approximate incompressibility projection.
+& Uses geometric moments and Taylor reconstruction to discretise a flow solver.\\[5pt]
+Present construction
+& Potential-flow boundary data to liquid-cell velocity means on receiver polygons.
+& Shared-edge liquid-moment balance; cancellation of common trace error in flat strips.
+& Matches the physical and adjacent Cartesian edge averages before division by strip thickness.\\
+\bottomrule
+\end{tabular}
+\end{table}

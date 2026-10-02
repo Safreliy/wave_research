@@ -1,0 +1,9 @@
+\begin{table}[tbp]\centering\small
+\caption{Initial liquid-volume-weighted velocity error under joint grid and trace refinement (W16). The refined trace spacing is $h/8$ on each grid. Orders compare successive rows; the source boundary state has 512 nodes throughout.}\label{tab:joint-refinement}
+\begin{tabular}{@{}rrrrrrr@{}}\toprule
+$n_x$ & Trace points & $E_M$ & Order & $E_B$ & Order & $E_B/E_M$\\\midrule
+512 & 4096 & 1.4203e-03 & --- & 4.0869e-03 & --- & 2.88\\
+1024 & 8192 & 3.5378e-04 & 2.005 & 1.0898e-03 & 1.907 & 3.08\\
+2048 & 16384 & 8.0414e-05 & 2.137 & 3.3498e-04 & 1.702 & 4.17\\
+\bottomrule\end{tabular}
+\end{table}

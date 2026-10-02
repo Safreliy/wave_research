@@ -1,12 +1,12 @@
 {
-  "schema": "transfer-publication-snapshot-v1",
-  "version": "0.31.0",
+  "schema": "transfer-publication-snapshot-v2",
+  "version": "0.32.0",
   "scope": "Current transfer manuscript, publication metadata and numerical evidence manifest; historical root paper.pdf is a separate study.",
   "files": [
     {
       "path": ".gitattributes",
-      "size": 1080,
-      "sha256": "2d636c34fca7f7580fbce267bd9457f515d49c72bc8b1a2676bcd93c5cb5767a"
+      "size": 2145,
+      "sha256": "c9323bdee3cfe95df56f2e872c5905a5eeda5d0ba9d6c3a7432e713adc4e8991"
     },
     {
       "path": ".gitignore",
@@ -14,14 +14,19 @@
       "sha256": "50000f5b9a4e8f8158e25d9fe02fc4f19001c6388cd0293cbb52a6f2be46855a"
     },
     {
+      "path": "AUDITOR_REVISION_RESPONSE.txt",
+      "size": 5620,
+      "sha256": "dc4155202dece2455f2001f602342e7df293b43192bb3cdd2fed51faf8e483ef"
+    },
+    {
       "path": "CITATION.cff",
-      "size": 1406,
-      "sha256": "43746e8d2d0b6d22ce32680e5f635d55bddad8c93f1781ad7cc5557fbf62253c"
+      "size": 1722,
+      "sha256": "dee16068092e4d2a946ed934d6d5061224a6fc763bc5d79e4b6dfb4d77fd80b0"
     },
     {
       "path": "DATA_AVAILABILITY.md",
-      "size": 3155,
-      "sha256": "ce851042730484362aaf4dd61e2a24ad44cf7f60926f8d5914cceacbc38b438a"
+      "size": 3721,
+      "sha256": "b7c1ae4eef21da9c50ed080e369e2259308865d9836138f5df0c39be25c76af5"
     },
     {
       "path": "LICENSE.md",
@@ -30,13 +35,33 @@
     },
     {
       "path": "README.md",
-      "size": 7352,
-      "sha256": "71f9b3f17a37d8e57167bdee5c1584b97a68e124da669e898d507b94fc58ba0c"
+      "size": 7921,
+      "sha256": "8f678b8fff4c4cee442e36152928f004fb5fa56169f8f398c4df2c747b052eac"
     },
     {
       "path": "RELEASE_v0.31.0.txt",
       "size": 3293,
       "sha256": "5cca6e37d94aeacb30f73593e8dd97af60b566f0155897de3c7fc96840828762"
+    },
+    {
+      "path": "RELEASE_v0.32.0.txt",
+      "size": 2810,
+      "sha256": "cfc069db2068d49138b159b18562f75d76a35e36193da15ad06bb84e5842f31a"
+    },
+    {
+      "path": "manuscript/figures/audited_native_dynamics.pdf",
+      "size": 25553,
+      "sha256": "f25c33548376dce8fff4227119d38c814f3ac56f47ea13c1da55e6783d82855d"
+    },
+    {
+      "path": "manuscript/figures/audited_native_dynamics.png",
+      "size": 122808,
+      "sha256": "810f4cc538d0512cc7159415470fbeb5e4e90e0ffa720121fcf798d8adb2c8c4"
+    },
+    {
+      "path": "manuscript/figures/audited_native_dynamics.provenance.json",
+      "size": 495,
+      "sha256": "394527641dbc93f35418eb60f7f38cf4b5d5ac17e554b95fe02e0f87904eb0b9"
     },
     {
       "path": "manuscript/figures/fixed_wave_geometry.pdf",
@@ -55,33 +80,33 @@
     },
     {
       "path": "manuscript/figures/flat_sliver_comparison.pdf",
-      "size": 21963,
-      "sha256": "38ece49f21379726ba4f0119f8f8d01dfb7e1ca7320b8363f8d58b65a074e228"
+      "size": 21629,
+      "sha256": "52c2ca67509303c8f19ef3ea0da0f2189639043bf7bd4317a8ca3bda95bbb282"
     },
     {
       "path": "manuscript/figures/flat_sliver_comparison.png",
-      "size": 85384,
-      "sha256": "589a08eb38fb9a17ffd119a70cfa0b760b1cc7109df9504c3b9382540c1aa745"
+      "size": 84241,
+      "sha256": "f2054b8dc0028e4d8baab988d105196922b992dc84a33020b7b89f7d99cc1913"
     },
     {
       "path": "manuscript/figures/flat_sliver_comparison.provenance.json",
       "size": 576,
-      "sha256": "4558dc57422e9426c6690366da7f3a3b6310f2375e3e708f1ab9b0c26fb7af27"
+      "sha256": "ad425255a715cde9242331fec2a8d7da1fc71bf996b857e59ad4511fea513490"
     },
     {
       "path": "manuscript/figures/matched_native_dynamics.pdf",
-      "size": 20127,
-      "sha256": "a38d31ba3841f427a4110cb37744c070650d44802e82c1945acb01311a0e7628"
+      "size": 20884,
+      "sha256": "336d98b21dd138d24fff23ef3ff1f7c67888fd7111de7f0959df1f752385d2f3"
     },
     {
       "path": "manuscript/figures/matched_native_dynamics.png",
-      "size": 101479,
-      "sha256": "c8c22b81c0d94f88797c295c9272c642ba0c95231900047d91e2ac22d70aaafd"
+      "size": 99359,
+      "sha256": "2e5596b4e7e1ba9c1841ccd2981c2eb47bc068e965f9ff3bc0199eb270352696"
     },
     {
       "path": "manuscript/figures/matched_native_dynamics.provenance.json",
       "size": 812,
-      "sha256": "325b172ca3359c1e213fc2b02912ec63a16e62129e38929b8af3ac688841a697"
+      "sha256": "afb203ad47b2b74231cdf10a4422ab55976843b45cb9ad3f41d07575fb1ecfe5"
     },
     {
       "path": "manuscript/figures/method_principle.pdf",
@@ -100,18 +125,38 @@
     },
     {
       "path": "manuscript/figures/native_transfer_dynamics.pdf",
-      "size": 21891,
-      "sha256": "f21717b960e9874075d7ce43dd2859bf2a1e0757524d4302aa356f44c8ea2a2d"
+      "size": 22434,
+      "sha256": "268c7c445e9c91a217350213573f07f5cf0536eeb70f6de4a983335178447e8a"
     },
     {
       "path": "manuscript/figures/native_transfer_dynamics.png",
-      "size": 76601,
-      "sha256": "60d089b539e000807846bbec87901704f5b1e04702c39303b41e06e0e04b6a03"
+      "size": 73186,
+      "sha256": "a8e7d675e541ffc134a8eb8b3533671e1ba7de9d526729c157eb85e1809c8d82"
     },
     {
       "path": "manuscript/figures/native_transfer_dynamics.provenance.json",
       "size": 1341,
-      "sha256": "9d9c102455be4b1d6262dbdb0968e53768221588c8e721a10c6ab134f96aee54"
+      "sha256": "8993816f7f57ec526baadd2a543a9c9cd8a08ccd990f5088e8a36badd1ebe9ba"
+    },
+    {
+      "path": "manuscript/tables/audited_dynamics.provenance.json",
+      "size": 310,
+      "sha256": "463a99ab1249967a1d56e8675c0458946be246be6209b1b8314c58ab9dabb4f3"
+    },
+    {
+      "path": "manuscript/tables/audited_dynamics.tex",
+      "size": 717,
+      "sha256": "7de75b4b8a0a0676e2ee5a4c1192e70d787d03e716c899ed0c7f46afd8d0cc23"
+    },
+    {
+      "path": "manuscript/tables/joint_refinement.provenance.json",
+      "size": 316,
+      "sha256": "1f595bd555253e7341c99d0069d25bdf1adbc1033cf7865ec946b6d132987ba8"
+    },
+    {
+      "path": "manuscript/tables/joint_refinement.tex",
+      "size": 642,
+      "sha256": "169a1832b5bba973961f04d193d71fdbe163378ecf80b138e4982d10a5d6ee66"
     },
     {
       "path": "manuscript/tables/matched_boundary_extension.provenance.json",
@@ -120,8 +165,8 @@
     },
     {
       "path": "manuscript/tables/matched_boundary_extension.tex",
-      "size": 1421,
-      "sha256": "d64c5626978b806f03d6f147e0a5afd2cd7e5806ac2205c9fd3e1ea95ecf155b"
+      "size": 1473,
+      "sha256": "a8d2b23e76c1f35940dc2648ab3d8ab4d949b1cc045607253da509247b9faee3"
     },
     {
       "path": "manuscript/tables/mixture_factorial.provenance.json",
@@ -130,13 +175,23 @@
     },
     {
       "path": "manuscript/tables/mixture_factorial.tex",
-      "size": 597,
-      "sha256": "cf1926998b9ead3ff85ef66481229e0194720fa490aa4dfceb3fd7156c92fb0d"
+      "size": 604,
+      "sha256": "d154b9008a83165aa32007e372eafe312fea7d0249ff3c4957a38a44e2556150"
     },
     {
       "path": "manuscript/tables/native_dynamic_errors.tex",
-      "size": 1027,
-      "sha256": "304cf2524dab28089fe54b5ef4a5562bd708265ce0534e52c6c869d8d12baa8f"
+      "size": 990,
+      "sha256": "1a4edd224837aa033e3759cd343d3a36126e3735390b87a32c760ec2a9dd5737"
+    },
+    {
+      "path": "manuscript/tables/physical_refinement.provenance.json",
+      "size": 309,
+      "sha256": "78052159be9aa36557d224f8a062b1aa5ba0ac8fa96766c8e57a7d9a5f5514f2"
+    },
+    {
+      "path": "manuscript/tables/physical_refinement.tex",
+      "size": 1019,
+      "sha256": "da92ea91f97e5633f1b7da03be8e06fcaa273d453291ee3a766f047847cf2e08"
     },
     {
       "path": "manuscript/tables/physical_wave_comparison.provenance.json",
@@ -145,18 +200,38 @@
     },
     {
       "path": "manuscript/tables/physical_wave_comparison.tex",
-      "size": 697,
-      "sha256": "ee9cd07d11f96617eded85fdd4613c6352f899c69709a152d240aa21ee324962"
+      "size": 695,
+      "sha256": "a16eb28100d3ae4656aa10591e871d1e039d958f082c6a6ece42909a6e627151"
+    },
+    {
+      "path": "manuscript/tables/related_methods.tex",
+      "size": 1791,
+      "sha256": "cdd6457fc6a430683a481fb532a31bd5d5f5c5179d431002b2e04e1e5a1e2b2b"
+    },
+    {
+      "path": "manuscript/tables/transfer_cost.provenance.json",
+      "size": 383,
+      "sha256": "54e686eca503605bb2709c8babcd03bdb1a1f717b7508bab7b16004992155c0d"
+    },
+    {
+      "path": "manuscript/tables/transfer_cost.tex",
+      "size": 971,
+      "sha256": "c59c8ebd71e2350bc2e4150057ba79112e72410735d228af495b82606305e20c"
+    },
+    {
+      "path": "manuscript/transfer_article.build.json",
+      "size": 2628,
+      "sha256": "b04296161a1cf6112477970c96c933d89493328d65f3750a89684247a12170c4"
     },
     {
       "path": "manuscript/transfer_article.pdf",
-      "size": 377074,
-      "sha256": "16d7d43cf640f10d43e1b9f261dbb108fc2d62384e612fad0ca28758319318ff"
+      "size": 425967,
+      "sha256": "3206099845496bafa5de9900ec49c2afad6e4b177247abceb8fd5e79603d306a"
     },
     {
       "path": "manuscript/transfer_article.tex",
-      "size": 77154,
-      "sha256": "d0559ef69ba0af759d1e1efd992ad840bbe27f4447f97351e32f555bbfcd37a3"
+      "size": 86553,
+      "sha256": "99b127b08063ecc614f02cf65076faa6d18f51cc356b1ee091084d418ccad37e"
     },
     {
       "path": "research/releases/transfer_20261001/SHA256SUMS.json",
@@ -164,14 +239,64 @@
       "sha256": "de27561778a413bbc4a6d114e4247f36586f3e97ab11002375fc2b5f79a1ca63"
     },
     {
+      "path": "research/releases/transfer_20261002/SHA256SUMS.json",
+      "size": 17024,
+      "sha256": "b9cfe80b55648d058e7041f14ffb6963eb83b6a35ba3bfd8a6abbabb0df4cd52"
+    },
+    {
       "path": "scripts/build_transfer_pdf.py",
       "size": 6194,
       "sha256": "6d2e04aef45d807d62e7bd693ca97fdae7f4959cf2c0c338929850fbf83bb7bf"
     },
     {
+      "path": "scripts/plot_audited_dynamics.py",
+      "size": 3268,
+      "sha256": "eb47e2b1f9611b7f6cb051b4d931eba295dab4008294db0a258d63d0f76fc285"
+    },
+    {
+      "path": "scripts/plot_matched_native_dynamics.py",
+      "size": 2923,
+      "sha256": "7a3fb0f251568093f61edde82470c7670938073c45dbb1f1875bc1c4e343b728"
+    },
+    {
+      "path": "scripts/plot_transfer_dynamics.py",
+      "size": 3575,
+      "sha256": "33cc1791f68bf359eb1152762d15ec0a93620600cc97fb24f71419d8b69a30d5"
+    },
+    {
+      "path": "scripts/plot_transfer_stress.py",
+      "size": 3215,
+      "sha256": "7c9832cb002b88e38971f5adf3fc4f8cd029aa664d17df60beb45aa20fb78a2c"
+    },
+    {
+      "path": "scripts/summarize_auditor_revision.py",
+      "size": 6883,
+      "sha256": "26c8db611554f29eb3893beb8e2706526bc662e6fd14002c190d1abb3d59d436"
+    },
+    {
+      "path": "scripts/summarize_matched_boundary_extension.py",
+      "size": 2294,
+      "sha256": "728da49f4f55e8ee13dd3ecfce4ca570c6b726e060936ed2260143e112d50061"
+    },
+    {
+      "path": "scripts/summarize_mixture_factorial.py",
+      "size": 2214,
+      "sha256": "16165eeca266da27089b8ba85f6942fae2e861bff46dd406bf401863efe477f8"
+    },
+    {
+      "path": "scripts/summarize_physical_wave.py",
+      "size": 2068,
+      "sha256": "fdf74e1e2e41679d35af07398489915ae6f3df4268a119adc460056de60a7e71"
+    },
+    {
+      "path": "scripts/summarize_transfer_dynamics.py",
+      "size": 4578,
+      "sha256": "7faa17585482180f3733eb9174115d35d9d39535601926331a7e8591412481bc"
+    },
+    {
       "path": "scripts/verify_transfer_publication.py",
-      "size": 4393,
-      "sha256": "d8e48eb0deeac31c80461d4e1668d142a6574c7c826d18a04fd53709efab9c68"
+      "size": 4710,
+      "sha256": "e367117cf12f9916df22901460da115bf728b0c9ba6c97c8e6c97f4010275716"
     }
   ]
 }

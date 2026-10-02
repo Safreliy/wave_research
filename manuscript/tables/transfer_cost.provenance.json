@@ -1,0 +1,8 @@
+{
+  "sources": {
+    "cost_L9.json": "24b1ded1d6c2da9ce9bc07b17e59b742191867b9045ae11d9c7024f5ea881019",
+    "cost_L10.json": "72ca195a5f6c6dde3d486857a7de5333cde344e1b1a8c8ac8fd62e014675f41a"
+  },
+  "generator_sha256": "26c8db611554f29eb3893beb8e2706526bc662e6fd14002c190d1abb3d59d436",
+  "table_sha256": "c59c8ebd71e2350bc2e4150057ba79112e72410735d228af495b82606305e20c"
+}
