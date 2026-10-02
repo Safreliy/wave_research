@@ -1,12 +1,14 @@
 {
-  "schema": "matched-flat-scheme-v1",
-  "scope": "conceptual flat-boundary schematic, not a computed field or curved-interface construction",
+  "schema": "matched-flat-scheme-v7",
+  "scope": "conceptual flat-strip comparison isolating a common streamfunction trace offset; not computed data or a curved-interface construction",
+  "delta_definition": "difference of independent streamfunction edge approximation errors, not geometric displacement",
+  "visual_encoding": "paired markers are edge values on a horizontal psi scale; vertical separation is a before/after stage; parallelogram denotes equal shifts and trapezoid unequal shifts",
   "notation_source": [
     "eq:matched-jet",
-    "eq:matched-strip-mean",
-    "eq:mixture-projection"
+    "eq:matched-strip-mean"
   ],
-  "code_sha256": "344ba3c1a64c01683f58162cf1402588d0e341debe8b0c2d4d88cbaa72e16e34",
-  "pdf_sha256": "74027cca70df822f81fc34de4719309ec051b3f48056b18f611c8a0bd3a7f5c3",
-  "png_sha256": "6b104b4af387cfc25a8c32fab0795d4c6a1d627bb9c35d0a23b6e2589bee85ab"
+  "suggested_caption": "Common-trace cancellation in a flat liquid strip. The inset defines geometric thickness d and horizontal mean velocity from the streamfunction gap. In the value diagram, open markers show reference edge means and filled markers their representations; the vertical separation denotes stages, not spatial height. Equal trace shifts preserve the gap (parallelogram), whereas independent edge errors alter it by delta (trapezoid), contributing delta/d to the mean velocity. Derivative and interior errors remain outside this isolated trace-error term.",
+  "code_sha256": "021e52328c7b606f177798a188a53e54b398aa44bda40b1cd30df5df9c116346",
+  "pdf_sha256": "d37b211044bb224f1a4a4bc335c2157e4d7f314019fbc6e32396dbac3383dcf0",
+  "png_sha256": "0cce876ffae4b90ad634fcd51fc6fb5c8c16357933fa8750553a613ec530a2b0"
 }

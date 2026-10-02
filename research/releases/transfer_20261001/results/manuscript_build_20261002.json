@@ -1,0 +1,35 @@
+{
+  "built_at_utc": "2026-10-02T13:50:32.517424+00:00",
+  "passes": [
+    {
+      "number": 1,
+      "exit_code": 0,
+      "unresolved": [],
+      "overfull_hboxes": 0
+    },
+    {
+      "number": 2,
+      "exit_code": 0,
+      "unresolved": [],
+      "overfull_hboxes": 0
+    }
+  ],
+  "input_sha256": {
+    "manuscript/transfer_article.tex": "520c7a29ca770934285e8458504c3ac6efcd6efdccb319b979c5fcadf8b27297",
+    "manuscript/figures/fixed_wave_geometry.pdf": "b53cf0b2885c277b6922fb16f4cdc3d728df0f754d5e8a0e41471b19cd03d69d",
+    "manuscript/figures/flat_sliver_comparison.pdf": "38ece49f21379726ba4f0119f8f8d01dfb7e1ca7320b8363f8d58b65a074e228",
+    "manuscript/figures/matched_native_dynamics.pdf": "a38d31ba3841f427a4110cb37744c070650d44802e82c1945acb01311a0e7628",
+    "manuscript/figures/method_principle.pdf": "d37b211044bb224f1a4a4bc335c2157e4d7f314019fbc6e32396dbac3383dcf0",
+    "manuscript/figures/native_transfer_dynamics.pdf": "f21717b960e9874075d7ce43dd2859bf2a1e0757524d4302aa356f44c8ea2a2d",
+    "manuscript/tables/matched_boundary_extension.tex": "d64c5626978b806f03d6f147e0a5afd2cd7e5806ac2205c9fd3e1ea95ecf155b",
+    "manuscript/tables/mixture_factorial.tex": "cf1926998b9ead3ff85ef66481229e0194720fa490aa4dfceb3fd7156c92fb0d",
+    "manuscript/tables/native_dynamic_errors.tex": "304cf2524dab28089fe54b5ef4a5562bd708265ce0534e52c6c869d8d12baa8f",
+    "manuscript/tables/physical_wave_comparison.tex": "ee9cd07d11f96617eded85fdd4613c6352f899c69709a152d240aa21ee324962"
+  },
+  "pdf_sha256": "d5e55c5f6e86fa7eb60eca376f3f16feb74df0ad4061740cfc5e0154d01b6a30",
+  "pdf_bytes": 376257,
+  "pdf_pages": 18,
+  "schema": "transfer-manuscript-build-v1",
+  "compiler": "pdfLaTeX (MiKTeX), two successful passes",
+  "scope": "Current manuscript build; no scientific experiments rerun for this editorial snapshot."
+}

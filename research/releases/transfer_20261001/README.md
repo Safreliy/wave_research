@@ -5,8 +5,11 @@ root. It contains the frozen numerical evidence for the flat-strip matched
 boundary operator, the same-grid native propagation comparison, and the
 small-amplitude two-fluid test. The older repository files
 `manuscript/main.tex` and `paper.pdf` concern an earlier bathymetry study;
-they are **not** the manuscript represented by this release. No DOI, journal
-acceptance, or new compiled PDF is claimed here.
+they are **not** the manuscript represented by this release. The current
+compiled article is [`manuscript/transfer_article.pdf`](../../../manuscript/transfer_article.pdf).
+The manuscript and figures were updated on 2 October 2026; the numerical
+archives retain their original bytes. This is a research software and data
+release accompanying a manuscript, not a journal publication.
 
 ## Contents and integrity
 
@@ -103,4 +106,14 @@ Original research code in `research/` is MIT-licensed; manuscript, figures
 and original derived data are CC BY 4.0 under the repository `LICENSE.md`.
 The Aphros material keeps its own MIT licence, copied to `solver_patch/APHROS_LICENSE`
 and `native_source_provenance/aphros_LICENSE`. This release does not relicense
-third-party code. Cite the repository's `CITATION.cff`; there is no DOI yet.
+third-party code. Cite the repository's `CITATION.cff` and the DOI of the archived version used.
+
+## Publication snapshot
+
+`TRANSFER_PUBLICATION_SHA256SUMS.json` at the repository root covers the
+current article PDF, LaTeX source, figure/table assets and publication tools.
+Run `python scripts/verify_transfer_publication.py` from the repository root.
+The build receipt is `results/manuscript_build_20261002.json`; the older
+`results/manuscript_draftmode_validation.json` is an earlier source check,
+not the build record for the current PDF. The native experiments were not
+rerun for the editorial update.

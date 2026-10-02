@@ -1,0 +1,25 @@
+GitHub release tag: v0.31.0
+
+Title:
+Geometry-consistent conservative transfer of potential-flow states to an embedded-boundary volume-of-fluid solver: code and numerical experiments
+
+Description (paste into the GitHub release):
+
+This release contains the code, article PDF and LaTeX source, figures, and numerical evidence for the study вЂњGeometry-consistent conservative transfer of potential-flow states to an embedded-boundary volume-of-fluid solver.вЂќ It freezes the experiment inputs, selected native solver fields, analysis records, independent audits, and checksums at this version.
+
+The method reconstructs liquid-cell velocity means from a harmonic streamfunction. For thin flat surface strips, both edge averages use a shared boundary trace, so trace error cancels before division by strip thickness. Across 21 analytic initial-field tests, the global velocity error is 2.71вЂ“32.07 times smaller than with a bilinear control using the same streamfunction. At the end of the smooth-wave native continuations, propagated velocity error is 7.88вЂ“10.25 times smaller and surface-profile error is 65.0вЂ“82.9 times smaller relative to numerical trajectories initialized from exact cell means on the same grid. In a separate two-fluid wave test, matched transfer reduces endpoint surface-profile error against a linear analytic reference by 5.49% with the density-weighted mixture assignment held fixed; the complete matched-transfer/mixture-assignment pipeline reduces that error by 52.19% relative to the original practical transfer.
+
+These results concern the tested flat-strip geometries and benchmark settings. The repository also documents the curved-wave compatibility limit and the native solver controls. See `research/releases/transfer_20261001/README.md` for the contents, replay commands, interpretation, and limitations. Run `python scripts/verify_transfer_publication.py` and `python research/releases/transfer_20261001/verify_release.py` to verify the publication files and curated evidence hashes.
+
+Original research code is MIT-licensed; the original manuscript, figures, and derived data are CC BY 4.0. Third-party material retains its original licence. See `LICENSE.md` for scope.
+
+Zenodo metadata to check when the GitHub release is imported, and correct on the Zenodo record if needed:
+Resource type: Software
+Creator: Baturin, Saveliy; ORCID 0009-0005-4410-9520; affiliation Independent Researcher
+Version: 0.31.0
+Licences: list both MIT and CC BY 4.0 on the Zenodo record, with file-specific scope as stated in LICENSE.md. These are separate licences for different files, not a choice of either licence for every file. The default single CC BY 4.0 setting does not describe the code.
+Keywords: potential flow; volume of fluid; conservative transfer; embedded boundary; boundary integral method
+
+Before publishing the GitHub release, enable Safreliy/wave_research in Zenodo Settings > GitHub. Create v0.31.0 from the updated main branch.
+
+After Zenodo assigns the version DOI, add that DOI to CITATION.cff and to the manuscript's Data and code availability statement in a later commit. The DOI should refer to this archived version; do not invent or prefill one in this release.

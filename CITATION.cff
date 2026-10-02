@@ -1,15 +1,30 @@
 cff-version: 1.2.0
 message: >-
-  If you use the 2026-10-01 transfer study, cite this repository at the
-  specific commit used and its accompanying manuscript. A DOI is not yet assigned.
+  If you use this code or its numerical evidence, cite this release and the
+  accompanying manuscript. Cite the version DOI once assigned by Zenodo.
 title: >-
   Geometry-consistent conservative transfer of potential-flow states
-  to an embedded-boundary volume-of-fluid solver
+  to an embedded-boundary volume-of-fluid solver: code and numerical experiments
 type: software
 repository-code: "https://github.com/Safreliy/wave_research"
+abstract: >-
+  Research code and numerical evidence for transferring potential-flow states
+  to an embedded-boundary volume-of-fluid solver. A shared boundary trace and
+  normal extension improve liquid-cell velocity reconstruction in thin flat
+  surface strips. The archive includes the article PDF, manuscript source, figures, selected
+  native fields, input and analysis records, independent audits, and replay
+  instructions. Original code is licensed under MIT; the original manuscript,
+  figures, and derived data are licensed under CC BY 4.0. Third-party material
+  retains its own licence; see LICENSE.md for file-level scope.
 authors:
   - family-names: Baturin
     given-names: Saveliy
+    affiliation: Independent Researcher
     orcid: "https://orcid.org/0009-0005-4410-9520"
 version: "0.31.0"
-date-released: 2026-10-01
+keywords:
+  - potential flow
+  - volume of fluid
+  - conservative transfer
+  - embedded boundary
+  - boundary integral method

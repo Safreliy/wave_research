@@ -1,13 +1,12 @@
 # Data availability
 
-For the 1 October 2026 flat-strip transfer article in
+For the flat-strip transfer article in
 `manuscript/transfer_article.tex`, use
 [`research/releases/transfer_20261001/README.md`](research/releases/transfer_20261001/README.md)
 and its explicit `SHA256SUMS.json`. The material below the next heading
 describes the earlier variable-bathymetry study. The new curated
 release includes selected raw native fields and independent endpoint audits,
-while a clean third-party GPU solver replay remains to be performed. No DOI
-has been minted.
+while a clean third-party GPU solver replay remains to be performed.
 
 ## Earlier variable-bathymetry data
 
@@ -46,11 +45,11 @@ raw-frame analysis commands:
 
 ```text
 research/two_phase_basilisk/remote_impact_claim/
-├── impact_claim_q_l8_t60/handoff_frames/
-├── impact_claim_q_l9_t60/handoff_frames/
-└── impact_claim_q_l10_t60_final/
-    ├── handoff_frames/
-    └── vorticity_frames/
+в”њв”Ђв”Ђ impact_claim_q_l8_t60/handoff_frames/
+в”њв”Ђв”Ђ impact_claim_q_l9_t60/handoff_frames/
+в””в”Ђв”Ђ impact_claim_q_l10_t60_final/
+    в”њв”Ђв”Ђ handoff_frames/
+    в””в”Ђв”Ђ vorticity_frames/
 ```
 
 The declared thresholds and expected paths are fixed in

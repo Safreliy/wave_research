@@ -18,3 +18,20 @@
 research/releases/transfer_20261001/** -text
 # This is an inspected upstream snapshot; preserve its original whitespace.
 research/releases/transfer_20261001/native_source_provenance/source_worktree_patch.diff whitespace=-trailing-space
+
+# Preserve publication asset bytes and their provenance hashes in release archives.
+manuscript/transfer_article.tex -text
+manuscript/figures/** -text
+manuscript/tables/** -text
+scripts/build_transfer_pdf.py -text
+
+# Release metadata and verifier are covered by the publication manifest.
+CITATION.cff -text
+README.md -text
+DATA_AVAILABILITY.md -text
+LICENSE.md -text
+RELEASE_v0.31.0.txt -text
+scripts/verify_transfer_publication.py -text
+.gitattributes -text
+.gitignore -text
+TRANSFER_PUBLICATION_SHA256SUMS.json -text

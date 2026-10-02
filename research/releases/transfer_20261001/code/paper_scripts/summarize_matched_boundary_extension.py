@@ -16,7 +16,7 @@ def main():
     args = p.parse_args()
     data = json.loads(args.input.read_text())
     lines = [r"\begin{table}[htbp]", r"\centering\small",
-             r"\caption{Complete declared initial-field comparison for the matched boundary extension. Errors are liquid-volume-weighted relative velocity norms over all liquid cells. M denotes the manufactured mode-4 family; W denotes the mode-16 wave family. The control uses the same computed streamfunction. These are initial-field errors, not evolved-wave errors.}\label{tab:matched-extension}",
+             r"\caption{Initial velocity errors for the matched boundary extension, measured in the liquid-volume-weighted relative norm over all liquid cells. M denotes the manufactured mode-4 field; W denotes the mode-16 wave field. The control uses the same computed streamfunction.}\label{tab:matched-extension}",
              r"\begin{tabular}{@{}lrrllll@{}}\toprule",
              r"Family & $n_x$ & $q_{\rm top}$ & Linear & Matched & Control & Gain\\\midrule"]
     ratios = []

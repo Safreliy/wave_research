@@ -1,12 +1,33 @@
-# Conservative divergence-conforming BIE-to-VOF state transfer
+# Conservative transfer of potential-flow states to embedded-boundary VOF
 
-**Current transfer study (1 October 2026):** The new editable manuscript is
-[`manuscript/transfer_article.tex`](manuscript/transfer_article.tex), with
-figures, tables and the curated numerical evidence in
-[`research/releases/transfer_20261001/`](research/releases/transfer_20261001/README.md).
-The older `manuscript/main.tex` and `paper.pdf` below describe the prior
-variable-bathymetry work; `paper.pdf` is not a PDF of the new transfer article.
-The current release has no DOI yet.
+The current study is **Geometry-consistent conservative transfer of potential-flow
+states to an embedded-boundary volume-of-fluid solver** by Saveliy Baturin.
+
+- [Read the article (PDF)](manuscript/transfer_article.pdf), or use its
+  [LaTeX source](manuscript/transfer_article.tex).
+- [Code, numerical experiments and replay instructions](research/releases/transfer_20261001/README.md)
+  accompany the transfer study, including the 21 analytic initial-field cases,
+  smooth-wave continuations and the two-fluid physical-reference comparison.
+- [Release title and description](RELEASE_v0.31.0.txt) and [citation metadata](CITATION.cff)
+  describe the v0.31.0 snapshot.
+
+Verify the publication files and numerical archive before analysis:
+
+```sh
+python scripts/verify_transfer_publication.py
+python research/releases/transfer_20261001/verify_release.py
+```
+
+On Windows with an existing MiKTeX installation, build the current article with
+`python scripts/build_transfer_pdf.py`. Its output is
+`manuscript/transfer_article.pdf`; temporary files go to `build/`.
+The document also uses standard pdfLaTeX packages: on another TeX distribution,
+run `pdflatex -interaction=nonstopmode -halt-on-error transfer_article.tex`
+twice from `manuscript/`.
+
+The older `manuscript/main.tex` and root `paper.pdf` describe the earlier
+variable-bathymetry study below. They are preserved as historical material
+and are not the transfer article linked above.
 
 ## Earlier variable-bathymetry study
 
@@ -14,7 +35,7 @@ Research code and evidence package for the manuscript **“Conservative
 divergence-conforming state transfer from adaptive potential-flow BIE to
 embedded VOF: overturning waves over variable bathymetry.”**
 
-The current manuscript is available as [`paper.pdf`](paper.pdf). Its central
+The earlier manuscript is available as [`paper.pdf`](paper.pdf). Its central
 result is a one-way transition that preserves the physical liquid measure,
 constructs a divergence-conforming MAC field, and constrains receiver-grid
 momentum. The resulting VOF continuation is stable on receiver levels 8--10

@@ -23,7 +23,7 @@ def main():
     series = [
         ('baseline_relative_l2_cut', 'Adjacent MAC-face average', '#b04b38', 's', '--'),
         ('fitted_relative_l2_cut', 'Shared-edge liquid moments', '#176a99', 'o', '-'),
-        ('centroid_oracle_relative_l2_cut', 'Exact centroid oracle', '#303030', '^', ':'),
+        ('centroid_oracle_relative_l2_cut', 'Exact-field centroid', '#303030', '^', ':'),
     ]
     for ax, fraction in zip(axes, fractions):
         rows = sorted((r for r in data['rows'] if r['surface_liquid_fraction'] == fraction), key=lambda r: r['nx'])

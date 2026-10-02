@@ -37,3 +37,6 @@ research/two_phase_basilisk/**/*.ppm
 
 # Local scratch
 tmp/
+
+# Transfer manuscript build intermediates
+build/
