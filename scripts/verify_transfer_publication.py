@@ -43,11 +43,14 @@ def verify(root, entries):
 
 def publication_files():
     names = ['CITATION.cff', 'README.md', 'DATA_AVAILABILITY.md', 'LICENSE.md',
+             'SUBMISSION_REPRODUCIBILITY.md', 'CMMP_SUBMISSION_READY.md',
              'RELEASE_v0.31.0.txt', 'RELEASE_v0.32.0.txt',
              'AUDITOR_REVISION_RESPONSE.txt', '.gitattributes', '.gitignore',
              'scripts/build_transfer_pdf.py', 'scripts/verify_transfer_publication.py',
+             'scripts/build_cmmp_submission.py', 'manuscript/cover_letter.txt',
              'manuscript/transfer_article.tex', 'manuscript/transfer_article.pdf',
              'manuscript/transfer_article.build.json',
+             'manuscript/transfer_article.docx', 'manuscript/transfer_article.docx.build.json',
              'research/releases/transfer_20261001/SHA256SUMS.json',
              'research/releases/transfer_20261002/SHA256SUMS.json']
     names += ['scripts/' + name for name in (
@@ -81,6 +84,11 @@ def main():
     for name, expected in receipt['input_sha256'].items():
         if sha(ROOT / name) != expected:
             raise AssertionError('Build input changed: ' + name)
+    word = json.loads((ROOT / 'manuscript/transfer_article.docx.build.json').read_text(encoding='utf-8'))
+    if word['docx_sha256'] != sha(ROOT / 'manuscript/transfer_article.docx'):
+        raise AssertionError('DOCX differs from conversion receipt')
+    if word['source_sha256'] != sha(ROOT / 'manuscript/transfer_article.tex') or word['pandoc_log']:
+        raise AssertionError('Word conversion source changed or conversion warnings present')
     if args.refresh:
         MANIFEST.write_text(json.dumps({
             'schema': 'transfer-publication-snapshot-v2', 'version': '0.32.0',

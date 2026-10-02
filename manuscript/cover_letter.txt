@@ -1,0 +1,43 @@
+October 3, 2026
+
+Dear Editor,
+
+Please consider my manuscript, "Geometry-consistent conservative transfer of
+potential-flow states to an embedded-boundary volume-of-fluid solver," for
+publication as an original research article in Computational Mathematics and
+Mathematical Physics under the traditional publication model.
+
+The paper develops a conservative transfer from potential-flow boundary
+states to liquid-cell velocity means in an embedded-boundary volume-of-fluid
+solver. Its central contribution is a matched boundary-normal extension for
+thin strips beneath a flat free surface. The physical boundary and the
+neighbouring Cartesian edge share one trace, removing a specific source of
+error amplification. A local estimate covers the implemented blended
+operator and states sufficient conditions for second-order accuracy.
+
+Analytic tests isolate this mechanism from higher-order interpolation of the
+physical trace alone. Three-grid initial refinement gives observed orders
+2.005 and 2.137. Subsequent calculations on one documented receiver build
+show smaller propagated transfer errors at every recorded nonzero time on
+all three grids. An independent linear two-fluid wave comparison reduces
+endpoint physical profile error by 5.49% and 2.81% on two grids with receiver
+velocity assignment held fixed. The manuscript reports the intermediate
+coarse-grid comparison favouring the control and distinguishes these
+physical errors from discrepancies against exact-input numerical trajectories.
+
+Code, input and output fields, source and build records, and audit-replay
+instructions are archived at https://doi.org/10.5281/zenodo.23111007.
+The archived manuscript is an openly available research version; this work
+has not been published in a journal. This is its first journal submission,
+and it is not under consideration elsewhere.
+
+I am the sole author, report no external funding or competing interests,
+and take responsibility for the submitted scientific content. A separate
+research-assistance disclosure accompanies the submission.
+
+Sincerely,
+
+Saveliy Baturin
+Independent Researcher, Moscow, Russia
+saveliy.xo@gmail.com
+ORCID: https://orcid.org/0009-0005-4410-9520

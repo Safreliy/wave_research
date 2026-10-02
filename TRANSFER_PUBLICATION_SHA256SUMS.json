@@ -5,8 +5,8 @@
   "files": [
     {
       "path": ".gitattributes",
-      "size": 2145,
-      "sha256": "c9323bdee3cfe95df56f2e872c5905a5eeda5d0ba9d6c3a7432e713adc4e8991"
+      "size": 2349,
+      "sha256": "6196c0c0e042cb70ffadad9fddbf4a7a2bfa85dc47a60610fccc3012b4ec36ca"
     },
     {
       "path": ".gitignore",
@@ -24,9 +24,14 @@
       "sha256": "86a0308ccda0e0b311a7b69a4c36822cc6501795146214db24971aa7602a4cfb"
     },
     {
+      "path": "CMMP_SUBMISSION_READY.md",
+      "size": 4060,
+      "sha256": "a983b17e666810d1d30db88338fbd9121617f155ab5a0b286bd66c086f62bd8b"
+    },
+    {
       "path": "DATA_AVAILABILITY.md",
-      "size": 3906,
-      "sha256": "49f2abcfc2e8e6ef6a4397a854a2b1d5e555d97c9d14fe98935afa047efd4a60"
+      "size": 3861,
+      "sha256": "75b98b6c6caa6122f7e147442b7cff835cc69a9a9c6800d6c5b667a3cdc174b1"
     },
     {
       "path": "LICENSE.md",
@@ -35,8 +40,8 @@
     },
     {
       "path": "README.md",
-      "size": 7992,
-      "sha256": "be144832f411cd7eb88bbb03463860376dcbe8342e8273d216abbb861b64f27d"
+      "size": 8144,
+      "sha256": "aed39b4f9f7d10e1985a6f09f1dfa0dd23bbd3fed912239ba4e41758a31d9cd7"
     },
     {
       "path": "RELEASE_v0.31.0.txt",
@@ -47,6 +52,16 @@
       "path": "RELEASE_v0.32.0.txt",
       "size": 2911,
       "sha256": "4e55e520c4ad99f4d0a2445606a135884565537d672e0bad7c9ecadc4d883f57"
+    },
+    {
+      "path": "SUBMISSION_REPRODUCIBILITY.md",
+      "size": 11827,
+      "sha256": "1bdd0a82cdde3eb8668ad40a0ec4b999748747ff30d36b6afccc2041916c228f"
+    },
+    {
+      "path": "manuscript/cover_letter.txt",
+      "size": 2183,
+      "sha256": "db37e8c0338f69563dad1ffb848d7932998911d4295ac2028a8dd0e2a7b8f01d"
     },
     {
       "path": "manuscript/figures/audited_native_dynamics.pdf",
@@ -220,18 +235,28 @@
     },
     {
       "path": "manuscript/transfer_article.build.json",
-      "size": 2628,
-      "sha256": "342644a95650dc53e4f1fd4670a7ac046fccab3a55d5d9c08e0461a479c386b2"
+      "size": 2790,
+      "sha256": "a8be849996b27d8912e4f000d2f6bbb55c816360dd8776f7a002e9aa0ec8a25c"
+    },
+    {
+      "path": "manuscript/transfer_article.docx",
+      "size": 563954,
+      "sha256": "738ca2f53bacec266ce4a2c80edf0017c9f9eccaa8db70e7dd4cc6352d159575"
+    },
+    {
+      "path": "manuscript/transfer_article.docx.build.json",
+      "size": 279,
+      "sha256": "146dc8c3dad4b628abd081f3bcc62cfb07b065ced5d2eec4b113868ca85d4553"
     },
     {
       "path": "manuscript/transfer_article.pdf",
-      "size": 425993,
-      "sha256": "637112f59047ac67ddc17162d94422a5c8a6a908169920e2f9a1f44c2662bd24"
+      "size": 428843,
+      "sha256": "5c596ff0a0410e6e3b7a184c84d0b9dfaf04ac87f25dcc4ad2593a8850501a48"
     },
     {
       "path": "manuscript/transfer_article.tex",
-      "size": 86497,
-      "sha256": "1405dda29e0bd9e14c2de08c2caa863c4f675f34734fcc4b95fb645c1410670e"
+      "size": 87630,
+      "sha256": "7d742c5e8b07340a7b5e57afcd8476636585e2b11916374d89a562bcbbc38a1b"
     },
     {
       "path": "research/releases/transfer_20261001/SHA256SUMS.json",
@@ -242,6 +267,11 @@
       "path": "research/releases/transfer_20261002/SHA256SUMS.json",
       "size": 17024,
       "sha256": "b9cfe80b55648d058e7041f14ffb6963eb83b6a35ba3bfd8a6abbabb0df4cd52"
+    },
+    {
+      "path": "scripts/build_cmmp_submission.py",
+      "size": 12196,
+      "sha256": "3a9322377736aee50bbf2553c10d326346ab37aad37e1bb3b9d48dfce6eb1c16"
     },
     {
       "path": "scripts/build_transfer_pdf.py",
@@ -295,8 +325,8 @@
     },
     {
       "path": "scripts/verify_transfer_publication.py",
-      "size": 4710,
-      "sha256": "e367117cf12f9916df22901460da115bf728b0c9ba6c97c8e6c97f4010275716"
+      "size": 5403,
+      "sha256": "ad14f0dbc7cb4ef0284f7479a1c6b292f806a153ad382e6f19a0ecf3e42a30ef"
     }
   ]
 }

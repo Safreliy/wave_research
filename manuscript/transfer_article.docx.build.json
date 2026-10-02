@@ -1,0 +1,9 @@
+{
+  "native_math_elements": 433,
+  "tables": 16,
+  "paragraphs": 261,
+  "figures": 6,
+  "source_sha256": "7d742c5e8b07340a7b5e57afcd8476636585e2b11916374d89a562bcbbc38a1b",
+  "docx_sha256": "738ca2f53bacec266ce4a2c80edf0017c9f9eccaa8db70e7dd4cc6352d159575",
+  "pandoc_log": ""
+}

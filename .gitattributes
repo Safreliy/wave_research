@@ -11,6 +11,7 @@
 *.dat text eol=lf
 *.ps1 text eol=crlf
 *.pdf binary
+*.docx binary
 *.png binary
 *.npz binary
 
@@ -31,6 +32,7 @@ manuscript/transfer_article.build.json -text
 manuscript/figures/** -text
 manuscript/tables/** -text
 scripts/build_transfer_pdf.py -text
+scripts/build_cmmp_submission.py -text
 scripts/summarize_matched_boundary_extension.py -text
 scripts/summarize_transfer_dynamics.py -text
 scripts/summarize_physical_wave.py -text
@@ -45,6 +47,9 @@ scripts/plot_audited_dynamics.py -text
 CITATION.cff -text
 README.md -text
 DATA_AVAILABILITY.md -text
+SUBMISSION_REPRODUCIBILITY.md -text
+CMMP_SUBMISSION_READY.md -text
+manuscript/cover_letter.txt -text
 LICENSE.md -text
 RELEASE_v0.31.0.txt -text
 RELEASE_v0.32.0.txt -text
@@ -53,3 +58,4 @@ scripts/verify_transfer_publication.py -text
 .gitattributes -text
 .gitignore -text
 TRANSFER_PUBLICATION_SHA256SUMS.json -text
+manuscript/transfer_article.docx.build.json -text

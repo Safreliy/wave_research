@@ -7,6 +7,10 @@ states to an embedded-boundary volume-of-fluid solver** by Saveliy Baturin.
 
 - [Read the article (PDF)](manuscript/transfer_article.pdf), or use its
   [LaTeX source](manuscript/transfer_article.tex).
+- [Editable Word manuscript](manuscript/transfer_article.docx) and
+  [submission file guide](CMMP_SUBMISSION_READY.md) are prepared for CMMP.
+  [Reproduction instructions](SUBMISSION_REPRODUCIBILITY.md) map the principal
+  results to archived data and distinguish numerical audits from receiver reruns.
 - [New experiment package and replay instructions](research/releases/transfer_20261002/README.md)
   provide the three-grid transfer tests, two-grid physical-wave comparison,
   separate transfer timings and documented corrected receiver build.
@@ -37,7 +41,7 @@ The badge above links to the series of releases. The additional three-grid
 and two-grid evidence is archived as **v0.32.0** at
 [doi:10.5281/zenodo.23111007](https://doi.org/10.5281/zenodo.23111007).
 Use that version DOI for the new experiment package. The current manuscript
-adds this DOI citation after archival; the experiment files and archived tags
+adds this DOI citation and editorial clarifications after archival; the experiment files and archived tags
 remain unchanged.
 
 The older `manuscript/main.tex` and root `paper.pdf` describe the earlier
