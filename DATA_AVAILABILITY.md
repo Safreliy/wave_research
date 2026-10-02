@@ -6,7 +6,9 @@ contains all fields used by the three-grid dynamic and two-grid physical
 audits, initial refinement data, timings, source snapshots, build records,
 runtime configuration dependencies and SHA-256 manifests. The included
 verifier can repeat the three principal numerical audits from these files.
-This development revision has no new archival DOI yet.
+This evidence is archived as [v0.32.0, doi:10.5281/zenodo.23111007](https://doi.org/10.5281/zenodo.23111007).
+The current manuscript adds the DOI citation after archival; the numerical
+evidence and frozen release manifests are unchanged.
 
 The [original benchmark package](research/releases/transfer_20261001/README.md)
 is archived as [v0.31.0, doi:10.5281/zenodo.23104557](https://doi.org/10.5281/zenodo.23104557).

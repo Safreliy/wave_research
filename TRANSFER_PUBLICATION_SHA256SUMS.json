@@ -20,13 +20,13 @@
     },
     {
       "path": "CITATION.cff",
-      "size": 1722,
-      "sha256": "dee16068092e4d2a946ed934d6d5061224a6fc763bc5d79e4b6dfb4d77fd80b0"
+      "size": 1764,
+      "sha256": "86a0308ccda0e0b311a7b69a4c36822cc6501795146214db24971aa7602a4cfb"
     },
     {
       "path": "DATA_AVAILABILITY.md",
-      "size": 3721,
-      "sha256": "b7c1ae4eef21da9c50ed080e369e2259308865d9836138f5df0c39be25c76af5"
+      "size": 3906,
+      "sha256": "49f2abcfc2e8e6ef6a4397a854a2b1d5e555d97c9d14fe98935afa047efd4a60"
     },
     {
       "path": "LICENSE.md",
@@ -35,8 +35,8 @@
     },
     {
       "path": "README.md",
-      "size": 7921,
-      "sha256": "8f678b8fff4c4cee442e36152928f004fb5fa56169f8f398c4df2c747b052eac"
+      "size": 7992,
+      "sha256": "be144832f411cd7eb88bbb03463860376dcbe8342e8273d216abbb861b64f27d"
     },
     {
       "path": "RELEASE_v0.31.0.txt",
@@ -45,8 +45,8 @@
     },
     {
       "path": "RELEASE_v0.32.0.txt",
-      "size": 2810,
-      "sha256": "cfc069db2068d49138b159b18562f75d76a35e36193da15ad06bb84e5842f31a"
+      "size": 2911,
+      "sha256": "4e55e520c4ad99f4d0a2445606a135884565537d672e0bad7c9ecadc4d883f57"
     },
     {
       "path": "manuscript/figures/audited_native_dynamics.pdf",
@@ -221,17 +221,17 @@
     {
       "path": "manuscript/transfer_article.build.json",
       "size": 2628,
-      "sha256": "b04296161a1cf6112477970c96c933d89493328d65f3750a89684247a12170c4"
+      "sha256": "342644a95650dc53e4f1fd4670a7ac046fccab3a55d5d9c08e0461a479c386b2"
     },
     {
       "path": "manuscript/transfer_article.pdf",
-      "size": 425967,
-      "sha256": "3206099845496bafa5de9900ec49c2afad6e4b177247abceb8fd5e79603d306a"
+      "size": 425993,
+      "sha256": "637112f59047ac67ddc17162d94422a5c8a6a908169920e2f9a1f44c2662bd24"
     },
     {
       "path": "manuscript/transfer_article.tex",
-      "size": 86553,
-      "sha256": "99b127b08063ecc614f02cf65076faa6d18f51cc356b1ee091084d418ccad37e"
+      "size": 86497,
+      "sha256": "1405dda29e0bd9e14c2de08c2caa863c4f675f34734fcc4b95fb645c1410670e"
     },
     {
       "path": "research/releases/transfer_20261001/SHA256SUMS.json",

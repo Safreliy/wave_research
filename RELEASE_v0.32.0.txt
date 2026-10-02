@@ -1,4 +1,6 @@
-Prepared tag: v0.32.0 (not created by this revision)
+Released tag: v0.32.0
+Version DOI: https://doi.org/10.5281/zenodo.23111007
+Publication date: 2 October 2026
 
 Title:
 Geometry-consistent conservative transfer of potential-flow states to an embedded-boundary volume-of-fluid solver: revised theory and numerical validation
@@ -23,6 +25,7 @@ ORCID: https://orcid.org/0009-0005-4410-9520
 Release version: 0.32.0
 Licences: MIT for original code; CC BY 4.0 for manuscript, figures and original derived data, with file-specific scope.
 
-The repository metadata is prepared for version 0.32.0; the tag and release have not been created.
-Create v0.32.0 from the completed revision, then use its new Zenodo version
-DOI for the new evidence. Preserve the existing v0.31.0 tag and DOI.
+Zenodo archives v0.32.0 at https://doi.org/10.5281/zenodo.23111007.
+The archived Git commit is e7dfd424f3a37b62c47b5d48220b8ae581bb4218.
+The current manuscript and citation metadata add this DOI after archival.
+The archived v0.31.0 and v0.32.0 tags and numerical evidence are unchanged.

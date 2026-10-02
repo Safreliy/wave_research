@@ -1,6 +1,6 @@
 {
   "schema": "transfer-pdf-local-miktex-build-v1",
-  "built_at_utc": "2026-10-02T16:56:20.504708+00:00",
+  "built_at_utc": "2026-10-02T20:57:27.163388+00:00",
   "installer_disabled": true,
   "passes": [
     {
@@ -17,7 +17,7 @@
     }
   ],
   "input_sha256": {
-    "manuscript/transfer_article.tex": "99b127b08063ecc614f02cf65076faa6d18f51cc356b1ee091084d418ccad37e",
+    "manuscript/transfer_article.tex": "1405dda29e0bd9e14c2de08c2caa863c4f675f34734fcc4b95fb645c1410670e",
     "manuscript/figures/audited_native_dynamics.pdf": "f25c33548376dce8fff4227119d38c814f3ac56f47ea13c1da55e6783d82855d",
     "manuscript/figures/fixed_wave_geometry.pdf": "b53cf0b2885c277b6922fb16f4cdc3d728df0f754d5e8a0e41471b19cd03d69d",
     "manuscript/figures/flat_sliver_comparison.pdf": "52c2ca67509303c8f19ef3ea0da0f2189639043bf7bd4317a8ca3bda95bbb282",
@@ -34,8 +34,8 @@
     "manuscript/tables/related_methods.tex": "cdd6457fc6a430683a481fb532a31bd5d5f5c5179d431002b2e04e1e5a1e2b2b",
     "manuscript/tables/transfer_cost.tex": "c59c8ebd71e2350bc2e4150057ba79112e72410735d228af495b82606305e20c"
   },
-  "pdf_sha256": "3206099845496bafa5de9900ec49c2afad6e4b177247abceb8fd5e79603d306a",
-  "pdf_bytes": 425967,
+  "pdf_sha256": "637112f59047ac67ddc17162d94422a5c8a6a908169920e2f9a1f44c2662bd24",
+  "pdf_bytes": 425993,
   "pdf_pages": 22,
   "compiler": "MiKTeX-pdfTeX 4.19 (MiKTeX 24.4)",
   "command": "pdflatex --disable-installer -interaction=nonstopmode -halt-on-error -no-shell-escape; two-pass build with isolated auxiliaries"

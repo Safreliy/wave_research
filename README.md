@@ -13,8 +13,8 @@ states to an embedded-boundary volume-of-fluid solver** by Saveliy Baturin.
 - [Original benchmark archive](research/releases/transfer_20261001/README.md)
   retains the 21 analytic cases and earlier continuations.
 - [Revision response](AUDITOR_REVISION_RESPONSE.txt) records the theoretical,
-  experimental and presentation changes. [Next release text](RELEASE_v0.32.0.txt)
-  and [citation metadata](CITATION.cff) describe the prepared revision.
+  experimental and presentation changes. [Release description](RELEASE_v0.32.0.txt)
+  and [citation metadata](CITATION.cff) identify the archived v0.32.0 release.
 
 Verify the publication files and numerical archive before analysis:
 
@@ -33,11 +33,12 @@ twice from `manuscript/`.
 
 The archived **v0.31.0** code and numerical experiments are available at
 [doi:10.5281/zenodo.23104557](https://doi.org/10.5281/zenodo.23104557).
-The badge above links to the series of releases. The current **0.32.0**
-revision adds evidence beyond that archive; it has no new version DOI yet.
-Cite the version DOI only for the v0.31.0 material and the repository commit
-for the new package. The archived tag and original experiment files remain
-unchanged.
+The badge above links to the series of releases. The additional three-grid
+and two-grid evidence is archived as **v0.32.0** at
+[doi:10.5281/zenodo.23111007](https://doi.org/10.5281/zenodo.23111007).
+Use that version DOI for the new experiment package. The current manuscript
+adds this DOI citation after archival; the experiment files and archived tags
+remain unchanged.
 
 The older `manuscript/main.tex` and root `paper.pdf` describe the earlier
 variable-bathymetry study below. They are preserved as historical material
