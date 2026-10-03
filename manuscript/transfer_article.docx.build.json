@@ -1,9 +1,9 @@
 {
-  "native_math_elements": 433,
+  "native_math_elements": 434,
   "tables": 16,
   "paragraphs": 261,
   "figures": 6,
-  "source_sha256": "7d742c5e8b07340a7b5e57afcd8476636585e2b11916374d89a562bcbbc38a1b",
-  "docx_sha256": "738ca2f53bacec266ce4a2c80edf0017c9f9eccaa8db70e7dd4cc6352d159575",
+  "source_sha256": "f4a3fdee5ce6b7c775226197d12f30796e0d98e404202325b531f12712bb131c",
+  "docx_sha256": "6ecb72dc1809c233046ebffd68e2d860f53c2f7b4db5eee852f04182f7a00ec6",
   "pandoc_log": ""
 }

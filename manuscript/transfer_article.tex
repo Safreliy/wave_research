@@ -497,9 +497,9 @@ The receiver uses the projection solver with AMGX for the symmetric
 pressure system. In the numerical units of the supplied state, the liquid
 and gas densities are 1 and 0.00117647, their dynamic viscosities are
 $2.5\times10^{-5}$ and $4.88764\times10^{-7}$, surface tension is 0.001,
-and gravity is $(0,-1)$. For the fixed overturning-state startup and its
-time-step checks in Appendix~\ref{app:general-tests}, the controls are CFL
-0.05 and maximum time step $6.25\times10^{-4}$. The main smooth-wave
+and gravity is $(0,-1)$. For the fixed overturning-state startup, the baseline controls are CFL
+0.05 and maximum time step $6.25\times10^{-4}$; the time-step variations
+are specified in Appendix~\ref{app:time-step}. The main smooth-wave
 continuations use the separate settings specified in
 Section~\ref{sec:native-protocol}; neither test is calibrated to a
 laboratory wave case.
@@ -679,7 +679,7 @@ upstream boundary solver. The cut-cell errors and maximum vector errors
 are retained with the global norms in the accompanying data.
 \input{tables/joint_refinement.tex}
 
-\subsection{Propagation of transfer error}
+\subsection{Propagation of transfer error}\label{sec:dynamic-results}
 The three-grid comparison uses the same corrected receiver executable and
 library for all nine M, B and exact-input branches. Common geometry, gas
 velocities, physical coefficients and time-step controls isolate the
@@ -1260,7 +1260,7 @@ difference is $1.16104\times10^{-4}$. The receiver thus retains some
 sensitivity to the input moment operator, while liquid volume agrees to
 roundoff. An independent evolved reference is needed to rank their accuracy.
 
-\subsection{Time-step sensitivity}
+\subsection{Time-step sensitivity}\label{app:time-step}
 A second paired experiment halves the initial step limit from 0.00125 to
 0.000625, the maximum step from 0.000625 to 0.0003125, and both CFL controls
 from 0.05 to 0.025. Each full-step branch takes 32 steps and each
@@ -1366,8 +1366,10 @@ The favourable $1024\times64$ comparison survives one time-step halving:
 the L and control velocity errors become $1.59996\times10^{-3}$ and
 $4.46877\times10^{-3}$, giving a 2.79-fold reduction. Their wave-normalised
 column-depth errors are $1.48757\times10^{-4}$ and $6.34783\times10^{-4}$,
-a 4.27-fold reduction. Recorded step counts are 210 and 420, with observed
-maximal steps 0.0025 and 0.00125. The corresponding unrefined-trace
+a 4.27-fold reduction. The logs record final zero-based step indices
+210 and 420: 211 and 421 time advances, respectively. Each run takes
+210 or 420 full steps of 0.0025 or 0.00125, followed by a shortened
+final step of approximately $7.18\times10^{-5}$. The corresponding unrefined-trace
 comparison remains unfavourable by a factor of 10.18.
 
 The transfer ranking persists under this step halving, but temporal
@@ -1418,7 +1420,7 @@ $1.03094\times10^{-4}$ and $3.34981\times10^{-4}$. At $0.1T$, their global
 velocity errors are $5.08178\times10^{-4}$ and $1.74890\times10^{-3}$,
 a 3.44-fold reduction. Wave-normalised column-depth errors are
 $4.7457\times10^{-5}$ and $1.66515\times10^{-4}$, a 3.51-fold reduction.
-All three branches complete 210 steps; maximum recorded post-start
+All three branches complete 211 time advances (final step index 210); maximum recorded post-start
 embedded-volume flux divergence is $8.10\times10^{-14}$ and recorded mass
 drift is zero at output precision. This supports the matched-setting
 transfer benefit at a second spatial resolution, but supplies no additional
@@ -1433,10 +1435,11 @@ These earlier M, B and exact-input continuations use the original receiver
 build and trace factor~8. Within each $512\times32$ or $1024\times64$
 comparison, geometry, volume fractions, supplied face data, gas velocities,
 physical coefficients and full-step settings are common. All branches reach
-$t=0.1T$ in 210 steps. The receiver reconstructs runtime face fluxes from
+$t=0.1T$ after 211 time advances (final step index 210). The receiver reconstructs runtime face fluxes from
 each branch's cell velocities. These tests precede the corrected-build
-three-grid series in Section~\ref{sec:native-protocol}; their main value here
+three-grid series in Sections~\ref{sec:native-protocol} and~\ref{sec:dynamic-results}; their main value here
 is the historical time-step control below.
+Figure~\ref{fig:matched-dynamics} shows these earlier trajectories.
 
 For completeness, the earlier endpoint M/B velocity errors are
 0.00175849/0.01386093 on $512\times32$ and 0.000434603/0.004259703 on
@@ -1449,7 +1452,8 @@ The M grid-refinement ratios are 4.015 initially and 4.046 at the endpoint
 asymptotic convergence of the receiver.
 
 Halving the time step on $1024\times64$ preserves the improvement.
-The matched run completes 420 steps and gives velocity error
+The matched run completes 421 time advances (final step index 420)
+and gives velocity error
 0.0004361803 against the half-step exact-input branch, versus 0.0044687721
 for the half-step B control (10.25-fold reduction). The respective
 surface-profile errors are $7.65566\times10^{-6}$ and
@@ -1465,8 +1469,8 @@ discretisation.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/matched_native_dynamics.pdf}
-\caption{Propagation of transfer error with Matched (M)
-and Bilinear (B) initialisations. L9 and L10 denote $512\times32$ and
+\caption{Propagation of transfer error on the original receiver build
+with Matched (M) and Bilinear (B) initialisations. L9 and L10 denote $512\times32$ and
 $1024\times64$ grids, both with $\Delta t_{\max}=0.0025$.
 Each curve uses the exact-input numerical trajectory
 at its own grid and identical time-step settings as the reference. The

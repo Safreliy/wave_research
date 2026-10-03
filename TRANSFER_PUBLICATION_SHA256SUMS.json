@@ -15,8 +15,8 @@
     },
     {
       "path": "AUDITOR_REVISION_RESPONSE.txt",
-      "size": 5620,
-      "sha256": "dc4155202dece2455f2001f602342e7df293b43192bb3cdd2fed51faf8e483ef"
+      "size": 6360,
+      "sha256": "ff10d91bcfcf23aeea25aea9912bd1212ef50368f5021ffa686ac64381d7cdea"
     },
     {
       "path": "CITATION.cff",
@@ -25,8 +25,8 @@
     },
     {
       "path": "CMMP_SUBMISSION_READY.md",
-      "size": 4060,
-      "sha256": "a983b17e666810d1d30db88338fbd9121617f155ab5a0b286bd66c086f62bd8b"
+      "size": 4235,
+      "sha256": "fcb3ab30d553330fc69976a9587c6f868de872d0c09f755fc646a61eca922f5e"
     },
     {
       "path": "DATA_AVAILABILITY.md",
@@ -236,27 +236,27 @@
     {
       "path": "manuscript/transfer_article.build.json",
       "size": 2790,
-      "sha256": "a8be849996b27d8912e4f000d2f6bbb55c816360dd8776f7a002e9aa0ec8a25c"
+      "sha256": "12aec93766e194f582303d363f35a87eb4244954313c1eb27b7bcd837a65cab2"
     },
     {
       "path": "manuscript/transfer_article.docx",
-      "size": 563954,
-      "sha256": "738ca2f53bacec266ce4a2c80edf0017c9f9eccaa8db70e7dd4cc6352d159575"
+      "size": 564112,
+      "sha256": "6ecb72dc1809c233046ebffd68e2d860f53c2f7b4db5eee852f04182f7a00ec6"
     },
     {
       "path": "manuscript/transfer_article.docx.build.json",
       "size": 279,
-      "sha256": "146dc8c3dad4b628abd081f3bcc62cfb07b065ced5d2eec4b113868ca85d4553"
+      "sha256": "e0e90cde24ca4ecb361bf54e3377148aca7bf19c045668ef16f0588e01305abd"
     },
     {
       "path": "manuscript/transfer_article.pdf",
-      "size": 428843,
-      "sha256": "5c596ff0a0410e6e3b7a184c84d0b9dfaf04ac87f25dcc4ad2593a8850501a48"
+      "size": 429553,
+      "sha256": "ad9393d27867dd1a06efb6d5f029304947ac2c5bf11439cf072d56f03f29584c"
     },
     {
       "path": "manuscript/transfer_article.tex",
-      "size": 87630,
-      "sha256": "7d742c5e8b07340a7b5e57afcd8476636585e2b11916374d89a562bcbbc38a1b"
+      "size": 86612,
+      "sha256": "f4a3fdee5ce6b7c775226197d12f30796e0d98e404202325b531f12712bb131c"
     },
     {
       "path": "research/releases/transfer_20261001/SHA256SUMS.json",

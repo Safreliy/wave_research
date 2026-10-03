@@ -50,7 +50,9 @@ The latest review's requested changes are present: explicit numerical-reference
 wave normalisation for E_H; historical startup parameters identified;
 manufactured F4 field referenced; common vertical coordinate z; two-row L/H/M
 ablation table; separate audit-replay and CFD-rerun descriptions; cost residual
-explained; and the earlier smooth-wave appendix reorganised.
+explained; and the earlier smooth-wave appendix reorganised. The final
+zero-based step indices are distinguished from the number of time advances
+using archived solver logs, and the earlier figure identifies its original build.
 
 The PDF has no unresolved citations/references or overfull text boxes after
 two pdfLaTeX passes. Its source, inputs, and PDF hash are linked in the build
@@ -69,7 +71,7 @@ together, and each of the six figures and its caption is on a separate page.
 - https://www.pleiades.online/en/authors/agreement/
 - Submission portal: https://publish.pleiadesonline.com/
 
-CMMP's specific instructions request DOC/DOCX, a 150–250-word abstract,
-4–6 keywords, numerical citations in order of appearance, and original figure
+CMMP's specific instructions request DOC/DOCX, a 150вЂ“250-word abstract,
+4вЂ“6 keywords, numerical citations in order of appearance, and original figure
 files. The general title-page instructions exclude street-address information;
 the postal address is therefore kept in the separate private editorial file.

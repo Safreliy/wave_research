@@ -89,3 +89,16 @@ The evidence is fixed at repository commit e3ad0a9e0d5fa7c3399a23addb38874d345da
 The publication PDF is built from the revised source with two pdfLaTeX
 passes; the publication manifest and build receipt link source, tables,
 figures and PDF by SHA-256. The original v0.31.0 release is unchanged.
+
+Final review follow-up, 3 October 2026
+The archived stat.dat and run.log records distinguish the final zero-based
+step index (210/420) from the number of time advances (211/421). Both
+schedules finish with a shortened interval of about 7.1766e-5 to reach
+t=0.52507176576319325. Appendix A.10 and A.11 now use this distinction.
+Evidence: flat_native_L10_trace4/runs/{full,half}/fitted/segments/segment_0000/
+run.log in flat_native_selected_outputs.tar.gz; the Matched L9/L10 archives
+independently confirm the same counters and iteration totals.
+The startup baseline controls are separated from time-step variations;
+the earlier dynamics figure is cited and explicitly identifies the original
+receiver build. The corrected-build protocol and results are both referenced.
+No experiment values or frozen evidence files were changed.
